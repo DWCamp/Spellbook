@@ -1,0 +1,8 @@
+<COPPER>10
+<SILVER>6
+<GOLD>56
+<PLATINUM>3
+<OTHER>174
+P-Alarm
+U-Dust Devil
+U-Fireball
