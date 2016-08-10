@@ -1,13 +1,12 @@
 # Spellbook
-A standalone variant of the larger BookKeeper application which isolates the UserSpellWindow as the main window.
+Spellbook is an application by a grumpy DM who was tired of his players not remembering their spells. It is:
+* A searchable 5e spell database. This includes all cannonical spells according to this website: http://ephe.github.io/grimoire/
+* Digital spellbook. Add, remove, prepare, and keep the details handy for every spell you could ever want.
 
-Due to the difficulty of pulling in only the absolutely necessary classes and dependencies, Spellbook actually contains all of the files necessary for BookKeeper. But since it's closed source and the main window can't be called by a subwindow, I don't really care. 
+Installation instructions:
 
-To use this software:
+1) Download the zip file containing this project
 
-1) Download all of the files and put them in a folder.
+2) Unzip it.
 
-2) Wew lad, you did it.
-
-To Do:
-* Spell slots
+Make sure to keep all the files in the same folder
