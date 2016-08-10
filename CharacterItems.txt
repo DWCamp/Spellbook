@@ -3,6 +3,5 @@
 <GOLD>56
 <PLATINUM>3
 <OTHER>174
-P-Alarm
-U-Dust Devil
-U-Fireball
+<ENDSPELLS>
+<ENDNOTES>
