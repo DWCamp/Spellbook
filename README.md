@@ -14,3 +14,5 @@ Installation instructions:
 Make sure to keep all the files in the same folder
 
 **WARNING:** Hoooooooly crap is this a very tentative 1.0. It won't break your computer or anything, but it might have some bugs. I've hit this thing with a hammer 7 ways to Sunday but when it's one guy making a entire application like this, especially one that's very data centric, it's easy to have a bug slip through the gaps. I gave a beta to my party after I cobbled the thing together and within 30 seconds my wizard already found a major bug. So, if there are serious issues, I'm sorry. Please tell me about them and I will fix them as soon as I can.
+
+As of right now, the only known issue is that the system font on macOS is making the window look a little screwy. Still functional, though.
