@@ -437,7 +437,7 @@ public class FileSystem {
 			if (newLine.equals("<XPHIST>")) {
 				terminated = true;
 			} else {
-				expHist += newLine + "â•š";
+				expHist += newLine + "§";
 			}
 		}
 		forReturn.add(expHist);

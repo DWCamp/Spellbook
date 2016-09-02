@@ -7,7 +7,6 @@ import java.util.Map;
 import files.Class_List;
 import files.FileSystem;
 import files.PClass;
-import mainGUI.MainWindow;
 
 public class CharacterData {
 
@@ -109,7 +108,6 @@ public class CharacterData {
 		if (addToCurr) {
 			currHP += hp; 
 		}
-		MainWindow.update();
 	}
 	
 	/**
@@ -124,7 +122,6 @@ public class CharacterData {
 		{
 			currHP = maxHP;
 		}
-		MainWindow.update();
 	}
 	
 	/**
@@ -528,7 +525,7 @@ public class CharacterData {
 			} catch (Exception e) {
 				System.out.println("Something went wrong (CharDat load parse error)");				
 			}
-			expHistory = data[16].replace('â•š', '\n');
+			expHistory = data[16].replace('§', '\n');
 			/**
 			 * I replaced the line breaks in expHistory with an obscure ASCII
 			 * character (alt-456) so it could be stored as one line. Ugly? Yes.
