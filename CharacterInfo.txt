@@ -1,0 +1,54 @@
+<CN>Tobias Walroff
+<RACE>Half-Elf
+<ALIGN>A little to the left
+<HEIGHT>6 feet
+<AGE>22
+<WEIGHT>100 kg
+<HAIR>Auburn
+<SKIN>alabaster
+<EYES>teal
+<DESC>A really stupid fuck face please kill me
+<INSP>false
+<CURRHP>44
+<MAXHP>44
+<HitD>1,0,3,0
+<LVL>5
+<XP>47600
+<XPHIST>
++200: Fought a gnome
++200: Fought a gnoll
+Ranger +1
++200: Fought a bard
++500: Fought Thomas
+Ranger +1
++300: Fought a guard
++200: Fought a loaf of bread
++1500: Fought a hoard of dementors
+Rogue +1
++1500: Fought a hoard of dementia patients
+Ranger +1
++5000: I killed the mayor
+Ranger +1
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
++2000: reasons
+<XPHIST>
+<CLASSES>
+Ranger:4
+Rogue:1

@@ -17,14 +17,12 @@ import java.io.FileWriter;
 public class FileSystem {
 
 	static String charInfoPath = "UserData/CharacterInfo.txt";
-	static String charItemsPath = "UserData/CharacterItems.txt";
-	static String spellListPath = "ProgramData/SpellList.txt";
-	static String classListPath = "ProgramData/ClassList.txt";
+
 	static String prefPath = "ProgramData/Preferences.txt";
 
-//    static String classListPath = "ClassList.txt";
-//	static String charItemsPath = "CharacterItems.txt";
-//	static String spellListPath = "SpellList.txt";
+    static String classListPath = "ClassList.txt";
+	static String charItemsPath = "CharacterItems.txt";
+	static String spellListPath = "SpellList.txt";
 	
 	/**
 	 * Reads the contents of a file into a String array
