@@ -191,7 +191,7 @@ public class UserSpellWindow extends JFrame {
 				(int)(370 * scaleFactor) - (int)(35 * (scaleFactor - 1)),
 				(int)(178 * scaleFactor),
 				(int)(27 * scaleFactor));
-		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
+		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(btnBrowseSpells);
 		panelAllSpells.setLayout(new GridLayout(1, 2, 15, 0));
 		

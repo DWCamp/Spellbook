@@ -9,6 +9,7 @@ import javax.swing.JButton;
 
 import alerts.WordWrapPopUp;
 import files.Spell;
+import mainGUI.SpellBookLauncher;
 import mainGUI.UserSpellWindow;
 import userData.CharacterItems;
 
@@ -24,21 +25,24 @@ public class SpellAddPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public SpellAddPanel(Spell spell, UserSpellWindow parent) {
+		double scaleFactor = SpellBookLauncher.getScaleFactor();
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("   " + spell.getName());
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		add(lblNewLabel, BorderLayout.CENTER);
+		JLabel lblName = new JLabel("   " + spell.getName());
+		lblName.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		add(lblName, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.EAST);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JButton btnDetails = new JButton("Details");
+		btnDetails.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		panel.add(btnDetails);
-		btnDetails.setPreferredSize(new Dimension(0, 20));
+		btnDetails.setPreferredSize(new Dimension(0, (int)(20 * scaleFactor)));
 		
 		JButton btnAdd = new JButton("Add Spell");
+		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		panel.add(btnAdd);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -51,7 +55,8 @@ public class SpellAddPanel extends JPanel {
 				WordWrapPopUp popUp = new WordWrapPopUp("");
 				popUp.setText(spell.toString());
 				popUp.setVisible(true);
-				popUp.setSize(new Dimension(600, 400));
+				popUp.setSize(new Dimension((int)(600 * scaleFactor),
+						(int)(400 * scaleFactor)));
 				popUp.setTitle(spell.getName());
 			}
 		});

@@ -1,6 +1,7 @@
 package mainGUI;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -68,7 +69,7 @@ public class SpellBrowser extends JFrame {
 		setBounds((int)(100 * scaleFactor),
 				(int)(100 * scaleFactor),
 				(int)(384 * scaleFactor),
-				(int)(413 * scaleFactor));
+				(int)(413 * scaleFactor) - (int)(20 * (scaleFactor - 1)));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -88,7 +89,7 @@ public class SpellBrowser extends JFrame {
 				(int)(69 * scaleFactor),
 				(int)(358 * scaleFactor),
 				(int)(304 * scaleFactor));
-		scrollPane.getVerticalScrollBar().setUnitIncrement(23);
+		scrollPane.getVerticalScrollBar().setUnitIncrement((int)(17 * scaleFactor) + 6);
 		contentPane.add(scrollPane);
 		
 		panelSpells = new JPanel();
@@ -96,32 +97,36 @@ public class SpellBrowser extends JFrame {
 		panelSpells.setLayout(new BoxLayout(panelSpells, BoxLayout.Y_AXIS));
 		
 		searchField = new JTextField();
+		searchField.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		searchField.getDocument().addDocumentListener(new DocumentListener() {
-
 			@Override
 			public void changedUpdate(DocumentEvent arg0) {
 				System.out.println("How did you find this (SpellBrowser: "
 						+ "textField Document Listener)");
 			}
-
 			@Override
 			public void insertUpdate(DocumentEvent arg0) {
 				refresh();
 			}
-
 			@Override
 			public void removeUpdate(DocumentEvent arg0) {
 				refresh();
 			}
-
 		});
-		searchField.setBounds(51, 11, 197, 20);
+		searchField.setBounds((int)(51 * scaleFactor),
+				(int)(11 * scaleFactor),
+				(int)(197 * scaleFactor),
+				(int)(20 * scaleFactor));
 		contentPane.add(searchField);
 		searchField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Search:");
-		lblNewLabel.setBounds(10, 14, 46, 14);
-		contentPane.add(lblNewLabel);
+		JLabel lblSearch = new JLabel("Search:");
+		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		lblSearch.setBounds((int)(10 * scaleFactor),
+				(int)(14 * scaleFactor),
+				(int)(46 * scaleFactor),
+				(int)(14 * scaleFactor));
+		contentPane.add(lblSearch);
 		
 		String[] levelOptions = {"All Levels", "Cantrips", "Level 1", 
 				"Level 2", "Level 3", "Level 4", "Level 5", "Level 6", 
@@ -132,7 +137,11 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxLevels.setBounds(12, 38, 110, 20);
+		comboBoxLevels.setBounds((int)(12 * scaleFactor),
+				(int)(38 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		comboBoxLevels.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxLevels);
 		
 		String[] searchOptions = {"Name", "Description"};
@@ -142,7 +151,11 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxOption.setBounds(258, 11, 110, 20);
+		comboBoxOption.setBounds((int)(258 * scaleFactor),
+				(int)(11 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		comboBoxOption.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxOption);
 		
 		ArrayList<String> classOptions = new ArrayList<String>();
@@ -157,7 +170,11 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxClasses.setBounds(134, 38, 110, 20);
+		comboBoxClasses.setBounds((int)(134 * scaleFactor),
+				(int)(38 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		comboBoxClasses.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxClasses);
 		
 		comboBoxSchools = new JComboBox<Object>(new String[]
@@ -168,7 +185,11 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxSchools.setBounds(256, 38, 110, 20);
+		comboBoxSchools.setBounds((int)(256 * scaleFactor),
+				(int)(38 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		comboBoxSchools.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxSchools);
 		
 		refresh();

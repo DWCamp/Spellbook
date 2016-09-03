@@ -91,7 +91,7 @@ public class SpellBookLauncher extends JFrame {
 		JTextPane txtMessage = new JTextPane();
 		txtMessage.setEditable(false);
 		txtMessage.setBackground(SystemColor.menu);
-		txtMessage.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
+		txtMessage.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		txtMessage.setText("You really weren't supposed to see this. "
 				+ "If you're seeing this window, that means some nasty bug "
 				+ "has crawled into my code and is tearing it all apart, "
@@ -112,14 +112,14 @@ public class SpellBookLauncher extends JFrame {
 		contentPane.add(scrollPane);
 		
 		textAreaError = new JTextArea();
-		textAreaError.setFont(new Font("Monospaced", Font.PLAIN, (int)(12 * scaleFactor)));
+		textAreaError.setFont(new Font("Monospaced", Font.PLAIN, (int)(11 * scaleFactor)));
 		textAreaError.setEditable(false);
 		textAreaError.setLineWrap(true);
 		textAreaError.setWrapStyleWord(true);
 		scrollPane.setViewportView(textAreaError);
 		
 		JButton btnCopyMessage = new JButton("Copy error message");
-		btnCopyMessage.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
+		btnCopyMessage.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		btnCopyMessage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -134,7 +134,7 @@ public class SpellBookLauncher extends JFrame {
 		contentPane.add(btnCopyMessage);
 		
 		JButton btnGoTo = new JButton("Go To Reddit Post");
-		btnGoTo.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
+		btnGoTo.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		btnGoTo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
@@ -206,6 +206,7 @@ public class SpellBookLauncher extends JFrame {
 	 */
 	public static Dimension getScreenDimensions()
 	{
+		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		return screenSize;
 	}
 	
@@ -217,6 +218,8 @@ public class SpellBookLauncher extends JFrame {
 	 */
 	public static double getScaleFactor()
 	{
+		scaleFactor = 1;
+		// scaleFactor = screenSize.getWidth() / 1920.0;
 		return scaleFactor;
 	}
 }
