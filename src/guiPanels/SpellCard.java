@@ -49,11 +49,10 @@ public class SpellCard extends JPanel {
 		btnDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				WordWrapPopUp popUp = new WordWrapPopUp
-						(Spell_List.getSpell(spellName).getDescription());
+						(spellName, Spell_List.getSpell(spellName).getDescription());
 				popUp.setVisible(true);
 				popUp.setSize(new Dimension((int)(600 * scaleFactor),
 				(int)(400 * scaleFactor)));
-				popUp.setTitle(spellName);
 			}
 		});
 		btnDetails.setBounds((int)(176 * scaleFactor),

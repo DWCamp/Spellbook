@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
+import mainGUI.SpellBookLauncher;
+
 import java.awt.Font;
 import java.awt.Insets;
 
@@ -27,7 +29,7 @@ public class WordWrapPopUp extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			WordWrapPopUp dialog = new WordWrapPopUp("");
+			WordWrapPopUp dialog = new WordWrapPopUp("","");
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -38,9 +40,10 @@ public class WordWrapPopUp extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public WordWrapPopUp(String text) {
-		setTitle("XP History");
-		setBounds(100, 100, 200, 300);
+	public WordWrapPopUp(String title, String text) {
+		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		setTitle(title);
+		setBounds(100,100,200,300);
 		setMinimumSize(new Dimension(140,100));
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		{
@@ -69,7 +72,7 @@ public class WordWrapPopUp extends JDialog {
 				textArea.setEditable(false);
 				textArea.setLineWrap(true);
 				textArea.setWrapStyleWord(true);
-				textArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
+				textArea.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
 				textArea.setText(text);
 			}
 		}

@@ -52,12 +52,10 @@ public class SpellAddPanel extends JPanel {
 		});
 		btnDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WordWrapPopUp popUp = new WordWrapPopUp("");
-				popUp.setText(spell.toString());
+				WordWrapPopUp popUp = new WordWrapPopUp(spell.getName(), spell.toString());
 				popUp.setVisible(true);
 				popUp.setSize(new Dimension((int)(600 * scaleFactor),
 						(int)(400 * scaleFactor)));
-				popUp.setTitle(spell.getName());
 			}
 		});
 	}

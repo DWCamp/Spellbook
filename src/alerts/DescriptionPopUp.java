@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import guiPanels.SpellPanel;
+import mainGUI.SpellBookLauncher;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -40,9 +41,14 @@ public class DescriptionPopUp extends JDialog {
 	 * Create the dialog.
 	 */
 	public DescriptionPopUp(SpellPanel parent) {
+		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		
 		setTitle("Description");
 		this.parent = parent;
-		setBounds(100, 100, 450, 300);
+		setBounds((int)(100 * scaleFactor),
+				(int)(100 * scaleFactor),
+				(int)(450 * scaleFactor),
+				(int)(300 * scaleFactor));
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -52,7 +58,8 @@ public class DescriptionPopUp extends JDialog {
 			contentPanel.add(scrollPane);
 			{
 				textArea = new JTextArea(parent.getDescription());
-				textArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
+				textArea.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor))
+						);
 				scrollPane.setViewportView(textArea);
 			}
 		}
