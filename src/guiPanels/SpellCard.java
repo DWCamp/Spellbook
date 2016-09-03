@@ -39,8 +39,7 @@ public class SpellCard extends JPanel {
 		
 		setBackground(new Color(192, 192, 192));
 		setLayout(null);
-		setPreferredSize(new Dimension((int)(298 * scaleFactor),
-				(int)(300 * scaleFactor) - (int)(300 * (scaleFactor - 1))));
+		setPreferredSize(new Dimension((int)(298 * scaleFactor), 0));
 		
 		spell = Spell_List.getSpell(spellName);
 		prepared = CharacterItems.getPreparedSpells().contains(spellName);
@@ -68,9 +67,9 @@ public class SpellCard extends JPanel {
 				UserSpellWindow.setSpellPrepared(spell, !prepared);
 			}
 		});
-		btnPrepare.setBounds((int)(186 * scaleFactor),
+		btnPrepare.setBounds((int)(176 * scaleFactor),
 				(int)(268 * scaleFactor),
-				(int)(101 * scaleFactor),
+				(int)(111 * scaleFactor),
 				(int)(29 * scaleFactor));
 		btnPrepare.setFont(new Font("Tahoma", Font.PLAIN, (int)(16 * scaleFactor)));
 		add(btnPrepare);
@@ -89,7 +88,7 @@ public class SpellCard extends JPanel {
 		});
 		btnRemove.setBounds((int)(10 * scaleFactor),
 				(int)(268 * scaleFactor),
-				(int)(101 * scaleFactor),
+				(int)(111 * scaleFactor),
 				(int)(29 * scaleFactor));
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, (int)(16 * scaleFactor)));
 		add(btnRemove);
