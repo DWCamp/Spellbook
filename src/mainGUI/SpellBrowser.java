@@ -1,8 +1,8 @@
 package mainGUI;
 
 import java.awt.EventQueue;
-//import java.awt.Image;
-//import javax.swing.ImageIcon;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,11 +11,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import files.Class_List;
-import files.PClass;
 import files.Spell;
 import files.Spell_List;
 import guiPanels.SpellAddPanel;
-import userData.CharacterData;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -26,7 +24,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JCheckBox;
 import javax.swing.BoxLayout;
 
 @SuppressWarnings("serial")
@@ -34,7 +31,6 @@ public class SpellBrowser extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField searchField;
-	private JCheckBox chckbxOnlyShowSpells;
 	private JComboBox<Object> comboBoxLevels;
 	private JComboBox<Object> comboBoxOption;
 	private JComboBox<Object> comboBoxClasses;
@@ -77,14 +73,14 @@ public class SpellBrowser extends JFrame {
 		uswParent = parent;
 		
 //		try {
-//			Image image = new ImageIcon(UserSpellWindow.class.getResource("/icon.png")).getImage();
+//			Image image = new ImageIcon(UserSpellWindow.class.getResource("icon.PNG")).getImage();
 //			setIconImage(image);
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
         
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 69, 358, 277);
+		scrollPane.setBounds(10, 69, 358, 304);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(23);
 		contentPane.add(scrollPane);
 		
@@ -124,15 +120,6 @@ public class SpellBrowser extends JFrame {
 		JLabel lblNewLabel = new JLabel("Search:");
 		lblNewLabel.setBounds(10, 14, 46, 14);
 		contentPane.add(lblNewLabel);
-		
-		chckbxOnlyShowSpells = new JCheckBox("Only show spells I can learn");
-		chckbxOnlyShowSpells.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
-		chckbxOnlyShowSpells.setBounds(20, 354, 159, 23);
-		contentPane.add(chckbxOnlyShowSpells);
 		
 		String[] levelOptions = {"All Levels", "Cantrips", "Level 1", 
 				"Level 2", "Level 3", "Level 4", "Level 5", "Level 6", 
@@ -195,8 +182,7 @@ public class SpellBrowser extends JFrame {
 		Spell[] spells = Spell_List.getSpellsOfLevel(comboBoxLevels.getSelectedIndex() - 1); // OPTIMIZE THIS SHIT
 		if (searchVal.equals("")) {
 			for (Spell spell : spells) {
-				if (canLearnSpell(spell) 
-						&& hasSearchedClass(spell)
+				if (hasSearchedClass(spell)
 						&& isSearchedSchool(spell)) {
 					panelSpells.add(new SpellAddPanel(spell, uswParent));
 				}
@@ -211,7 +197,6 @@ public class SpellBrowser extends JFrame {
 				}
 				if (searchedValue.toUpperCase().contains(searchVal) 
 						&& hasSearchedClass(spell) 
-						&& canLearnSpell(spell)
 						&& isSearchedSchool(spell)) {
 					panelSpells.add(new SpellAddPanel(spell, uswParent));
 				}
@@ -232,34 +217,6 @@ public class SpellBrowser extends JFrame {
 		comboBoxClasses.setSelectedIndex(0);
 		comboBoxSchools.setSelectedIndex(0);
 		refresh();
-	}
-	
-	/**
-	 * Used to determine if the spell in the spell list can be 
-	 * learned by the user. If so, it is allowed to be displayed 
-	 * if the search option is set to "only show spells I can learn"<br>
-	 * If the option is set to show all spells, this method will 
-	 * return {@code true} for all spells
-	 * @param spell The spell in question
-	 * @return Whether to allow the spell to show up in the search
-	 */
-	private boolean canLearnSpell(Spell spell)
-	{
-		if (!chckbxOnlyShowSpells.isSelected()) {
-			return true;
-		}
-		for (PClass charClass : CharacterData.getClasses())
-		{
-			for (String spellClassName : spell.getClasses())
-			{
-				if (spellClassName.equals(charClass.getName())) {
-					if (spell.getLevel() <= charClass.getMaxSpellSlot(CharacterData.getClassLevel(charClass))) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
 	}
 	
 	/**

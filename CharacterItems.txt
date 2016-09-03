@@ -9,19 +9,3 @@ U-Commune
 P-Dust Devil
 U-Fireball
 <ENDSPELLS>
-<NOTE>
-Drugs
-Snapchat: Does shit for 3 seconds and then you forget it
-<NOTE>
-New note
-
-<NOTE>
-New note
-
-<NOTE>
-New note
-
-<NOTE>
-New note
-
-<ENDNOTES>

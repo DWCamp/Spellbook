@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import files.FileSystem;
-import guiPanels.Note;
 import helperClasses.SortedStringList;
 
 public class CharacterItems {
@@ -18,7 +17,6 @@ public class CharacterItems {
 	
 	private static SortedStringList spellsLearned;
 	private static SortedStringList spellsPrepared;
-	private static Note[] notes;
 	
 	/**
 	 * Returns the quantity of currency the user 
@@ -217,25 +215,6 @@ public class CharacterItems {
 	}
 	
 	/**
-	 * Sets the notes stored in CharacterItems which will be 
-	 * passed to the file system
-	 * @param noteArray The list of notes
-	 */
-	public static void setNotes(Note[] noteArray)						//Notes
-	{
-		notes = noteArray;
-	}
-	
-	/**
-	 * Returns the stored note list
-	 * @return {@code Notes[]) note list
-	 */
-	public static Note[] getNotes()
-	{
-		return notes;
-	}
-	
-	/**
 	 * Sets up a bogus list of items for testing
 	 */
 	public static void setDummyItems()									//DUMMY DATA
@@ -249,8 +228,6 @@ public class CharacterItems {
 		
 		spellsLearned = new SortedStringList();
 		spellsPrepared = new SortedStringList();
-		
-		notes = new Note[0];
 		
 		learnSpell("Dust Devil");
 		learnSpell("Alarm");

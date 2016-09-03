@@ -3,7 +3,6 @@ package files;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import guiPanels.Note;
 import userData.CharacterData;
 import userData.CharacterItems;
 import userData.Settings;
@@ -32,11 +31,11 @@ public class FileSystem {
 	 * @throws IOException
 	 */
 	private static String[] read(String path) throws IOException {
-		BufferedReader textReader = null;
-		try {
+		try (
 			FileReader fr = new FileReader(path);
-			textReader = new BufferedReader(fr);
-
+			BufferedReader textReader = new BufferedReader(fr);
+		)
+		{
 			boolean ended = false;
 			ArrayList<String> text = new ArrayList<String>();
 
@@ -74,15 +73,15 @@ public class FileSystem {
 	 */
 	public static boolean saveCharInfo() {				//Char info
 		System.out.println("Saving char info...");
-		BufferedWriter bw = null;
 		String tempFile = "tmp.txt";
 
 		boolean success = false;
 		
-		try {
-			FileWriter fw = new FileWriter(tempFile);
-			bw = new BufferedWriter(fw);
-
+		try (
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
+			)
+		{
 			bw.write("<CN>" + CharacterData.getName());
 			bw.newLine();
 			bw.write("<RACE>" + CharacterData.getRace());
@@ -157,14 +156,14 @@ public class FileSystem {
 	 */
 	public static boolean saveCharItems() {				//Char Items
 		System.out.println("Saving char items...");
-		BufferedWriter bw = null;
 		String tempFile = "tmp.txt";
 		boolean success = true;
 		
-		try {
-			FileWriter fw = new FileWriter(tempFile);
-			bw = new BufferedWriter(fw);
-			
+		try (
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
+			) 
+		{			
 			bw.write("<COPPER>" + CharacterItems.getMoney()[1]);
 			bw.newLine();
 			bw.write("<SILVER>" + CharacterItems.getMoney()[2]);
@@ -190,17 +189,6 @@ public class FileSystem {
 			}
 			bw.write("<ENDSPELLS>");
 			
-			for (Note note : CharacterItems.getNotes()) {
-				bw.newLine();
-				bw.write("<NOTE>");
-				bw.newLine();
-				bw.write(note.getTitle());
-				bw.newLine();
-				bw.write(note.getText());
-			}
-			bw.newLine();
-			bw.write("<ENDNOTES>");
-			
 			bw.close();
 			
 			File oldFile = new File(charItemsPath);
@@ -225,14 +213,14 @@ public class FileSystem {
 	public static boolean saveUserPref(String[] prefs)		//User Prefs
 	{
 		System.out.println("Saving preferences...");
-		BufferedWriter bw = null;
 		String tempFile = "tmp.txt";
 		boolean success = false;
 		
-		try {
-			FileWriter fw = new FileWriter(tempFile);
-			bw = new BufferedWriter(fw);
-
+		try (
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
+		)
+		{
 			bw.write("<CFOC>" + Settings.getCenterFrames());
 			bw.close();
 			
@@ -263,14 +251,14 @@ public class FileSystem {
 	protected static boolean saveClassList(String[] classList)		//Class List
 	{
 		System.out.println("Saving Class List...");
-		BufferedWriter bw = null;
 		String tempFile = "tmp.txt";
 		boolean success = false;
 		
-		try {
-			FileWriter fw = new FileWriter(tempFile);
-			bw = new BufferedWriter(fw);
-
+		try (
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
+			)
+		{
 			bw.write("className,hitDie,MaxSpellLevel,feats,subClassAt,subClasses //SAMPLE");
 			bw.newLine();
 			
@@ -310,14 +298,14 @@ public class FileSystem {
 	protected static boolean saveSpellList(ArrayList<ArrayList<Spell>> spellList)
 	{																//Spell List
 		System.out.println("Saving Spell List...");
-		BufferedWriter bw = null;
 		String tempFile = "tmp.txt";
 		boolean success = false;
 		
-		try {
-			FileWriter fw = new FileWriter(tempFile);
-			bw = new BufferedWriter(fw);
-			
+		try (
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
+			)
+		{			
 			for(int i = 0; i < 10; i++)
 			{
 				ArrayList<Spell> spells = spellList.get(i);
@@ -496,25 +484,6 @@ public class FileSystem {
 			forReturn[6] = unprepared.substring(1);
 		} else {
 			forReturn[6] = "";
-		}
-		
-		// NOTES
-		if (i++ < contents.length) {
-			ArrayList<Note> noteList = new ArrayList<Note>();
-			Note tempNote = new Note();
-			String text = "";
-			while (contents[i++].equals("<NOTE>")) {
-				tempNote = new Note();
-				tempNote.setTitle(contents[i++]);
-				while (!contents[i].equals("<NOTE>")
-						&& !contents[i].equals("<ENDNOTES>")) {
-					text += contents[i++];
-				}
-				tempNote.setText(text);
-				text = "";
-				noteList.add(tempNote);
-			}
-			CharacterItems.setNotes(noteList.toArray(new Note[0]));
 		}
 		
 		return forReturn;

@@ -1,6 +1,7 @@
 package mainGUI;
 
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -37,6 +38,8 @@ import java.awt.event.ActionEvent;
 public class SpellBookLauncher extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static Dimension screenSize;
+	private static double scaleFactor;
 	private JPanel contentPane;
 	private JTextArea textAreaError;
 	
@@ -47,6 +50,12 @@ public class SpellBookLauncher extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					System.out.println(screenSize.getWidth());
+					// scaleFactor = screenSize.getWidth() / 1920.0;
+					scaleFactor = 2;
+					System.out.println(scaleFactor);
+					
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					@SuppressWarnings("unused")
 					SpellBookLauncher frame = new SpellBookLauncher();	
@@ -63,54 +72,72 @@ public class SpellBookLauncher extends JFrame {
 	public SpellBookLauncher() {
 		setTitle("Spellbook Launcher");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 647, 380);
+		setBounds((int)(100 * scaleFactor), 
+				(int)(100 * scaleFactor), 
+				(int)(647 * scaleFactor), 
+				(int)(380 * scaleFactor));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblOhSnap = new JLabel("Oh snap!");
-		lblOhSnap.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblOhSnap.setFont(new Font("Verdana", Font.BOLD, (int)(20 * scaleFactor)));
 		lblOhSnap.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOhSnap.setBounds(10, 11, 611, 36);
+		lblOhSnap.setBounds((int)(10 * scaleFactor), 
+				(int)(11 * scaleFactor), 
+				(int)(611 * scaleFactor), 
+				(int)(36 * scaleFactor));
 		contentPane.add(lblOhSnap);
 		
 		JTextPane txtMessage = new JTextPane();
 		txtMessage.setEditable(false);
 		txtMessage.setBackground(SystemColor.menu);
+		txtMessage.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
 		txtMessage.setText("You really weren't supposed to see this. "
 				+ "If you're seeing this window, that means some nasty bug "
 				+ "has crawled into my code and is tearing it all apart, "
 				+ "preventing the application from launching. Please copy "
 				+ "the error message below and send it to me as a comment "
 				+ "on my Reddit post.");
-		txtMessage.setBounds(10, 58, 611, 48);
+		txtMessage.setBounds((int)(10 * scaleFactor), 
+				(int)(58 * scaleFactor), 
+				(int)(611 * scaleFactor), 
+				(int)(48 * scaleFactor));
 		contentPane.add(txtMessage);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 152, 611, 141);
+		scrollPane.setBounds((int)(10 * scaleFactor), 
+				(int)(152 * scaleFactor), 
+				(int)(611 * scaleFactor), 
+				(int)(141 * scaleFactor));
 		contentPane.add(scrollPane);
 		
 		textAreaError = new JTextArea();
-		textAreaError.setFont(new Font("Monospaced", Font.PLAIN, 11));
+		textAreaError.setFont(new Font("Monospaced", Font.PLAIN, (int)(12 * scaleFactor)));
 		textAreaError.setEditable(false);
 		textAreaError.setLineWrap(true);
 		textAreaError.setWrapStyleWord(true);
 		scrollPane.setViewportView(textAreaError);
 		
-		JButton btnNewButton = new JButton("Copy error message");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnCopyMessage = new JButton("Copy error message");
+		btnCopyMessage.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
+		btnCopyMessage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
 				clpbrd.setContents(new StringSelection(textAreaError.getText()), null);
 				((JButton)arg0.getSource()).setText("Copied!");
 			}
 		});
-		btnNewButton.setBounds(470, 304, 151, 23);
-		contentPane.add(btnNewButton);
+		btnCopyMessage.setBounds((int)(470 * scaleFactor), 
+				(int)(304 * scaleFactor), 
+				(int)(151 * scaleFactor), 
+				(int)(23 * scaleFactor));
+		contentPane.add(btnCopyMessage);
 		
-		JButton btnNewButton_1 = new JButton("Go To Reddit Post");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnGoTo = new JButton("Go To Reddit Post");
+		btnGoTo.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
+		btnGoTo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
 					open(new URI("https://www.reddit.com/r/DnD/comments/4x49di/i_made_a_digital_spell_book_if_anyone_wants_it/"));
@@ -120,8 +147,11 @@ public class SpellBookLauncher extends JFrame {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(470, 118, 151, 23);
-		contentPane.add(btnNewButton_1);
+		btnGoTo.setBounds((int)(470 * scaleFactor), 
+				(int)(118 * scaleFactor), 
+				(int)(150 * scaleFactor), 
+				(int)(23 * scaleFactor));
+		contentPane.add(btnGoTo);
 		
 		try{
 			Spell_List.load();
@@ -170,5 +200,25 @@ public class SpellBookLauncher extends JFrame {
 		        Desktop.getDesktop().browse(uri);
 		      } catch (IOException e) { urlFailure(); }
 		    } else { urlFailure(); }
+	}
+	
+	/**
+	 * Returns the screen dimension of the user's monitor
+	 * @return Dimension
+	 */
+	public static Dimension getScreenDimensions()
+	{
+		return screenSize;
+	}
+	
+	/**
+	 * Gets the 1 dimensional ratio between the default resolution (1080p)
+	 * and the user's screen resolution <br>
+	 * e.g. For a 4K monitor, this value would be 2.0
+	 * @return double scale factor
+	 */
+	public static double getScaleFactor()
+	{
+		return scaleFactor;
 	}
 }

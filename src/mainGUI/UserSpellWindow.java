@@ -16,8 +16,8 @@ import userData.CharacterItems;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.JTabbedPane;
-//import javax.swing.ImageIcon;
-//import java.awt.Image;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -71,10 +71,12 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		
+		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		
 		browser = new SpellBrowser(this);
 		
 //		try {
-//			Image image = new ImageIcon(UserSpellWindow.class.getResource("/icon.png")).getImage();
+//			Image image = new ImageIcon(UserSpellWindow.class.getResource("icon.PNG")).getImage();
 //			setIconImage(image);
 //		} catch (Exception e) {
 //			e.printStackTrace();
@@ -82,16 +84,21 @@ public class UserSpellWindow extends JFrame {
 		
 		setResizable(false);
 		setTitle("Spellbook");
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 641, 431);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds((int)(100 * scaleFactor),
+				(int)(100 * scaleFactor),
+				(int)(641 * scaleFactor),
+				(int)(431 * scaleFactor));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 615, 350);
+		tabbedPane.setBounds((int)(10 * scaleFactor),
+				(int)(11 * scaleFactor),
+				(int)(615 * scaleFactor),
+				(int)(350 * scaleFactor));
 		contentPane.add(tabbedPane);
 		
 		JScrollPane scrollPaneAllSpells = new JScrollPane();
@@ -162,7 +169,10 @@ public class UserSpellWindow extends JFrame {
 				browser.toFront();
 			}
 		});
-		btnBrowseSpells.setBounds(447, 366, 178, 27);
+		btnBrowseSpells.setBounds((int)(447 * scaleFactor),
+				(int)(366 * scaleFactor),
+				(int)(178 * scaleFactor),
+				(int)(27 * scaleFactor));
 		contentPane.add(btnBrowseSpells);
 		panelAllSpells.setLayout(new GridLayout(1, 2, 15, 0));
 		
