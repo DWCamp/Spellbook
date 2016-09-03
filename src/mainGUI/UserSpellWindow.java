@@ -2,7 +2,7 @@ package mainGUI;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+//import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,10 +15,10 @@ import guiPanels.SpellCard;
 import userData.CharacterItems;
 
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
 import javax.swing.JTabbedPane;
-import javax.swing.ImageIcon;
-import java.awt.Image;
+//import javax.swing.UIManager;
+//import javax.swing.ImageIcon;
+//import java.awt.Image;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.util.ArrayList;
