@@ -1,6 +1,7 @@
 package mainGUI;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -41,24 +42,24 @@ public class UserSpellWindow extends JFrame {
 	private static UserSpellWindow window;
 	private static SpellBrowser browser;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					Spell_List.load();
-					CharacterItems.loadItems();
-					window = new UserSpellWindow();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//					Spell_List.load();
+//					CharacterItems.loadItems();
+//					window = new UserSpellWindow();
+//					window.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -88,7 +89,7 @@ public class UserSpellWindow extends JFrame {
 		setBounds((int)(100 * scaleFactor),
 				(int)(100 * scaleFactor),
 				(int)(641 * scaleFactor),
-				(int)(431 * scaleFactor));
+				(int)(431 * scaleFactor) - (int)(65 * (scaleFactor-1)));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -98,7 +99,7 @@ public class UserSpellWindow extends JFrame {
 		tabbedPane.setBounds((int)(10 * scaleFactor),
 				(int)(11 * scaleFactor),
 				(int)(615 * scaleFactor),
-				(int)(350 * scaleFactor));
+				(int)(355 * scaleFactor) - (int)(30 * (scaleFactor - 1)));
 		contentPane.add(tabbedPane);
 		
 		JScrollPane scrollPaneAllSpells = new JScrollPane();
@@ -125,8 +126,25 @@ public class UserSpellWindow extends JFrame {
 		tabbedPane.addTab("Level 8", null, scrollPaneLevel8, null);
 		tabbedPane.addTab("Level 9", null, scrollPaneLevel9, null);
 		
+		JLabel lab = new JLabel("All Spells");
+		Font tabFont = new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor));
+		lab.setFont(tabFont);
+		lab.setPreferredSize(new Dimension((int)(50 * scaleFactor),
+	    		(int)(20 * scaleFactor)));
+	    tabbedPane.setTabComponentAt(0, lab);
+	    
+		String[] tabNames = {"All Spells", "Cantrips", "Level 1", "Level 2",
+				"Level 3", "Level 4", "Level 5", "Level 6", "Level 7", 
+				"Level 8", "Level 9"};
+		
 		for (int i = 1; i <= 10; i++) {
-			tabbedPane.setEnabledAt(i, false);
+			lab = new JLabel(tabNames[i]);
+			lab.setFont(tabFont);
+			lab.setEnabled(false);
+		    lab.setPreferredSize(new Dimension((int)(40 * scaleFactor),
+		    		(int)(20 * scaleFactor)));
+		    tabbedPane.setTabComponentAt(i, lab);
+		    tabbedPane.setEnabledAt(i, false);
 		}
 		
 		panelAllSpells = new JPanel();
@@ -159,7 +177,7 @@ public class UserSpellWindow extends JFrame {
 		spellPanels = tempArray;
 		
 		JButton btnBrowseSpells = new JButton("Browse Spells");
-		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
 		btnBrowseSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!browser.isVisible()) {
@@ -170,9 +188,10 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		btnBrowseSpells.setBounds((int)(447 * scaleFactor),
-				(int)(366 * scaleFactor),
+				(int)(370 * scaleFactor) - (int)(35 * (scaleFactor - 1)),
 				(int)(178 * scaleFactor),
 				(int)(27 * scaleFactor));
+		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(12 * scaleFactor)));
 		contentPane.add(btnBrowseSpells);
 		panelAllSpells.setLayout(new GridLayout(1, 2, 15, 0));
 		
@@ -192,6 +211,7 @@ public class UserSpellWindow extends JFrame {
 		for (String spell : spellsLearned) {
 			int level = Spell_List.getSpellLevel(spell);
 			tabbedPane.setEnabledAt(level + 1, true);
+			tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
 			panelAllSpells.add(new SpellCard(spell));
 			spellPanels[level].add(new SpellCard(spell));
 		}
@@ -212,6 +232,7 @@ public class UserSpellWindow extends JFrame {
 		for (String spell : spellsLearned) {
 			int level = Spell_List.getSpell(spell).getLevel();
 			tabbedPane.setEnabledAt(level + 1, true);
+			tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
 			panelAllSpells.add(new SpellCard(spell));
 			spellPanels[level].add(new SpellCard(spell));
 		}
@@ -224,6 +245,7 @@ public class UserSpellWindow extends JFrame {
 	public static void removeSpell(SpellCard card)
 	{
 		Spell spell = card.getSpell();
+		int spellLevel = spell.getLevel();
 		for (Component comp : panelAllSpells.getComponents()) {
 			if (((SpellCard) comp).equals(card)) {
 				panelAllSpells.remove(comp);
@@ -232,7 +254,7 @@ public class UserSpellWindow extends JFrame {
 		for (Component comp : spellPanels[card.getSpell().getLevel()]
 				.getComponents()) {
 			if (((SpellCard) comp).equals(card)) {
-				spellPanels[card.getSpell().getLevel()].remove(comp);
+				spellPanels[spellLevel].remove(comp);
 			}
 		}
 		CharacterItems.unlearnSpell(spell.getName());
@@ -243,9 +265,10 @@ public class UserSpellWindow extends JFrame {
 			lblClickbrowseSpells.setHorizontalAlignment(SwingConstants.CENTER);
 			panelAllSpells.add(lblClickbrowseSpells);
 		}
-		if (spellPanels[spell.getLevel()].getComponentCount() == 0) {
-			tabbedPane.setEnabledAt(spell.getLevel() + 1, false);
-			if (tabbedPane.getSelectedIndex() == spell.getLevel() + 1) {
+		if (spellPanels[spellLevel].getComponentCount() == 0) {
+			tabbedPane.setEnabledAt(spellLevel + 1, false);
+			tabbedPane.getTabComponentAt(spell.getLevel() + 1).setEnabled(false);;
+			if (tabbedPane.getSelectedIndex() == spellLevel + 1) {
 				tabbedPane.setSelectedIndex(0);
 			}
 		}

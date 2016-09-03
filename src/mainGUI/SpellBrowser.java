@@ -61,10 +61,14 @@ public class SpellBrowser extends JFrame {
 	 * Create the frame.
 	 */
 	public SpellBrowser(UserSpellWindow parent) {
+		double scaleFactor = SpellBookLauncher.getScaleFactor();
 		setResizable(false);
 		setTitle("Add spell");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 384, 413);
+		setBounds((int)(100 * scaleFactor),
+				(int)(100 * scaleFactor),
+				(int)(384 * scaleFactor),
+				(int)(413 * scaleFactor));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -80,7 +84,10 @@ public class SpellBrowser extends JFrame {
 //		}
         
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 69, 358, 304);
+		scrollPane.setBounds((int)(10 * scaleFactor),
+				(int)(69 * scaleFactor),
+				(int)(358 * scaleFactor),
+				(int)(304 * scaleFactor));
 		scrollPane.getVerticalScrollBar().setUnitIncrement(23);
 		contentPane.add(scrollPane);
 		
@@ -107,11 +114,6 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 
-		});
-		searchField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
 		});
 		searchField.setBounds(51, 11, 197, 20);
 		contentPane.add(searchField);

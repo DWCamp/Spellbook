@@ -51,10 +51,8 @@ public class SpellBookLauncher extends JFrame {
 			public void run() {
 				try {
 					screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-					System.out.println(screenSize.getWidth());
 					// scaleFactor = screenSize.getWidth() / 1920.0;
 					scaleFactor = 2;
-					System.out.println(scaleFactor);
 					
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					@SuppressWarnings("unused")
