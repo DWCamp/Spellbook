@@ -218,8 +218,8 @@ public class SpellBookLauncher extends JFrame {
 	 */
 	public static double getScaleFactor()
 	{
-		scaleFactor = 2;
-		// scaleFactor = screenSize.getWidth() / 1920.0;
+		//scaleFactor = 2;
+		scaleFactor = screenSize.getWidth() / 1920.0;
 		return scaleFactor;
 	}
 }
