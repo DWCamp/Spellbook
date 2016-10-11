@@ -7,6 +7,12 @@ import java.util.Map;
 
 import helperClasses.SortedStringList;
 
+/**
+ * A class containing information on all classes recognized 
+ * by the software, pulled on load from a .txt resource
+ * @author Daniel Campman
+ * @version September 3, 2016
+ */
 public class Class_List {
 	
 	/**
@@ -18,6 +24,9 @@ public class Class_List {
 	 */
 	private static Map<String, PClass> classes = new HashMap<String, PClass>();
 	
+	/**
+	 * Loads the data in from the .txt file
+	 */
 	public static void load()
 	{
 		try {
@@ -37,25 +46,31 @@ public class Class_List {
 	}
 	
 	/**
-	 * Returns a string array of all available classes
+	 * Returns a string array of all available classes <br>
+	 * This array is alphabetized
 	 * @return {@code String[]}
 	 */
 	public static String[] getClassNames()
 	{
+		//By placing the key set into a sorted list and then exporting 
+		//it to an array, the key set is alphabetized. 
 		SortedStringList classList = new SortedStringList
 				(classes.keySet().toArray(new String[0]));
 		return classList.toArray();
 	}
 	
 	/**
-	 * Returns an alphabetically sorted list of classes
+	 * Returns an alphabetically sorted ArrayList of classes
 	 * @return class arrayList
 	 */
 	public static ArrayList<PClass> getClasses()
 	{
+		//The SortedStringList alphabetizes the names
 		SortedStringList classNames = new SortedStringList(
 				classes.keySet().toArray(new String[0]));
 		ArrayList<PClass> classList = new ArrayList<PClass>();
+		
+		//Grabs the class objects for each String name
 		for (String name : classNames.toArrayList()) {
 			classList.add(classes.get(name));
 		}

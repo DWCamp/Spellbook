@@ -3,9 +3,4 @@
 <GOLD>146
 <PLATINUM>3
 <OTHER>174
-U-Aid
-P-Alarm
-U-Commune
-P-Dust Devil
-U-Fireball
 <ENDSPELLS>

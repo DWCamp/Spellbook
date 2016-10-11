@@ -19,9 +19,16 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+/**
+ * A resizable, non-editable pop-up which contains scrollable 
+ * text which is set to word wrap by default
+ * @author Daniel Campman
+ * @version September 3, 2016
+ */
 @SuppressWarnings("serial")
 public class WordWrapPopUp extends JDialog {
 
+	//Contains the text
 	private JTextArea textArea;
 	
 	/**
@@ -39,43 +46,49 @@ public class WordWrapPopUp extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param title The title of the window
+	 * @param text The text in the body of the window
 	 */
 	public WordWrapPopUp(String title, String text) {
+		//Gets the UI Scaling value from the launcher class
+		//Default size is scaling independent. This value
+		//is used to set the font size
 		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		
 		setTitle(title);
-		setBounds(100,100,200,300);
-		setMinimumSize(new Dimension(140,100));
+		setBounds(100, 100, 200, 300);
+		setMinimumSize(new Dimension(140, 100));
+		
+		//sets the layout for the content pane
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						close();
-					}
-				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+		
+		//Button pane for dismissing the window
+		JPanel buttonPane = new JPanel();
+		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		getContentPane().add(buttonPane, BorderLayout.SOUTH);
+		
+		//This button closes the window
+		JButton okButton = new JButton("OK");
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				close();
 			}
-		}
-		{
-			JScrollPane scrollPane = new JScrollPane();
-			getContentPane().add(scrollPane, BorderLayout.CENTER);
-			{
-				textArea = new JTextArea();
-				textArea.setMargin(new Insets(3,5,3,3));
-				scrollPane.setViewportView(textArea);
-				textArea.setEditable(false);
-				textArea.setLineWrap(true);
-				textArea.setWrapStyleWord(true);
-				textArea.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
-				textArea.setText(text);
-			}
-		}
+		});
+		okButton.setActionCommand("OK");
+		buttonPane.add(okButton);
+		getRootPane().setDefaultButton(okButton);
+
+		JScrollPane scrollPane = new JScrollPane();
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+		textArea = new JTextArea();
+		textArea.setMargin(new Insets(3, 5, 3, 3));
+		scrollPane.setViewportView(textArea);
+		textArea.setEditable(false);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setFont(new Font("Tahoma", Font.PLAIN, (int) (13 * scaleFactor)));
+		textArea.setText(text);
 	}
 	
 	/**
@@ -87,7 +100,10 @@ public class WordWrapPopUp extends JDialog {
 		textArea.setText(text);
 	}
 	
-	public void close()
+	/**
+	 * Disposes of the window
+	 */
+	private void close()
 	{
 		this.dispose();
 	}

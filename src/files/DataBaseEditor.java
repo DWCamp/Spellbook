@@ -23,6 +23,12 @@ import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
 import javax.swing.JTabbedPane;
 
+/**
+ * A utility I made to make editing the .txt resource files easier <br>
+ * It displays all classes and spells and allows a user to add/delete and edit entries
+ * @author Daniel Campman
+ * @version September 3, 2016
+ */
 @SuppressWarnings("serial")
 public class DataBaseEditor extends JFrame {
 
