@@ -15,6 +15,7 @@ import files.Class_List;
 import files.Spell;
 import files.Spell_List;
 import guiPanels.SpellAddPanel;
+import userData.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -62,7 +63,7 @@ public class SpellBrowser extends JFrame {
 	 * Create the frame.
 	 */
 	public SpellBrowser(UserSpellWindow parent) {
-		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		double scaleFactor = Settings.getResizeFactor();
 		setResizable(false);
 		setTitle("Add spell");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

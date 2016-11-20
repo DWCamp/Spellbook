@@ -12,7 +12,9 @@ import files.FileSystem;
 import files.Spell;
 import files.Spell_List;
 import guiPanels.SpellCard;
+import secondaryGUI.SettingsWindow;
 import userData.CharacterItems;
+import userData.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -41,6 +43,7 @@ public class UserSpellWindow extends JFrame {
 	
 	private static UserSpellWindow window;
 	private static SpellBrowser browser;
+	private static SettingsWindow settings;
 
 //	/**
 //	 * Launch the application.
@@ -72,9 +75,10 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		
-		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		double scaleFactor = Settings.getResizeFactor();
 		
 		browser = new SpellBrowser(this);
+		settings = new SettingsWindow();
 		
 //		try {
 //			Image image = new ImageIcon(UserSpellWindow.class.getResource("icon.PNG")).getImage();
@@ -193,6 +197,25 @@ public class UserSpellWindow extends JFrame {
 				(int)(27 * scaleFactor));
 		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(btnBrowseSpells);
+		
+		JButton btnPreferences = new JButton("Preferences");
+		btnPreferences.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
+		btnPreferences.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!settings.isVisible()) {
+					settings.reset();
+					settings.setVisible(true);
+				}
+				settings.toFront();
+			}
+		});
+		btnPreferences.setBounds((int)(10 * scaleFactor),
+				(int)(370 * scaleFactor) - (int)(35 * (scaleFactor - 1)),
+				(int)(178 * scaleFactor),
+				(int)(27 * scaleFactor));
+		btnPreferences.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		contentPane.add(btnPreferences);
+		
 		panelAllSpells.setLayout(new GridLayout(1, 2, 15, 0));
 		
 		JLabel lblClickbrowseSpells = new JLabel("Click \"Browse Spells\" "

@@ -17,7 +17,7 @@ public class FileSystem {
 
 	static String charInfoPath = "UserData/CharacterInfo.txt";
 
-	static String prefPath = "ProgramData/Preferences.txt";
+	static String prefPath = "Preferences.txt";
 
     static String classListPath = "ClassList.txt";
 	static String charItemsPath = "CharacterItems.txt";
@@ -208,6 +208,7 @@ public class FileSystem {
 	 * Saves userPreferences data
 	 * @param prefs String array of user preferences
 	 * Index 0 - Center Frames on Call setting
+	 * Index 1 - User's window size setting
 	 * @return {@code boolean} whether the save was successful
 	 */
 	public static boolean saveUserPref(String[] prefs)		//User Prefs
@@ -222,6 +223,8 @@ public class FileSystem {
 		)
 		{
 			bw.write("<CFOC>" + Settings.getCenterFrames());
+			bw.newLine();
+			bw.write("<WiSi>" + Settings.getScaleAdjustment());
 			bw.close();
 			
 			File oldFile = new File(prefPath);
@@ -585,6 +588,7 @@ public class FileSystem {
 	{
 		String[] contents = read(prefPath);
 		contents[0] = contents[0].substring(6);
+		contents[1] = contents[1].substring(6);
 		return contents;
 	}
 	

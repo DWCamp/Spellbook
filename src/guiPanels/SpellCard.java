@@ -11,9 +11,9 @@ import alerts.WordWrapPopUp;
 import files.FileSystem;
 import files.Spell;
 import files.Spell_List;
-import mainGUI.SpellBookLauncher;
 import mainGUI.UserSpellWindow;
 import userData.CharacterItems;
+import userData.Settings;
 
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -35,7 +35,7 @@ public class SpellCard extends JPanel {
 	 * spell the card holds
 	 */
 	public SpellCard(String spellName) {
-		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		double scaleFactor = Settings.getResizeFactor();
 		
 		setBackground(new Color(192, 192, 192));
 		setLayout(null);

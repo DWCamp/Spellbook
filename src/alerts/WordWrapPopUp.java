@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
-import mainGUI.SpellBookLauncher;
+import userData.Settings;
 
 import java.awt.Font;
 import java.awt.Insets;
@@ -53,7 +53,7 @@ public class WordWrapPopUp extends JDialog {
 		//Gets the UI Scaling value from the launcher class
 		//Default size is scaling independent. This value
 		//is used to set the font size
-		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		double scaleFactor = Settings.getResizeFactor();
 		
 		setTitle(title);
 		setBounds(100, 100, 200, 300);

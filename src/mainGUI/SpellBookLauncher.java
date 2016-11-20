@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import files.Class_List;
 import files.Spell_List;
 import userData.CharacterItems;
+import userData.Settings;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -40,6 +41,7 @@ public class SpellBookLauncher extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static Dimension screenSize;
 	private static double scaleFactor;
+	private static double scaleAdjustment;
 	private JPanel contentPane;
 	private JTextArea textAreaError;
 	
@@ -53,6 +55,7 @@ public class SpellBookLauncher extends JFrame {
 					screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 					// scaleFactor = screenSize.getWidth() / 1920.0;
 					scaleFactor = 2;
+					scaleAdjustment = 1;
 					
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					@SuppressWarnings("unused")
@@ -155,6 +158,7 @@ public class SpellBookLauncher extends JFrame {
 			Spell_List.load();
 			Class_List.load();
 			CharacterItems.loadItems();
+			Settings.loadPreferences();
 			UserSpellWindow mainWindow = new UserSpellWindow();
 			mainWindow.setVisible(true);
 		} catch (Exception e)
@@ -216,10 +220,11 @@ public class SpellBookLauncher extends JFrame {
 	 * e.g. For a 4K monitor, this value would be 2.0
 	 * @return double scale factor
 	 */
-	public static double getScaleFactor()
+	public static double getScale()
 	{
 		//scaleFactor = 2;
-		scaleFactor = screenSize.getWidth() / 1920.0;
+		scaleFactor = scaleAdjustment * screenSize.getWidth() / 1920.0;
 		return scaleFactor;
 	}
+
 }

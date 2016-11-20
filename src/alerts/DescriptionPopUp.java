@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import guiPanels.SpellPanel;
-import mainGUI.SpellBookLauncher;
+import userData.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -51,7 +51,7 @@ public class DescriptionPopUp extends JDialog {
 	 */
 	public DescriptionPopUp(SpellPanel parent) {
 		//Gets the scaling factor from launcher class
-		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		double scaleFactor = Settings.getResizeFactor();
 		
 		setTitle("Description");
 		this.parent = parent; //sets parent

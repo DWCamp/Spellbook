@@ -9,9 +9,9 @@ import javax.swing.JButton;
 
 import alerts.WordWrapPopUp;
 import files.Spell;
-import mainGUI.SpellBookLauncher;
 import mainGUI.UserSpellWindow;
 import userData.CharacterItems;
+import userData.Settings;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -25,7 +25,7 @@ public class SpellAddPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public SpellAddPanel(Spell spell, UserSpellWindow parent) {
-		double scaleFactor = SpellBookLauncher.getScaleFactor();
+		double scaleFactor = Settings.getResizeFactor();
 		setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblName = new JLabel("   " + spell.getName());
