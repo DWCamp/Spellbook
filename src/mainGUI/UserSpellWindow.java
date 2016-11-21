@@ -2,7 +2,6 @@ package mainGUI;
 
 import java.awt.Component;
 import java.awt.Dimension;
-//import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ImageIcon;
 import java.awt.Image;
-import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
@@ -33,6 +31,10 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JMenu;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 
 @SuppressWarnings("serial")
 public class UserSpellWindow extends JFrame {
@@ -45,29 +47,10 @@ public class UserSpellWindow extends JFrame {
 	private static UserSpellWindow window;
 	private static SpellBrowser browser;
 	private static SettingsWindow settings;
+	private static CustomSpellAdder customSpells;
 	
 	private JMenuItem mntmPreferences;
 	private JMenuBar menuBar;
-	private JButton btnBrowseSpells;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//					Spell_List.load();
-//					CharacterItems.loadItems();
-//					window = new UserSpellWindow();
-//					window.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -85,11 +68,13 @@ public class UserSpellWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				draw();
+				browser.refresh();
 			}
 		});
 		
 		browser = new SpellBrowser(this);
 		settings = new SettingsWindow();
+		customSpells = new CustomSpellAdder();
 		
 		try {
 			Image image = new ImageIcon("Icons/main.PNG").getImage();
@@ -117,10 +102,11 @@ public class UserSpellWindow extends JFrame {
 	 */
 	public void draw(){
 		double scaleFactor = Settings.getResizeFactor();
-	
+		//double scaleFactor = 1;
+		
 		setBounds(getX(), getY(),
 				(int)(641 * scaleFactor),
-				(int)(440 * scaleFactor));
+				(int)(420 * scaleFactor));
 		
 		contentPane.removeAll();
 		
@@ -205,24 +191,6 @@ public class UserSpellWindow extends JFrame {
 				panelLevel7, panelLevel8, panelLevel9};
 		spellPanels = tempArray;
 		
-		btnBrowseSpells = new JButton("Browse Spells");
-		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
-		btnBrowseSpells.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!browser.isVisible()) {
-					browser.reset();
-					browser.setVisible(true);
-				}
-				browser.toFront();
-			}
-		});
-		btnBrowseSpells.setBounds((int)(447 * scaleFactor), 
-				(int)(383 * scaleFactor),
-				(int)(178 * scaleFactor),
-				(int)(27 * scaleFactor));
-		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		contentPane.add(btnBrowseSpells);
-		
 		panelAllSpells.setLayout(new GridLayout(1, 2, 15, 0));
 		
 		JLabel lblClickbrowseSpells = new JLabel("Click \"Browse Spells\" "
@@ -233,14 +201,49 @@ public class UserSpellWindow extends JFrame {
 		panelAllSpells.add(lblClickbrowseSpells);
 		
 		menuBar = new JMenuBar();
+		menuBar.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		menuBar.setBorderPainted(false);
 		menuBar.setBounds(0, 0, 
 				(int)(635 * scaleFactor), 
 				(int)(24 * scaleFactor));
 		contentPane.add(menuBar);
 		
+		JMenu mnMenu = new JMenu("Menu");
+		mnMenu.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		menuBar.add(mnMenu);
+		
+		JMenuItem mntmBrowseSpells = new JMenuItem("Browse Spells");
+		mntmBrowseSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mntmBrowseSpells.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!browser.isVisible()) {
+					browser.reset();
+					browser.setVisible(true);
+				}
+				browser.toFront();
+			}
+		});
+		mntmBrowseSpells.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
+		mnMenu.add(mntmBrowseSpells);
+		
+		JMenuItem mntmAddSpell = new JMenuItem("Add Custom Spell");
+		mntmAddSpell.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mntmAddSpell.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		mnMenu.add(mntmAddSpell);
+		mntmAddSpell.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!customSpells.isVisible()) {
+					customSpells.reset();
+					customSpells.setVisible(true);
+				}
+				customSpells.toFront();
+			}
+		});
+		
 		mntmPreferences = new JMenuItem("Preferences");
-		menuBar.add(mntmPreferences);
+		mntmPreferences.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
+		mnMenu.add(mntmPreferences);
 		mntmPreferences.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!settings.isVisible()) {
@@ -251,6 +254,22 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		
+		JMenu mnWindows = new JMenu("Windows");
+		mnWindows.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		menuBar.add(mnWindows);
+		
+		JMenuItem mntmGatherWindows = new JMenuItem("Gather Windows");
+		mntmGatherWindows.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mnWindows.add(mntmGatherWindows);
+		
+		JMenuItem mntmShowAll = new JMenuItem("Show All");
+		mntmShowAll.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mnWindows.add(mntmShowAll);
+		
+		JMenuItem mntmHideAll = new JMenuItem("Hide All");
+		mntmHideAll.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mnWindows.add(mntmHideAll);
+	
 		for (JPanel panel : spellPanels) {
 			panel.setLayout(new GridLayout(1, 2, 15, 0));
 		}

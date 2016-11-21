@@ -8,7 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import guiPanels.SpellPanel;
+import guiPanels.EditorSpellPanel;
 import userData.Settings;
 
 import javax.swing.JScrollPane;
@@ -29,7 +29,7 @@ public class DescriptionPopUp extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private final JTextArea textArea;
-	private SpellPanel parent;
+	private EditorSpellPanel parent;
 
 	/**
 	 * Launch the application.
@@ -49,14 +49,13 @@ public class DescriptionPopUp extends JDialog {
 	 * @param parent The SpellPanel whose description this 
 	 * popUp is displaying
 	 */
-	public DescriptionPopUp(SpellPanel parent) {
+	public DescriptionPopUp(EditorSpellPanel parent) {
 		//Gets the scaling factor from launcher class
 		double scaleFactor = Settings.getResizeFactor();
 		
 		setTitle("Description");
 		this.parent = parent; //sets parent
-		setBounds((int)(100 * scaleFactor), //Sets size based on UI scaling value
-				(int)(100 * scaleFactor),
+		setBounds(100, 100,
 				(int) (450 * scaleFactor), 
 				(int) (300 * scaleFactor));
 		getContentPane().setLayout(new BorderLayout());

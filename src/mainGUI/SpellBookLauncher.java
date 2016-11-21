@@ -155,6 +155,7 @@ public class SpellBookLauncher extends JFrame {
 		
 		try{
 			Spell_List.load();
+			Spell_List.loadCustomSpells();
 			Class_List.load();
 			CharacterItems.loadItems();
 			Settings.loadPreferences();

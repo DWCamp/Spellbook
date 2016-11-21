@@ -289,7 +289,7 @@ public class DataBaseEditor extends JFrame {
 		
 		for (int i = 0; i < 10; i++) {
 			for (Spell spell : Spell_List.getSpellsOfLevel(i)) {
-				panelArray[i].add(new SpellPanel(spell, i));
+				panelArray[i].add(new SpellPanel(spell));
 			}
 		}
 																	//Action Listeners
@@ -331,7 +331,7 @@ public class DataBaseEditor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				int index = tabbedPane.getSelectedIndex();
 				panelArray[index].add(
-						new SpellPanel(new Spell(), index));
+						new SpellPanel(new Spell()));
 				getThis().repaint();
 			}
 		});
