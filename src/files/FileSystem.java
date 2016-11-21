@@ -22,6 +22,7 @@ public class FileSystem {
     static String classListPath = "ClassList.txt";
 	static String charItemsPath = "CharacterItems.txt";
 	static String spellListPath = "SpellList.txt";
+	static String customSpellListPath = "CustomSpellList.txt";
 	
 	/**
 	 * Reads the contents of a file into a String array
