@@ -140,9 +140,7 @@ public class SettingsWindow extends JFrame {
 		
 		double scaleFactor = Settings.getResizeFactor();
 		
-		int xPos = getX();
-		int yPos = getY();
-		setBounds(xPos, yPos, 
+		setBounds(getX(), getY(),
 				(int)(336*scaleFactor), 
 				(int)(180*scaleFactor) - (int)(27 * (scaleFactor-1)));
 		

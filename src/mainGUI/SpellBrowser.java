@@ -231,8 +231,7 @@ public class SpellBrowser extends JFrame {
 		//resize all components
 		double scaleFactor = Settings.getResizeFactor();
 		
-		setBounds((int)(100 * scaleFactor),
-				(int)(100 * scaleFactor),
+		setBounds(getX(), getY(),
 				(int)(384 * scaleFactor),
 				(int)(413 * scaleFactor) - (int)(20 * (scaleFactor - 1)));
 		
