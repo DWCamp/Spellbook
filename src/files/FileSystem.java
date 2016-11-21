@@ -3,7 +3,6 @@ package files;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import userData.CharacterData;
 import userData.CharacterItems;
 import userData.Settings;
 
@@ -63,91 +62,7 @@ public class FileSystem {
 	 */
 	public static boolean saveUserData() { 
 		System.out.println("Saving all data");
-		return 	saveCharInfo() &&
-				saveCharItems();
-	}
-	
-	/**
-	 * Saves all data in the CharacterInfo file
-	 * @return {@code boolean} returns {@code true} if 
-	 * save was successful
-	 */
-	public static boolean saveCharInfo() {				//Char info
-		System.out.println("Saving char info...");
-		String tempFile = "tmp.txt";
-
-		boolean success = false;
-		
-		try (
-				FileWriter fw = new FileWriter(tempFile);
-				BufferedWriter bw = new BufferedWriter(fw);
-			)
-		{
-			bw.write("<CN>" + CharacterData.getName());
-			bw.newLine();
-			bw.write("<RACE>" + CharacterData.getRace());
-			bw.newLine();
-			bw.write("<ALIGN>" + CharacterData.getAlignment());
-			bw.newLine();
-			bw.write("<HEIGHT>" + CharacterData.getHeight());
-			bw.newLine();
-			bw.write("<AGE>" + CharacterData.getAge());
-			bw.newLine();
-			bw.write("<WEIGHT>" + CharacterData.getWeight());
-			bw.newLine();
-			bw.write("<HAIR>" + CharacterData.getHair());
-			bw.newLine();
-			bw.write("<SKIN>" + CharacterData.getSkin());
-			bw.newLine();
-			bw.write("<EYES>" + CharacterData.getEyes());
-			bw.newLine();
-			bw.write("<DESC>" + CharacterData.getDesc());
-			bw.newLine();
-			bw.write("<INSP>" + CharacterData.isInspired());
-			bw.newLine();
-			bw.write("<CURRHP>" + CharacterData.getHP());
-			bw.newLine();
-			bw.write("<MAXHP>" + CharacterData.getMaxHP());
-			bw.newLine();
-			
-			String hitDice = "";
-			int[] diceArray = CharacterData.getRemainingHitDice();
-			for (int i = 0; i < 4; i++)
-			{
-				hitDice += diceArray[i] + "";
-				if (i != 3)
-				{
-					hitDice += ",";
-				}
-			}
-			
-			bw.write("<HitD>" + hitDice);
-			bw.newLine();
-			bw.write("<LVL>" + CharacterData.getLevel());
-			bw.newLine();
-			bw.write("<XP>" + CharacterData.getXP());
-			bw.newLine();
-			bw.write("<XPHIST>\n");
-			String history = CharacterData.getXPHistory();
-			bw.write(history);
-			bw.write("<XPHIST>");
-			bw.newLine();
-			bw.write("<CLASSES>\n");
-			bw.write(CharacterData.getClassesForSave());
-			bw.close();
-
-			File oldFile = new File(charInfoPath);
-			oldFile.delete();
-
-			File newFile = new File(tempFile);
-			success = newFile.renameTo(oldFile);
-
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	
-		return success;
+		return 	saveCharItems();
 	}
 	
 	/**
@@ -358,7 +273,6 @@ public class FileSystem {
 	}
 	
 	
-	
 																	//LOAD DATA
 	/**
 	 * Loads all data in the application
@@ -366,84 +280,12 @@ public class FileSystem {
 	public static boolean load() {
 		boolean filePresent = false;
 		try {
-			filePresent = CharacterData.loadData();
 			CharacterItems.loadItems();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return filePresent;
-	}
-
-	/**
-	 * Returns a String array containing all of a player's information <br>
-	 * Index 0  - Player Name <br>
-	 * Index 1  - Player Race <br>
-	 * Index 2  - Player Alignment <br>
-	 * Index 3  - Height<br>
-	 * Index 4  - Age<br>
-	 * Index 5  - Weight<br>
-	 * Index 6  - Hair color<br>
-	 * Index 7  - Skin color<br>
-	 * Index 8  - Eye color<br>
-	 * Index 9  - Description<br>
-	 * Index 10 - Inspiration<br>
-	 * Index 11 - Current hit points <br>
-	 * Index 12 - Maximum hit points <br>
-	 * Index 13 - Remaining hit dice <br>
-	 * Index 14 - Player Level <br>
-	 * Index 15 - Player XP <br>
-	 * Index 16 - Player's XP History <br>
-	 * Index 17 - Player's class list (i.e. "Rogue:1, Ranger:4")
-	 * 
-	 * @throws IOException
-	 */
-	public static String[] loadCharInfo() throws IOException // CHAR INFO
-	{
-		String[] contents = read(charInfoPath);
-		if (contents[0].equals("EMPTY")) {
-			return null;
-		}
-		ArrayList<String> forReturn = new ArrayList<String>();
-		forReturn.add(contents[0].substring(4)); //Name
-		forReturn.add(contents[1].substring(6)); //Race
-		forReturn.add(contents[2].substring(7)); //Alignment
-		forReturn.add(contents[3].substring(8)); //Height
-		forReturn.add(contents[4].substring(5)); //Age
-		forReturn.add(contents[5].substring(8)); //Weight
-		forReturn.add(contents[6].substring(6)); //Hair color
-		forReturn.add(contents[7].substring(6)); //skin color
-		forReturn.add(contents[8].substring(6)); //eye color
-		forReturn.add(contents[9].substring(6)); //Description
-		forReturn.add(contents[10].substring(6)); //Inspiration
-		forReturn.add(contents[11].substring(8)); //Current HP
-		forReturn.add(contents[12].substring(7)); //Max HP
-		forReturn.add(contents[13].substring(6)); //Hit Dice Remaining
-		forReturn.add(contents[14].substring(5)); //Level
-		forReturn.add(contents[15].substring(4)); //XP
-		boolean terminated = false;
-		int i = 17;
-		String expHist = "";
-		while (!terminated) {
-			String newLine = contents[i++];
-			if (newLine.equals("<XPHIST>")) {
-				terminated = true;
-			} else {
-				expHist += newLine + "§";
-			}
-		}
-		forReturn.add(expHist);
-		String classes = "";
-		
-		for (int j = ++i; j < contents.length; j++) {
-			classes += contents[j];
-			if (j < contents.length - 1) {
-				classes += ", ";
-			}
-		}
-		forReturn.add(classes);
-
-		return forReturn.toArray(new String[0]);
 	}
 
 	/**
