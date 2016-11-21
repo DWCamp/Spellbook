@@ -79,7 +79,7 @@ public class DataBaseEditor extends JFrame {
 		panelClasses.addContainerListener(new ContainerAdapter() {
 			@Override
 			public void componentRemoved(ContainerEvent arg0) {
-				super.componentRemoved(arg0);;
+				super.componentRemoved(arg0);
 				getThis().repaint();
 			}
 		});
@@ -312,18 +312,7 @@ public class DataBaseEditor extends JFrame {
 		
 		btnSaveSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<ArrayList<Spell>> spellList = new ArrayList<ArrayList<Spell>>();
-				SortedSpellList sortedSpells = new SortedSpellList();
-
-				for (JPanel levelPanel : panelArray) {
-					for (Component element : levelPanel.getComponents()) {
-						SpellPanel spellPanel = (SpellPanel) element;
-						sortedSpells.add(spellPanel.toSpell());
-					}
-					spellList.add(sortedSpells.toArrayList());
-					sortedSpells.clear();
-				}
-				FileSystem.saveSpellList(spellList); 
+				saveSpells();
 			}
 		});
 		
@@ -340,5 +329,23 @@ public class DataBaseEditor extends JFrame {
 	private JFrame getThis()
 	{
 		return this;
+	}
+	
+	/**
+	 * Saves the spell list
+	 */
+	public void saveSpells() {
+		ArrayList<ArrayList<Spell>> spellList = new ArrayList<ArrayList<Spell>>();
+		SortedSpellList sortedSpells = new SortedSpellList();
+
+		for (JPanel levelPanel : panelArray) {
+			for (Component element : levelPanel.getComponents()) {
+				SpellPanel spellPanel = (SpellPanel) element;
+				sortedSpells.add(spellPanel.toSpell());
+			}
+			spellList.add(sortedSpells.toArrayList());
+			sortedSpells.clear();
+		}
+		FileSystem.saveSpellList(spellList); 
 	}
 }

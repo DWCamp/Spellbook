@@ -1,1 +1,5 @@
+P-Alarm
+U-Alter Self
+P-Animal Friendship
+U-Animal Messenger
 <ENDSPELLS>

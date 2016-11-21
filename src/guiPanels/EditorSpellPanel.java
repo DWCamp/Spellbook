@@ -94,10 +94,7 @@ public abstract class EditorSpellPanel extends JPanel {
 	/**
 	 * Removes this panel from the parent container
 	 */
-	void deleteSelf()
-	{
-		this.getParent().remove(this);
-	}
+	abstract void deleteSelf();
 	
 	/**
 	 * Converts the contents of the pane into a spell

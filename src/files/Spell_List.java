@@ -112,62 +112,10 @@ public class Spell_List {
 	 * @param newSpell
 	 */
 	public static void addSpell(Spell newSpell){
-		switch (newSpell.getLevel()){
-		case 0:
-			cantrips.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 1:
-			firstLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 2:
-			secondLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 3:
-			thirdLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 4:
-			fourthLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 5:
-			fifthLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 6:
-			sixthLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 7:
-			seventhLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 8:
-			eighthLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		case 9:
-			ninthLevel.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			allSpells.put(newSpell.getName(), newSpell);
-			break;
-		default:
-			allSpells.put(newSpell.getName(), newSpell);
-			customSpells.put(newSpell.getName(), newSpell);
-			break;
-		}
+		
+		listList.get(newSpell.getLevel()).put(newSpell.getName(), newSpell);
+		customSpells.put(newSpell.getName(), newSpell);
+		allSpells.put(newSpell.getName(), newSpell);
 	}
 	
 	/**

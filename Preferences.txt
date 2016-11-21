@@ -1,2 +1,2 @@
-<CFOC>0
-<WiSi>1.25
+<CFOC>1
+<WiSi>1.5

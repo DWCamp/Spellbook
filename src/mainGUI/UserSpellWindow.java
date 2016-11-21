@@ -31,6 +31,7 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
@@ -240,6 +241,29 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		
+		JMenuItem mntmClearSpells = new JMenuItem("Clear All Spells");
+		mntmClearSpells.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int remove = JOptionPane.showConfirmDialog(null, 
+						"Are you sure you want to remove all spells from "
+						+ "your spellbook?\n\n(This only clears your learned "
+						+ "and prepared spells. The master spell list and "
+						+ "custom spell list will be unaffected)", 
+						"Clear All Spells", JOptionPane.YES_NO_OPTION);
+				if (remove == JOptionPane.YES_OPTION)
+				{
+					for (Component component : panelAllSpells.getComponents())
+					{
+						SpellCard panel = (SpellCard)component;
+						removeSpell(panel);
+					}
+					
+				}
+			}
+		});
+		mntmClearSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mnMenu.add(mntmClearSpells);
+		
 		mntmPreferences = new JMenuItem("Preferences");
 		mntmPreferences.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
@@ -259,16 +283,47 @@ public class UserSpellWindow extends JFrame {
 		menuBar.add(mnWindows);
 		
 		JMenuItem mntmGatherWindows = new JMenuItem("Gather Windows");
+		mntmGatherWindows.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK));
+		mntmGatherWindows.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				browser.setLocation(getX()+((getWidth()-browser.getWidth())/2),
+						getY()+((getHeight()-browser.getHeight())/2));
+				browser.toFront();
+				customSpells.setLocation(getX()+((getWidth()-customSpells.getWidth())/2),
+						getY()+((getHeight()-customSpells.getHeight())/2));
+				customSpells.toFront();	
+				settings.setLocation(getX()+((getWidth()-settings.getWidth())/2),
+						getY()+((getHeight()-settings.getHeight())/2));
+				settings.toFront();
+			}
+		});
 		mntmGatherWindows.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		mnWindows.add(mntmGatherWindows);
 		
 		JMenuItem mntmShowAll = new JMenuItem("Show All");
-		mntmShowAll.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		mnWindows.add(mntmShowAll);
+		mntmShowAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_J, InputEvent.CTRL_MASK));
+		mntmShowAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				browser.setVisible(true);
+				browser.toFront();
+				customSpells.setVisible(true);
+				customSpells.toFront();
+			}
+		});
 		
 		JMenuItem mntmHideAll = new JMenuItem("Hide All");
+		mntmHideAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
+		mntmHideAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				browser.setVisible(false);
+				customSpells.setVisible(false);
+				settings.setVisible(false);
+			}
+		});
 		mntmHideAll.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		mnWindows.add(mntmHideAll);
+		mntmShowAll.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mnWindows.add(mntmShowAll);
 	
 		for (JPanel panel : spellPanels) {
 			panel.setLayout(new GridLayout(1, 2, 15, 0));
@@ -280,10 +335,15 @@ public class UserSpellWindow extends JFrame {
 		}
 		for (String spell : spellsLearned) {
 			int level = Spell_List.getSpellLevel(spell);
-			tabbedPane.setEnabledAt(level + 1, true);
-			tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
-			panelAllSpells.add(new SpellCard(spell));
-			spellPanels[level].add(new SpellCard(spell));
+			if (level >= 0)
+			{
+				tabbedPane.setEnabledAt(level + 1, true);
+				tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
+				panelAllSpells.add(new SpellCard(spell));
+				spellPanels[level].add(new SpellCard(spell));
+			} else {
+				CharacterItems.unlearnSpell(spell);
+			}
 		}
 		
 		repaint();
@@ -318,18 +378,12 @@ public class UserSpellWindow extends JFrame {
 	{
 		Spell spell = card.getSpell();
 		int spellLevel = spell.getLevel();
-		for (Component comp : panelAllSpells.getComponents()) {
-			if (((SpellCard) comp).equals(card)) {
-				panelAllSpells.remove(comp);
-			}
-		}
-		for (Component comp : spellPanels[card.getSpell().getLevel()]
-				.getComponents()) {
-			if (((SpellCard) comp).equals(card)) {
-				spellPanels[spellLevel].remove(comp);
-			}
-		}
+		panelAllSpells.remove(card);
+		spellPanels[card.getSpell().getLevel()].remove(card);
+
 		CharacterItems.unlearnSpell(spell.getName());
+		CharacterItems.unprepareSpell(spell.getName());
+		
 		if (panelAllSpells.getComponents().length == 0) {
 			JLabel lblClickbrowseSpells = new JLabel("Click \"Browse Spells\" " 
 					+ "to add spells to your spellbook");

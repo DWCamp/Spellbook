@@ -1,15 +1,6 @@
 <LEVEL1>
 <LEVEL2>
 <LEVEL3>
-<NAME>Kill Me
-<CLAS>Bard
-<TYPE>3rd-level Abjuration
-<CATM>U
-<RANG>wot
-<COMP>M8
-<DURA>?
-fite me
-<END>
 <LEVEL4>
 <LEVEL5>
 <LEVEL6>

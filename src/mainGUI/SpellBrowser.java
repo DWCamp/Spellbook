@@ -1,6 +1,5 @@
 package mainGUI;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -19,7 +18,6 @@ import userData.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
@@ -41,25 +39,6 @@ public class SpellBrowser extends JFrame {
 	private JComboBox<Object> comboBoxSchools;
 	private JPanel panelSpells;
 	private UserSpellWindow uswParent;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					Spell_List.load();
-					Class_List.load();
-					SpellBrowser frame = new SpellBrowser(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

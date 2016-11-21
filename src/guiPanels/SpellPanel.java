@@ -115,4 +115,9 @@ public class SpellPanel extends EditorSpellPanel {
 				description);
 	}
 
+	@Override
+	void deleteSelf() {
+		this.getParent().remove(this);
+	}
+
 }
