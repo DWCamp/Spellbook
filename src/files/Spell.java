@@ -31,20 +31,20 @@ public class Spell {
 	 * Constructor for a spell object
 	 * @param name The name of the spell
 	 * @param classes The classes the spell belongs to
-	 * @param type The type of spell
+	 * @param school The school of spell
 	 * @param castingTime The casting time for the spell
 	 * @param range The range of the spell
 	 * @param components The components of the spell
 	 * @param duration The duration of the spell
 	 * @param desc The description of the spell
 	 */
-	public Spell(String name, String[] classes, String type, 
+	public Spell(String name, String[] classes, String school, 
 			int level, String castingTime, String range, 
 			String components, String duration, String desc)
 	{
 		this.name = name;
 		this.classes = classes;
-		this.type = type;
+		this.type = school;
 		this.level = level;
 		this.castingTime = castingTime;
 		this.range = range;

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import files.CustomSpellAdder;
 import files.FileSystem;
 import files.Spell;
 import files.Spell_List;
@@ -45,6 +46,7 @@ public class UserSpellWindow extends JFrame {
 	private static UserSpellWindow window;
 	private static SpellBrowser browser;
 	private static SettingsWindow settings;
+	private static CustomSpellAdder customSpells;
 	
 	private JMenuItem mntmPreferences;
 	private JMenuBar menuBar;
@@ -90,6 +92,7 @@ public class UserSpellWindow extends JFrame {
 		
 		browser = new SpellBrowser(this);
 		settings = new SettingsWindow();
+		customSpells = new CustomSpellAdder();
 		
 		try {
 			Image image = new ImageIcon("Icons/main.PNG").getImage();
@@ -248,6 +251,18 @@ public class UserSpellWindow extends JFrame {
 					settings.setVisible(true);
 				}
 				settings.toFront();
+			}
+		});
+		
+		JMenuItem mntmAddSpell = new JMenuItem("Add Custom Spell");
+		menuBar.add(mntmAddSpell);
+		mntmAddSpell.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!customSpells.isVisible()) {
+					customSpells.reset();
+					customSpells.setVisible(true);
+				}
+				customSpells.toFront();
 			}
 		});
 		

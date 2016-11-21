@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 public class SpellPanel extends JPanel {
 	private JTextField textFieldComp;
 	private JTextField textFieldRange;
-	private JTextField textFieldType;
+	private JTextField textFieldSchool;
 	private JTextField textFieldTime;
 	private JTextField textFieldName;
 	private JTextField textFieldClasses;
@@ -28,14 +28,14 @@ public class SpellPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 * @param spell The spell the panel represents
-	 * @param level The level of the spell
 	 */
-	public SpellPanel(Spell spell, int level) {
+	public SpellPanel(Spell spell) {
 		setLayout(new GridLayout(2, 0, 0, 0));
-		this.level = level;
+		level = spell.getLevel();
 		popUp = new DescriptionPopUp(this);
 		
 		textFieldName = new JTextField(spell.getName());
+		textFieldName.setToolTipText("The name of the spell");
 		textFieldName.setColumns(10);
 		add(textFieldName);
 		
@@ -48,12 +48,15 @@ public class SpellPanel extends JPanel {
 		} else {
 			textFieldClasses = new JTextField();
 		}
+		textFieldClasses.setToolTipText("The classes that can use this spell, capitalized "
+				+ "and separated by commas (i.e. 'Sorcerer, Wizard, Ranger')");
 		textFieldClasses.setColumns(10);
 		add(textFieldClasses);
 		
-		textFieldType = new JTextField(spell.getType());
-		textFieldType.setColumns(10);
-		add(textFieldType);
+		textFieldSchool = new JTextField(spell.getType());
+		textFieldSchool.setToolTipText("The level and school of the spell (e.g. '1st-level evocation')");
+		textFieldSchool.setColumns(10);
+		add(textFieldSchool);
 		
 		textFieldTime = new JTextField(spell.getCastingTime());
 		textFieldTime.setColumns(10);
@@ -121,7 +124,7 @@ public class SpellPanel extends JPanel {
 	{
 		textFieldComp.setEnabled(state);
 		textFieldRange.setEnabled(state);
-		textFieldType.setEnabled(state);
+		textFieldSchool.setEnabled(state);
 		textFieldTime.setEnabled(state);
 		textFieldName.setEnabled(state);
 		textFieldClasses.setEnabled(state);
@@ -172,7 +175,7 @@ public class SpellPanel extends JPanel {
 	{
 		return new Spell(textFieldName.getText(),
 				textFieldClasses.getText().split(","),
-				textFieldType.getText(),
+				textFieldSchool.getText(),
 				level,
 				textFieldTime.getText(),
 				textFieldRange.getText(),
