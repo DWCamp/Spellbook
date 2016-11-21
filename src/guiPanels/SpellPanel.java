@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 public class SpellPanel extends JPanel {
 	private JTextField textFieldComp;
 	private JTextField textFieldRange;
-	private JTextField textFieldSchool;
+	private JTextField textFieldType;
 	private JTextField textFieldTime;
 	private JTextField textFieldName;
 	private JTextField textFieldClasses;
@@ -53,10 +53,10 @@ public class SpellPanel extends JPanel {
 		textFieldClasses.setColumns(10);
 		add(textFieldClasses);
 		
-		textFieldSchool = new JTextField(spell.getType());
-		textFieldSchool.setToolTipText("The level and school of the spell (e.g. '1st-level evocation')");
-		textFieldSchool.setColumns(10);
-		add(textFieldSchool);
+		textFieldType = new JTextField(spell.getType());
+		textFieldType.setToolTipText("The level and school of the spell (e.g. '1st-level evocation')");
+		textFieldType.setColumns(10);
+		add(textFieldType);
 		
 		textFieldTime = new JTextField(spell.getCastingTime());
 		textFieldTime.setColumns(10);
@@ -124,7 +124,7 @@ public class SpellPanel extends JPanel {
 	{
 		textFieldComp.setEnabled(state);
 		textFieldRange.setEnabled(state);
-		textFieldSchool.setEnabled(state);
+		textFieldType.setEnabled(state);
 		textFieldTime.setEnabled(state);
 		textFieldName.setEnabled(state);
 		textFieldClasses.setEnabled(state);
@@ -175,7 +175,7 @@ public class SpellPanel extends JPanel {
 	{
 		return new Spell(textFieldName.getText(),
 				textFieldClasses.getText().split(","),
-				textFieldSchool.getText(),
+				textFieldType.getText(),
 				level,
 				textFieldTime.getText(),
 				textFieldRange.getText(),
