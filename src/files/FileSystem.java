@@ -363,11 +363,75 @@ public class FileSystem {
 	{
 		ArrayList<ArrayList<Spell>> data = new ArrayList<ArrayList<Spell>>();
 		String[] contents = read(spellListPath);
+		
+		for(int j = 0; j <= 10; j++)
+		{
+			data.add(new ArrayList<Spell>());
+		}
+		
+		int index = 0;
+		int i = 0;
+		while (i < 10) {
+			if (contents[index].equals("<LEVEL" + (i+1) + ">")) {
+				index += 1;
+				i += 1;
+			} else{
+			
+				String name = contents[index++].substring(6);
+				String[] classes = contents[index++].substring(6).split(",");
+					
+				String type = contents[index++].substring(6);
+				String castingTime = contents[index++].substring(6);
+				String range = contents[index++].substring(6);
+				String components = contents[index++].substring(6);
+				String duration = contents[index++].substring(6);
+				
+				StringBuilder desc = new StringBuilder();
+				boolean first = true;
+				while (!contents[index].equals("<END>")) {
+					if (!first){
+						desc.append("\n");
+					}
+					first = false;
+					desc.append(contents[index++]);
+				}
+				
+				index += 1;
+					
+				Spell newSpell = new Spell(name, classes, type, i,
+						castingTime, range, components, duration, 
+						desc.toString());
+				data.get(i).add(newSpell);
+			}
+		}
+		
+		return data;
+	}
+	
+	/**
+	 * Returns an arrayList of spell lists for the 
+	 * user's custom spells<br>
+	 * Index <0, n> - Cantrips<br>
+	 * Index <1, n> - 1st level spells<br>
+	 * Index <2, n> - 2nd level spells<br>
+	 * Index <3, n> - 3rd level spells<br>
+	 * Index <4, n> - 4th level spells<br>
+	 * Index <5, n> - 5th level spells<br>
+	 * Index <6, n> - 6th level spells<br>
+	 * Index <7, n> - 7th level spells<br>
+	 * Index <8, n> - 8th level spells<br>
+	 * Index <9, n> - 9th level spells<br>
+	 * @return {@code ArrayList<ArrayList<Spell>>}
+	 * @throws IOException 
+	 */
+	protected static ArrayList<Spell> loadCustomSpellList() throws IOException		//Custom Spell List
+	{
+		ArrayList<Spell> data = new ArrayList<Spell>();
+		String[] contents = read(customSpellListPath);
 		int index = 0;
 		boolean end = false;
 		for (int i = 0; i < 10; i++)
 		{
-			data.add(new ArrayList<Spell>());
 			while (!end) {
 				if (contents[index].equals("<LEVEL" + (i+1) + ">")) {
 					end = true;
@@ -397,7 +461,7 @@ public class FileSystem {
 					Spell newSpell = new Spell(name, classes, type, i,
 							castingTime, range, components, duration, 
 							desc.toString());
-					data.get(i).add(newSpell);
+					data.add(newSpell);
 				}
 			}
 			end = false;
@@ -405,6 +469,13 @@ public class FileSystem {
 		return data;
 	}
 	
+	/**
+	 * Loads the preferences 
+	 * @return an array of the user's settings
+	 * Index 0 - Window centering behavior
+	 * Index 1 - Window resize value
+	 * @throws IOException
+	 */
 	public static String[] loadPreferences() throws IOException
 	{
 		String[] contents = read(prefPath);
