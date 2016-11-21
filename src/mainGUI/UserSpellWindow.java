@@ -73,6 +73,8 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		
+		
+		
 		browser = new SpellBrowser(this);
 		settings = new SettingsWindow();
 		customSpells = new CustomSpellAdder();

@@ -14,11 +14,11 @@ import java.io.FileWriter;
 
 public class FileSystem {
 
-	static String prefPath = "Preferences.txt";
-    static String classListPath = "ClassList.txt";
-	static String charItemsPath = "CharacterItems.txt";
-	static String spellListPath = "SpellList.txt";
-	static String customSpellListPath = "CustomSpellList.txt";
+	static String prefPath = "Files/Preferences.txt";
+    static String classListPath = "Files/ClassList.txt";
+	static String charItemsPath = "Files/CharacterItems.txt";
+	static String spellListPath = "Files/SpellList.txt";
+	static String customSpellListPath = "Files/CustomSpellList.txt";
 	
 	/**
 	 * Reads the contents of a file into a String array
