@@ -14,10 +14,7 @@ import java.io.FileWriter;
 
 public class FileSystem {
 
-	static String charInfoPath = "UserData/CharacterInfo.txt";
-
 	static String prefPath = "Preferences.txt";
-
     static String classListPath = "ClassList.txt";
 	static String charItemsPath = "CharacterItems.txt";
 	static String spellListPath = "SpellList.txt";
@@ -562,7 +559,6 @@ public class FileSystem {
 		
 		try {
 			clear(charItemsPath);
-			clear(charInfoPath);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
