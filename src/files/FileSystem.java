@@ -80,17 +80,6 @@ public class FileSystem {
 				BufferedWriter bw = new BufferedWriter(fw);
 			) 
 		{			
-			bw.write("<COPPER>" + CharacterItems.getMoney()[1]);
-			bw.newLine();
-			bw.write("<SILVER>" + CharacterItems.getMoney()[2]);
-			bw.newLine();
-			bw.write("<GOLD>" + CharacterItems.getMoney()[3]);
-			bw.newLine();
-			bw.write("<PLATINUM>" + CharacterItems.getMoney()[4]);
-			bw.newLine();
-			bw.write("<OTHER>" + CharacterItems.getMoney()[5]);
-			bw.newLine();
-			
 			ArrayList<String> learned = CharacterItems.getLearnedSpells();
 			ArrayList<String> prepared = CharacterItems.getPreparedSpells();
 			for (int i = 0; i < learned.size(); i++) {
@@ -290,31 +279,18 @@ public class FileSystem {
 
 	/**
 	 * Returns a String array containing all the player's items <br>
-	 * Index 0 - Copper<br>
-	 * Index 1 - Silver<br>
-	 * Index 2 - Gold<br>
-	 * Index 3 - Platinum<br>
-	 * Index 4 - Other Money (in copper)<br>
-	 * Index 5 - Prepared spells
-	 * Index 6 - Unprepared spells
+	 * Index 0 - Prepared spells
+	 * Index 1 - Unprepared spells
 	 * @return {@code String[]}
 	 * @throws IOException
 	 */
 	public static String[] loadCharItems() throws IOException // CHARACTER ITEMS
 	{
 		String[] contents = read(charItemsPath);
-		String[] forReturn = new String[7];
-		if (contents[0].equals("EMPTY")) {
-			return null;
-		}
-		forReturn[0] = contents[0].substring(8);
-		forReturn[1] = contents[1].substring(8);
-		forReturn[2] = contents[2].substring(6);
-		forReturn[3] = contents[3].substring(10);
-		forReturn[4] = contents[4].substring(7);
+		String[] forReturn = new String[2];
 		String prepared = "";
 		String unprepared = "";
-		int i = 4;
+		int i = -1;
 		while (!contents[++i].equals("<ENDSPELLS>")) {
 			if (contents[i].charAt(0) == 'P') {
 				prepared += "," + contents[i].substring(2);
@@ -324,14 +300,14 @@ public class FileSystem {
 		}
 
 		if (prepared.length() > 0) {
-			forReturn[5] = prepared.substring(1);
+			forReturn[0] = prepared.substring(1);
 		} else {
-			forReturn[5] = "";
+			forReturn[0] = "";
 		}
 		if (unprepared.length() > 0) {
-			forReturn[6] = unprepared.substring(1);
+			forReturn[1] = unprepared.substring(1);
 		} else {
-			forReturn[6] = "";
+			forReturn[1] = "";
 		}
 		
 		return forReturn;

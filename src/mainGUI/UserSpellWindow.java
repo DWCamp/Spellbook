@@ -2,7 +2,6 @@ package mainGUI;
 
 import java.awt.Component;
 import java.awt.Dimension;
-//import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -51,25 +50,6 @@ public class UserSpellWindow extends JFrame {
 	private JMenuItem mntmPreferences;
 	private JMenuBar menuBar;
 	private JButton btnBrowseSpells;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//					Spell_List.load();
-//					CharacterItems.loadItems();
-//					window = new UserSpellWindow();
-//					window.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
