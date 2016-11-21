@@ -18,9 +18,8 @@ import userData.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-//import javax.swing.UIManager;
-//import javax.swing.ImageIcon;
-//import java.awt.Image;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -92,12 +91,12 @@ public class UserSpellWindow extends JFrame {
 		browser = new SpellBrowser(this);
 		settings = new SettingsWindow();
 		
-//		try {
-//			Image image = new ImageIcon(UserSpellWindow.class.getResource("icon.PNG")).getImage();
-//			setIconImage(image);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Image image = new ImageIcon("Icons/main.PNG").getImage();
+			setIconImage(image);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		setResizable(false);
 		setTitle("Spellbook");
@@ -108,7 +107,9 @@ public class UserSpellWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		window = this;
+		
 		draw(); //draws the elements of the window
+		this.setLocation(100, 100);
 	}
 	
 	/**

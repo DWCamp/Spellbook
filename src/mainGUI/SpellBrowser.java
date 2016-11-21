@@ -2,8 +2,8 @@ package mainGUI;
 
 import java.awt.EventQueue;
 import java.awt.Font;
-//import java.awt.Image;
-//import javax.swing.ImageIcon;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -80,12 +80,12 @@ public class SpellBrowser extends JFrame {
 		
 		uswParent = parent;
 		
-//		try {
-//			Image image = new ImageIcon(UserSpellWindow.class.getResource("icon.PNG")).getImage();
-//			setIconImage(image);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Image image = new ImageIcon("Icons/search.PNG").getImage();
+			setIconImage(image);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
         
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds((int)(10 * scaleFactor),

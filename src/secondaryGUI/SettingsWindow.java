@@ -8,10 +8,12 @@ import userData.Settings;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Image;
 
 @SuppressWarnings("serial")
 public class SettingsWindow extends JFrame {
@@ -55,6 +57,13 @@ public class SettingsWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		try {
+			Image image = new ImageIcon("Icons/settings.PNG").getImage();
+			setIconImage(image);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		lblWindowPositioningSetting = new JLabel("Window Positioning Behavior");
 		lblWindowPositioningSetting.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
