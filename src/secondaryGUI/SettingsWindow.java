@@ -176,9 +176,5 @@ public class SettingsWindow extends JFrame {
 				(int)(144*scaleFactor), 
 				(int)(23*scaleFactor));
 	}
-	
-	public SettingsWindow getThis()
-	{
-		return this;
-	}
+
 }
