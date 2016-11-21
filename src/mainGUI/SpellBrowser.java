@@ -14,7 +14,7 @@ import javax.swing.event.DocumentListener;
 import files.Class_List;
 import files.Spell;
 import files.Spell_List;
-import guiPanels.SpellAddPanel;
+import guiPanels.SpellBrowserPanel;
 import userData.Settings;
 
 import javax.swing.JScrollPane;
@@ -210,7 +210,7 @@ public class SpellBrowser extends JFrame {
 			for (Spell spell : spells) {
 				if (hasSearchedClass(spell)
 						&& isSearchedSchool(spell)) {
-					panelSpells.add(new SpellAddPanel(spell, uswParent));
+					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
 				}
 			}
 		} else {
@@ -224,7 +224,7 @@ public class SpellBrowser extends JFrame {
 				if (searchedValue.toUpperCase().contains(searchVal) 
 						&& hasSearchedClass(spell) 
 						&& isSearchedSchool(spell)) {
-					panelSpells.add(new SpellAddPanel(spell, uswParent));
+					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
 				}
 			}
 		}

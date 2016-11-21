@@ -59,18 +59,22 @@ public class SpellPanel extends JPanel {
 		add(textFieldType);
 		
 		textFieldTime = new JTextField(spell.getCastingTime());
+		textFieldTime.setToolTipText("The time this spell takes to cast");
 		textFieldTime.setColumns(10);
 		add(textFieldTime);
 		
 		textFieldRange = new JTextField(spell.getRange());
-		add(textFieldRange);
+		textFieldRange.setToolTipText("The range of the spell");
 		textFieldRange.setColumns(10);
+		add(textFieldRange);
 		
 		textFieldComp = new JTextField(spell.getComponents());
-		add(textFieldComp);
+		textFieldComp.setToolTipText("The components needed to cast this spell");
 		textFieldComp.setColumns(10);
+		add(textFieldComp);
 		
 		textFieldDuration = new JTextField(spell.getDuration());
+		textFieldDuration.setToolTipText("The duration of the spell");
 		textFieldDuration.setColumns(10);
 		add(textFieldDuration);
 		

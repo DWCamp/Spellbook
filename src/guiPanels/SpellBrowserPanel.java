@@ -19,12 +19,12 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 
 @SuppressWarnings("serial")
-public class SpellAddPanel extends JPanel {
+public class SpellBrowserPanel extends JPanel {
 	
 	/**
 	 * Create the panel.
 	 */
-	public SpellAddPanel(Spell spell, UserSpellWindow parent) {
+	public SpellBrowserPanel(Spell spell, UserSpellWindow parent) {
 		double scaleFactor = Settings.getResizeFactor();
 		setLayout(new BorderLayout(0, 0));
 		
