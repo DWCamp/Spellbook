@@ -32,6 +32,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.SystemColor;
 import java.awt.Font;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
 public class UserSpellWindow extends JFrame {
@@ -44,6 +46,10 @@ public class UserSpellWindow extends JFrame {
 	private static UserSpellWindow window;
 	private static SpellBrowser browser;
 	private static SettingsWindow settings;
+	
+	private JMenuItem mntmPreferences;
+	private JMenuBar menuBar;
+	private JButton btnBrowseSpells;
 
 //	/**
 //	 * Launch the application.
@@ -72,10 +78,16 @@ public class UserSpellWindow extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
 				FileSystem.saveCharItems();
+				System.exit(0);
 			}
 		});
 		
-		double scaleFactor = Settings.getResizeFactor();
+		Settings.addResizeListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				draw();
+			}
+		});
 		
 		browser = new SpellBrowser(this);
 		settings = new SettingsWindow();
@@ -90,18 +102,31 @@ public class UserSpellWindow extends JFrame {
 		setResizable(false);
 		setTitle("Spellbook");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds((int)(100 * scaleFactor),
-				(int)(100 * scaleFactor),
-				(int)(641 * scaleFactor),
-				(int)(431 * scaleFactor) - (int)(65 * (scaleFactor-1)));
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		window = this;
+		draw(); //draws the elements of the window
+	}
+	
+	/**
+	 * Draws the window
+	 */
+	public void draw(){
+		double scaleFactor = Settings.getResizeFactor();
+//		double scaleFactor = 1.0;
+	
+		setBounds(100, 100,
+				(int)(641 * scaleFactor),
+				(int)(440 * scaleFactor));
+		
+		contentPane.removeAll();
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds((int)(10 * scaleFactor),
-				(int)(11 * scaleFactor),
+				(int)(30 * scaleFactor),
 				(int)(615 * scaleFactor),
 				(int)(355 * scaleFactor) - (int)(30 * (scaleFactor - 1)));
 		contentPane.add(tabbedPane);
@@ -180,7 +205,7 @@ public class UserSpellWindow extends JFrame {
 				panelLevel7, panelLevel8, panelLevel9};
 		spellPanels = tempArray;
 		
-		JButton btnBrowseSpells = new JButton("Browse Spells");
+		btnBrowseSpells = new JButton("Browse Spells");
 		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
 		btnBrowseSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -191,16 +216,32 @@ public class UserSpellWindow extends JFrame {
 				browser.toFront();
 			}
 		});
-		btnBrowseSpells.setBounds((int)(447 * scaleFactor),
-				(int)(370 * scaleFactor) - (int)(35 * (scaleFactor - 1)),
+		btnBrowseSpells.setBounds((int)(447 * scaleFactor), 
+				(int)(383 * scaleFactor),
 				(int)(178 * scaleFactor),
 				(int)(27 * scaleFactor));
 		btnBrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(btnBrowseSpells);
 		
-		JButton btnPreferences = new JButton("Preferences");
-		btnPreferences.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
-		btnPreferences.addActionListener(new ActionListener() {
+		panelAllSpells.setLayout(new GridLayout(1, 2, 15, 0));
+		
+		JLabel lblClickbrowseSpells = new JLabel("Click \"Browse Spells\" "
+				+ "to add spells to your spellbook");
+		lblClickbrowseSpells.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		lblClickbrowseSpells.setForeground(SystemColor.controlShadow);
+		lblClickbrowseSpells.setHorizontalAlignment(SwingConstants.CENTER);
+		panelAllSpells.add(lblClickbrowseSpells);
+		
+		menuBar = new JMenuBar();
+		menuBar.setBorderPainted(false);
+		menuBar.setBounds(0, 0, 
+				(int)(635 * scaleFactor), 
+				(int)(24 * scaleFactor));
+		contentPane.add(menuBar);
+		
+		mntmPreferences = new JMenuItem("Preferences");
+		menuBar.add(mntmPreferences);
+		mntmPreferences.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!settings.isVisible()) {
 					settings.reset();
@@ -209,20 +250,7 @@ public class UserSpellWindow extends JFrame {
 				settings.toFront();
 			}
 		});
-		btnPreferences.setBounds((int)(10 * scaleFactor),
-				(int)(370 * scaleFactor) - (int)(35 * (scaleFactor - 1)),
-				(int)(178 * scaleFactor),
-				(int)(27 * scaleFactor));
-		btnPreferences.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		contentPane.add(btnPreferences);
 		
-		panelAllSpells.setLayout(new GridLayout(1, 2, 15, 0));
-		
-		JLabel lblClickbrowseSpells = new JLabel("Click \"Browse Spells\" "
-				+ "to add spells to your spellbook");
-		lblClickbrowseSpells.setForeground(SystemColor.controlShadow);
-		lblClickbrowseSpells.setHorizontalAlignment(SwingConstants.CENTER);
-		panelAllSpells.add(lblClickbrowseSpells);
 		for (JPanel panel : spellPanels) {
 			panel.setLayout(new GridLayout(1, 2, 15, 0));
 		}
@@ -239,13 +267,13 @@ public class UserSpellWindow extends JFrame {
 			spellPanels[level].add(new SpellCard(spell));
 		}
 		
-		window = this;
+		repaint();
 	}
 	
 	/**
 	 * Refreshes the cards in all panels
 	 */
-	public void refresh()
+	public void refreshSpells()
 	{
 		panelAllSpells.removeAll();
 		for (JPanel panel : spellPanels) {
@@ -260,6 +288,8 @@ public class UserSpellWindow extends JFrame {
 			spellPanels[level].add(new SpellCard(spell));
 		}
 	}
+	
+
 	
 	/**
 	 * Removes a SpellCard from the menu and the User's spellbook

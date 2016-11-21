@@ -32,7 +32,9 @@ import javax.swing.BoxLayout;
 public class SpellBrowser extends JFrame {
 
 	private JPanel contentPane;
+	private JScrollPane scrollPane;
 	private JTextField searchField;
+	private JLabel lblSearch;
 	private JComboBox<Object> comboBoxLevels;
 	private JComboBox<Object> comboBoxOption;
 	private JComboBox<Object> comboBoxClasses;
@@ -85,7 +87,7 @@ public class SpellBrowser extends JFrame {
 //			e.printStackTrace();
 //		}
         
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds((int)(10 * scaleFactor),
 				(int)(69 * scaleFactor),
 				(int)(358 * scaleFactor),
@@ -121,7 +123,7 @@ public class SpellBrowser extends JFrame {
 		contentPane.add(searchField);
 		searchField.setColumns(10);
 		
-		JLabel lblSearch = new JLabel("Search:");
+		lblSearch = new JLabel("Search:");
 		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		lblSearch.setBounds((int)(10 * scaleFactor),
 				(int)(14 * scaleFactor),
@@ -226,6 +228,49 @@ public class SpellBrowser extends JFrame {
 				}
 			}
 		}
+		//resize all components
+		double scaleFactor = Settings.getResizeFactor();
+		
+		setBounds((int)(100 * scaleFactor),
+				(int)(100 * scaleFactor),
+				(int)(384 * scaleFactor),
+				(int)(413 * scaleFactor) - (int)(20 * (scaleFactor - 1)));
+		
+		scrollPane.setBounds((int)(10 * scaleFactor),
+				(int)(69 * scaleFactor),
+				(int)(358 * scaleFactor),
+				(int)(304 * scaleFactor));
+		
+		searchField.setBounds((int)(51 * scaleFactor),
+				(int)(11 * scaleFactor),
+				(int)(197 * scaleFactor),
+				(int)(20 * scaleFactor));
+		
+		lblSearch.setBounds((int)(10 * scaleFactor),
+				(int)(14 * scaleFactor),
+				(int)(46 * scaleFactor),
+				(int)(14 * scaleFactor));
+		
+		comboBoxOption.setBounds((int)(258 * scaleFactor),
+				(int)(11 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		
+		comboBoxLevels.setBounds((int)(12 * scaleFactor),
+				(int)(38 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		
+		comboBoxSchools.setBounds((int)(256 * scaleFactor),
+				(int)(38 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		
+		comboBoxClasses.setBounds((int)(134 * scaleFactor),
+				(int)(38 * scaleFactor),
+				(int)(110 * scaleFactor),
+				(int)(20 * scaleFactor));
+		
 		repaint();
 		revalidate();
 	}

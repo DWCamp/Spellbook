@@ -1,6 +1,8 @@
 package userData;
 
+import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import files.FileSystem;
 import mainGUI.SpellBookLauncher;
@@ -19,6 +21,9 @@ public class Settings {
 	 * User determined window scaling
 	 */
 	private static double scaleAdjustment;
+	
+	private static ArrayList<ActionListener> resizeObservers = 
+			new ArrayList<ActionListener>();
 	
 	/**
 	 * Loads the preferences from file
@@ -95,7 +100,30 @@ public class Settings {
 	 */
 	public static void setScaleAdjustment(double adjustment)
 	{
-		scaleAdjustment = adjustment;
-		System.out.println(adjustment);
+		if (adjustment != scaleAdjustment){
+			scaleAdjustment = adjustment;
+			notifyResizeObservers();
+		}
+	}
+	
+	/**
+	 * Adds a actionListener to detect when the window 
+	 * scale value is changed
+	 * @param aL ActionListener
+	 */
+	public static void addResizeListener(ActionListener aL)
+	{
+		resizeObservers.add(aL);
+	}
+	
+	/**
+	 * Sends a message out to all action listeners
+	 */
+	private static void notifyResizeObservers()
+	{
+		for (ActionListener aL : resizeObservers)
+		{
+			aL.actionPerformed(null);
+		}
 	}
 }

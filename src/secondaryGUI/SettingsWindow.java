@@ -19,6 +19,10 @@ public class SettingsWindow extends JFrame {
 	private JPanel contentPane;
 	private JComboBox<Object> comboBoxCentering;
 	private JComboBox<Object> comboBoxSize;
+	
+	private JLabel lblResizeValue;
+	private JButton btnSave;
+	private JLabel lblWindowPositioningSetting;
 
 //	/**
 //	 * Launch the application.
@@ -44,8 +48,7 @@ public class SettingsWindow extends JFrame {
 		setTitle("Settings");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		double scaleFactor = Settings.getResizeFactor();
-		setBounds((int)(100*scaleFactor), 
-				(int)(100*scaleFactor), 
+		setBounds(100, 100, 
 				(int)(336*scaleFactor), 
 				(int)(180*scaleFactor) - (int)(27 * (scaleFactor-1)));
 		contentPane = new JPanel();
@@ -53,11 +56,11 @@ public class SettingsWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblWindowPositioningSetting = new JLabel("Window Positioning Behavior");
+		lblWindowPositioningSetting = new JLabel("Window Positioning Behavior");
 		lblWindowPositioningSetting.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		lblWindowPositioningSetting.setBounds((int)(10*scaleFactor), 
 				(int)(11*scaleFactor), 
-				(int)(144*scaleFactor), 
+				(int)(250*scaleFactor), 
 				(int)(14*scaleFactor));
 		contentPane.add(lblWindowPositioningSetting);
 		
@@ -74,14 +77,14 @@ public class SettingsWindow extends JFrame {
 				(int)(20*scaleFactor));
 		contentPane.add(comboBoxCentering);
 		
-		JButton btnSave = new JButton("Save and Quit");
+		btnSave = new JButton("Save Preferences");
 		btnSave.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.setCenterFrames(comboBoxCentering.getSelectedIndex());
 				Settings.setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
 				Settings.savePreferences();
-				getThis().setVisible(false);
+				reset();
 			}
 		});
 		btnSave.setBounds((int)(176*scaleFactor), 
@@ -90,11 +93,11 @@ public class SettingsWindow extends JFrame {
 				(int)(23*scaleFactor));
 		contentPane.add(btnSave);
 		
-		JLabel lblResizeValue = new JLabel("Window Size");
+		lblResizeValue = new JLabel("Window Size");
 		lblResizeValue.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		lblResizeValue.setBounds((int)(10*scaleFactor), 
 				(int)(62*scaleFactor), 
-				(int)(67*scaleFactor), 
+				(int)(250*scaleFactor), 
 				(int)(14*scaleFactor));
 		contentPane.add(lblResizeValue);
 		
@@ -135,6 +138,43 @@ public class SettingsWindow extends JFrame {
 				comboBoxSize.setSelectedIndex(2);
 		}
 		
+		double scaleFactor = Settings.getResizeFactor();
+		
+		int xPos = getX();
+		int yPos = getY();
+		setBounds(xPos, yPos, 
+				(int)(336*scaleFactor), 
+				(int)(180*scaleFactor) - (int)(27 * (scaleFactor-1)));
+		
+		lblWindowPositioningSetting.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		lblWindowPositioningSetting.setBounds((int)(10*scaleFactor), 
+				(int)(11*scaleFactor), 
+				(int)(144*scaleFactor), 
+				(int)(14*scaleFactor));
+		
+		comboBoxCentering.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		comboBoxCentering.setBounds((int)(10*scaleFactor), 
+				(int)(31*scaleFactor), 
+				(int)(310*scaleFactor), 
+				(int)(20*scaleFactor));
+		
+		lblResizeValue.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		lblResizeValue.setBounds((int)(10*scaleFactor), 
+				(int)(62*scaleFactor), 
+				(int)(67*scaleFactor), 
+				(int)(14*scaleFactor));
+		
+		comboBoxSize.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		comboBoxSize.setBounds((int)(10*scaleFactor), 
+				(int)(82*scaleFactor), 
+				(int)(310*scaleFactor), 
+				(int)(20*scaleFactor));
+		
+		btnSave.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		btnSave.setBounds((int)(176*scaleFactor), 
+				(int)(120*scaleFactor), 
+				(int)(144*scaleFactor), 
+				(int)(23*scaleFactor));
 	}
 	
 	public SettingsWindow getThis()

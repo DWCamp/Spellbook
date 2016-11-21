@@ -47,7 +47,7 @@ public class SpellAddPanel extends JPanel {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CharacterItems.learnSpell(spell.getName());
-				parent.refresh();
+				parent.refreshSpells();
 			}
 		});
 		btnDetails.addActionListener(new ActionListener() {
