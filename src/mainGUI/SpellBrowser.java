@@ -240,31 +240,37 @@ public class SpellBrowser extends JFrame {
 				(int)(358 * scaleFactor),
 				(int)(304 * scaleFactor));
 		
+		searchField.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		searchField.setBounds((int)(51 * scaleFactor),
 				(int)(11 * scaleFactor),
 				(int)(197 * scaleFactor),
 				(int)(20 * scaleFactor));
 		
+		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		lblSearch.setBounds((int)(10 * scaleFactor),
 				(int)(14 * scaleFactor),
 				(int)(46 * scaleFactor),
 				(int)(14 * scaleFactor));
 		
+		comboBoxOption.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		comboBoxOption.setBounds((int)(258 * scaleFactor),
 				(int)(11 * scaleFactor),
 				(int)(110 * scaleFactor),
 				(int)(20 * scaleFactor));
 		
+		comboBoxLevels.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		comboBoxLevels.setBounds((int)(12 * scaleFactor),
 				(int)(38 * scaleFactor),
 				(int)(110 * scaleFactor),
 				(int)(20 * scaleFactor));
 		
+		comboBoxSchools.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		comboBoxSchools.setBounds((int)(256 * scaleFactor),
 				(int)(38 * scaleFactor),
 				(int)(110 * scaleFactor),
 				(int)(20 * scaleFactor));
 		
+		comboBoxClasses.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		comboBoxClasses.setBounds((int)(134 * scaleFactor),
 				(int)(38 * scaleFactor),
 				(int)(110 * scaleFactor),

@@ -25,6 +25,7 @@ public class Spell_List {
 	private static Map<String, Spell> eighthLevel = new HashMap<String, Spell>();
 	private static Map<String, Spell> ninthLevel = new HashMap<String, Spell>();
 	
+	private static Map<String, Spell> customSpells = new HashMap<String, Spell>();
 	private static ArrayList<Map<String, Spell>> listList 
 		= new ArrayList<Map<String, Spell>>();
 	
@@ -102,7 +103,6 @@ public class Spell_List {
 				addSpell(customSpell);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -115,46 +115,57 @@ public class Spell_List {
 		switch (newSpell.getLevel()){
 		case 0:
 			cantrips.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 1:
 			firstLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 2:
 			secondLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 3:
 			thirdLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 4:
 			fourthLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 5:
 			fifthLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 6:
 			sixthLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 7:
 			seventhLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 8:
 			eighthLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		case 9:
 			ninthLevel.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			allSpells.put(newSpell.getName(), newSpell);
 			break;
 		default:
 			allSpells.put(newSpell.getName(), newSpell);
+			customSpells.put(newSpell.getName(), newSpell);
 			break;
 		}
 	}
@@ -185,6 +196,17 @@ public class Spell_List {
 	public static Spell[] getAllSpells()
 	{
 		SortedSpellList sortedList = new SortedSpellList(allSpells.values()
+				.toArray(new Spell[0]));
+		return sortedList.toArray();
+	}
+	
+	/**
+	 * Returns all custom spells in an alphabetized array
+	 * @return {@code Spell[]}
+	 */
+	public static Spell[] getCustomSpells()
+	{
+		SortedSpellList sortedList = new SortedSpellList(customSpells.values()
 				.toArray(new Spell[0]));
 		return sortedList.toArray();
 	}

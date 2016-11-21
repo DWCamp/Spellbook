@@ -261,6 +261,76 @@ public class FileSystem {
 		return success;
 	}
 	
+	/**
+	 * Takes an arrayList of spell lists<br>
+	 * Index <0, n> - Cantrips<br>
+	 * Index <1, n> - 1st level spells<br>
+	 * Index <2, n> - 2nd level spells<br>
+	 * Index <3, n> - 3rd level spells<br>
+	 * Index <4, n> - 4th level spells<br>
+	 * Index <5, n> - 5th level spells<br>
+	 * Index <6, n> - 6th level spells<br>
+	 * Index <7, n> - 7th level spells<br>
+	 * Index <8, n> - 8th level spells<br>
+	 */
+	public static boolean saveCustomSpellList(ArrayList<ArrayList<Spell>> spellList)
+	{																//Spell List
+		System.out.println("Saving Custom Spell List...");
+		String tempFile = "tmp.txt";
+		boolean success = false;
+		
+		try (
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
+			)
+		{			
+			for(int i = 0; i < 10; i++)
+			{
+				ArrayList<Spell> spells = spellList.get(i);
+				for (Spell spell : spells)
+				{
+					bw.write("<NAME>" + spell.getName());
+					bw.newLine();
+					String classes = "";
+					for (String className : spell.getClasses()) {
+						classes += "," + className;
+					}
+					bw.write("<CLAS>" + classes.substring(1));
+					bw.newLine();
+					bw.write("<TYPE>" + spell.getType());
+					bw.newLine();
+					bw.write("<CATM>" + spell.getCastingTime());
+					bw.newLine();
+					bw.write("<RANG>" + spell.getRange());
+					bw.newLine();
+					bw.write("<COMP>" + spell.getComponents());
+					bw.newLine();
+					bw.write("<DURA>" + spell.getDuration());
+					bw.newLine();
+					bw.write(spell.getDescription());
+					bw.newLine();
+					bw.write("<END>");
+					bw.newLine();
+				}
+				bw.write("<LEVEL" + (i+1) + ">");
+				bw.newLine();
+			}
+			
+			bw.close();
+			
+			File oldFile = new File(customSpellListPath);
+			oldFile.delete();
+
+			File newFile = new File(tempFile);
+			success = newFile.renameTo(oldFile);
+			System.out.println("Done!");
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return success;
+	}
+	
 	
 																	//LOAD DATA
 	/**

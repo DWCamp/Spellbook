@@ -1,4 +1,4 @@
-package files;
+package mainGUI;
 
 import java.awt.BorderLayout;
 
@@ -6,7 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import guiPanels.SpellPanel;
+import files.FileSystem;
+import files.Spell;
+import files.Spell_List;
+import guiPanels.CustomSpellPanel;
+import helperClasses.SortedSpellList;
 
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
@@ -14,8 +18,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Component;
 
 public class CustomSpellAdder extends JFrame {
 
@@ -26,9 +33,10 @@ public class CustomSpellAdder extends JFrame {
 	 * Create the frame.
 	 */
 	public CustomSpellAdder() {
+		setResizable(false);
 		setTitle("Custom Spells");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 477, 300);
+		setBounds(100, 100, 331, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 5));
@@ -38,6 +46,7 @@ public class CustomSpellAdder extends JFrame {
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel panelSpells = new JPanel();
+		panelSpells.setBackground(Color.LIGHT_GRAY);
 		scrollPane.setViewportView(panelSpells);
 		panelSpells.setLayout(new GridLayout(0, 1, 0, 10));
 		
@@ -49,10 +58,14 @@ public class CustomSpellAdder extends JFrame {
 			}
 		});
 		
-		String[] blank = {"Classes"};
-		Spell blankSpell = new Spell("Name", blank, "Type", 0, 
-				"Casting Time", "Range", "Components", 
-				"Duration", "Description");
+		for (Spell spell : Spell_List.getCustomSpells())
+		{
+			panelSpells.add(new CustomSpellPanel(spell));
+		}
+		
+		String[] blank = {""};
+		Spell blankSpell = new Spell("", blank, 
+				"", 0, "", "", "", "", "");
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
@@ -60,17 +73,40 @@ public class CustomSpellAdder extends JFrame {
 		
 		JButton btnAddSpell = new JButton("Add Spell");
 		panel.add(btnAddSpell, BorderLayout.EAST);
-		
-		JButton btnNewButton = new JButton("Save");
-		panel.add(btnNewButton, BorderLayout.WEST);
 		btnAddSpell.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				panelSpells.add(new SpellPanel(blankSpell));
+				panelSpells.add(new CustomSpellPanel(blankSpell));
 				repaint();
 				revalidate();
 			}
 		});
+		
+		JButton btnNewButton = new JButton("Save");
+		panel.add(btnNewButton, BorderLayout.WEST);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<SortedSpellList> sortedSpellList = new ArrayList<SortedSpellList>();
+				for(int i = 0; i < 10; i++)
+				{
+					sortedSpellList.add(new SortedSpellList());
+				}
+				
+				for(Component element : panelSpells.getComponents())
+				{
+					Spell spell = ((CustomSpellPanel)element).toSpell();
+					sortedSpellList.get(spell.getLevel()).add(spell);
+				}
+				
+				ArrayList<ArrayList<Spell>> spellList = new ArrayList<ArrayList<Spell>>();
+				for(int i = 0; i < 10; i++)
+				{
+					spellList.add(sortedSpellList.get(i).toArrayList());
+				}
+				FileSystem.saveCustomSpellList(spellList);
+			}
+		});
+
 	}
 	
 	/**
