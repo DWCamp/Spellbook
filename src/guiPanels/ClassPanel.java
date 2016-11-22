@@ -3,8 +3,8 @@ package guiPanels;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import files.Feat;
-import files.PClass;
+import helperClasses.Feat;
+import helperClasses.PClass;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;

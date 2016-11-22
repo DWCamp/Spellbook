@@ -10,8 +10,11 @@ import javax.swing.border.EmptyBorder;
 
 import guiPanels.ClassPanel;
 import guiPanels.SpellPanel;
+import helperClasses.Feat;
+import helperClasses.PClass;
 import helperClasses.SortedSpellList;
 import helperClasses.SortedStringList;
+import helperClasses.Spell;
 
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;

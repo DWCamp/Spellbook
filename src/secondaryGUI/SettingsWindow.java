@@ -26,22 +26,6 @@ public class SettingsWindow extends JFrame {
 	private JButton btnSave;
 	private JLabel lblWindowPositioningSetting;
 
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					SettingsWindow frame = new SettingsWindow();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -59,7 +43,8 @@ public class SettingsWindow extends JFrame {
 		contentPane.setLayout(null);
 		
 		try {
-			Image image = new ImageIcon("Icons/settings.PNG").getImage();
+			Image image = new ImageIcon(SettingsWindow.class.getClassLoader()
+					.getResource("settings.PNG").getPath()).getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();

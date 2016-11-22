@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import helperClasses.SortedSpellList;
+import helperClasses.Spell;
 
 /**
  * An object which contains information on all spells

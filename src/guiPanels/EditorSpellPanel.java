@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import alerts.DescriptionPopUp;
-import files.Spell;
+import helperClasses.Spell;
 
 public abstract class EditorSpellPanel extends JPanel {
 

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import helperClasses.Feat;
+import helperClasses.PClass;
 import helperClasses.SortedStringList;
 
 /**

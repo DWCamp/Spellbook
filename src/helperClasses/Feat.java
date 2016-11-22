@@ -1,4 +1,4 @@
-package files;
+package helperClasses;
 
 public class Feat {
 	private String name;

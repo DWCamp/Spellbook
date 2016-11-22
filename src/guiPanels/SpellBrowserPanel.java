@@ -8,7 +8,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 
 import alerts.WordWrapPopUp;
-import files.Spell;
+import helperClasses.Spell;
 import mainGUI.UserSpellWindow;
 import userData.CharacterItems;
 import userData.Settings;

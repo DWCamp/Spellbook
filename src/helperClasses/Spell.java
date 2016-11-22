@@ -1,4 +1,4 @@
-package files;
+package helperClasses;
 
 public class Spell {
 	private String name;

@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import files.FileSystem;
-import files.Spell;
 import files.Spell_List;
 import guiPanels.CustomSpellPanel;
 import helperClasses.SortedSpellList;
+import helperClasses.Spell;
 import userData.Settings;
 
 import javax.swing.JScrollPane;
@@ -53,7 +53,8 @@ public class CustomSpellAdder extends JFrame {
 		setContentPane(contentPane);
 		
 		try {
-			Image image = new ImageIcon("Icons/custom.PNG").getImage();
+			Image image = new ImageIcon(CustomSpellAdder.class.getClassLoader()
+					.getResource("custom.PNG").getPath()).getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();

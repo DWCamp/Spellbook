@@ -11,9 +11,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import files.Class_List;
-import files.Spell;
 import files.Spell_List;
 import guiPanels.SpellBrowserPanel;
+import helperClasses.Spell;
 import userData.Settings;
 
 import javax.swing.JScrollPane;
@@ -60,7 +60,8 @@ public class SpellBrowser extends JFrame {
 		uswParent = parent;
 		
 		try {
-			Image image = new ImageIcon("Icons/search.PNG").getImage();
+			Image image = new ImageIcon(this.getClass().getClassLoader()
+					.getResource("browser.PNG").getPath()).getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();

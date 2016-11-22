@@ -2,8 +2,6 @@ package helperClasses;
 
 import java.util.ArrayList;
 
-import files.Spell;
-
 public class SortedSpellList {
 	Node<Spell> head;
 	int size;

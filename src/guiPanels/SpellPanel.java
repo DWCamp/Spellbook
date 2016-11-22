@@ -3,7 +3,7 @@ package guiPanels;
 import javax.swing.JTextField;
 
 import alerts.DescriptionPopUp;
-import files.Spell;
+import helperClasses.Spell;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;

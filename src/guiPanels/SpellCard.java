@@ -9,8 +9,8 @@ import javax.swing.SwingConstants;
 
 import alerts.WordWrapPopUp;
 import files.FileSystem;
-import files.Spell;
 import files.Spell_List;
+import helperClasses.Spell;
 import mainGUI.UserSpellWindow;
 import userData.CharacterItems;
 import userData.Settings;

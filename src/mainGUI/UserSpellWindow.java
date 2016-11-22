@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import files.FileSystem;
-import files.Spell;
 import files.Spell_List;
 import guiPanels.SpellCard;
+import helperClasses.Spell;
 import secondaryGUI.SettingsWindow;
 import userData.CharacterItems;
 import userData.Settings;
@@ -73,14 +73,12 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		
-		
-		
 		browser = new SpellBrowser(this);
 		settings = new SettingsWindow();
 		customSpells = new CustomSpellAdder();
 		
 		try {
-			Image image = new ImageIcon("Icons/main.PNG").getImage();
+			Image image = new ImageIcon(UserSpellWindow.class.getClassLoader().getResource("main.PNG").getPath()).getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();
