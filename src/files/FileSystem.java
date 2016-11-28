@@ -109,12 +109,9 @@ public class FileSystem {
 	
 	/**
 	 * Saves userPreferences data
-	 * @param prefs String array of user preferences
-	 * Index 0 - Center Frames on Call setting
-	 * Index 1 - User's window size setting
 	 * @return {@code boolean} whether the save was successful
 	 */
-	public static boolean saveUserPref(String[] prefs)		//User Prefs
+	public static boolean saveUserPref()		//User Prefs
 	{
 		System.out.println("Saving preferences...");
 		String tempFile = "tmp.txt";
@@ -128,6 +125,8 @@ public class FileSystem {
 			bw.write("<CFOC>" + Settings.getCenterFrames());
 			bw.newLine();
 			bw.write("<WiSi>" + Settings.getScaleAdjustment());
+			bw.newLine();
+			bw.write("<SBCP>" + Settings.getSBColor());
 			bw.close();
 			
 			File oldFile = new File(prefPath);
@@ -542,6 +541,7 @@ public class FileSystem {
 	 * @return an array of the user's settings
 	 * Index 0 - Window centering behavior
 	 * Index 1 - Window resize value
+	 * Index 2 - SpellBrowser coloration value
 	 * @throws IOException
 	 */
 	public static String[] loadPreferences() throws IOException
@@ -549,6 +549,7 @@ public class FileSystem {
 		String[] contents = read(prefPath);
 		contents[0] = contents[0].substring(6);
 		contents[1] = contents[1].substring(6);
+		contents[2] = contents[2].substring(6);
 		return contents;
 	}
 	

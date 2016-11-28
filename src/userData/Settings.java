@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import files.FileSystem;
 import mainGUI.SpellBookLauncher;
+import mainGUI.SpellBrowser;
 
 public class Settings {
 	
@@ -21,6 +22,10 @@ public class Settings {
 	 * User determined window scaling
 	 */
 	private static double scaleAdjustment;
+	/**
+	 * Whether spellbrowser panels should be colored to reflect spell level
+	 */
+	private static boolean SBColor;
 	
 	private static ArrayList<ActionListener> resizeObservers = 
 			new ArrayList<ActionListener>();
@@ -35,6 +40,7 @@ public class Settings {
 			centerFrames = Integer.parseInt(preferences[0]);
 			scaleFactor = SpellBookLauncher.getScale();
 			scaleAdjustment = Double.parseDouble(preferences[1]);
+			SBColor = preferences[2].equals("true");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,9 +52,7 @@ public class Settings {
 	 */
 	public static void savePreferences()
 	{
-		String[] preferences = {centerFrames + "", 
-				scaleAdjustment + ""};
-		FileSystem.saveUserPref(preferences);
+		FileSystem.saveUserPref();
 	}
 	
 	/**
@@ -104,6 +108,30 @@ public class Settings {
 			scaleAdjustment = adjustment;
 			notifyResizeObservers();
 		}
+	}
+	
+	/**
+	 * Sets whether SpellBrowser panels should be colored 
+	 * to reflect the spell's level
+	 * @param colorPanels {@code boolean}
+	 */
+	public static void setSBColor(boolean colorPanels)
+	{
+		if (SBColor != colorPanels) {
+			SBColor = colorPanels;
+			SpellBrowser.windowRefresh();
+		}
+	}
+	
+	/**
+	 * Returns whether SpellBrowser panels should be colored 
+	 * to reflect the spell's level
+	 * @return {@code boolean} Returns <em>true</em> if the 
+	 * coloration is turned on
+	 */
+	public static boolean getSBColor()
+	{
+		return SBColor;
 	}
 	
 	/**

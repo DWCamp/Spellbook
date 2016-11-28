@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ImageIcon;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
@@ -65,11 +66,16 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		
+		window = this;
+		this.setLocation(100, 100);
+		
 		Settings.addResizeListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				draw();
 				browser.refresh();
+				settings.refresh();
+				customSpells.refresh();
 			}
 		});
 		
@@ -92,10 +98,8 @@ public class UserSpellWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		window = this;
 		
 		draw(); //draws the elements of the window
-		this.setLocation(100, 100);
 	}
 	
 	/**
@@ -107,7 +111,7 @@ public class UserSpellWindow extends JFrame {
 		
 		setBounds(getX(), getY(),
 				(int)(641 * scaleFactor),
-				(int)(420 * scaleFactor));
+				(int)(390 * scaleFactor) + 40);
 		
 		contentPane.removeAll();
 		
@@ -129,6 +133,8 @@ public class UserSpellWindow extends JFrame {
 		JScrollPane scrollPaneLevel7 = new JScrollPane();
 		JScrollPane scrollPaneLevel8 = new JScrollPane();
 		JScrollPane scrollPaneLevel9 = new JScrollPane();
+		
+		scrollPaneAllSpells.getHorizontalScrollBar().setUnitIncrement(25);
 		
 		tabbedPane.addTab("All spells", null, scrollPaneAllSpells, null);
 		tabbedPane.addTab("Cantrips", null, scrollPaneCantrips, null);
@@ -264,14 +270,14 @@ public class UserSpellWindow extends JFrame {
 		mntmClearSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		mnMenu.add(mntmClearSpells);
 		
-		mntmPreferences = new JMenuItem("Preferences");
+		mntmPreferences = new JMenuItem("Settings");
 		mntmPreferences.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
+		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
 		mnMenu.add(mntmPreferences);
 		mntmPreferences.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!settings.isVisible()) {
-					settings.reset();
+					settings.refresh();
 					settings.setVisible(true);
 				}
 				settings.toFront();
@@ -308,6 +314,8 @@ public class UserSpellWindow extends JFrame {
 				browser.toFront();
 				customSpells.setVisible(true);
 				customSpells.toFront();
+				settings.setVisible(true);
+				settings.toFront();
 			}
 		});
 		
@@ -368,7 +376,13 @@ public class UserSpellWindow extends JFrame {
 		}
 	}
 	
-
+	/**
+	 * Returns the location of the window
+	 * @return {@code Point} UserSpellWindow's location
+	 */
+	public static Point getWindowLocation() {
+		return window.getLocation(null);
+	}
 	
 	/**
 	 * Removes a SpellCard from the menu and the User's spellbook
