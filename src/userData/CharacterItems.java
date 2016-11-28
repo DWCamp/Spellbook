@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import files.FileSystem;
 import helperClasses.SortedStringList;
 
+/**
+ * The class for storing a user's information 
+ * (e.g. spells prepared/learned, etc.)
+ * @author Daniel
+ *
+ */
 public class CharacterItems {
 	
 	private static SortedStringList spellsLearned;
