@@ -1,7 +1,1 @@
-U-Abi Dalzim's Horrid Wilting
-U-Absorb Elements
-U-Acid Splash
-U-Aganazzar's Scorcher
-U-Alarm
-U-Animal Messenger
 <ENDSPELLS>
