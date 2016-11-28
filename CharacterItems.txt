@@ -1,0 +1,4 @@
+P-Alarm
+P-Alter Self
+P-Animal Messenger
+<ENDSPELLS>

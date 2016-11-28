@@ -1,9 +1,6 @@
 package files;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import helperClasses.Spell;
@@ -11,15 +8,18 @@ import userData.CharacterItems;
 import userData.Settings;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class FileSystem {
 
-	static String prefPath = "Preferences.txt";
-    static String classListPath = "ClassList.txt";
-	static String charItemsPath = "CharacterItems.txt";
-	static String spellListPath = "SpellList.txt";
-	static String customSpellListPath = "CustomSpellList.txt";
+	static String prefPath = "Resources/Preferences.txt";
+    static String classListPath = "Resources/ClassList.txt";
+	static String charItemsPath = "Resources/CharacterItems.txt";
+	static String spellListPath = "Resources/SpellList.txt";
+	static String customSpellListPath = "Resources/CustomSpellList.txt";
 	
 	/**
 	 * Reads the contents of a file into a String array
@@ -30,9 +30,8 @@ public class FileSystem {
 	 */
 	private static String[] read(String path) throws IOException {
 		try (
-			InputStream stream = FileSystem.class.getClassLoader().getResourceAsStream(path);
-			InputStreamReader sReader = new InputStreamReader(stream);
-			BufferedReader textReader = new BufferedReader(sReader);
+			FileReader fr = new FileReader(path);
+			BufferedReader textReader = new BufferedReader(fr);
 		)
 		{
 			boolean ended = false;
@@ -46,8 +45,6 @@ public class FileSystem {
 					ended = true;
 				}
 			}
-			stream.close();
-			sReader.close();
 			textReader.close();
 			return text.toArray(new String[0]);
 		} catch (IOException e) {
@@ -73,12 +70,12 @@ public class FileSystem {
 	 */
 	public static boolean saveCharItems() {				//Char Items
 		System.out.println("Saving char items...");
-		boolean success = false;
+		String tempFile = "tmp.txt";
+		boolean success = true;
 		
 		try (
-				PrintWriter writer = new PrintWriter(
-						new File(FileSystem.class.getClassLoader()
-								.getResource(charItemsPath).getPath()));
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
 			) 
 		{			
 			ArrayList<String> learned = CharacterItems.getLearnedSpells();
@@ -86,16 +83,22 @@ public class FileSystem {
 			for (int i = 0; i < learned.size(); i++) {
 				String spell = learned.get(i);
 				if (prepared.contains(spell)) {
-					writer.println("P-" + spell);
+					bw.write("P-" + spell);
+					bw.newLine();
 				} else {
-					writer.println("U-" + spell);
+					bw.write("U-" + spell);
+					bw.newLine();
 				}
 			}
-			writer.print("<ENDSPELLS>");
+			bw.write("<ENDSPELLS>");
 			
-			writer.close();
-			success = true;
-			System.out.println("Done");
+			bw.close();
+			
+			File oldFile = new File(charItemsPath);
+			success = oldFile.delete() && success;
+
+			File newFile = new File(tempFile);
+			success = newFile.renameTo(oldFile) && success;
 			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -114,19 +117,25 @@ public class FileSystem {
 	public static boolean saveUserPref(String[] prefs)		//User Prefs
 	{
 		System.out.println("Saving preferences...");
+		String tempFile = "tmp.txt";
 		boolean success = false;
 		
 		try (
-				PrintWriter writer = new PrintWriter(
-						new File(FileSystem.class.getClassLoader()
-								.getResource(prefPath).getPath()));
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
 		)
 		{
-			writer.println("<CFOC>" + Settings.getCenterFrames());
-			writer.println("<WiSi>" + Settings.getScaleAdjustment());
+			bw.write("<CFOC>" + Settings.getCenterFrames());
+			bw.newLine();
+			bw.write("<WiSi>" + Settings.getScaleAdjustment());
+			bw.close();
 			
-			writer.close();
-			success = true;
+			File oldFile = new File(prefPath);
+			oldFile.delete();
+
+			File newFile = new File(tempFile);
+			success = newFile.renameTo(oldFile);
+			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -148,23 +157,30 @@ public class FileSystem {
 	protected static boolean saveClassList(String[] classList)		//Class List
 	{
 		System.out.println("Saving Class List...");
+		String tempFile = "tmp.txt";
 		boolean success = false;
 		
 		try (
-				PrintWriter writer = new PrintWriter(
-						new File(FileSystem.class.getClassLoader()
-								.getResource(classListPath).getPath()));
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
 			)
 		{
-			writer.println("className,hitDie,MaxSpellLevel,feats,subClassAt,subClasses //SAMPLE");
-						
+			bw.write("className,hitDie,MaxSpellLevel,feats,subClassAt,subClasses //SAMPLE");
+			bw.newLine();
+			
 			for (String element : classList)
 			{
-				writer.println(element);
+				bw.write(element);
+				bw.newLine();
 			}
 			
-			writer.close();
-			success = true;
+			bw.close();
+			
+			File oldFile = new File(classListPath);
+			oldFile.delete();
+
+			File newFile = new File(tempFile);
+			success = newFile.renameTo(oldFile);
 			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -188,12 +204,12 @@ public class FileSystem {
 	protected static boolean saveSpellList(ArrayList<ArrayList<Spell>> spellList)
 	{																//Spell List
 		System.out.println("Saving Spell List...");
+		String tempFile = "tmp.txt";
 		boolean success = false;
 		
 		try (
-				PrintWriter writer = new PrintWriter(
-						new File(FileSystem.class.getClassLoader()
-								.getResource(spellListPath).getPath()));
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
 			)
 		{			
 			for(int i = 0; i < 10; i++)
@@ -201,27 +217,41 @@ public class FileSystem {
 				ArrayList<Spell> spells = spellList.get(i);
 				for (Spell spell : spells)
 				{
-					writer.println("<NAME>" + spell.getName());
+					bw.write("<NAME>" + spell.getName());
+					bw.newLine();
 					String classes = "";
 					for (String className : spell.getClasses()) {
 						classes += "," + className;
 					}
-					writer.println("<CLAS>" + classes.substring(1));
-					writer.println("<TYPE>" + spell.getType());
-					writer.println("<CATM>" + spell.getCastingTime());
-					writer.println("<RANG>" + spell.getRange());
-					writer.println("<COMP>" + spell.getComponents());
-					writer.println("<DURA>" + spell.getDuration());
-					writer.println(spell.getDescription());
-					writer.println("<END>");
+					bw.write("<CLAS>" + classes.substring(1));
+					bw.newLine();
+					bw.write("<TYPE>" + spell.getType());
+					bw.newLine();
+					bw.write("<CATM>" + spell.getCastingTime());
+					bw.newLine();
+					bw.write("<RANG>" + spell.getRange());
+					bw.newLine();
+					bw.write("<COMP>" + spell.getComponents());
+					bw.newLine();
+					bw.write("<DURA>" + spell.getDuration());
+					bw.newLine();
+					bw.write(spell.getDescription());
+					bw.newLine();
+					bw.write("<END>");
+					bw.newLine();
 				}
-				writer.println("<LEVEL" + (i+1) + ">");
+				bw.write("<LEVEL" + (i+1) + ">");
+				bw.newLine();
 			}
 			
-			writer.close();
-			System.out.println("Done!");
-			success = true;
+			bw.close();
 			
+			File oldFile = new File(spellListPath);
+			oldFile.delete();
+
+			File newFile = new File(tempFile);
+			success = newFile.renameTo(oldFile);
+			System.out.println("Done!");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -244,12 +274,12 @@ public class FileSystem {
 	public static boolean saveCustomSpellList(ArrayList<ArrayList<Spell>> spellList)
 	{																//Spell List
 		System.out.println("Saving Custom Spell List...");
+		String tempFile = "tmp.txt";
 		boolean success = false;
 		
 		try (
-				PrintWriter writer = new PrintWriter(
-						new File(FileSystem.class.getClassLoader()
-								.getResource(customSpellListPath).getPath()));
+				FileWriter fw = new FileWriter(tempFile);
+				BufferedWriter bw = new BufferedWriter(fw);
 			)
 		{			
 			for(int i = 0; i < 10; i++)
@@ -257,26 +287,40 @@ public class FileSystem {
 				ArrayList<Spell> spells = spellList.get(i);
 				for (Spell spell : spells)
 				{
-					writer.println("<NAME>" + spell.getName());
+					bw.write("<NAME>" + spell.getName());
+					bw.newLine();
 					String classes = "";
 					for (String className : spell.getClasses()) {
 						classes += "," + className;
 					}
-					writer.println("<CLAS>" + classes.substring(1));
-					writer.println("<TYPE>" + spell.getType());
-					writer.println("<CATM>" + spell.getCastingTime());
-					writer.println("<RANG>" + spell.getRange());
-					writer.println("<COMP>" + spell.getComponents());
-					writer.println("<DURA>" + spell.getDuration());
-					writer.println(spell.getDescription());
-					writer.println("<END>");
+					bw.write("<CLAS>" + classes.substring(1));
+					bw.newLine();
+					bw.write("<TYPE>" + spell.getType());
+					bw.newLine();
+					bw.write("<CATM>" + spell.getCastingTime());
+					bw.newLine();
+					bw.write("<RANG>" + spell.getRange());
+					bw.newLine();
+					bw.write("<COMP>" + spell.getComponents());
+					bw.newLine();
+					bw.write("<DURA>" + spell.getDuration());
+					bw.newLine();
+					bw.write(spell.getDescription());
+					bw.newLine();
+					bw.write("<END>");
+					bw.newLine();
 				}
-				writer.println("<LEVEL" + (i+1) + ">");
+				bw.write("<LEVEL" + (i+1) + ">");
+				bw.newLine();
 			}
 			
-			writer.close();
+			bw.close();
 			
-			success = true;
+			File oldFile = new File(customSpellListPath);
+			oldFile.delete();
+
+			File newFile = new File(tempFile);
+			success = newFile.renameTo(oldFile);
 			System.out.println("Done!");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -529,14 +573,25 @@ public class FileSystem {
 	 * @throws IOException
 	 */
 	private static void clear(String path) throws IOException {
+		BufferedWriter bw = null;
+		String tempFile = "tmp.txt";
+
 		try {
-			PrintWriter writer = new PrintWriter(
-					new File(FileSystem.class.getClassLoader()
-							.getResource(path).getPath()));
-			writer.print("EMPTY");
-			writer.close();
+			FileWriter fw = new FileWriter(tempFile);
+			bw = new BufferedWriter(fw);
+			bw.write("EMPTY");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
+		} finally {
+			if (bw != null) {
+				bw.close();
+			}
 		}
+
+		File oldFile = new File(path);
+		oldFile.delete();
+
+		File newFile = new File("tmp.txt");
+		newFile.renameTo(oldFile);
 	}
 }

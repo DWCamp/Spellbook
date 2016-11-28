@@ -78,7 +78,7 @@ public class UserSpellWindow extends JFrame {
 		customSpells = new CustomSpellAdder();
 		
 		try {
-			Image image = new ImageIcon(UserSpellWindow.class.getClassLoader().getResource("main.PNG").getPath()).getImage();
+			Image image = new ImageIcon("Resources/main.PNG").getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();

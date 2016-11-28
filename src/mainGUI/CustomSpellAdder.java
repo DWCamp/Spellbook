@@ -53,8 +53,7 @@ public class CustomSpellAdder extends JFrame {
 		setContentPane(contentPane);
 		
 		try {
-			Image image = new ImageIcon(CustomSpellAdder.class.getClassLoader()
-					.getResource("custom.PNG").getPath()).getImage();
+			Image image = new ImageIcon("Resources/custom.PNG").getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();

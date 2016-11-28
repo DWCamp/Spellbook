@@ -60,8 +60,7 @@ public class SpellBrowser extends JFrame {
 		uswParent = parent;
 		
 		try {
-			Image image = new ImageIcon(this.getClass().getClassLoader()
-					.getResource("browser.PNG").getPath()).getImage();
+			Image image = new ImageIcon("Resources/browser.PNG").getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();

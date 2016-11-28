@@ -43,8 +43,7 @@ public class SettingsWindow extends JFrame {
 		contentPane.setLayout(null);
 		
 		try {
-			Image image = new ImageIcon(SettingsWindow.class.getClassLoader()
-					.getResource("settings.PNG").getPath()).getImage();
+			Image image = new ImageIcon("Resources/settings.PNG").getImage();
 			setIconImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();
