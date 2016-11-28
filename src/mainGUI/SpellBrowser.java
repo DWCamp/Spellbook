@@ -2,6 +2,8 @@ package mainGUI;
 
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
+
 import javax.swing.ImageIcon;
 
 import javax.swing.JFrame;
@@ -39,19 +41,17 @@ public class SpellBrowser extends JFrame {
 	private JComboBox<Object> comboBoxSchools;
 	private JPanel panelSpells;
 	private UserSpellWindow uswParent;
+	
+	private static SpellBrowser self;
 
 	/**
 	 * Create the frame.
 	 */
 	public SpellBrowser(UserSpellWindow parent) {
-		double scaleFactor = Settings.getResizeFactor();
 		setResizable(false);
 		setTitle("Add spell");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds((int)(100 * scaleFactor),
-				(int)(100 * scaleFactor),
-				(int)(384 * scaleFactor),
-				(int)(413 * scaleFactor) - (int)(20 * (scaleFactor - 1)));
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,11 +67,6 @@ public class SpellBrowser extends JFrame {
 		}
         
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds((int)(10 * scaleFactor),
-				(int)(69 * scaleFactor),
-				(int)(358 * scaleFactor),
-				(int)(304 * scaleFactor));
-		scrollPane.getVerticalScrollBar().setUnitIncrement((int)(17 * scaleFactor) + 6);
 		contentPane.add(scrollPane);
 		
 		panelSpells = new JPanel();
@@ -79,7 +74,6 @@ public class SpellBrowser extends JFrame {
 		panelSpells.setLayout(new BoxLayout(panelSpells, BoxLayout.Y_AXIS));
 		
 		searchField = new JTextField();
-		searchField.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		searchField.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void changedUpdate(DocumentEvent arg0) {
@@ -95,19 +89,10 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		searchField.setBounds((int)(51 * scaleFactor),
-				(int)(11 * scaleFactor),
-				(int)(197 * scaleFactor),
-				(int)(20 * scaleFactor));
 		contentPane.add(searchField);
 		searchField.setColumns(10);
 		
 		lblSearch = new JLabel("Search:");
-		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		lblSearch.setBounds((int)(10 * scaleFactor),
-				(int)(14 * scaleFactor),
-				(int)(46 * scaleFactor),
-				(int)(14 * scaleFactor));
 		contentPane.add(lblSearch);
 		
 		String[] levelOptions = {"All Levels", "Cantrips", "Level 1", 
@@ -119,11 +104,6 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxLevels.setBounds((int)(12 * scaleFactor),
-				(int)(38 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
-		comboBoxLevels.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxLevels);
 		
 		String[] searchOptions = {"Name", "Description"};
@@ -133,11 +113,6 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxOption.setBounds((int)(258 * scaleFactor),
-				(int)(11 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
-		comboBoxOption.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxOption);
 		
 		ArrayList<String> classOptions = new ArrayList<String>();
@@ -152,11 +127,6 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxClasses.setBounds((int)(134 * scaleFactor),
-				(int)(38 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
-		comboBoxClasses.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxClasses);
 		
 		comboBoxSchools = new JComboBox<Object>(new String[]
@@ -167,14 +137,13 @@ public class SpellBrowser extends JFrame {
 				refresh();
 			}
 		});
-		comboBoxSchools.setBounds((int)(256 * scaleFactor),
-				(int)(38 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
-		comboBoxSchools.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		contentPane.add(comboBoxSchools);
 		
+		self = this;
 		refresh();
+		
+		Point USW = UserSpellWindow.getWindowLocation();
+		setLocation(USW.x + 30, USW.y + 30);
 	}
 	
 	/**
@@ -218,6 +187,7 @@ public class SpellBrowser extends JFrame {
 				(int)(69 * scaleFactor),
 				(int)(358 * scaleFactor),
 				(int)(304 * scaleFactor));
+		scrollPane.getVerticalScrollBar().setUnitIncrement((int)(scaleFactor*(24.0/5.0) + 2));
 		
 		searchField.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		searchField.setBounds((int)(51 * scaleFactor),
@@ -257,6 +227,13 @@ public class SpellBrowser extends JFrame {
 		
 		repaint();
 		revalidate();
+	}
+	
+	/**
+	 * Resets the state of the window
+	 */
+	public static void windowRefresh(){
+		self.refresh();
 	}
 	
 	/**

@@ -16,6 +16,7 @@ import userData.Settings;
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ContainerAdapter;
@@ -33,20 +34,18 @@ public class CustomSpellAdder extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPanel panelSpells;
+	
+	private JButton btnAddSpell;
+	private JButton btnSave;
 
 	/**
 	 * Create the frame.
 	 */
 	public CustomSpellAdder() {
-		double scaleFactor = Settings.getResizeFactor();
-		//double scaleFactor = 1;
-		
 		setResizable(false);
 		setTitle("Custom Spells");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 
-				(int)(331 * scaleFactor), 
-				(int)(300 * scaleFactor));
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 5));
@@ -89,8 +88,7 @@ public class CustomSpellAdder extends JFrame {
 		contentPane.add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnAddSpell = new JButton("Add Spell");
-		btnAddSpell.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		btnAddSpell = new JButton("Add Spell");
 		panel.add(btnAddSpell, BorderLayout.EAST);
 		btnAddSpell.addActionListener(new ActionListener() {
 			@Override
@@ -101,15 +99,33 @@ public class CustomSpellAdder extends JFrame {
 			}
 		});
 		
-		JButton btnNewButton = new JButton("Save");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		panel.add(btnNewButton, BorderLayout.WEST);
-		btnNewButton.addActionListener(new ActionListener() {
+		btnSave = new JButton("Save");
+		panel.add(btnSave, BorderLayout.WEST);
+		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				saveSpells();
 			}
 		});
 
+		refresh();
+		
+		Point USW = UserSpellWindow.getWindowLocation();
+		setLocation(USW.x + 30, USW.y + 30);
+	}
+	
+	/**
+	 * Refreshes the scaling and content of the window
+	 */
+	public void refresh() {
+		double scaleFactor = Settings.getResizeFactor();
+		
+		setBounds(getX(), getY(), 
+				(int)(331 * scaleFactor), 
+				(int)(300 * scaleFactor));
+		
+		btnAddSpell.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		
+		btnSave.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 	}
 	
 	/**
@@ -142,6 +158,7 @@ public class CustomSpellAdder extends JFrame {
 	public void reset()
 	{
 		panelSpells.removeAll();
+		refresh();
 		
 		for (Spell spell : Spell_List.getCustomSpells())
 		{

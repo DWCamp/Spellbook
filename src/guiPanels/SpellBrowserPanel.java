@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SpellBrowserPanel extends JPanel {
@@ -31,6 +32,17 @@ public class SpellBrowserPanel extends JPanel {
 		JLabel lblName = new JLabel("   " + spell.getName());
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		add(lblName, BorderLayout.CENTER);
+		
+		if(Settings.getSBColor())
+		{
+			int color = 255 - (spell.getLevel() * 28);
+			setBackground(new Color(color, color, color));
+			if (color < 100)
+			{
+				lblName.setForeground(Color.WHITE);
+			}
+			
+		}
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.EAST);
