@@ -1,4 +1,4 @@
-package mainGUI;
+package gui;
 
 import java.awt.BorderLayout;
 
@@ -11,7 +11,7 @@ import files.Spell_List;
 import guiPanels.CustomSpellPanel;
 import helperClasses.SortedSpellList;
 import helperClasses.Spell;
-import userData.Settings;
+import gui.Settings;
 
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
@@ -29,6 +29,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 
+/**
+ * A window for creating custom spells 
+ * @author Daniel Campman
+ */
 public class CustomSpellAdder extends JFrame {
 
 	private static final long serialVersionUID = 1L;

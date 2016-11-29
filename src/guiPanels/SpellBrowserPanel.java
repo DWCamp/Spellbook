@@ -8,10 +8,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 
 import alerts.WordWrapPopUp;
+import files.CharacterItems;
 import helperClasses.Spell;
-import mainGUI.UserSpellWindow;
-import userData.CharacterItems;
-import userData.Settings;
+import gui.UserSpellWindow;
+import gui.Settings;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,6 +19,11 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * The panel which displays a given spell in the 
+ * scroll pane of the SpellBrowser
+ * @author Daniel Campman
+ */
 @SuppressWarnings("serial")
 public class SpellBrowserPanel extends JPanel {
 	

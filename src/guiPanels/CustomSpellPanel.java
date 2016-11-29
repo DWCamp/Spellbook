@@ -4,7 +4,7 @@ import javax.swing.JTextField;
 
 import alerts.DescriptionPopUp;
 import helperClasses.Spell;
-import userData.Settings;
+import gui.Settings;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;

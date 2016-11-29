@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import guiPanels.EditorSpellPanel;
-import userData.Settings;
+import gui.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;

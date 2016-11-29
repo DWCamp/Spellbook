@@ -1,16 +1,16 @@
-package secondaryGUI;
+package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import userData.Settings;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Image;
@@ -18,14 +18,19 @@ import java.awt.Point;
 
 import javax.swing.border.LineBorder;
 
-import mainGUI.UserSpellWindow;
+import files.FileSystem;
 
 import java.awt.Color;
 import javax.swing.JCheckBox;
 import java.awt.GridLayout;
 
+/**
+ * The window for accessing and modifying 
+ * the user's settings
+ * @author Daniel Campman
+ */
 @SuppressWarnings("serial")
-public class SettingsWindow extends JFrame {
+public class Settings extends JFrame {
 
 	private JPanel contentPane;
 	private JComboBox<Object> comboBoxCentering;
@@ -39,11 +44,31 @@ public class SettingsWindow extends JFrame {
 	private JButton btnSave;
 	private JButton btnSaveQuit;
 	private JLabel lblWindowPositioningSetting;
+	
+	/**
+	 * The mainwindow's behavior of centering (see getter)
+	 */
+	private static int centerFrames;
+	/**
+	 * Automatic window scaling based on screen resolution
+	 */
+	private static double scaleFactor;
+	/**
+	 * User determined window scaling
+	 */
+	private static double scaleAdjustment;
+	/**
+	 * Whether spell browser panels should be colored to reflect spell level
+	 */
+	private static boolean SBColor;
+	
+	private static ArrayList<ActionListener> resizeObservers = 
+			new ArrayList<ActionListener>();
 
 	/**
 	 * Create the frame.
 	 */
-	public SettingsWindow() {
+	public Settings() {
 		setResizable(false);
 		setTitle("Settings");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -90,10 +115,10 @@ public class SettingsWindow extends JFrame {
 		btnSave = new JButton("Save Preferences");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Settings.setCenterFrames(comboBoxCentering.getSelectedIndex());
-				Settings.setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
-				Settings.setSBColor(chckbxColor.isSelected());
-				Settings.savePreferences();
+				centerFrames = comboBoxCentering.getSelectedIndex();
+				scaleAdjustment = 0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25);
+				SBColor = chckbxColor.isSelected();
+				savePreferences();
 				refresh();
 			}
 		});
@@ -102,10 +127,10 @@ public class SettingsWindow extends JFrame {
 		btnSaveQuit = new JButton("Save & Close");
 		btnSaveQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Settings.setCenterFrames(comboBoxCentering.getSelectedIndex());
-				Settings.setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
-				Settings.setSBColor(chckbxColor.isSelected());
-				Settings.savePreferences();
+				centerFrames = comboBoxCentering.getSelectedIndex();
+				scaleAdjustment = 0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25);
+				SBColor = chckbxColor.isSelected();
+				savePreferences();
 				setVisible(false);
 			}
 		});
@@ -121,12 +146,12 @@ public class SettingsWindow extends JFrame {
 	 */
 	public void refresh(){
 		//Reset Values
-		comboBoxCentering.setSelectedIndex(Settings.getCenterFrames());
-		comboBoxSize.setSelectedIndex((int)(Settings.getScaleAdjustment()*4) - 3);
-		chckbxColor.setSelected(Settings.getSBColor());
+		comboBoxCentering.setSelectedIndex(centerFrames);
+		comboBoxSize.setSelectedIndex((int)(scaleAdjustment*4) - 3);
+		chckbxColor.setSelected(SBColor);
 		
 		//Get scale factor
-		double scaleFactor = Settings.getResizeFactor();
+		double scaleFactor = getResizeFactor();
 		
 		//Resize all components
 		setBounds(getX(), getY(),
@@ -181,5 +206,130 @@ public class SettingsWindow extends JFrame {
 				(int)(180*scaleFactor),
 				(int)(144*scaleFactor),
 				(int)(23*scaleFactor));
+	}
+	
+	/**
+	 * Loads the preferences from file
+	 */
+	public static void loadPreferences()
+	{
+		try {
+			String[] preferences = FileSystem.loadPreferences();
+			centerFrames = Integer.parseInt(preferences[0]);
+			scaleFactor = SpellBookLauncher.getScale();
+			scaleAdjustment = Double.parseDouble(preferences[1]);
+			SBColor = preferences[2].equals("true");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Saves the user's preferences to file
+	 */
+	public static void savePreferences()
+	{
+		FileSystem.saveUserPref();
+	}
+	
+	/**
+	 * The mainwindow's behavior of centering 
+	 * child frames upon summoning
+	 * 0 - No centering
+	 * 1 - Only center when setting visible
+	 * 2 - Center whenever frame is requested
+	 * @return centerFramesOnCall setting
+	 */
+	public static int getCenterFrames()
+	{
+		return centerFrames;
+	}
+	
+	/**
+	 * The mainwindow's behavior of centering 
+	 * child frames upon summoning
+	 * 0 - No centering
+	 * 1 - Only center when setting visible
+	 * 2 - Center whenever frame is requested
+	 * @param setting
+	 */
+	public static void setCenterFrames(int setting)
+	{
+		centerFrames = setting;
+	}
+	
+	/**
+	 * Returns the amount the window should scale based on 
+	 * the screen resolution and user preference
+	 * @return double resize value
+	 */
+	public static double getResizeFactor(){
+		return scaleFactor * scaleAdjustment;
+	}
+	
+	/**
+	 * Returns the size multiplier the user set for their windows
+	 * @return
+	 */
+	public static double getScaleAdjustment(){
+		return scaleAdjustment;
+	}
+	
+	/**
+	 * Sets the scale adjustment value
+	 * @param adjustment
+	 */
+	public static void setScaleAdjustment(double adjustment)
+	{
+		if (adjustment != scaleAdjustment){
+			scaleAdjustment = adjustment;
+			notifyResizeObservers();
+		}
+	}
+	
+	/**
+	 * Sets whether SpellBrowser panels should be colored 
+	 * to reflect the spell's level
+	 * @param colorPanels {@code boolean}
+	 */
+	public static void setSBColor(boolean colorPanels)
+	{
+		if (SBColor != colorPanels) {
+			SBColor = colorPanels;
+			SpellBrowser.windowRefresh();
+		}
+	}
+	
+	/**
+	 * Returns whether SpellBrowser panels should be colored 
+	 * to reflect the spell's level
+	 * @return {@code boolean} Returns <em>true</em> if the 
+	 * coloration is turned on
+	 */
+	public static boolean getSBColor()
+	{
+		return SBColor;
+	}
+	
+	/**
+	 * Adds a actionListener to detect when the window 
+	 * scale value is changed
+	 * @param aL ActionListener
+	 */
+	public static void addResizeListener(ActionListener aL)
+	{
+		resizeObservers.add(aL);
+	}
+	
+	/**
+	 * Sends a message out to all action listeners
+	 */
+	private static void notifyResizeObservers()
+	{
+		for (ActionListener aL : resizeObservers)
+		{
+			aL.actionPerformed(null);
+		}
 	}
 }

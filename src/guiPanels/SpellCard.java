@@ -8,12 +8,12 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import alerts.WordWrapPopUp;
+import files.CharacterItems;
 import files.FileSystem;
 import files.Spell_List;
+import gui.UserSpellWindow;
 import helperClasses.Spell;
-import mainGUI.UserSpellWindow;
-import userData.CharacterItems;
-import userData.Settings;
+import gui.Settings;
 
 import javax.swing.JTextArea;
 import java.awt.Color;

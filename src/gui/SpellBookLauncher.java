@@ -1,4 +1,4 @@
-package mainGUI;
+package gui;
 
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -8,10 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import files.CharacterItems;
 import files.Class_List;
 import files.Spell_List;
-import userData.CharacterItems;
-import userData.Settings;
+import gui.Settings;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

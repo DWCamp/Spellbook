@@ -1,4 +1,4 @@
-package mainGUI;
+package gui;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -7,13 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import files.CharacterItems;
 import files.FileSystem;
 import files.Spell_List;
 import guiPanels.SpellCard;
 import helperClasses.Spell;
-import secondaryGUI.SettingsWindow;
-import userData.CharacterItems;
-import userData.Settings;
+import gui.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -38,6 +37,12 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 
+/**
+ * The main window of the application. Displays saved spells and 
+ * has a menu for the accessing the functions and menus of the 
+ * application.
+ * @author Daniel Campman
+ */
 @SuppressWarnings("serial")
 public class UserSpellWindow extends JFrame {
 
@@ -48,7 +53,7 @@ public class UserSpellWindow extends JFrame {
 	
 	private static UserSpellWindow window;
 	private static SpellBrowser browser;
-	private static SettingsWindow settings;
+	private static Settings settings;
 	private static CustomSpellAdder customSpells;
 	
 	private JMenuItem mntmPreferences;
@@ -80,7 +85,7 @@ public class UserSpellWindow extends JFrame {
 		});
 		
 		browser = new SpellBrowser(this);
-		settings = new SettingsWindow();
+		settings = new Settings();
 		customSpells = new CustomSpellAdder();
 		
 		try {

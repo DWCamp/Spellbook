@@ -1,4 +1,4 @@
-package mainGUI;
+package gui;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -16,7 +16,7 @@ import files.Class_List;
 import files.Spell_List;
 import guiPanels.SpellBrowserPanel;
 import helperClasses.Spell;
-import userData.Settings;
+import gui.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -29,8 +29,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 
 /**
- * The Window for browsing the master spell list. This window is where the user can look up 
- * details of spells and add them to their own spell list
+ * The Window for browsing the master spell list. This window is 
+ * where the user can look up details of spells and add them to 
+ * their own spell list
  * @author Daniel
  *
  */

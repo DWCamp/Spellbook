@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import helperClasses.Spell;
-import userData.CharacterItems;
-import userData.Settings;
+import gui.Settings;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,6 +12,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+/**
+ * The class for storing and retrieving data in save files. 
+ * All file loading and saving methods are in this class
+ * @author Daniel Campman
+ */
 public class FileSystem {
 
 	static String prefPath = "Resources/Preferences.txt";

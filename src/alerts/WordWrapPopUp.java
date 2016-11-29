@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
-import userData.Settings;
+import gui.Settings;
 
 import java.awt.Font;
 import java.awt.Insets;
