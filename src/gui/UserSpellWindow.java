@@ -36,6 +36,7 @@ import javax.swing.JMenu;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import java.awt.Color;
 
 /**
  * The main window of the application. Displays saved spells and 
@@ -100,6 +101,7 @@ public class UserSpellWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(230,230,230));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -122,7 +124,7 @@ public class UserSpellWindow extends JFrame {
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds((int)(10 * scaleFactor),
-				(int)(30 * scaleFactor),
+				(int)(35 * scaleFactor),
 				(int)(615 * scaleFactor),
 				(int)(355 * scaleFactor) - (int)(30 * (scaleFactor - 1)));
 		contentPane.add(tabbedPane);
@@ -213,6 +215,8 @@ public class UserSpellWindow extends JFrame {
 		panelAllSpells.add(lblClickbrowseSpells);
 		
 		menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(100, 0, 0));
+		menuBar.setForeground(new Color(255,255,255));
 		menuBar.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		menuBar.setBorderPainted(false);
 		menuBar.setBounds(0, 0, 
@@ -221,6 +225,7 @@ public class UserSpellWindow extends JFrame {
 		contentPane.add(menuBar);
 		
 		JMenu mnMenu = new JMenu("Menu");
+		mnMenu.setBackground(new Color(128, 0, 0));
 		mnMenu.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		menuBar.add(mnMenu);
 		
@@ -238,11 +243,11 @@ public class UserSpellWindow extends JFrame {
 		mntmBrowseSpells.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
 		mnMenu.add(mntmBrowseSpells);
 		
-		JMenuItem mntmAddSpell = new JMenuItem("Add Custom Spell");
-		mntmAddSpell.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		mntmAddSpell.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
-		mnMenu.add(mntmAddSpell);
-		mntmAddSpell.addActionListener(new ActionListener() {
+		JMenuItem mntmCustomSpells = new JMenuItem("Custom Spells");
+		mntmCustomSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mntmCustomSpells.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK));
+		mnMenu.add(mntmCustomSpells);
+		mntmCustomSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!customSpells.isVisible()) {
 					customSpells.reset();
@@ -274,20 +279,6 @@ public class UserSpellWindow extends JFrame {
 		});
 		mntmClearSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		mnMenu.add(mntmClearSpells);
-		
-		mntmPreferences = new JMenuItem("Settings");
-		mntmPreferences.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
-		mnMenu.add(mntmPreferences);
-		mntmPreferences.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!settings.isVisible()) {
-					settings.refresh();
-					settings.setVisible(true);
-				}
-				settings.toFront();
-			}
-		});
 		
 		JMenu mnWindows = new JMenu("Windows");
 		mnWindows.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
@@ -337,6 +328,24 @@ public class UserSpellWindow extends JFrame {
 		mnWindows.add(mntmHideAll);
 		mntmShowAll.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		mnWindows.add(mntmShowAll);
+		
+		JMenu mnHelp = new JMenu("Help");
+		mnHelp.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		menuBar.add(mnHelp);
+		
+		mntmPreferences = new JMenuItem("Settings");
+		mnHelp.add(mntmPreferences);
+		mntmPreferences.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+		mntmPreferences.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!settings.isVisible()) {
+					settings.refresh();
+					settings.setVisible(true);
+				}
+				settings.toFront();
+			}
+		});
 	
 		for (JPanel panel : spellPanels) {
 			panel.setLayout(new GridLayout(1, 2, 15, 0));

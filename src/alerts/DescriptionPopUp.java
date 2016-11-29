@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeListener;
 
 import guiPanels.EditorSpellPanel;
 import gui.Settings;
@@ -16,6 +17,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.ArrayList;
 
 /**
  * A DescriptionPopUp is a window which contains an editable textfield. 
@@ -30,19 +32,8 @@ public class DescriptionPopUp extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private final JTextArea textArea;
 	private EditorSpellPanel parent;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			DescriptionPopUp dialog = new DescriptionPopUp(null);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
+	private ArrayList<ChangeListener> cLList = new ArrayList<ChangeListener>();
 
 	/**
 	 * Create the dialog.
@@ -85,6 +76,7 @@ public class DescriptionPopUp extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				//update parent description
 				parent.updateDescription(textArea.getText());
+				notifyObservers();
 				//Closes this DescriptionPopUp
 				disposeThis();
 			}
@@ -119,5 +111,21 @@ public class DescriptionPopUp extends JDialog {
 	public void refresh() {
 		textArea.setText(parent.getDescription());
 	}
-
+	
+	/**
+	 * Adds a listener to listen for changes in 
+	 * @param cL
+	 */
+	public void addChangeListener(ChangeListener cL){
+		cLList.add(cL);
+	}
+	
+	/**
+	 * Alerts observers of a change in the description
+	 */
+	private void notifyObservers(){
+		for(ChangeListener cL : cLList) {
+			cL.stateChanged(null);
+		}
+	}
 }

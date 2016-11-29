@@ -116,7 +116,7 @@ public class Settings extends JFrame {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				centerFrames = comboBoxCentering.getSelectedIndex();
-				scaleAdjustment = 0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25);
+				setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
 				SBColor = chckbxColor.isSelected();
 				savePreferences();
 				refresh();
@@ -128,7 +128,7 @@ public class Settings extends JFrame {
 		btnSaveQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				centerFrames = comboBoxCentering.getSelectedIndex();
-				scaleAdjustment = 0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25);
+				setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
 				SBColor = chckbxColor.isSelected();
 				savePreferences();
 				setVisible(false);

@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -28,6 +29,8 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * A window for creating custom spells 
@@ -41,6 +44,8 @@ public class CustomSpellAdder extends JFrame {
 	
 	private JButton btnAddSpell;
 	private JButton btnSave;
+	
+	private boolean deleted;
 
 	/**
 	 * Create the frame.
@@ -49,6 +54,8 @@ public class CustomSpellAdder extends JFrame {
 		setResizable(false);
 		setTitle("Custom Spells");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		
+		deleted = false;
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,7 +82,7 @@ public class CustomSpellAdder extends JFrame {
 			public void componentRemoved(ContainerEvent e) {
 				repaint();
 				revalidate();
-				saveSpells();
+				deleted = true;
 			}
 		});
 		
@@ -108,10 +115,40 @@ public class CustomSpellAdder extends JFrame {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				saveSpells();
+				for (Component component : panelSpells.getComponents()) {
+					CustomSpellPanel spell = (CustomSpellPanel)(component);
+					spell.setSaved(true);
+				}
 			}
 		});
 
 		refresh();
+		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				boolean unsaved = false;
+				for (Component component : panelSpells.getComponents()) {
+					CustomSpellPanel spell = (CustomSpellPanel)(component);
+					if (!spell.isSaved())
+					{
+						unsaved = true;
+					}
+				}
+				if (unsaved || deleted)
+				{
+					int remove = JOptionPane.showConfirmDialog(null, 
+							"You have made changes to this spell list which "
+							+ "have not been saved. "
+							+ "Would you like to save them now?", 
+							"Save New Spells", JOptionPane.YES_NO_OPTION);
+					if (remove == JOptionPane.YES_OPTION)
+					{
+						saveSpells();
+					}
+				}
+			}
+		});
 		
 		Point USW = UserSpellWindow.getWindowLocation();
 		setLocation(USW.x + 30, USW.y + 30);
@@ -136,24 +173,27 @@ public class CustomSpellAdder extends JFrame {
 	 * Saves the spells in the window to file
 	 */
 	public void saveSpells() {
-		ArrayList<SortedSpellList> sortedSpellList = new ArrayList<SortedSpellList>();
+		ArrayList<SortedSpellList> sortedSpellArrayList = new ArrayList<SortedSpellList>();
 		for(int i = 0; i < 10; i++)
 		{
-			sortedSpellList.add(new SortedSpellList());
+			sortedSpellArrayList.add(new SortedSpellList());
 		}
 		
 		for(Component element : panelSpells.getComponents())
 		{
 			Spell spell = ((CustomSpellPanel)element).toSpell();
-			sortedSpellList.get(spell.getLevel()).add(spell);
+			sortedSpellArrayList.get(spell.getLevel()).add(spell);
 		}
 		
 		ArrayList<ArrayList<Spell>> spellList = new ArrayList<ArrayList<Spell>>();
 		for(int i = 0; i < 10; i++)
 		{
-			spellList.add(sortedSpellList.get(i).toArrayList());
+			spellList.add(sortedSpellArrayList.get(i).toArrayList());
 		}
 		FileSystem.saveCustomSpellList(spellList);
+		Spell_List.updateSpells();
+		SpellBrowser.windowRefresh();
+		deleted = false;
 	}
 	
 	/**
@@ -162,6 +202,7 @@ public class CustomSpellAdder extends JFrame {
 	public void reset()
 	{
 		panelSpells.removeAll();
+		deleted = false;
 		refresh();
 		
 		for (Spell spell : Spell_List.getCustomSpells())

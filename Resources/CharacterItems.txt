@@ -1,1 +1,7 @@
+U-Acid Splash
+P-Alarm
+P-Alter Self
+P-Animal Friendship
+P-Animal Messenger
+U-Animal Shapes
 <ENDSPELLS>

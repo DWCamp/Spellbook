@@ -120,6 +120,17 @@ public class Spell_List {
 	}
 	
 	/**
+	 * Updates the spell list
+	 */
+	public static void updateSpells(){
+		listList.clear();
+		customSpells.clear();
+		allSpells.clear();
+		load();
+		loadCustomSpells();
+	}
+	
+	/**
 	 * Returns a String ArrayList of all the spells of a given level <br>
 	 * Cantrips are considered "level 0"<br>
 	 * For all spells, pass -1
