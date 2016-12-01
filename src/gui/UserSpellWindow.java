@@ -29,6 +29,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.awt.Frame;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -233,10 +235,18 @@ public class UserSpellWindow extends JFrame {
 		mntmBrowseSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
 		mntmBrowseSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int CWsetting = Settings.getCenterFrames();
 				if (!browser.isVisible()) {
 					browser.reset();
 					browser.setVisible(true);
+					if (CWsetting == 1) {
+						browser.setLocation(new Point(getX() + 30, getY() + 30));
+					}
 				}
+				if (CWsetting == 2) {
+					browser.setLocation(new Point(getX() + 30, getY() + 30));
+				}
+				browser.setState(Frame.NORMAL);
 				browser.toFront();
 			}
 		});
@@ -249,10 +259,18 @@ public class UserSpellWindow extends JFrame {
 		mnSpells.add(mntmCustomSpells);
 		mntmCustomSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int CWsetting = Settings.getCenterFrames();
 				if (!customSpells.isVisible()) {
 					customSpells.reset();
 					customSpells.setVisible(true);
+					if (CWsetting == 1) {
+						customSpells.setLocation(new Point(getX() + 30, getY() + 30));
+					}
 				}
+				if (CWsetting == 2) {
+					customSpells.setLocation(new Point(getX() + 30, getY() + 30));
+				}
+				customSpells.setState(Frame.NORMAL);
 				customSpells.toFront();
 			}
 		});
@@ -308,10 +326,20 @@ public class UserSpellWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				browser.setVisible(true);
 				browser.toFront();
+				browser.setState(Frame.NORMAL);
 				customSpells.setVisible(true);
 				customSpells.toFront();
+				customSpells.setState(Frame.NORMAL);
 				settings.setVisible(true);
 				settings.toFront();
+				settings.setState(Frame.NORMAL);
+				
+				if (Settings.getCenterFrames() > 0) {
+					browser.setLocation(new Point(getX() + 30, getY() + 30));
+					customSpells.setLocation(new Point(getX() + 30, getY() + 30));
+					settings.setLocation(new Point(getX() + 30, getY() + 30));
+				}
+				
 			}
 		});
 		
@@ -339,10 +367,18 @@ public class UserSpellWindow extends JFrame {
 		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
 		mntmPreferences.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int CWsetting = Settings.getCenterFrames();
 				if (!settings.isVisible()) {
 					settings.refresh();
 					settings.setVisible(true);
+					if (CWsetting == 1) {
+						settings.setLocation(new Point(getX() + 30, getY() + 30));
+					}
 				}
+				if (CWsetting == 2) {
+					settings.setLocation(new Point(getX() + 30, getY() + 30));
+				}
+				settings.setState(Frame.NORMAL);
 				settings.toFront();
 			}
 		});

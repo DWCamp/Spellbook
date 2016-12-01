@@ -235,11 +235,11 @@ public class Settings extends JFrame {
 	
 	/**
 	 * The mainwindow's behavior of centering 
-	 * child frames upon summoning
-	 * 0 - No centering
-	 * 1 - Only center when setting visible
-	 * 2 - Center whenever frame is requested
-	 * @return centerFramesOnCall setting
+	 * child frames upon summoning <br>
+	 * 0 - No centering <br>
+	 * 1 - Only center when setting visible <br>
+	 * 2 - Center whenever frame is requested <br>
+	 * @return centerFramesOnCall setting 
 	 */
 	public static int getCenterFrames()
 	{
