@@ -4,6 +4,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import alerts.ClassPicker;
 import alerts.DescriptionPopUp;
 import helperClasses.Spell;
 import gui.Settings;
@@ -139,6 +140,10 @@ public class CustomSpellPanel extends EditorSpellPanel {
 		comboBoxSchool.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
 		panelFields.add(comboBoxSchool);
 
+		JPanel classPickerPanel = new JPanel();
+		panelFields.add(classPickerPanel);
+		classPickerPanel.setLayout(new BorderLayout(0, 0));
+		
 		String classes = "";
 		for (String className : spell.getClasses()) {
 			classes += "," + className;
@@ -150,7 +155,33 @@ public class CustomSpellPanel extends EditorSpellPanel {
 		}
 		textFieldClasses.setColumns(10);
 		textFieldClasses.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
-		panelFields.add(textFieldClasses);
+		classPickerPanel.add(textFieldClasses, BorderLayout.CENTER);
+		textFieldClasses.setEditable(false);
+		
+		JButton addClass = new JButton("+");
+		classPickerPanel.add(addClass, BorderLayout.EAST);
+		addClass.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ClassPicker picker;
+				if (textFieldClasses.getText().equals("")) {
+					String[] emptyArray = {};
+					picker = new ClassPicker(emptyArray);
+				}
+				else {
+					picker = new ClassPicker(textFieldClasses.getText().split(", "));
+				}
+				picker.setVisible(true);
+				picker.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						textFieldClasses.setText(picker
+								.getSelectedClasses().contentsToString());
+						saved = false;
+					}	
+				});
+			}
+		});
 
 		textFieldTime = new JTextField(spell.getCastingTime());
 		textFieldTime.addKeyListener(new KeyAdapter() {
@@ -284,6 +315,36 @@ public class CustomSpellPanel extends EditorSpellPanel {
 		return new Spell(textFieldName.getText(), textFieldClasses.getText().split(","), type, level,
 				textFieldTime.getText(), textFieldRange.getText(), textFieldComp.getText(), textFieldDuration.getText(),
 				description);
+	}
+	
+	/**
+	 * Updates the size of the components
+	 */
+	public void refresh()
+	{
+		double scaleFactor = Settings.getResizeFactor();
+		
+		btnDetails.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		btnDelete.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		
+		textFieldDuration.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		textFieldComp.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		textFieldRange.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		textFieldTime.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		textFieldClasses.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		textFieldName.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		
+		comboBoxSchool.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		comboBoxLevel.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		
+		lblComponents.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		lblDuration.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		lblRange.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		lblCastingTime.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		lblClasses.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		lblSchool.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		lblName.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
+		lblLevel.setFont(new Font("Tahoma", Font.PLAIN, (int) (11 * scaleFactor)));
 	}
 
 }

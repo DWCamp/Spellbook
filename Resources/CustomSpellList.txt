@@ -1,3 +1,12 @@
+<NAME>Lauren's hiccups
+<CLAS>Bard, Druid, Rogue, Wizard
+<TYPE>Abjuration cantrip
+<CATM>45 minutes
+<RANG>5 feet
+<COMP>Literally nothing
+<DURA>20 seconds
+
+<END>
 <LEVEL1>
 <LEVEL2>
 <LEVEL3>

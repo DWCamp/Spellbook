@@ -224,10 +224,10 @@ public class UserSpellWindow extends JFrame {
 				(int)(24 * scaleFactor));
 		contentPane.add(menuBar);
 		
-		JMenu mnMenu = new JMenu("Menu");
-		mnMenu.setBackground(new Color(128, 0, 0));
-		mnMenu.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		menuBar.add(mnMenu);
+		JMenu mnSpells = new JMenu("Spells");
+		mnSpells.setBackground(new Color(128, 0, 0));
+		mnSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
+		menuBar.add(mnSpells);
 		
 		JMenuItem mntmBrowseSpells = new JMenuItem("Browse Spells");
 		mntmBrowseSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
@@ -241,12 +241,12 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		mntmBrowseSpells.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
-		mnMenu.add(mntmBrowseSpells);
+		mnSpells.add(mntmBrowseSpells);
 		
 		JMenuItem mntmCustomSpells = new JMenuItem("Custom Spells");
 		mntmCustomSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		mntmCustomSpells.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK));
-		mnMenu.add(mntmCustomSpells);
+		mntmCustomSpells.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		mnSpells.add(mntmCustomSpells);
 		mntmCustomSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!customSpells.isVisible()) {
@@ -278,7 +278,7 @@ public class UserSpellWindow extends JFrame {
 			}
 		});
 		mntmClearSpells.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		mnMenu.add(mntmClearSpells);
+		mnSpells.add(mntmClearSpells);
 		
 		JMenu mnWindows = new JMenu("Windows");
 		mnWindows.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
@@ -336,7 +336,7 @@ public class UserSpellWindow extends JFrame {
 		mntmPreferences = new JMenuItem("Settings");
 		mnHelp.add(mntmPreferences);
 		mntmPreferences.setFont(new Font("Segoe UI", Font.PLAIN, (int)(11 * scaleFactor)));
-		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+		mntmPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
 		mntmPreferences.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!settings.isVisible()) {

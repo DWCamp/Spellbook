@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import alerts.ClassPicker;
 import files.FileSystem;
 import files.Spell_List;
 import guiPanels.CustomSpellPanel;
@@ -46,6 +47,7 @@ public class CustomSpellAdder extends JFrame {
 	private JButton btnSave;
 	
 	private boolean deleted;
+	private static ClassPicker pickerWindow;
 
 	/**
 	 * Create the frame.
@@ -56,6 +58,7 @@ public class CustomSpellAdder extends JFrame {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		deleted = false;
+		pickerWindow = null;
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -95,12 +98,12 @@ public class CustomSpellAdder extends JFrame {
 		Spell blankSpell = new Spell("", blank, 
 				"", 0, "", "", "", "", "");
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.SOUTH);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel panelButtons = new JPanel();
+		contentPane.add(panelButtons, BorderLayout.SOUTH);
+		panelButtons.setLayout(new BorderLayout(0, 0));
 		
 		btnAddSpell = new JButton("Add Spell");
-		panel.add(btnAddSpell, BorderLayout.EAST);
+		panelButtons.add(btnAddSpell, BorderLayout.WEST);
 		btnAddSpell.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -111,7 +114,7 @@ public class CustomSpellAdder extends JFrame {
 		});
 		
 		btnSave = new JButton("Save");
-		panel.add(btnSave, BorderLayout.WEST);
+		panelButtons.add(btnSave, BorderLayout.EAST);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				saveSpells();
@@ -130,23 +133,24 @@ public class CustomSpellAdder extends JFrame {
 				boolean unsaved = false;
 				for (Component component : panelSpells.getComponents()) {
 					CustomSpellPanel spell = (CustomSpellPanel)(component);
-					if (!spell.isSaved())
-					{
+					if (!spell.isSaved()) {
 						unsaved = true;
 					}
 				}
-				if (unsaved || deleted)
-				{
+				if (unsaved || deleted) {
 					int remove = JOptionPane.showConfirmDialog(null, 
 							"You have made changes to this spell list which "
 							+ "have not been saved. "
 							+ "Would you like to save them now?", 
 							"Save New Spells", JOptionPane.YES_NO_OPTION);
-					if (remove == JOptionPane.YES_OPTION)
-					{
+					if (remove == JOptionPane.YES_OPTION) {
 						saveSpells();
 					}
 				}
+				if (pickerWindow != null) {
+					pickerWindow.dispose();
+				}
+				
 			}
 		});
 		
@@ -167,6 +171,17 @@ public class CustomSpellAdder extends JFrame {
 		btnAddSpell.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		
 		btnSave.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		
+		for(Component comp : panelSpells.getComponents())
+		{
+			CustomSpellPanel spellPanel = (CustomSpellPanel)(comp);
+			spellPanel.refresh();
+		}
+		
+		if(pickerWindow != null)
+		{
+			pickerWindow.refresh();
+		}
 	}
 	
 	/**
@@ -209,5 +224,19 @@ public class CustomSpellAdder extends JFrame {
 		{
 			panelSpells.add(new CustomSpellPanel(spell));
 		}
+	}
+	
+	/**
+	 * Closes the current class picker window 
+	 * and sets a new one as the current window
+	 * @param cP The new classPicker window to be opened
+	 */
+	public static void newClassPicker(ClassPicker cP)
+	{
+		if (pickerWindow != null)
+		{
+			pickerWindow.dispose();
+		}
+		pickerWindow = cP;
 	}
 }

@@ -109,6 +109,31 @@ public class SortedStringList {
 	}
 	
 	/**
+	 * Finds whether or not the list 
+	 * contains a certain string
+	 * @param entry The String to look for
+	 * @return boolean returns {@code true} 
+	 * if it found the parameter 
+	 */
+	public boolean contains(String entry){
+		Node<String> currNode = head;
+		if (head == null)
+		{
+			return false;
+		}
+		if(currNode.getData().equals(entry)) {
+			return true;
+		}
+		while (currNode != null) {
+			if (currNode.getData().equals(entry)) {
+				return true;
+			}
+			currNode = currNode.getNext();
+		}
+		return false;
+	}
+	
+	/**
 	 * Outputs all the values of the list, in order, 
 	 * comma separated, and enclosed in brackets
 	 * @return {@code String} the values in the list 
@@ -128,6 +153,38 @@ public class SortedStringList {
 		}
 		output += currNode.getData() + "]";
 		return output;
+	}
+	
+	/**
+	 * Outputs all the values of the list, in order, 
+	 * and separated by a specific string
+	 * @param The string used to separate the values
+	 * @return {@code String} the values in the list 
+	 */
+	public String contentsToString(String seperator)
+	{
+		if (size == 0) {
+			return "";
+		}
+		String output = "";
+		Node<String> currNode = head;
+		while (currNode.getNext() != null)
+		{
+			output += currNode.getData() + ", ";
+			currNode = currNode.getNext();
+		}
+		output += currNode.getData();
+		return output;
+	}
+	
+	/**
+	 * Outputs all the values of the list, in order, 
+	 * and separated by a comma and space
+	 * @return {@code String} the values in the list 
+	 */
+	public String contentsToString()
+	{
+		return contentsToString(", ");
 	}
 	
 	/**

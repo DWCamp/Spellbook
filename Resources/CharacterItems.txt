@@ -1,7 +1,6 @@
-U-Acid Splash
-P-Alarm
-P-Alter Self
-P-Animal Friendship
-P-Animal Messenger
-U-Animal Shapes
+U-Alarm
+U-Bane
+U-Fireball
+U-Magic Missile
+P-Wish
 <ENDSPELLS>
