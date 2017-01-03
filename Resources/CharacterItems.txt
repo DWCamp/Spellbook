@@ -1,6 +1,5 @@
-U-Alarm
+P-Alarm
 U-Bane
 U-Fireball
 U-Magic Missile
-P-Wish
 <ENDSPELLS>

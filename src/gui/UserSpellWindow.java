@@ -116,11 +116,11 @@ public class UserSpellWindow extends JFrame {
 	 */
 	public void draw(){
 		double scaleFactor = Settings.getResizeFactor();
-		//double scaleFactor = 1;
+		//scaleFactor = 1;
 		
 		setBounds(getX(), getY(),
 				(int)(641 * scaleFactor),
-				(int)(390 * scaleFactor) + 40);
+				(int)(385 * scaleFactor) + 60);
 		
 		contentPane.removeAll();
 		

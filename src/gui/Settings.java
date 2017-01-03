@@ -152,11 +152,12 @@ public class Settings extends JFrame {
 		
 		//Get scale factor
 		double scaleFactor = getResizeFactor();
+		//scaleFactor = 1;
 		
 		//Resize all components
 		setBounds(getX(), getY(),
 				(int)(336*scaleFactor), 
-				(int)(242*scaleFactor) - (int)(37 * (scaleFactor-1)));
+				(int)(255*scaleFactor) - (int)(37 * (scaleFactor-1)));
 		
 		lblWindowPositioningSetting.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		lblWindowPositioningSetting.setBounds((int)(10*scaleFactor), 
