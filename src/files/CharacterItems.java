@@ -12,8 +12,11 @@ import helperClasses.SortedStringList;
  */
 public class CharacterItems {
 	
-	private static SortedStringList spellsLearned;
-	private static SortedStringList spellsPrepared;
+	private static SortedStringList FEspellsLearned;
+	private static SortedStringList FEspellsPrepared;
+	
+	private static SortedStringList PFspellsLearned;
+	private static SortedStringList PFspellsPrepared;
 	
 	/**
 	 * Loads items from file
@@ -23,57 +26,70 @@ public class CharacterItems {
 	{
 		String[] data = FileSystem.loadCharItems();
 		if (!data[0].equals("")) {
-			spellsPrepared = new SortedStringList(data[0].split(","));
-			spellsLearned = new SortedStringList(data[0].split(","));
+			FEspellsPrepared = new SortedStringList(data[0].split(","));
+			FEspellsLearned = new SortedStringList(data[0].split(","));
 		} else {
-			spellsPrepared = new SortedStringList();
-			spellsLearned = new SortedStringList();
+			FEspellsPrepared = new SortedStringList();
+			FEspellsLearned = new SortedStringList();
 		}
 
 		if (!data[1].equals("")) {
 			for (String spell : data[1].split(",")) {
-				spellsLearned.add(spell);
+				FEspellsLearned.add(spell);
 			}
 		}
 		
+		if (!data[2].equals("")) {
+			PFspellsPrepared = new SortedStringList(data[2].split(","));
+			PFspellsLearned = new SortedStringList(data[2].split(","));
+		} else {
+			PFspellsPrepared = new SortedStringList();
+			PFspellsLearned = new SortedStringList();
+		}
+
+		if (!data[3].equals("")) {
+			for (String spell : data[3].split(",")) {
+				PFspellsLearned.add(spell);
+			}
+		}
 	}
 
 	/**
 	 * Returns the spells prepared by the player
 	 * @return {@code ArrayList<String>} The prepared spells
 	 */
-	public static ArrayList<String> getPreparedSpells()					//SPELL STUFF
+	public static ArrayList<String> getPreparedFESpells()					//SPELL STUFF
 	{
-		return spellsPrepared.toArrayList();
+		return FEspellsPrepared.toArrayList();
 	}
 	
 	/**
 	 * Returns the spells prepared by the player of a specific level
 	 * @return {@code ArrayList<String>} The prepared spells
 	 */
-	public static ArrayList<String> getPreparedSpellsOfLevel(int level)
+	public static ArrayList<String> getPreparedFESpellsOfLevel(int level)
 	{
-		return spellsPrepared.toArrayList();
+		return FEspellsPrepared.toArrayList();
 	}
 	
 	/**
 	 * Returns the spells known by the player
 	 * @return {@code ArrayList<String>} The known spells
 	 */
-	public static ArrayList<String> getLearnedSpells()
+	public static ArrayList<String> getLearnedFESpells()
 	{
-		return spellsLearned.toArrayList();
+		return FEspellsLearned.toArrayList();
 	}
 	
 	/**
 	 * Adds a spell to the player's known spells list
 	 * @param spellName
 	 */
-	public static void prepareSpell(String spellName)
+	public static void prepareFESpell(String spellName)
 	{
-		if (!spellsPrepared.toArrayList().contains(spellName))
+		if (!FEspellsPrepared.toArrayList().contains(spellName))
 		{
-			spellsPrepared.add(spellName);
+			FEspellsPrepared.add(spellName);
 		}
 	}
 	
@@ -81,19 +97,19 @@ public class CharacterItems {
 	 * Removes a spell to the player's known spells list
 	 * @param spellName
 	 */
-	public static void unprepareSpell(String spellName)
+	public static void unprepareFESpell(String spellName)
 	{
-		spellsPrepared.remove(spellName);
+		FEspellsPrepared.remove(spellName);
 	}
 	
 	/**
 	 * Adds a spell to the player's known spells list
 	 * @param spellName
 	 */
-	public static void learnSpell(String spellName)
+	public static void learnFESpell(String spellName)
 	{
-		if (!spellsLearned.toArrayList().contains(spellName)) {
-			spellsLearned.add(spellName);
+		if (!FEspellsLearned.toArrayList().contains(spellName)) {
+			FEspellsLearned.add(spellName);
 		}
 	}
 	
@@ -101,17 +117,93 @@ public class CharacterItems {
 	 * Removes a spell to the player's known spells list
 	 * @param spellName
 	 */
-	public static void unlearnSpell(String spellName)
+	public static void unlearnFESpell(String spellName)
 	{
-		spellsLearned.remove(spellName);
+		FEspellsLearned.remove(spellName);
 	}
 	
 	/**
 	 * Empties the list of prepared spells
 	 */
-	public static void clearPreparedSpelled()
+	public static void clearFEPreparedSpells()
 	{
-		spellsPrepared.clear();
+		FEspellsPrepared.clear();
+	}
+	
+	/**
+	 * Returns the spells prepared by the player
+	 * @return {@code ArrayList<String>} The prepared spells
+	 */
+	public static ArrayList<String> getPreparedPFSpells()
+	{
+		return PFspellsPrepared.toArrayList();
+	}
+	
+	/**
+	 * Returns the spells prepared by the player of a specific level
+	 * @return {@code ArrayList<String>} The prepared spells
+	 */
+	public static ArrayList<String> getPreparedPFSpellsOfLevel(int level)
+	{
+		return PFspellsPrepared.toArrayList();
+	}
+	
+	/**
+	 * Returns the spells known by the player
+	 * @return {@code ArrayList<String>} The known spells
+	 */
+	public static ArrayList<String> getLearnedPFSpells()
+	{
+		return PFspellsLearned.toArrayList();
+	}
+	
+	/**
+	 * Adds a spell to the player's known spells list
+	 * @param spellName
+	 */
+	public static void preparePFSpell(String spellName)
+	{
+		if (!PFspellsPrepared.toArrayList().contains(spellName))
+		{
+			PFspellsPrepared.add(spellName);
+		}
+	}
+	
+	/**
+	 * Removes a spell to the player's known spells list
+	 * @param spellName
+	 */
+	public static void unpreparePFSpell(String spellName)
+	{
+		PFspellsPrepared.remove(spellName);
+	}
+	
+	/**
+	 * Adds a spell to the player's known spells list
+	 * @param spellName
+	 */
+	public static void learnPFSpell(String spellName)
+	{
+		if (!PFspellsLearned.toArrayList().contains(spellName)) {
+			PFspellsLearned.add(spellName);
+		}
+	}
+	
+	/**
+	 * Removes a spell to the player's known spells list
+	 * @param spellName
+	 */
+	public static void unlearnPFSpell(String spellName)
+	{
+		PFspellsLearned.remove(spellName);
+	}
+	
+	/**
+	 * Empties the list of prepared spells
+	 */
+	public static void clearPFPreparedSpells()
+	{
+		PFspellsPrepared.clear();
 	}
 	
 	/**
@@ -119,12 +211,15 @@ public class CharacterItems {
 	 */
 	public static void setDummyItems()									//DUMMY DATA
 	{
-		spellsLearned = new SortedStringList();
-		spellsPrepared = new SortedStringList();
+		FEspellsLearned = new SortedStringList();
+		FEspellsPrepared = new SortedStringList();
 		
-		learnSpell("Dust Devil");
-		learnSpell("Alarm");
-		learnSpell("Fireball");
-		prepareSpell("Alarm");
+		PFspellsLearned = new SortedStringList();
+		PFspellsPrepared = new SortedStringList();
+		
+		learnFESpell("Dust Devil");
+		learnFESpell("Alarm");
+		learnFESpell("Fireball");
+		prepareFESpell("Alarm");
 	}
 }

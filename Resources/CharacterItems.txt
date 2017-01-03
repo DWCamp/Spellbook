@@ -2,4 +2,8 @@ P-Alarm
 U-Bane
 U-Fireball
 U-Magic Missile
+<PATHFINDER>
+U-Aid
+P-Fear
+U-Shield
 <ENDSPELLS>

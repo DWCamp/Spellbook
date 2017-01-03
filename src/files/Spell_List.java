@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import helperClasses.SortedSpellList;
-import helperClasses.Spell;
+import helperClasses.SortedObjectList;
+import helperClasses.SpellFE;
+import helperClasses.SpellPF;
 
 /**
  * An object which contains information on all spells
@@ -14,94 +15,131 @@ import helperClasses.Spell;
  */
 public class Spell_List {
 
-	private static Map<String, Spell> allSpells = new HashMap<String, Spell>();
-	private static Map<String, Spell> cantrips = new HashMap<String, Spell>();
-	private static Map<String, Spell> firstLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> secondLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> thirdLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> fourthLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> fifthLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> sixthLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> seventhLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> eighthLevel = new HashMap<String, Spell>();
-	private static Map<String, Spell> ninthLevel = new HashMap<String, Spell>();
+	private static Map<String, SpellFE> allFESpells = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEcantrips = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEfirstLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEsecondLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEthirdLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEfourthLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEfifthLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEsixthLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEseventhLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEeighthLevel = new HashMap<String, SpellFE>();
+	private static Map<String, SpellFE> FEninthLevel = new HashMap<String, SpellFE>();
 	
-	private static Map<String, Spell> customSpells = new HashMap<String, Spell>();
-	private static ArrayList<Map<String, Spell>> listList 
-		= new ArrayList<Map<String, Spell>>();
+	private static Map<String, SpellFE> customFESpells = new HashMap<String, SpellFE>();
+	private static ArrayList<Map<String, SpellFE>> FElistList 
+		= new ArrayList<Map<String, SpellFE>>();
+	
+	private static Map<String, SpellPF> allPFSpells = new HashMap<String, SpellPF>();
+	private static Map<String, SpellPF> customPFSpells = new HashMap<String, SpellPF>();
 	
 	/**
-	 * Creates a spell list object
+	 * Creates a spell list object for Fifth Edition Spells
 	 */
-	public static void load()
+	public static void loadFE()
 	{
-		ArrayList<ArrayList<Spell>> data;
+		ArrayList<ArrayList<SpellFE>> data;
 		try {
-			data = FileSystem.loadSpellList();
-			for(Spell element : data.get(0)){
-				cantrips.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			data = FileSystem.loadFESpellList();
+			for(SpellFE element : data.get(0)){
+				FEcantrips.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(cantrips);
-			for(Spell element : data.get(1)){
-				firstLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEcantrips);
+			for(SpellFE element : data.get(1)){
+				FEfirstLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(firstLevel);
-			for(Spell element : data.get(2)){
-				secondLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEfirstLevel);
+			for(SpellFE element : data.get(2)){
+				FEsecondLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(secondLevel);
-			for(Spell element : data.get(3)){
-				thirdLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEsecondLevel);
+			for(SpellFE element : data.get(3)){
+				FEthirdLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(thirdLevel);
-			for(Spell element : data.get(4)){
-				fourthLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEthirdLevel);
+			for(SpellFE element : data.get(4)){
+				FEfourthLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(fourthLevel);
-			for(Spell element : data.get(5)){
-				fifthLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEfourthLevel);
+			for(SpellFE element : data.get(5)){
+				FEfifthLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(fifthLevel);
-			for(Spell element : data.get(6)){
-				sixthLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEfifthLevel);
+			for(SpellFE element : data.get(6)){
+				FEsixthLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(sixthLevel);
-			for(Spell element : data.get(7)){
-				seventhLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEsixthLevel);
+			for(SpellFE element : data.get(7)){
+				FEseventhLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(seventhLevel);
-			for(Spell element : data.get(8)){
-				eighthLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEseventhLevel);
+			for(SpellFE element : data.get(8)){
+				FEeighthLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(eighthLevel);
-			for(Spell element : data.get(9)){
-				ninthLevel.put(element.getName(), element);
-				allSpells.put(element.getName(), element);
+			FElistList.add(FEeighthLevel);
+			for(SpellFE element : data.get(9)){
+				FEninthLevel.put(element.getName(), element);
+				allFESpells.put(element.getName(), element);
 			}
-			listList.add(ninthLevel);
+			FElistList.add(FEninthLevel);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	/**
+	 * Clears the data for Fifth Edition spells
+	 */
+	public static void clearFE()
+	{
+		FElistList.clear();
+		customFESpells.clear();
+		allFESpells.clear();
+	}
+	
+	/**
+	 * Creates a spell list object for Pathfinder Spells
+	 */
+	public static void loadPF()
+	{
+		ArrayList<SpellPF> data;
+		try {
+			data = FileSystem.loadPFSpellList();
+			for(SpellPF element : data){
+				allPFSpells.put(element.getName(), element);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Clears the data for Pathfinder spells
+	 */
+	public static void clearPF()
+	{
+		allPFSpells.clear();
+	}
+	
+	/**
 	 * Loads the custom spells into the spell list
 	 */
-	public static void loadCustomSpells(){
+	public static void loadFECustomSpells(){
 		try {
-			ArrayList<Spell> customSpells = FileSystem.loadCustomSpellList();
-			for (Spell customSpell : customSpells)
+			ArrayList<SpellFE> customSpells = FileSystem.loadCustomFESpellList();
+			for (SpellFE customSpell : customSpells)
 			{
-				addSpell(customSpell);
+				addFESpell(customSpell);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -112,63 +150,72 @@ public class Spell_List {
 	 * Adds an additional spell to the list
 	 * @param newSpell
 	 */
-	public static void addSpell(Spell newSpell){
+	public static void addFESpell(SpellFE newSpell){
 		
-		listList.get(newSpell.getLevel()).put(newSpell.getName(), newSpell);
-		customSpells.put(newSpell.getName(), newSpell);
-		allSpells.put(newSpell.getName(), newSpell);
+		FElistList.get(newSpell.getLevel()).put(newSpell.getName(), newSpell);
+		customFESpells.put(newSpell.getName(), newSpell);
+		allFESpells.put(newSpell.getName(), newSpell);
 	}
 	
 	/**
 	 * Updates the spell list
 	 */
-	public static void updateSpells(){
-		listList.clear();
-		customSpells.clear();
-		allSpells.clear();
-		load();
-		loadCustomSpells();
+	public static void updateFESpells(){
+		clearFE();
+		loadFE();
+		loadFECustomSpells();
 	}
 	
 	/**
 	 * Returns a String ArrayList of all the spells of a given level <br>
-	 * Cantrips are considered "level 0"<br>
+	 * FEcantrips are considered "level 0"<br>
 	 * For all spells, pass -1
 	 * 
 	 * @param level The level of spell.
 	 * @return {@code ArrayList<Spell>} All the spells of the requested level
 	 */
-	public static Spell[] getSpellsOfLevel(int level) {
+	public static ArrayList<SpellFE> getFESpellsOfLevel(int level) {
 		if (level == -1) {
-			SortedSpellList sortedList = new SortedSpellList(allSpells.values()
-					.toArray(new Spell[0]));
-			return sortedList.toArray();
+			SortedObjectList<SpellFE> sortedList = new SortedObjectList<SpellFE>(allFESpells.values()
+					.toArray(new SpellFE[0]));
+			return sortedList.toArrayList();
 		}
-		SortedSpellList sortedList = new SortedSpellList(listList.get(level)
-				.values().toArray(new Spell[0]));
-		return sortedList.toArray();
+		SortedObjectList<SpellFE> sortedList = new SortedObjectList<SpellFE>(FElistList.get(level)
+				.values().toArray(new SpellFE[0]));
+		return sortedList.toArrayList();
 	}
 	
 	/**
 	 * Returns all spells in an alphabetized array
 	 * @return {@code Spell[]}
 	 */
-	public static Spell[] getAllSpells()
+	public static ArrayList<SpellFE> getAllFESpells()
 	{
-		SortedSpellList sortedList = new SortedSpellList(allSpells.values()
-				.toArray(new Spell[0]));
-		return sortedList.toArray();
+		SortedObjectList<SpellFE> sortedList = new SortedObjectList<SpellFE>(allFESpells.values()
+				.toArray(new SpellFE[0]));
+		return sortedList.toArrayList();
+	}
+	
+	/**
+	 * Returns all spells in an alphabetized array
+	 * @return {@code Spell[]}
+	 */
+	public static ArrayList<SpellPF> getAllPFSpells()
+	{
+		SortedObjectList<SpellPF> sortedList = new SortedObjectList<SpellPF>(allPFSpells.values()
+				.toArray(new SpellPF[0]));
+		return sortedList.toArrayList();
 	}
 	
 	/**
 	 * Returns all custom spells in an alphabetized array
 	 * @return {@code Spell[]}
 	 */
-	public static Spell[] getCustomSpells()
+	public static ArrayList<SpellFE> getCustomFESpells()
 	{
-		SortedSpellList sortedList = new SortedSpellList(customSpells.values()
-				.toArray(new Spell[0]));
-		return sortedList.toArray();
+		SortedObjectList<SpellFE> sortedList = new SortedObjectList<SpellFE>(customFESpells.values()
+				.toArray(new SpellFE[0]));
+		return sortedList.toArrayList();
 	}
 	
 	/**
@@ -179,52 +226,52 @@ public class Spell_List {
 	 */
 	public static int getSpellLevel(String spellName)
 	{
-		for (String name : cantrips.keySet().toArray(new String[0])) {
+		for (String name : FEcantrips.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 0;
 			}
 		}
-		for (String name : firstLevel.keySet().toArray(new String[0])) {
+		for (String name : FEfirstLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 1;
 			}
 		}
-		for (String name : secondLevel.keySet().toArray(new String[0])) {
+		for (String name : FEsecondLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 2;
 			}
 		}
-		for (String name : thirdLevel.keySet().toArray(new String[0])) {
+		for (String name : FEthirdLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 3;
 			}
 		}
-		for (String name : fourthLevel.keySet().toArray(new String[0])) {
+		for (String name : FEfourthLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 4;
 			}
 		}
-		for (String name : fifthLevel.keySet().toArray(new String[0])) {
+		for (String name : FEfifthLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 5;
 			}
 		}
-		for (String name : sixthLevel.keySet().toArray(new String[0])) {
+		for (String name : FEsixthLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 6;
 			}
 		}
-		for (String name : seventhLevel.keySet().toArray(new String[0])) {
+		for (String name : FEseventhLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 7;
 			}
 		}
-		for (String name : eighthLevel.keySet().toArray(new String[0])) {
+		for (String name : FEeighthLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 8;
 			}
 		}
-		for (String name : ninthLevel.keySet().toArray(new String[0])) {
+		for (String name : FEninthLevel.keySet().toArray(new String[0])) {
 			if (spellName.equals(name)) {
 				return 9;
 			}
@@ -232,14 +279,14 @@ public class Spell_List {
 		return -1;
 	}
 	
-	/**
-	 * Gets a String array of the spells for a class
-	 * @return {@code String[]} the spells for the class
-	 */
-	public static String[] getClassSpells(String className)
-	{
-		return null;
-	}
+//	/**
+//	 * Gets a String array of the spells for a class
+//	 * @return {@code String[]} the spells for the class
+//	 */
+//	public static String[] getClassSpells(String className)
+//	{
+//		return null;
+//	}
 	
 	/**
 	 * Gets the description of a spell
@@ -247,9 +294,9 @@ public class Spell_List {
 	 * @return {@code Spell} The description of the spell. 
 	 * Returns {@code null} if spell is not found
 	 */
-	public static Spell getSpell(String ref)
+	public static SpellFE getSpell(String ref)
 	{
-		for (Map<String, Spell> element : listList)
+		for (Map<String, SpellFE> element : FElistList)
 		{
 			if (element.containsKey(ref))
 			{

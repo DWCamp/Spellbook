@@ -12,9 +12,9 @@ import guiPanels.ClassPanel;
 import guiPanels.SpellPanel;
 import helperClasses.Feat;
 import helperClasses.PClass;
-import helperClasses.SortedSpellList;
+import helperClasses.SortedObjectList;
 import helperClasses.SortedStringList;
-import helperClasses.Spell;
+import helperClasses.SpellFE;
 
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
@@ -48,7 +48,7 @@ public class DataBaseEditor extends JFrame {
 			public void run() {
 				try {
 					Class_List.load();
-					Spell_List.load();
+					Spell_List.loadFE();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					DataBaseEditor frame = new DataBaseEditor();
 					frame.setVisible(true);
@@ -291,7 +291,7 @@ public class DataBaseEditor extends JFrame {
 		contentPane.add(btnSomething);
 		
 		for (int i = 0; i < 10; i++) {
-			for (Spell spell : Spell_List.getSpellsOfLevel(i)) {
+			for (SpellFE spell : Spell_List.getFESpellsOfLevel(i)) {
 				panelArray[i].add(new SpellPanel(spell));
 			}
 		}
@@ -323,7 +323,7 @@ public class DataBaseEditor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				int index = tabbedPane.getSelectedIndex();
 				panelArray[index].add(
-						new SpellPanel(new Spell()));
+						new SpellPanel(new SpellFE()));
 				getThis().repaint();
 			}
 		});
@@ -338,8 +338,8 @@ public class DataBaseEditor extends JFrame {
 	 * Saves the spell list
 	 */
 	public void saveSpells() {
-		ArrayList<ArrayList<Spell>> spellList = new ArrayList<ArrayList<Spell>>();
-		SortedSpellList sortedSpells = new SortedSpellList();
+		ArrayList<ArrayList<SpellFE>> spellList = new ArrayList<ArrayList<SpellFE>>();
+		SortedObjectList sortedSpells = new SortedObjectList();
 
 		for (JPanel levelPanel : panelArray) {
 			for (Component element : levelPanel.getComponents()) {
@@ -349,6 +349,6 @@ public class DataBaseEditor extends JFrame {
 			spellList.add(sortedSpells.toArrayList());
 			sortedSpells.clear();
 		}
-		FileSystem.saveSpellList(spellList); 
+		FileSystem.saveFESpellList(spellList); 
 	}
 }

@@ -12,6 +12,8 @@ import files.FileSystem;
 import files.Spell_List;
 import guiPanels.SpellCard;
 import helperClasses.Spell;
+import helperClasses.SpellFE;
+import helperClasses.gameVersion;
 import gui.Settings;
 
 import javax.swing.JScrollPane;
@@ -55,9 +57,12 @@ public class UserSpellWindow extends JFrame {
 	private static JTabbedPane tabbedPane;
 	
 	private static UserSpellWindow window;
-	private static SpellBrowser browser;
 	private static Settings settings;
 	private static CustomSpellAdder customSpells;
+	
+	private static SpellBrowserFE browserFE;
+	private static SpellBrowserPF browserPF;
+	private static SpellBrowser activeBrowser;
 	
 	private JMenuItem mntmPreferences;
 	private JMenuBar menuBar;
@@ -81,14 +86,22 @@ public class UserSpellWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				draw();
-				browser.refresh();
+				browserFE.refresh();
+				browserPF.refresh();
 				settings.refresh();
 				customSpells.refresh();
 			}
 		});
 		
-		browser = new SpellBrowser(this);
 		settings = new Settings();
+		browserFE = new SpellBrowserFE(this);
+		browserPF = new SpellBrowserPF(this);
+		 if(Settings.getVersion().equals(gameVersion.FIFTH_EDITION))
+		 {
+			 activeBrowser = browserFE;
+		 } else {
+			 activeBrowser = browserPF;
+		 }
 		customSpells = new CustomSpellAdder();
 		
 		try {
@@ -236,18 +249,18 @@ public class UserSpellWindow extends JFrame {
 		mntmBrowseSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int CWsetting = Settings.getCenterFrames();
-				if (!browser.isVisible()) {
-					browser.reset();
-					browser.setVisible(true);
+				if (!activeBrowser.isVisible()) {
+					activeBrowser.reset();
+					activeBrowser.setVisible(true);
 					if (CWsetting == 1) {
-						browser.setLocation(new Point(getX() + 30, getY() + 30));
+						activeBrowser.setLocation(new Point(getX() + 30, getY() + 30));
 					}
 				}
 				if (CWsetting == 2) {
-					browser.setLocation(new Point(getX() + 30, getY() + 30));
+					activeBrowser.setLocation(new Point(getX() + 30, getY() + 30));
 				}
-				browser.setState(Frame.NORMAL);
-				browser.toFront();
+				activeBrowser.setState(Frame.NORMAL);
+				activeBrowser.toFront();
 			}
 		});
 		mntmBrowseSpells.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
@@ -306,9 +319,9 @@ public class UserSpellWindow extends JFrame {
 		mntmGatherWindows.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK));
 		mntmGatherWindows.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				browser.setLocation(getX()+((getWidth()-browser.getWidth())/2),
-						getY()+((getHeight()-browser.getHeight())/2));
-				browser.toFront();
+				activeBrowser.setLocation(getX()+((getWidth()-activeBrowser.getWidth())/2),
+						getY()+((getHeight()-activeBrowser.getHeight())/2));
+				activeBrowser.toFront();
 				customSpells.setLocation(getX()+((getWidth()-customSpells.getWidth())/2),
 						getY()+((getHeight()-customSpells.getHeight())/2));
 				customSpells.toFront();	
@@ -324,9 +337,9 @@ public class UserSpellWindow extends JFrame {
 		mntmShowAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_J, InputEvent.CTRL_MASK));
 		mntmShowAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				browser.setVisible(true);
-				browser.toFront();
-				browser.setState(Frame.NORMAL);
+				activeBrowser.setVisible(true);
+				activeBrowser.toFront();
+				activeBrowser.setState(Frame.NORMAL);
 				customSpells.setVisible(true);
 				customSpells.toFront();
 				customSpells.setState(Frame.NORMAL);
@@ -335,7 +348,7 @@ public class UserSpellWindow extends JFrame {
 				settings.setState(Frame.NORMAL);
 				
 				if (Settings.getCenterFrames() > 0) {
-					browser.setLocation(new Point(getX() + 30, getY() + 30));
+					activeBrowser.setLocation(new Point(getX() + 30, getY() + 30));
 					customSpells.setLocation(new Point(getX() + 30, getY() + 30));
 					settings.setLocation(new Point(getX() + 30, getY() + 30));
 				}
@@ -347,7 +360,7 @@ public class UserSpellWindow extends JFrame {
 		mntmHideAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
 		mntmHideAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				browser.setVisible(false);
+				activeBrowser.setVisible(false);
 				customSpells.setVisible(false);
 				settings.setVisible(false);
 			}
@@ -387,7 +400,7 @@ public class UserSpellWindow extends JFrame {
 			panel.setLayout(new GridLayout(1, 2, 15, 0));
 		}
 
-		ArrayList<String> spellsLearned = CharacterItems.getLearnedSpells();
+		ArrayList<String> spellsLearned = CharacterItems.getLearnedFESpells();
 		if (spellsLearned.size() > 0) {  //Removes the placeholder message if there are spells to add
 			panelAllSpells.remove(0);
 		}
@@ -400,7 +413,7 @@ public class UserSpellWindow extends JFrame {
 				panelAllSpells.add(new SpellCard(spell));
 				spellPanels[level].add(new SpellCard(spell));
 			} else {
-				CharacterItems.unlearnSpell(spell);
+				CharacterItems.unlearnFESpell(spell);
 			}
 		}
 		
@@ -416,7 +429,7 @@ public class UserSpellWindow extends JFrame {
 		for (JPanel panel : spellPanels) {
 			panel.removeAll();
 		}
-		ArrayList<String> spellsLearned = CharacterItems.getLearnedSpells();
+		ArrayList<String> spellsLearned = CharacterItems.getLearnedFESpells();
 		for (String spell : spellsLearned) {
 			int level = Spell_List.getSpell(spell).getLevel();
 			tabbedPane.setEnabledAt(level + 1, true);
@@ -425,6 +438,8 @@ public class UserSpellWindow extends JFrame {
 			spellPanels[level].add(new SpellCard(spell));
 		}
 	}
+	
+	
 	
 	/**
 	 * Returns the location of the window
@@ -445,8 +460,8 @@ public class UserSpellWindow extends JFrame {
 		panelAllSpells.remove(card);
 		spellPanels[card.getSpell().getLevel()].remove(card);
 
-		CharacterItems.unlearnSpell(spell.getName());
-		CharacterItems.unprepareSpell(spell.getName());
+		CharacterItems.unlearnFESpell(spell.getName());
+		CharacterItems.unprepareFESpell(spell.getName());
 		
 		if (panelAllSpells.getComponents().length == 0) {
 			JLabel lblClickbrowseSpells = new JLabel("Click \"Browse Spells\" " 
@@ -486,5 +501,23 @@ public class UserSpellWindow extends JFrame {
 			}
 		}
 		window.repaint();
+	}
+	
+	/**
+	 * Updates the version of the game that is being played
+	 */
+	public static void updateGameVersion()
+	{
+		activeBrowser.dispose();
+		switch (Settings.getVersion()){
+		case FIFTH_EDITION:
+			activeBrowser = new SpellBrowserFE(window);
+			break;
+		case PATHFINDER:
+			activeBrowser = new SpellBrowserFE(window);
+			break;
+		default:
+			break;		
+		}
 	}
 }

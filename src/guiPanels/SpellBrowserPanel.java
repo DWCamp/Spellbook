@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import alerts.WordWrapPopUp;
 import files.CharacterItems;
 import helperClasses.Spell;
+import helperClasses.SpellFE;
+import helperClasses.SpellPF;
+import helperClasses.gameVersion;
 import gui.UserSpellWindow;
 import gui.Settings;
 
@@ -63,7 +66,13 @@ public class SpellBrowserPanel extends JPanel {
 		panel.add(btnAdd);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CharacterItems.learnSpell(spell.getName());
+				if (Settings.getVersion().equals(gameVersion.FIFTH_EDITION))
+				{
+					CharacterItems.learnFESpell(spell.getName());
+				} else if (Settings.getVersion().equals(gameVersion.PATHFINDER))
+				{
+					CharacterItems.learnPFSpell(spell.getName());
+				}
 				parent.refreshSpells();
 			}
 		});

@@ -19,6 +19,7 @@ import java.awt.Point;
 import javax.swing.border.LineBorder;
 
 import files.FileSystem;
+import helperClasses.gameVersion;
 
 import java.awt.Color;
 import javax.swing.JCheckBox;
@@ -39,6 +40,9 @@ public class Settings extends JFrame {
 	private JPanel panelSpellBrowser;
 	private JLabel lblSBrowser;
 	private JCheckBox chckbxColor;
+	
+	private JComboBox<Object> comboBoxGameVersion;
+	private JLabel lblGameVersion;
 	
 	private JLabel lblResizeValue;
 	private JButton btnSave;
@@ -61,6 +65,10 @@ public class Settings extends JFrame {
 	 * Whether spell browser panels should be colored to reflect spell level
 	 */
 	private static boolean SBColor;
+	/**
+	 * The version of D&D currently being played
+	 */
+	private static gameVersion version;
 	
 	private static ArrayList<ActionListener> resizeObservers = 
 			new ArrayList<ActionListener>();
@@ -118,6 +126,7 @@ public class Settings extends JFrame {
 				centerFrames = comboBoxCentering.getSelectedIndex();
 				setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
 				SBColor = chckbxColor.isSelected();
+				setVersion(gameVersion.values()[comboBoxGameVersion.getSelectedIndex()]);
 				savePreferences();
 				refresh();
 			}
@@ -130,11 +139,30 @@ public class Settings extends JFrame {
 				centerFrames = comboBoxCentering.getSelectedIndex();
 				setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
 				SBColor = chckbxColor.isSelected();
+				setVersion(gameVersion.values()[comboBoxGameVersion.getSelectedIndex()]);
 				savePreferences();
 				setVisible(false);
 			}
 		});
 		contentPane.add(btnSaveQuit);
+		
+		lblGameVersion = new JLabel("Game Version");
+		lblGameVersion.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		lblGameVersion.setBounds((int)(10*scaleFactor),
+				(int)(113*scaleFactor), 
+				(int)(144*scaleFactor), 
+				(int)(14*scaleFactor));
+		contentPane.add(lblGameVersion);
+		
+		String[] gameVersions = {"Fifth Edition", "Pathfinder"};
+		comboBoxGameVersion = new JComboBox<Object>(gameVersions);
+		comboBoxGameVersion.setSelectedIndex(0);
+		comboBoxGameVersion.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		comboBoxGameVersion.setBounds((int)(10*scaleFactor), 
+				(int)(133*scaleFactor), 
+				(int)(310*scaleFactor), 
+				(int)(20*scaleFactor));
+		contentPane.add(comboBoxGameVersion);
 		
 		refresh();
 		Point USW = UserSpellWindow.getWindowLocation();
@@ -152,12 +180,12 @@ public class Settings extends JFrame {
 		
 		//Get scale factor
 		double scaleFactor = getResizeFactor();
-		//scaleFactor = 1;
+		//scaleFactor = 2;
 		
 		//Resize all components
 		setBounds(getX(), getY(),
 				(int)(336*scaleFactor), 
-				(int)(255*scaleFactor) - (int)(37 * (scaleFactor-1)));
+				(int)(303*scaleFactor) - (int)(37 * (scaleFactor-1)));
 		
 		lblWindowPositioningSetting.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		lblWindowPositioningSetting.setBounds((int)(10*scaleFactor), 
@@ -183,14 +211,26 @@ public class Settings extends JFrame {
 				(int)(310*scaleFactor), 
 				(int)(20*scaleFactor));
 		
+		lblGameVersion.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		lblGameVersion.setBounds((int)(10*scaleFactor),
+				(int)(113*scaleFactor), 
+				(int)(144*scaleFactor), 
+				(int)(14*scaleFactor));
+		
+		comboBoxGameVersion.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
+		comboBoxGameVersion.setBounds((int)(10*scaleFactor), 
+				(int)(133*scaleFactor), 
+				(int)(310*scaleFactor), 
+				(int)(20*scaleFactor));
+		
 		lblSBrowser.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		lblSBrowser.setBounds((int)(10*scaleFactor), 
-				(int)(113*scaleFactor), 
+				(int)(164*scaleFactor), 
 				(int)(250*scaleFactor), 
 				(int)(14*scaleFactor));
 		
 		panelSpellBrowser.setBounds((int)(10*scaleFactor), 
-				(int)(132*scaleFactor), 
+				(int)(186*scaleFactor), 
 				(int)(310*scaleFactor), 
 				(int)(35*scaleFactor));
 		
@@ -198,13 +238,13 @@ public class Settings extends JFrame {
 		
 		btnSave.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		btnSave.setBounds((int)(10*scaleFactor), 
-				(int)(180*scaleFactor), 
+				(int)(231*scaleFactor), 
 				(int)(144*scaleFactor), 
 				(int)(23*scaleFactor));
 		
 		btnSaveQuit.setFont(new Font("Tahoma", Font.PLAIN, (int)(11*scaleFactor)));
 		btnSaveQuit.setBounds((int)(176*scaleFactor),
-				(int)(180*scaleFactor),
+				(int)(231*scaleFactor),
 				(int)(144*scaleFactor),
 				(int)(23*scaleFactor));
 	}
@@ -220,6 +260,14 @@ public class Settings extends JFrame {
 			scaleFactor = SpellBookLauncher.getScale();
 			scaleAdjustment = Double.parseDouble(preferences[1]);
 			SBColor = preferences[2].equals("true");
+			if(preferences[3].equals("FIFTH_EDITION")) {
+				version = gameVersion.FIFTH_EDITION;
+			} else if (preferences[3].equals("PATHFINDER")){
+				version = gameVersion.PATHFINDER;
+			} else {
+				version = gameVersion.FIFTH_EDITION;
+				System.out.println("ERROR LOADING VERSION");
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -298,7 +346,15 @@ public class Settings extends JFrame {
 	{
 		if (SBColor != colorPanels) {
 			SBColor = colorPanels;
-			SpellBrowser.windowRefresh();
+			if (version.equals(gameVersion.FIFTH_EDITION))
+			{
+				SpellBrowserFE.windowRefresh();
+			} else if (version.equals(gameVersion.PATHFINDER))
+			{
+				SpellBrowserPF.windowRefresh();
+			} else {
+				System.out.println("ERROR");
+			}
 		}
 	}
 	
@@ -312,6 +368,31 @@ public class Settings extends JFrame {
 	{
 		return SBColor;
 	}
+	
+	/**
+	 * Returns the version of D&D being used
+	 * @return <strong>gameVersion</strong> an enum 
+	 * containing the possible values 
+	 */
+	public static gameVersion getVersion()
+	{
+		return version;
+	}
+	
+	/**
+	 * Sets the version of the game and updates the 
+	 * UserSpellWindow if the version changed
+	 * @param versionName
+	 */
+	public static void setVersion(gameVersion newVersion)
+	{
+		if (!version.equals(newVersion))
+		{
+			version = newVersion;
+			UserSpellWindow.updateGameVersion();
+		}
+	}
+	
 	
 	/**
 	 * Adds a actionListener to detect when the window 

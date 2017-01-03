@@ -2,14 +2,14 @@ package helperClasses;
 
 import java.util.ArrayList;
 
-public class SortedSpellList {
-	Node<Spell> head;
+public class SortedObjectList<T extends Comparable<T>> {
+	Node<T> head;
 	int size;
 	
 	/**
 	 * Public constructor for a sorted spell list
 	 */
-	public SortedSpellList()
+	public SortedObjectList()
 	{
 		head = null;
 		size = 0;
@@ -20,10 +20,10 @@ public class SortedSpellList {
 	 * a spell array
 	 * @param list spell array
 	 */
-	public SortedSpellList(Spell[] list)
+	public SortedObjectList(T[] list)
 	{
 		this();
-		for (Spell element : list)
+		for (T element : list)
 		{
 			add(element);
 		}
@@ -33,31 +33,29 @@ public class SortedSpellList {
 	 * Adds a value to the sorted list, ignoring case
 	 * @param data The spell to be added to the list
 	 */
-	public void add(Spell data)
+	public void add(T data)
 	{
 		//System.out.println(data.getName());
 		if (head == null)									//If the list is currently empty
 		{
-			head = new Node<Spell>(data);
+			head = new Node<T>(data);
 		}
-		else if (head.getData().getName().toLowerCase()				//If the passed value is lower
-				.compareTo(data.getName().toLowerCase()) > 0) 		//than all present data
+		else if (head.compareTo(data) > 0) 		//than all present data
 		{
-			Node<Spell> tempNode = new Node<Spell>(data);
+			Node<T> tempNode = new Node<T>(data);
 			tempNode.setNext(head);
 			head = tempNode;
 		}
 		else												//All other cases
 		{
 			boolean inserted = false;
-			Node<Spell> currNode = head;
+			Node<T> currNode = head;
 			while (!inserted && currNode.getNext() != null)	//Iterates across all nodes to find the two
 			{												//nodes the passed data fits between
-				if (currNode.getNext().getData().getName().toLowerCase()
-						.compareTo(data.getName().toLowerCase()) > 0)
+				if (currNode.getNext().getData().compareTo(data) > 0)
 				{
-					Node<Spell> tempNode = 
-							new Node<Spell>(data, currNode.getNext());
+					Node<T> tempNode = 
+							new Node<T>(data, currNode.getNext());
 					currNode.setNext(tempNode);
 					inserted = true;
 				}
@@ -65,7 +63,7 @@ public class SortedSpellList {
 			}
 			if (!inserted)			//Adds the data to the end of the list if no value was found
 			{						//higher than the passed data
-				currNode.setNext(new Node<Spell>(data));
+				currNode.setNext(new Node<T>(data));
 			}
 		}
 		
@@ -81,7 +79,7 @@ public class SortedSpellList {
 	public String toString()
 	{
 		String output = "[";
-		Node<Spell> currNode = head;
+		Node<T> currNode = head;
 		while (currNode.getNext() != null)
 		{
 			output += currNode.getData() + ", ";
@@ -92,29 +90,13 @@ public class SortedSpellList {
 	}
 	
 	/**
-	 * Returns a Spell array of the contents of the list
-	 * @return {@code Spell[]}
-	 */
-	public Spell[] toArray()
-	{
-		Spell[] forReturn = new Spell[size];
-		Node<Spell> currNode = head;
-		for (int i = 0; i < size; i++)
-		{
-			forReturn[i] = (Spell) currNode.getData();
-			currNode = currNode.getNext();
-		}
-		return forReturn;
-	}
-	
-	/**
 	 * Returns an arraylist of spells with the contents of this list
 	 * @return
 	 */
-	public ArrayList<Spell> toArrayList()
+	public ArrayList<T> toArrayList()
 	{
-		ArrayList<Spell> forReturn = new ArrayList<Spell>();
-		Node<Spell> currNode = head;
+		ArrayList<T> forReturn = new ArrayList<T>();
+		Node<T> currNode = head;
 		for (int i = 0; i < size; i++)
 		{
 			forReturn.add(currNode.getData());

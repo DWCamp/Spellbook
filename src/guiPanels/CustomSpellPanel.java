@@ -6,7 +6,7 @@ import javax.swing.event.ChangeListener;
 
 import alerts.ClassPicker;
 import alerts.DescriptionPopUp;
-import helperClasses.Spell;
+import helperClasses.SpellFE;
 import gui.Settings;
 
 import java.awt.GridLayout;
@@ -51,7 +51,7 @@ public class CustomSpellPanel extends EditorSpellPanel {
 	 * Create the panel.
 	 * @param spell The spell the panel represents
 	 */
-	public CustomSpellPanel(Spell spell) {
+	public CustomSpellPanel(SpellFE spell) {
 		double scaleFactor = Settings.getResizeFactor();
 
 		level = spell.getLevel();
@@ -285,7 +285,7 @@ public class CustomSpellPanel extends EditorSpellPanel {
 	 * 
 	 * @return {@code Spell}
 	 */
-	public Spell toSpell() {
+	public SpellFE toSpell() {
 		String type = "";
 		switch (level) {
 		case 0:
@@ -312,7 +312,7 @@ public class CustomSpellPanel extends EditorSpellPanel {
 			type = "Spell";
 		}
 
-		return new Spell(textFieldName.getText(), textFieldClasses.getText().split(","), type, level,
+		return new SpellFE(textFieldName.getText(), textFieldClasses.getText().split(","), type, level,
 				textFieldTime.getText(), textFieldRange.getText(), textFieldComp.getText(), textFieldDuration.getText(),
 				description);
 	}

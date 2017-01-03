@@ -13,6 +13,7 @@ import files.FileSystem;
 import files.Spell_List;
 import gui.UserSpellWindow;
 import helperClasses.Spell;
+import helperClasses.SpellFE;
 import gui.Settings;
 
 import javax.swing.JTextArea;
@@ -42,7 +43,7 @@ public class SpellCard extends JPanel {
 		setPreferredSize(new Dimension((int)(298 * scaleFactor), 0));
 		
 		spell = Spell_List.getSpell(spellName);
-		prepared = CharacterItems.getPreparedSpells().contains(spellName);
+		prepared = CharacterItems.getPreparedFESpells().contains(spellName);
 		
 		JButton btnDetails = new JButton("Details");
 		btnDetails.addActionListener(new ActionListener() {
@@ -121,17 +122,14 @@ public class SpellCard extends JPanel {
 		add(textArea);
 	
 		if (spell != null){
-			lblSpellType.setText(spell.getType());
-			textArea.setText("Casting Time: " + spell.getCastingTime() 
-			+ "\n\nRange: " + spell.getRange() 
-				+ "\n\nComponents: " + spell.getComponents()
-				+ "\n\nDuration: " + spell.getDuration());
+			lblSpellType.setText(spell.getSubtitle());
+			textArea.setText(spell.getCardText());
 		} else{
 			lblSpellType.setText("ERROR");
 			textArea.setText("SPELL NOT FOUND");
 		}
 		
-		if (CharacterItems.getPreparedSpells().contains(spellName)) {
+		if (CharacterItems.getPreparedFESpells().contains(spellName)) {
 			setBackground(new Color(34, 139, 34));
 			btnPrepare.setText("Prepared!");
 		} else {
@@ -159,11 +157,11 @@ public class SpellCard extends JPanel {
 		if (prepared) {
 			setBackground(new Color(34, 139, 34));
 			btnPrepare.setText("Prepared!");
-			CharacterItems.prepareSpell(spell.getName());
+			CharacterItems.prepareFESpell(spell.getName());
 		} else {
 			setBackground(new Color(192, 192, 192));
 			btnPrepare.setText("Prepare");
-			CharacterItems.unprepareSpell(spell.getName());
+			CharacterItems.unprepareFESpell(spell.getName());
 		}
 		FileSystem.saveCharItems();
 	}

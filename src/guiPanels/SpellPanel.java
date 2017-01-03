@@ -3,7 +3,7 @@ package guiPanels;
 import javax.swing.JTextField;
 
 import alerts.DescriptionPopUp;
-import helperClasses.Spell;
+import helperClasses.SpellFE;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -25,7 +25,7 @@ public class SpellPanel extends EditorSpellPanel {
 	 * Create the panel.
 	 * @param spell The spell the panel represents
 	 */
-	public SpellPanel(Spell spell) {
+	public SpellPanel(SpellFE spell) {
 		setLayout(new GridLayout(2, 0, 0, 0));
 		level = spell.getLevel();
 		popUp = new DescriptionPopUp(this);
@@ -102,9 +102,9 @@ public class SpellPanel extends EditorSpellPanel {
 	 * Converts the contents of the pane into a spell
 	 * @return {@code Spell}
 	 */
-	public Spell toSpell()
+	public SpellFE toSpell()
 	{
-		return new Spell(textFieldName.getText(),
+		return new SpellFE(textFieldName.getText(),
 				textFieldClasses.getText().split(","),
 				textFieldType.getText(),
 				level,

@@ -5,7 +5,7 @@ package helperClasses;
  * @author Daniel
  * @param <T> The type of data stored by the node
  */
-public class Node<T> {
+public class Node<T extends Comparable<T>> {
 	
 	private Node<T> next;
 	private T data;
@@ -40,5 +40,9 @@ public class Node<T> {
 	public void setNext(Node<T> node)
 	{
 		next = node;
+	}
+
+	public int compareTo(T data2) {
+		return data.compareTo(data2);
 	}
 }
