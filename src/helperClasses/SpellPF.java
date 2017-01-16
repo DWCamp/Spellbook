@@ -497,7 +497,6 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 		}
 		
 		
-		
 		if(!mythicText.equals("NULL"))
 		{
 			forReturn.append("\nMythic " + name +": " + mythicText);
