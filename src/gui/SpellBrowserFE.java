@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import files.Class_List;
 import files.Spell_List;
 import guiPanels.SpellBrowserPanel;
 import helperClasses.SpellFE;
@@ -117,13 +116,13 @@ public class SpellBrowserFE extends SpellBrowser {
 		});
 		contentPane.add(comboBoxOption);
 		
-		ArrayList<String> classOptions = new ArrayList<String>();
-		classOptions.add("All classes");
-		for (String className : Class_List.getClassNames()) {
-			classOptions.add(className);
+		ArrayList<String> classList = new ArrayList<String>();
+		classList.add("All classes");
+		for (String element : Spell_List.getFEClasses()) {
+			classList.add(element);
 		}
-		comboBoxClasses = new JComboBox<Object>(classOptions
-				.toArray(new String[0]));
+		
+		comboBoxClasses = new JComboBox<Object>(classList.toArray(new String[0]));
 		comboBoxClasses.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				refresh();
@@ -131,9 +130,13 @@ public class SpellBrowserFE extends SpellBrowser {
 		});
 		contentPane.add(comboBoxClasses);
 		
-		comboBoxSchools = new JComboBox<Object>(new String[]
-				{"All Schools", "Abjuration", "Conjuration", "Divination", "Enchantment", 
-						"Evocation", "Illusion", "Necromancy", "Transmutation"});
+		ArrayList<String> schoolList = new ArrayList<String>();
+		schoolList.add("All schools");
+		for (String element : Spell_List.getFESchools()) {
+			schoolList.add(element);
+		}
+		
+		comboBoxSchools = new JComboBox<Object>(schoolList.toArray(new String[0]));
 		comboBoxSchools.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				refresh();
@@ -180,6 +183,7 @@ public class SpellBrowserFE extends SpellBrowser {
 		}
 		//resize all components
 		double scaleFactor = Settings.getResizeFactor();
+		//scaleFactor = 1;
 		
 		setBounds(getX(), getY(),
 				(int)(384 * scaleFactor),
@@ -287,12 +291,6 @@ public class SpellBrowserFE extends SpellBrowser {
 		if (comboBoxSchools.getSelectedIndex() == 0) {
 			return true;
 		}
-		return spell.getType().contains(((String)comboBoxSchools.getSelectedItem()).toLowerCase());
-	}
-
-	@Override
-	public void WindowRefresh() {
-		// TODO Auto-generated method stub
-		
+		return spell.getSchool().contains(((String)comboBoxSchools.getSelectedItem()));
 	}
 }

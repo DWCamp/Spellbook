@@ -13,7 +13,7 @@ import files.FileSystem;
 import files.Spell_List;
 import gui.UserSpellWindow;
 import helperClasses.Spell;
-import helperClasses.SpellFE;
+import helperClasses.gameVersion;
 import gui.Settings;
 
 import javax.swing.JTextArea;
@@ -42,21 +42,28 @@ public class SpellCard extends JPanel {
 		setLayout(null);
 		setPreferredSize(new Dimension((int)(298 * scaleFactor), 0));
 		
-		spell = Spell_List.getSpell(spellName);
+		if (Settings.getVersion() == gameVersion.FIFTH_EDITION)
+		{
+			spell = Spell_List.getFESpell(spellName);
+		} else if (Settings.getVersion() == gameVersion.PATHFINDER)
+		{
+			spell = Spell_List.getPFSpell(spellName);
+		}
+		
 		prepared = CharacterItems.getPreparedFESpells().contains(spellName);
 		
 		JButton btnDetails = new JButton("Details");
 		btnDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				WordWrapPopUp popUp = new WordWrapPopUp
-						(spellName, Spell_List.getSpell(spellName).getDescription());
+						(spellName, spell.getDetails());
 				popUp.setVisible(true);
 				popUp.setSize(new Dimension((int)(600 * scaleFactor),
 				(int)(400 * scaleFactor)));
 			}
 		});
 		btnDetails.setBounds((int)(176 * scaleFactor),
-				(int)(32 * scaleFactor),
+				(int)(36 * scaleFactor),
 				(int)(111 * scaleFactor),
 				(int)(20 * scaleFactor));
 		btnDetails.setFont(new Font("Tahoma", Font.PLAIN, (int)(13 * scaleFactor)));
@@ -123,19 +130,33 @@ public class SpellCard extends JPanel {
 	
 		if (spell != null){
 			lblSpellType.setText(spell.getSubtitle());
+			if (spell.getSubtitle().length() > 30) {
+				lblSpellType.setFont(new Font("Tahoma", Font.PLAIN, (int)(8 * scaleFactor)));
+			}
 			textArea.setText(spell.getCardText());
 		} else{
 			lblSpellType.setText("ERROR");
 			textArea.setText("SPELL NOT FOUND");
 		}
 		
-		if (CharacterItems.getPreparedFESpells().contains(spellName)) {
-			setBackground(new Color(34, 139, 34));
-			btnPrepare.setText("Prepared!");
-		} else {
-			setBackground(new Color(192, 192, 192));
-			btnPrepare.setText("Prepare");
+		if (Settings.getVersion() == gameVersion.FIFTH_EDITION) {
+			if (CharacterItems.getPreparedFESpells().contains(spellName)) {
+				setBackground(new Color(34, 139, 34));
+				btnPrepare.setText("Prepared!");
+			} else {
+				setBackground(new Color(192, 192, 192));
+				btnPrepare.setText("Prepare");
+			}
+		} else if (Settings.getVersion() == gameVersion.PATHFINDER) {
+			if (CharacterItems.getPreparedPFSpells().contains(spellName)) {
+				setBackground(new Color(34, 139, 34));
+				btnPrepare.setText("Prepared!");
+			} else {
+				setBackground(new Color(192, 192, 192));
+				btnPrepare.setText("Prepare");
+			}
 		}
+
 		
 	}
 	
@@ -157,11 +178,19 @@ public class SpellCard extends JPanel {
 		if (prepared) {
 			setBackground(new Color(34, 139, 34));
 			btnPrepare.setText("Prepared!");
-			CharacterItems.prepareFESpell(spell.getName());
+			if (Settings.getVersion() == gameVersion.FIFTH_EDITION) {
+				CharacterItems.prepareFESpell(spell.getName());
+			} else if (Settings.getVersion() == gameVersion.PATHFINDER) {
+				CharacterItems.preparePFSpell(spell.getName());
+			}	
 		} else {
 			setBackground(new Color(192, 192, 192));
 			btnPrepare.setText("Prepare");
-			CharacterItems.unprepareFESpell(spell.getName());
+			if (Settings.getVersion() == gameVersion.FIFTH_EDITION) {
+				CharacterItems.unprepareFESpell(spell.getName());
+			} else if (Settings.getVersion() == gameVersion.PATHFINDER) {
+				CharacterItems.unpreparePFSpell(spell.getName());
+			}	
 		}
 		FileSystem.saveCharItems();
 	}

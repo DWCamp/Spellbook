@@ -191,7 +191,7 @@ public class CustomSpellAdder extends JFrame {
 		ArrayList<SortedObjectList<SpellFE>> sortedSpellArrayList = new ArrayList<SortedObjectList<SpellFE>>();
 		for(int i = 0; i < 10; i++)
 		{
-			sortedSpellArrayList.add(new SortedObjectList());
+			sortedSpellArrayList.add(new SortedObjectList<SpellFE>());
 		}
 		
 		for(Component element : panelSpells.getComponents())

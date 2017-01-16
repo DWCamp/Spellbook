@@ -8,10 +8,7 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
-import files.Class_List;
 import files.Spell_List;
 import guiPanels.SpellBrowserPanel;
 import helperClasses.SpellPF;
@@ -19,6 +16,7 @@ import gui.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingWorker;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
@@ -26,6 +24,10 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 import javax.swing.BoxLayout;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 /**
  * The Window for browsing the master spell list. This window is 
@@ -37,9 +39,10 @@ import javax.swing.BoxLayout;
 @SuppressWarnings("serial")
 public class SpellBrowserPF extends SpellBrowser {
 
+	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextField searchField;
-	private JLabel lblSearch;
+	private JButton btnSearch;
 	private JComboBox<Object> comboBoxLevels;
 	private JComboBox<Object> comboBoxOption;
 	private JComboBox<Object> comboBoxClasses;
@@ -48,11 +51,18 @@ public class SpellBrowserPF extends SpellBrowser {
 	private UserSpellWindow uswParent;
 
 	/**
+	 * By making this a field, the school name does 
+	 * not need to keep being fetched. This should
+	 * save a small amount of time
+	 */
+	private String schoolSearch;
+	
+	/**
 	 * Create the frame.
 	 */
 	public SpellBrowserPF(UserSpellWindow parent) {
 		super();
-		
+		setTitle("Pathfinder spells");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -74,71 +84,117 @@ public class SpellBrowserPF extends SpellBrowser {
 		scrollPane.setViewportView(panelSpells);
 		panelSpells.setLayout(new BoxLayout(panelSpells, BoxLayout.Y_AXIS));
 		
-		searchField = new JTextField();
-		searchField.getDocument().addDocumentListener(new DocumentListener() {
-			@Override
-			public void changedUpdate(DocumentEvent arg0) {
-				System.out.println("How did you find this (SpellBrowser: "
-						+ "textField Document Listener)");
-			}
-			@Override
-			public void insertUpdate(DocumentEvent arg0) {
-				refresh();
-			}
-			@Override
-			public void removeUpdate(DocumentEvent arg0) {
-				refresh();
-			}
-		});
-		contentPane.add(searchField);
-		searchField.setColumns(10);
-		
-		lblSearch = new JLabel("Search:");
-		contentPane.add(lblSearch);
-		
 		String[] levelOptions = {"All Levels", "Cantrips", "Level 1", 
 				"Level 2", "Level 3", "Level 4", "Level 5", "Level 6", 
 				"Level 7", "Level 8", "Level 9"};
-		comboBoxLevels = new JComboBox<Object>(levelOptions);
-		comboBoxLevels.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
-		contentPane.add(comboBoxLevels);
 		
 		String[] searchOptions = {"Name", "Description"};
-		comboBoxOption = new JComboBox<Object>(searchOptions);
-		comboBoxOption.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
-		contentPane.add(comboBoxOption);
 		
-		ArrayList<String> classOptions = new ArrayList<String>();
-		classOptions.add("All classes");
-		for (String className : Class_List.getClassNames()) {
-			classOptions.add(className);
+		JPanel panelTools = new JPanel();
+		panelTools.setBounds(864, 22, 399, 724);
+		contentPane.add(panelTools);
+		
+		ArrayList<String> classList = new ArrayList<String>();
+		classList.add("All classes");
+		for (String element : Spell_List.getPFClasses()) {
+			classList.add(element);
 		}
-		comboBoxClasses = new JComboBox<Object>(classOptions
-				.toArray(new String[0]));
-		comboBoxClasses.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
-		contentPane.add(comboBoxClasses);
 		
-		comboBoxSchools = new JComboBox<Object>(new String[]
-				{"All Schools", "Abjuration", "Conjuration", "Divination", "Enchantment", 
-						"Evocation", "Illusion", "Necromancy", "Transmutation"});
-		comboBoxSchools.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
+		ArrayList<String> schoolList = new ArrayList<String>();
+		schoolList.add("All schools");
+		for (String element : Spell_List.getPFSchools()) {
+			schoolList.add(element);
+		}
+
+		
+		btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnSearch.setText("Wait...");
+				btnSearch.setEnabled(false);
+
+				/**
+				 * This is a thing I found on StackOverflow. -> http://stackoverflow.com/questions/10372046/swing-jlabel-settext-invoked-too-late
+				 * Don't question it. Basically, it somehow
+				 * solves the concurrency issue of search()
+				 * hanging the thread so Swing can't update
+				 */
+				new SwingWorker<Void, Void>() {
+					@Override
+					protected Void doInBackground() throws Exception {
+						search();
+						return null;
+					}
+
+					@Override
+					protected void done() {
+						btnSearch.setText("Search");
+						btnSearch.setEnabled(true);
+					}
+				}.execute();
 			}
 		});
-		contentPane.add(comboBoxSchools);
+		panelTools.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panelOptions = new JPanel();
+		panelTools.add(panelOptions, BorderLayout.NORTH);
+		panelOptions.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel panelSearch = new JPanel();
+		panelOptions.add(panelSearch);
+		panelSearch.setLayout(new BorderLayout(0, 0));
+		
+		searchField = new JTextField();
+		panelSearch.add(searchField);
+		searchField.setColumns(10);
+		comboBoxOption = new JComboBox<Object>(searchOptions);
+		panelSearch.add(comboBoxOption, BorderLayout.EAST);
+		
+		JLabel label = new JLabel("");
+		panelOptions.add(label);
+		
+		comboBoxClasses = new JComboBox<Object>(classList.toArray(new String[0]));
+		panelOptions.add(comboBoxClasses);
+		
+		comboBoxSchools = new JComboBox<Object>(schoolList.toArray(new String[0]));
+		panelOptions.add(comboBoxSchools);
+		
+		comboBoxLevels = new JComboBox<Object>(levelOptions);
+		panelOptions.add(comboBoxLevels);
+		
+		JPanel panelSources = new JPanel();
+		panelTools.add(panelSources, BorderLayout.CENTER);
+		panelSources.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panelChoices = new JPanel();
+		panelSources.add(panelChoices);
+		panelChoices.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		/**
+		 * TOO MANY SOURCES
+		 */
+		JCheckBox checkBoxTemp = new JCheckBox("A");
+		for(String source : Spell_List.getPFSources())
+		{
+			checkBoxTemp = new JCheckBox(source);
+			panelChoices.add(checkBoxTemp);
+		}
+		
+		JLabel lblSources = new JLabel("Soruces");
+		lblSources.setFont(new Font("Tahoma", Font.BOLD, 22));
+		panelSources.add(lblSources, BorderLayout.NORTH);
+		
+		JPanel panel = new JPanel();
+		panelSources.add(panel, BorderLayout.SOUTH);
+		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JButton btnSelect = new JButton("Select All");
+		panel.add(btnSelect);
+		
+		JButton btnDeselect = new JButton("Deselect All");
+		panel.add(btnDeselect);
+		
+		panelTools.add(btnSearch, BorderLayout.SOUTH);
 		
 		self = this;
 		refresh();
@@ -152,7 +208,55 @@ public class SpellBrowserPF extends SpellBrowser {
 	 */
 	public void refresh()
 	{
+		//resize all components
+		double scaleFactor = Settings.getResizeFactor();
+		scaleFactor = 2;
+		
+		setBounds(getX(), getY(),
+				1284,
+				806);
+		
+		scrollPane.setBounds(20,
+				22,
+				829,
+				724);
+		scrollPane.getVerticalScrollBar().setUnitIncrement((int)(scaleFactor*(4.8) + 2));
+		
+		searchField.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		searchField.setText("");
+		
+		comboBoxOption.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		comboBoxOption.setSelectedIndex(0);
+		
+		comboBoxLevels.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		comboBoxLevels.setSelectedIndex(0);
+		
+		comboBoxSchools.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		comboBoxSchools.setSelectedIndex(0);
+		
+		comboBoxClasses.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		comboBoxClasses.setSelectedIndex(0);
+		
+		btnSearch.setFont(new Font("Tahoma", Font.PLAIN, (int)(15 * scaleFactor)));
+		
+		//Refill spell search
+		panelSpells.removeAll();
+		ArrayList<SpellPF> spells = Spell_List.getAllPFSpells();
+		for (SpellPF spell : spells) {
+			panelSpells.add(new SpellBrowserPanel(spell, uswParent));
+		}
+		repaint();
+		revalidate();
+	}
+	
+	/**
+	 * Uses the parameters to search the spell list 
+	 * for specific entries and displays them
+	 */
+	public void search()
+	{
 		String searchVal = searchField.getText().toUpperCase();
+		schoolSearch = (String)comboBoxSchools.getSelectedItem();
 		panelSpells.removeAll();
 		ArrayList<SpellPF> spells = Spell_List.getAllPFSpells();
 		if (searchVal.equals("")) {
@@ -177,54 +281,6 @@ public class SpellBrowserPF extends SpellBrowser {
 				}
 			}
 		}
-		//resize all components
-		double scaleFactor = Settings.getResizeFactor();
-		
-		setBounds(getX(), getY(),
-				(int)(384 * scaleFactor),
-				(int)(413 * scaleFactor) - (int)(20 * (scaleFactor - 1)));
-		
-		scrollPane.setBounds((int)(10 * scaleFactor),
-				(int)(69 * scaleFactor),
-				(int)(358 * scaleFactor),
-				(int)(304 * scaleFactor));
-		scrollPane.getVerticalScrollBar().setUnitIncrement((int)(scaleFactor*(24.0/5.0) + 2));
-		
-		searchField.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		searchField.setBounds((int)(51 * scaleFactor),
-				(int)(11 * scaleFactor),
-				(int)(197 * scaleFactor),
-				(int)(20 * scaleFactor));
-		
-		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		lblSearch.setBounds((int)(10 * scaleFactor),
-				(int)(14 * scaleFactor),
-				(int)(46 * scaleFactor),
-				(int)(14 * scaleFactor));
-		
-		comboBoxOption.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		comboBoxOption.setBounds((int)(258 * scaleFactor),
-				(int)(11 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
-		
-		comboBoxLevels.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		comboBoxLevels.setBounds((int)(12 * scaleFactor),
-				(int)(38 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
-		
-		comboBoxSchools.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		comboBoxSchools.setBounds((int)(256 * scaleFactor),
-				(int)(38 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
-		
-		comboBoxClasses.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
-		comboBoxClasses.setBounds((int)(134 * scaleFactor),
-				(int)(38 * scaleFactor),
-				(int)(110 * scaleFactor),
-				(int)(20 * scaleFactor));
 		
 		repaint();
 		revalidate();
@@ -265,7 +321,7 @@ public class SpellBrowserPF extends SpellBrowser {
 		}
 		boolean hasSearchedClass = false;
 		String searchedClass = (String) comboBoxClasses.getSelectedItem();
-		for (String className : spell.getClasses().keySet().toArray(new String[0])) {
+		for (String className : spell.getClasses().keySet()) {
 			if (searchedClass.equals(className)) {
 				hasSearchedClass = true;
 			}
@@ -286,12 +342,6 @@ public class SpellBrowserPF extends SpellBrowser {
 		if (comboBoxSchools.getSelectedIndex() == 0) {
 			return true;
 		}
-		return spell.getSchool().equals((String)comboBoxSchools.getSelectedItem());
-	}
-
-	@Override
-	public void WindowRefresh() {
-		// TODO Auto-generated method stub
-		
+		return spell.getSchool().equals(schoolSearch);
 	}
 }

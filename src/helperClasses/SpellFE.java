@@ -3,6 +3,7 @@ package helperClasses;
 public class SpellFE extends Spell implements Comparable<SpellFE>{
 	private String name;
 	private String[] classes;
+	private String school;
 	private String type;
 	private int level;
 	private String castingTime;
@@ -19,6 +20,7 @@ public class SpellFE extends Spell implements Comparable<SpellFE>{
 		name = "";
 		classes = new String[0];
 		type = "";
+		school = "";
 		level = 0;
 		castingTime = "";
 		range = "";
@@ -38,19 +40,34 @@ public class SpellFE extends Spell implements Comparable<SpellFE>{
 	 * @param duration The duration of the spell
 	 * @param desc The description of the spell
 	 */
-	public SpellFE(String name, String[] classes, String type, 
+	public SpellFE(String name, String[] classes, String school, 
 			int level, String castingTime, String range, 
 			String components, String duration, String desc)
 	{
 		this.name = name;
 		this.classes = classes;
-		this.type = type;
+		this.school = school;
 		this.level = level;
 		this.castingTime = castingTime;
 		this.range = range;
 		this.components = components;
 		this.duration = duration;
 		this.desc = desc;
+		
+		switch (level){
+		case 0:
+			type = school + " cantrip";
+			break;
+		case 1: 
+			type = "1st-level " + school;
+			break;
+		case 2: 
+			type = "2nd-level " + school;
+		case 3:
+			type = "3rd-level " + school;
+		default:
+			type = level + "th-level " + school;
+		}
 	}
 	
 	/**
@@ -70,6 +87,11 @@ public class SpellFE extends Spell implements Comparable<SpellFE>{
 	public String[] getClasses()
 	{
 		return classes;
+	}
+	
+	public String getSchool()
+	{
+		return school;
 	}
 	
 	/**
@@ -144,9 +166,7 @@ public class SpellFE extends Spell implements Comparable<SpellFE>{
 	@Override
 	public String toString()
 	{
-		return name + "\n" + type + "\n\nCasting time: " + castingTime
-				+ "\n\nRange: " + range + "\n\nComponents: " + components
-				+ "\n\nDuration: " + duration + "\n\n" + desc;
+		return name;
 	}
 	
 	/**
@@ -176,5 +196,20 @@ public class SpellFE extends Spell implements Comparable<SpellFE>{
 		+ "\n\nRange: " + range
 		+ "\n\nComponents: " + components
 		+ "\n\nDuration: " + duration;
+	}
+	
+	@Override
+	public String getPopUpText()
+	{
+		return name + "\n" + type + "\n\nCasting time: " + castingTime
+			+ "\n\nRange: " + range + "\n\nComponents: " + components
+			+ "\n\nDuration: " + duration + "\n\n" + desc;
+	}
+
+	@Override
+	public String getDetails() {
+		return type + "\n\nCasting time: " + castingTime
+				+ "\n\nRange: " + range + "\n\nComponents: " + components
+				+ "\n\nDuration: " + duration + "\n\n" + desc;
 	}
 }

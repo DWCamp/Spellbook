@@ -1,6 +1,6 @@
 <NAME>Acid Splash
 <CLAS>Sorcerer,Wizard
-<TYPE>Conjuration cantrip
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -10,7 +10,7 @@ This spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 <END>
 <NAME>Blade Ward
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>Abjuration cantrip
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -19,7 +19,7 @@ You extend your hand and trace a sigil of warding in the air. Until the end of y
 <END>
 <NAME>Booming Blade
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>5 feet
 <COMP>V, M (a weapon)
@@ -30,7 +30,7 @@ This spell’s damage increases when you reach higher levels. At 5th level, the me
 <END>
 <NAME>Chill Touch
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>Necromancy cantrip
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>120 feet
 <COMP>V,S
@@ -43,7 +43,7 @@ This spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 <END>
 <NAME>Control Flames
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>S
@@ -58,7 +58,7 @@ If you cast this spell multiple times, you can have up to three of its non-insta
 <END>
 <NAME>Create Bonfire
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>Conjuration cantrip
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V,S
@@ -69,7 +69,7 @@ The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 <END>
 <NAME>Dancing Lights
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a bit of phosphorus or wychwood, or a glowworm)
@@ -78,7 +78,7 @@ You create up to four torch-sized lights within range, making them appear as tor
 <END>
 <NAME>Druidcraft
 <CLAS>Druid
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -92,7 +92,7 @@ Whispering to the spirits of nature, you create one of the following effects wit
 <END>
 <NAME>Eldritch Blast
 <CLAS>Warlock
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -103,7 +103,7 @@ The spell creates more than one beam when you reach higher levels: two beams at 
 <END>
 <NAME>Fire Bolt
 <CLAS>Sorcerer,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V,S
@@ -112,7 +112,7 @@ You hurl a mote of fire at a creature or object within range. Make a ranged spel
 <END>
 <NAME>Friends
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>Enchantment cantrip
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>Self
 <COMP>S, M (a small amount of makeup applied to the face as this spell is cast)
@@ -121,7 +121,7 @@ For the duration, you have advantage on all Charisma checks directed at one crea
 <END>
 <NAME>Frostbite
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -132,7 +132,7 @@ The spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level (
 <END>
 <NAME>Green-Flame Blade
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>5 feet
 <COMP>V, M (a weapon)
@@ -143,7 +143,7 @@ This spell’s damage increases when you reach higher levels. At 5th level, the me
 <END>
 <NAME>Guidance
 <CLAS>Cleric,Druid
-<TYPE>Divination cantrip
+<SCHO>Divination
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -152,7 +152,7 @@ You touch one willing creature. Once before the spell ends, the target can roll 
 <END>
 <NAME>Gust
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V,S
@@ -165,7 +165,7 @@ You seize the air and compel it to create one of the following effects at a poin
 <END>
 <NAME>Light
 <CLAS>Bard,Cleric,Sorcerer,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, M (a firefly or phosphorescent moss)
@@ -176,7 +176,7 @@ If you target an object held or worn by a hostile creature, that creature must s
 <END>
 <NAME>Lightning Lure
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>15 feet
 <COMP>V
@@ -187,7 +187,7 @@ This spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level 
 <END>
 <NAME>Mage Hand
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>Conjuration cantrip
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>30 feet
 <COMP>V,S
@@ -198,7 +198,7 @@ The hand can’t attack, activate magic items, or carry more than 10 pounds.
 <END>
 <NAME>Mending
 <CLAS>Bard,Cleric,Druid,Sorcerer,Wizard
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 minute
 <RANG>Touch
 <COMP>V, S, M (two lodestones)
@@ -209,7 +209,7 @@ This spell can physically repair a magic item or construct, but the spell can’t 
 <END>
 <NAME>Message
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a short piece of copper wire)
@@ -220,7 +220,7 @@ You can cast this spell through solid objects if you are familiar with the targe
 <END>
 <NAME>Minor Illusion
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>Illusion cantrip  
+<SCHO>Illusion  
 <CATM>1 action
 <RANG>30 feet
 <COMP>S, M (a bit of fleece)
@@ -235,7 +235,7 @@ If a creature uses its action to examine the sound or image, the creature can de
 <END>
 <NAME>Mold Earth
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>S
@@ -250,7 +250,7 @@ If you cast this spell multiple times, you can have no more than two of its non-
 <END>
 <NAME>Poison Spray
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>Conjuration cantrip
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>10 feet
 <COMP>V, S
@@ -261,7 +261,7 @@ This spell’s damage increases by 1d12 when you reach 5th level (2d12), 11th leve
 <END>
 <NAME>Prestidigitation
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>10 feet
 <COMP>V, S
@@ -279,7 +279,7 @@ If you cast this spell multiple times, you can have up to three of its non-insta
 <END>
 <NAME>Ray of Frost
 <CLAS>Sorcerer,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -290,7 +290,7 @@ The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 <END>
 <NAME>Resistance
 <CLAS>Cleric,Druid
-<TYPE>Abjuration cantrip
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a miniature cloak)
@@ -299,7 +299,7 @@ You touch one willing creature. Once before the spell ends, the target can roll 
 <END>
 <NAME>Sacred Flame
 <CLAS>Cleric
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -310,7 +310,7 @@ The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 <END>
 <NAME>Shape Water
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>S
@@ -326,7 +326,7 @@ If you cast this spell multiple times, you can have no more than two of its non-
 <END>
 <NAME>Shillelagh
 <CLAS>Druid
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 bonus action
 <RANG>Touch
 <COMP>V, S, M (mistletoe, a shamrock leaf, and a club or quarterstaff)
@@ -335,7 +335,7 @@ The wood of a club or a quarterstaff you are holding is imbued with nature’s pow
 <END>
 <NAME>Shocking Grasp
 <CLAS>Sorcerer,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -346,7 +346,7 @@ The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (
 <END>
 <NAME>Spare the Dying
 <CLAS>Cleric
-<TYPE>Necromancy cantrip
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -355,7 +355,7 @@ You touch a living creature that has 0 hit points. The creature becomes stable. 
 <END>
 <NAME>Sword Burst
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>Conjuration cantrip
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>5 feet
 <COMP>V
@@ -366,7 +366,7 @@ This spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 <END>
 <NAME>Thaumaturgy
 <CLAS>Cleric
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V
@@ -384,7 +384,7 @@ If you cast this spell multiple times, you can have up to three of its 1-minute 
 <END>
 <NAME>Thorn Whip
 <CLAS>Druid
-<TYPE>Transmutation cantrip
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (the stem of a plant with thorns)
@@ -395,7 +395,7 @@ This spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level 
 <END>
 <NAME>Thunderclap
 <CLAS>Bard,Druid,Sorcerer,Warlock,Wizard
-<TYPE>Evocation cantrip
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (5-foot radius)
 <COMP>S
@@ -406,7 +406,7 @@ The spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level (
 <END>
 <NAME>True Strike
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>Divination cantrip
+<SCHO>Divination
 <CATM>1 action
 <RANG>30 feet
 <COMP>S
@@ -415,7 +415,7 @@ You extend your hand and point a finger at a target in range. Your magic grants 
 <END>
 <NAME>Vicious Mockery
 <CLAS>Bard
-<TYPE>Enchantment cantrip
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V
@@ -427,7 +427,7 @@ This spell’s damage increases by 1d4 when you reach 5th level (2d4), 11th level 
 <LEVEL1>
 <NAME>Absorb Elements
 <CLAS>Druid,Ranger,Wizard
-<TYPE>1st-level abjuration
+<SCHO>Abjuration
 <CATM> 1 reaction, which you take when you take acid, cold, fire, lightning, or thunder damage
 <RANG>Self
 <COMP>S
@@ -438,7 +438,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Alarm
 <CLAS>Ranger,Wizard
-<TYPE>1st-level abjuration (ritual)
+<SCHO>Abjuration (ritual)
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a tiny bell and a piece of fine silver wire)
@@ -451,7 +451,7 @@ An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet
 <END>
 <NAME>Animal Friendship
 <CLAS>Bard,Druid
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a morsel of food)
@@ -462,7 +462,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Armor of Agathys
 <CLAS>Warlock
-<TYPE>1st-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a cup of water)
@@ -473,7 +473,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Arms of Hadar
 <CLAS>Warlock
-<TYPE>1st-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Self (10-foot radius)
 <COMP>V, S
@@ -484,7 +484,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Bane
 <CLAS>Bard,Cleric
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a drop of blood)
@@ -495,7 +495,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Beast Bond
 <CLAS>Druid,Ranger
-<TYPE>1st-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a bit of fur wrapped in a cloth)
@@ -504,7 +504,7 @@ You establish a telepathic link with one beast you touch that is friendly to you
 <END>
 <NAME>Bless
 <CLAS>Cleric,Paladin
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V,S, M (a sprinkling of holy water)
@@ -513,7 +513,7 @@ You bless up to three creatures of your choice within range. Whenever a target m
 <END>
 <NAME>Burning Hands
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (15-foot cone)
 <COMP>V, S
@@ -526,7 +526,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Catapult
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>150 feet
 <COMP>S
@@ -537,7 +537,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Charm Person
 <CLAS>Bard,Cleric,Duid,Sorcerer,Warlock,Wizard
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -550,7 +550,7 @@ Only clerics with the "trickery" domain may take this spell
 <END>
 <NAME>Chromatic Orb
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a diamond worth at least 50gp)
@@ -574,7 +574,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Color Spray
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Self (15-foot cone)
 <COMP>V, S, M (a pinch of powder or sand that is colored red, yellow, and blue)
@@ -587,7 +587,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Command
 <CLAS>Cleric,Paladin
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V
@@ -608,7 +608,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Compelled Duel
 <CLAS>Paladin
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 bonus action
 <RANG>30 feet
 <COMP>V
@@ -619,7 +619,7 @@ The spell ends if you attack any other creature, if you cast a spell that target
 <END>
 <NAME>Comprehend Languages
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>1st-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a pinch of soot and salt)
@@ -630,7 +630,7 @@ This spell doesn’t decode secret messages in a text or a glyph, such as an arcan
 <END>
 <NAME>Create or Destroy Water
 <CLAS>Cleric,Druid
-<TYPE>1st-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a drop of water if creating water, or a few grains of sand if destroying it)
@@ -645,7 +645,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Cure Wounds
 <CLAS>Bard,Cleric,Druid,Paladin
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -656,7 +656,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Detect Evil and Good
 <CLAS>Cleric,Paladin
-<TYPE>1st-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -667,7 +667,7 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 <END>
 <NAME>Detect Magic
 <CLAS>Bard,Cleric,Druid,Paladin,Ranger,Sorcerer,Wizard
-<TYPE>1st-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -678,7 +678,7 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 <END>
 <NAME>Detect Poison and Disease
 <CLAS>Cleric,Druid,Paladin,Ranger
-<TYPE>1st-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a yew leaf)
@@ -689,7 +689,7 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
 <END>
 <NAME>Disguise Self
 <CLAS>Bard,Cleric,Sorcerer,Wizard
-<TYPE>1st-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -704,7 +704,7 @@ Only clerics of the "trickery" domain may take this spell
 <END>
 <NAME>Dissonant Whispers
 <CLAS>Bard
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V
@@ -715,7 +715,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Divine Favor
 <CLAS>Paladin
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V, S
@@ -724,7 +724,7 @@ Your prayer empowers you with divine radiance. Until the spell ends, your weapon
 <END>
 <NAME>Earth Tremor
 <CLAS>Bard,Druid,Sorcerer,Wizard
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (10-foot radius)
 <COMP>V, S
@@ -735,7 +735,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Ensnaring
 <CLAS>Ranger
-<TYPE>1st-level conjuration
+<SCHO>Conjuration
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -748,7 +748,7 @@ At Higher Levels. If you cast this spell using a spell slot of 2nd level or high
 <END>
 <NAME>Entangle
 <CLAS>Druid
-<TYPE>1st-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S
@@ -761,7 +761,7 @@ When the spell ends, the conjured plants wilt away.
 <END>
 <NAME>Expeditious Retreat
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>1st-level transmutation
+<SCHO>Transmutation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V, S
@@ -770,7 +770,7 @@ This spell allows you to move at an incredible pace. When you cast this spell, a
 <END>
 <NAME>Faerie Fire
 <CLAS>Bard,Druid
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V
@@ -781,7 +781,7 @@ Any attack roll against an affected creature or object has advantage if the atta
 <END>
 <NAME>False Life
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a small amount of alcohol or distilled spirits)
@@ -792,7 +792,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Feather Fall
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>1st-level transmutation
+<SCHO>Transmutation
 <CATM>1 reaction, which you take when you or a creature within 60 feet of you falls
 <RANG>60 feet
 <COMP>V, M (a small feather or a piece of down)
@@ -801,7 +801,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Find Familiar
 <CLAS>Wizard
-<TYPE>1st-level conjuration (ritual)
+<SCHO>Conjuration (ritual)
 <CATM>1 hour
 <RANG>10 feet
 <COMP>V, S, M (10gp worth of charcoal, incense, and herbs that must be consumed by fire in a brass brazier)
@@ -822,7 +822,7 @@ Finally, when you cast a spell with a range of touch, your familiar can deliver 
 <END>
 <NAME>Fog Cloud
 <CLAS>Druid,Ranger,Sorcerer,Wizard
-<TYPE>1st-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -833,7 +833,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Goodberry
 <CLAS>Druid,Ranger
-<TYPE>1st-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a sprig of mistletoe)
@@ -844,7 +844,7 @@ The berries lose their potency if they have not been consumed within 24 hours of
 <END>
 <NAME>Grease
 <CLAS>Wizard
-<TYPE>1st-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a bit of pork rind or butter)
@@ -855,7 +855,7 @@ When the grease appears, each creature standing in its area must succeed on a De
 <END>
 <NAME>Guiding Bolt
 <CLAS>Cleric
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -866,7 +866,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Hail of Thorns
 <CLAS>Ranger
-<TYPE>1st-level conjuration
+<SCHO>Conjuration
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -877,7 +877,7 @@ At Higher Levels. If you cast this spell using a spell slot of 2nd level or high
 <END>
 <NAME>Healing Word
 <CLAS>Bard,Cleric,Druid
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>60 feet
 <COMP>V
@@ -888,7 +888,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Hellish Rebuke
 <CLAS>Warlock
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 reaction, which you take in response to being damaged by a creature within 60 feet of you that you can see.
 <RANG>60
 <COMP>V, S
@@ -899,7 +899,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Heroism
 <CLAS>Bard,Paladin
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -908,7 +908,7 @@ A willing creature you touch is imbued with bravery. Until the spell ends, the c
 <END>
 <NAME>Hex
 <CLAS>Warlock
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 bonus action
 <RANG>90 feet
 <COMP>V, S, M (the petrified eye of a newt)
@@ -923,7 +923,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd or 4th leve
 <END>
 <NAME>Hunter's Mark
 <CLAS>Ranger
-<TYPE>1st-level ranger
+<SCHO>Ranger
 <CATM>1 bonus action
 <RANG>90 feet
 <COMP>V
@@ -934,7 +934,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd or 4th leve
 <END>
 <NAME>Ice Knife
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>1st-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>S, M (a drop of water or piece of ice)
@@ -945,7 +945,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Identify
 <CLAS>Bard,Wizard
-<TYPE>1st-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 minute
 <RANG>Touch
 <COMP>V, S, M (a pearl worth at least 100 gp and an owl feather)
@@ -956,7 +956,7 @@ If you instead touch a creature throughout the casting, you learn what spells, i
 <END>
 <NAME>Illusory Script
 <CLAS>Bard,Warlock,Wizard
-<TYPE>1st-level illusion (ritual)
+<SCHO>Illusion (ritual)
 <CATM>1 minute
 <RANG>Touch
 <COMP>S, M (a lead-based ink worth at least 10gp, which this spell consumes)
@@ -971,7 +971,7 @@ A creature with truesight can read the hidden message.
 <END>
 <NAME>Inflict Wounds
 <CLAS>Cleric
-<TYPE>1st-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -982,7 +982,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Jump
 <CLAS>Druid,Ranger,Sorcerer,Wizard
-<TYPE>1st-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a grasshopper’s hind leg)
@@ -991,7 +991,7 @@ You touch a creature. The creature’s jump distance is tripled until the spell en
 <END>
 <NAME>Longstrider
 <CLAS>Bard,Druid,Ranger,Wizard
-<TYPE>1st-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a pinch of dirt)
@@ -1002,7 +1002,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Mage Armor
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a piece of cured leather)
@@ -1011,7 +1011,7 @@ You touch a willing creature who isn’t wearing armor, and a protective magical f
 <END>
 <NAME>Magic Missile
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -1022,7 +1022,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Protection from Evil and Good
 <CLAS>Cleric,Paladin,Warlock,Wizard
-<TYPE>1st-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (holy water or powdered silver and iron, which the spell consumes)
@@ -1033,7 +1033,7 @@ The protection grants several benefits. Creatures of those types have disadvanta
 <END>
 <NAME>Purify Food and Drink
 <CLAS>Cleric,Druid,Paladin
-<TYPE>1st-level transmutation (rituation)
+<SCHO>Transmutation (rituation)
 <CATM>1 action
 <RANG>10 feet
 <COMP>V, S
@@ -1042,7 +1042,7 @@ All nonmagical food and drink within a 5-foot radius sphere centered on a point 
 <END>
 <NAME>Ray of Sickness
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -1053,7 +1053,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Sanctuary
 <CLAS>Cleric
-<TYPE>1st-level abjuration
+<SCHO>Abjuration
 <CATM>1 bonus action
 <RANG>30 feet
 <COMP>V, S, M (a small silver mirror)
@@ -1064,7 +1064,7 @@ If the warded creature makes an attack or casts a spell that affects an enemy cr
 <END>
 <NAME>Searing Smite
 <CLAS>Paladin
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -1075,7 +1075,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Shield
 <CLAS>Sorcerer,Wizard
-<TYPE>1st-level abjuration
+<SCHO>Abjuration
 <CATM>1 reaction, which you take when you are hit by an attack or targeted by the magic missile spell
 <RANG>Self
 <COMP>V, S
@@ -1084,7 +1084,7 @@ An invisible barrier of magical force appears and protects you. Until the start 
 <END>
 <NAME>Shield of Faith
 <CLAS>Cleric,Paladin
-<TYPE>1st-level abjuration
+<SCHO>Abjuration
 <CATM>1 bonus action
 <RANG>60 feet
 <COMP>V, S, M (a small parchment with a bit of holy text written on it)
@@ -1093,7 +1093,7 @@ A shimmering field appears and surrounds a creature of your choice within range,
 <END>
 <NAME>Silent Image
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>1st-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a bit of fleece)
@@ -1106,7 +1106,7 @@ Physical interaction with the image reveals it to be an illusion, because things
 <END>
 <NAME>Sleep
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a pinch of fine sand, rose petals, or a cricket)
@@ -1121,7 +1121,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Speak with Animals
 <CLAS>Bard,Druid,Ranger
-<TYPE>1st-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -1130,7 +1130,7 @@ You gain the ability to comprehend and verbally communicate with beasts for the 
 <END>
 <NAME>Tasha's Hideous Laughter
 <CLAS>Bard,Wizard
-<TYPE>1st-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (tiny tarts and a feather that is waved in the air)
@@ -1141,7 +1141,7 @@ At the end of each of its turns, and each time it takes damage, the target can m
 <END>
 <NAME>Tenser's Floating Disk
 <CLAS>Wizard
-<TYPE>1st-level conjuration (ritual)
+<SCHO>Conjuration (ritual)
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a drop of mercury)
@@ -1154,7 +1154,7 @@ If you move more than 100 feet away from the disk (typically because it can’t mo
 <END>
 <NAME>Thunderous Smite
 <CLAS>Paladin
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -1163,7 +1163,7 @@ The first time you hit with a melee weapon attack during this spell’s duration, 
 <END>
 <NAME>Thunderwave
 <CLAS>Bard,Druid,Sorcerer,Wizard
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (15-foot cube)
 <COMP>V, S
@@ -1174,7 +1174,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Unseen Servant
 <CLAS>Bard,Warlock,Wizard
-<TYPE>1st-level conjuration (ritual)
+<SCHO>Conjuration (ritual)
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a piece of string and a bit of wood)
@@ -1187,7 +1187,7 @@ If you command the servant to perform a task that would move it more than 60 fee
 <END>
 <NAME>Witch Bolt
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a twig from a tree that has been struck by lightning)
@@ -1198,7 +1198,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <END>
 <NAME>Wrathful Smite
 <CLAS>Paladin
-<TYPE>1st-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -1208,7 +1208,7 @@ The next time you hit with a melee weapon attack during this spell’s duration, y
 <LEVEL2>
 <NAME>Aganazzar's Scorcher
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a red dragon’s scale)
@@ -1219,7 +1219,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Aid
 <CLAS>Cleric,Paladin
-<TYPE>2nd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a tiny strip of white cloth)
@@ -1230,7 +1230,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Alter Self
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -1245,7 +1245,7 @@ Natural Weapons. You grow claws, fangs, spines, horns, or a different natural we
 <END>
 <NAME>Animal Messenger
 <CLAS>Bard,Druid,Ranger
-<TYPE>2nd-level enchantment (ritual)
+<SCHO>Enchantment (ritual)
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a morsel of food)
@@ -1258,7 +1258,7 @@ At Higher Levels. If you cast this spell using a spell slot of 3rd level or high
 <END>
 <NAME>Arcane Lock
 <CLAS>Wizard
-<TYPE>2nd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (gold dust worth at least 25 gp, which the spell consumes)
@@ -1269,7 +1269,7 @@ While affected by this spell, the object is more difficult to break or force ope
 <END>
 <NAME>Augury
 <CLAS>Cleric
-<TYPE>2nd-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 minute
 <RANG>Self
 <COMP>V, S, M (specially marked sticks, bones, or similar tokens worth at least 25 gp)
@@ -1287,7 +1287,7 @@ If you cast the spell two or more times before completing your next long rest, t
 <END>
 <NAME>Barkskin
 <CLAS>Druid,Ranger
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a handful of oak bark)
@@ -1296,7 +1296,7 @@ You touch a willing creature. Until the spell ends, the target’s skin has a roug
 <END>
 <NAME>Beast Sense
 <CLAS>Druid,Ranger
-<TYPE>2nd-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>Touch
 <COMP>S
@@ -1307,7 +1307,7 @@ While perceiving through the beast’s senses, you gain the benefits of any specia
 <END>
 <NAME>Blindness/Deafness
 <CLAS>Bard,Cleric,Sorcerer,Wizard
-<TYPE>2nd-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>30 feet
 <COMP>V
@@ -1318,7 +1318,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Blur
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Self
 <COMP>V
@@ -1327,7 +1327,7 @@ Your body becomes blurred, shifting and wavering to all who can see you. For the
 <END>
 <NAME>Branding Smite
 <CLAS>Paladin
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self
 <COMP>V
@@ -1336,7 +1336,7 @@ The next time you hit a creature with a weapon attack before this spell ends, th
 <END>
 <NAME>Calm Emotions
 <CLAS>Bard,Cleric
-<TYPE>2nd-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -1347,7 +1347,7 @@ Alternatively, you can make a target indifferent about creatures of your choice 
 <END>
 <NAME>Cloud of Daggers
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>2nd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a sliver of glass)
@@ -1358,7 +1358,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Continual Flame
 <CLAS>Cleric,Wizard
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (ruby dust worth 50 gp, which the spell consumes)
@@ -1367,7 +1367,7 @@ A flame, equivalent in brightness to a torch, springs forth from an object that 
 <END>
 <NAME>Cordon Of Arrows
 <CLAS>Ranger
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>5 feet
 <COMP>V, S, M (four of more arrows or bolts)
@@ -1380,7 +1380,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Crown of Madness
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>2nd-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -1389,7 +1389,7 @@ One humanoid of your choice that you can see within range must succeed on a Wisd
 <END>
 <NAME>Darkness
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, M (bat fur and a drop of pitch or piece of coal)
@@ -1398,7 +1398,7 @@ Magical darkness spreads from a point you choose within range to fill a 15-foot-
 <END>
 <NAME>Darkvision
 <CLAS>Druid,Ranger,Sorcerer,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch,
 <COMP>V, S, M (either a pinch of dried carrot or an agate)
@@ -1407,7 +1407,7 @@ You touch a willing creature to grant it the ability to see in the dark. For the
 <END>
 <NAME>Detect Thoughts
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>2nd-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a copper piece)
@@ -1422,7 +1422,7 @@ Once you detect the presence of a creature in this way, you can read its thought
 <END>
 <NAME>Dust Devil
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>2nd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a pinch of dust)
@@ -1437,7 +1437,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Earthbind
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>300 feet
 <COMP>V
@@ -1446,7 +1446,7 @@ Choose one creature you can see within range. Yellow strips of magical energy lo
 <END>
 <NAME>Enhance Ability
 <CLAS>Bard,Cleric,Druid,Sorcerer
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (fur or a feather from a beast)
@@ -1469,7 +1469,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Enlarge/Reduce
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a pinch of powdered iron)
@@ -1482,7 +1482,7 @@ Reduce. The target’s size is halved in all dimensions, and its weight is reduced
 <END>
 <NAME>Enthrall
 <CLAS>Bard,Warlock
-<TYPE>2nd-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -1491,7 +1491,7 @@ You weave a distracting string of words, causing creatures of your choice that y
 <END>
 <NAME>Find Steed
 <CLAS>Paladin
-<TYPE>2nd-level conjuration
+<SCHO>Conjuration
 <CATM>10 minutes
 <RANG>30 feet
 <COMP>V, S
@@ -1508,7 +1508,7 @@ You can’t have more than one steed bonded by this spell at a time. As an action,
 <END>
 <NAME>Find Traps
 <CLAS>Cleric,Druid,Ranger
-<TYPE>2nd-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -1519,7 +1519,7 @@ This spell merely reveals that a trap is present. You don’t learn the location o
 <END>
 <NAME>Flame Blade
 <CLAS>Druid
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V, S, M (leaf of sumac)
@@ -1534,7 +1534,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Flaming Sphere
 <CLAS>Druid,Wizard
-<TYPE>2nd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a bit of tallow, a pinch of brimstone, and a dusting of powdered iron)
@@ -1549,7 +1549,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Gentle Repose
 <CLAS>Cleric,Wizard
-<TYPE>2nd-level necromancy (ritual)
+<SCHO>Necromancy (ritual)
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a pinch of salt and one copper piece placed on each of the corpse’s eyes, which must remain there for the duration)
@@ -1560,7 +1560,7 @@ The spell also effectively extends the time limit on raising the target from the
 <END>
 <NAME>Gust of Wind
 <CLAS>Sorcerer,Wizard,Druid
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (60-foot line)
 <COMP>V, S, M (a legume seed)
@@ -1575,7 +1575,7 @@ As a bonus action on each of your turns before the spell ends, you can change th
 <END>
 <NAME>Heat Metal
 <CLAS>Druid,Bard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a piece of iron and a flame)
@@ -1588,7 +1588,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Hold Person
 <CLAS>Bard,Cleric,Druid,Sorcerer,Warlock,Wizard
-<TYPE>2nd-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a small, straight piece of iron)
@@ -1599,7 +1599,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Invisibility
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>2nd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (an eyelash encased in gum arabic)
@@ -1610,7 +1610,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Knock
 <CLAS>Sorcerer,Wizard,Bard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V
@@ -1625,7 +1625,7 @@ When you cast the spell, a loud knock, audible from as far away as 300 feet, ema
 <END>
 <NAME>Lesser Restoration
 <CLAS>Bard,Cleric,Druid,Paladin,Ranger
-<TYPE>2nd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -1634,7 +1634,7 @@ You touch a creature and can end either one disease or one condition afflicting 
 <END>
 <NAME>Levitate
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (either a small leather loop or a piece of golden wire bent into a cup shape with a long shank on one end)
@@ -1647,7 +1647,7 @@ When the spell ends, the target floats gently to the ground if it is still aloft
 <END>
 <NAME>Locate Animals or Plants
 <CLAS>Bard,Druid,Ranger
-<TYPE>2nd-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a bit of fur from a bloodhound)
@@ -1656,7 +1656,7 @@ Describe or name a specific kind of beast or plant. Concentrating on the voice o
 <END>
 <NAME>Locate Object
 <CLAS>Bard,Cleric,Druid,Paladin,Ranger,Wizard
-<TYPE>2nd-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a forked twig)
@@ -1669,7 +1669,7 @@ This spell can’t locate an object if any thickness of lead, even a thin sheet, b
 <END>
 <NAME>Magic Mouth
 <CLAS>Bard,Wizard
-<TYPE>2nd-level illusion (ritual)
+<SCHO>Illusion (ritual)
 <CATM>1 minute
 <RANG>30 feet
 <COMP>V, S, M (a small bit of honeycomb and jade dust worth at least 10 gp, which the spell consumes)
@@ -1682,7 +1682,7 @@ The triggering circumstance can be as general or as detailed as you like, though
 <END>
 <NAME>Magic Weapon
 <CLAS>Paladin,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 bonus action
 <RANG>Touch
 <COMP>V, S
@@ -1693,7 +1693,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Maximilian's Earthen Grasp
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a miniature hand sculpted from clay)
@@ -1708,7 +1708,7 @@ As an action, you can cause the hand to reach for a different creature or to mov
 <END>
 <NAME>Melf's Acid Arrow
 <CLAS>Wizard
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (powdered rhubarb leaf and an adder’s stomach)
@@ -1719,7 +1719,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Mirror Image
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>2nd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -1736,7 +1736,7 @@ A creature is unaffected by this spell if it can’t see, if it relies on senses o
 <END>
 <NAME>Misty Step
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>2nd-level conjuration
+<SCHO>Conjuration
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -1745,7 +1745,7 @@ Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied 
 <END>
 <NAME>Moonbeam
 <CLAS>Druid
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (several seeds of any moonseed plant and a piece of opalescent feldspar)
@@ -1762,7 +1762,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Nystul's Magic Aura
 <CLAS>Wizard
-<TYPE>2nd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a small square of silk)
@@ -1777,7 +1777,7 @@ Mask. You change the way the target appears to spells and magical effects that d
 <END>
 <NAME>Pass Without Trace
 <CLAS>Druid,Ranger
-<TYPE>2nd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (ashes from a burned leaf of mistletoe and a sprig of spruce)
@@ -1786,7 +1786,7 @@ A veil of shadows and silence radiates from you, masking you and your companions
 <END>
 <NAME>Phantasmal Force
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>2nd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a bit of fleece)
@@ -1803,7 +1803,7 @@ An affected target is so convinced of the phantasm’s reality that it can even ta
 <END>
 <NAME>Prayer of Healing
 <CLAS>Cleric
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>10 minutes
 <RANG>30 feet
 <COMP>V
@@ -1814,7 +1814,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Protection from Poison
 <CLAS>Cleric,Ranger,Paladin,Druid
-<TYPE>2nd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -1823,7 +1823,7 @@ You touch a creature. If it is poisoned, you neutralize the poison. If more than
 <END>
 <NAME>Pyrotechnics
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -1836,7 +1836,7 @@ Smoke. Thick black smoke spreads out from the target in a 20-foot radius, moving
 <END>
 <NAME>Ray of Enfeeblement
 <CLAS>Warlock,Wizard
-<TYPE>2nd-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -1847,7 +1847,7 @@ At the end of each of the target’s turns, it can make a Constitution saving thro
 <END>
 <NAME>Rope Trick
 <CLAS>Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (powdered corn extract and a twisted loop of parchment)
@@ -1862,7 +1862,7 @@ Anything inside the extradimensional space drops out when the spell ends.
 <END>
 <NAME>Scorching Ray
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -1875,7 +1875,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>See Invisibility
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>2nd-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a pinch of tale and a small sprinkling of powdered silver)
@@ -1884,7 +1884,7 @@ For the duration, you see invisible creatures and objects as if they were visibl
 <END>
 <NAME>Shatter
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a chip of mica)
@@ -1897,7 +1897,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Silence
 <CLAS>Bard,Cleric,Ranger
-<TYPE>2nd-level illusion (ritual)
+<SCHO>Illusion (ritual)
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -1906,7 +1906,7 @@ For the duration, no sound can be created within or pass through a 20-foot-radiu
 <END>
 <NAME>Skywrite
 <CLAS>Bard,Druid,Wizard
-<TYPE>2nd-level transmutation (ritual)
+<SCHO>Transmutation (ritual)
 <CATM>1 action
 <RANG>Sight
 <COMP>V, S
@@ -1915,7 +1915,7 @@ You cause up to ten words to form in a part of the sky you can see. The words ap
 <END>
 <NAME>Snilloc's Snowball Swarm
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a piece of ice or a small white rock chip)
@@ -1926,7 +1926,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Spider Climb
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a drop of bitumen and a spider)
@@ -1935,7 +1935,7 @@ Until the spell ends, one willing creature you touch gains the ability to move u
 <END>
 <NAME>Spike Growth
 <CLAS>Druid,Ranger
-<TYPE>2nd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (seven sharp thorns or seven small twigs, each sharpened to a point)
@@ -1946,7 +1946,7 @@ The transformation of the ground is camouflaged to look natural. Any creature th
 <END>
 <NAME>Spiritual Weapon
 <CLAS>Cleric
-<TYPE>2nd-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>60 feet
 <COMP>V, S
@@ -1959,7 +1959,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Suggestion
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>2nd-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, M (a snake’s tongue and either a bit of honeycomb or a drop of sweet oil)
@@ -1974,7 +1974,7 @@ If you or any of your companions damage the target, the spell ends.
 <END>
 <NAME>Warding Bond
 <CLAS>Cleric
-<TYPE>2nd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a pair of platinum rings worth at least 50 gp each, which you and the target must wear for the duration)
@@ -1985,7 +1985,7 @@ The spell ends if you drop to 0 hit points or if you and the target become separ
 <END>
 <NAME>Warding Wind
 <CLAS>Bard,Druid
-<TYPE>2nd level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self
 <COMP>V
@@ -2002,7 +2002,7 @@ The wind has the following effects:
 <END>
 <NAME>Web
 <CLAS>Sorcerer,Wizard
-<TYPE>2nd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a bit of spider web)
@@ -2019,7 +2019,7 @@ The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 
 <END>
 <NAME>Zone of Truth
 <CLAS>Bard,Cleric,Paladin
-<TYPE>2nd-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -2031,7 +2031,7 @@ An affected creature is aware of the spell and can thus avoid answering question
 <LEVEL3>
 <NAME>Animate Dead
 <CLAS>Cleric,Wizard
-<TYPE>3rd-level necromancy
+<SCHO>Necromancy
 <CATM>1 minute
 <RANG>10 feet
 <COMP>V, S, M (a drop of blood, a piece of flesh, and a pinch of bone dust)
@@ -2046,7 +2046,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Aura Of Vitality
 <CLAS>Paladin
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (30-foot radius)
 <COMP>V
@@ -2055,7 +2055,7 @@ Healing energy radiates from you in an aura with a 30-foot radius. Until the spe
 <END>
 <NAME>Beacon of Hope
 <CLAS>Cleric
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -2064,7 +2064,7 @@ This spell bestows hope and vitality. Choose any number of creatures within rang
 <END>
 <NAME>Bestow Curse
 <CLAS>Bard,Cleric
-<TYPE>3rd-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -2082,7 +2082,7 @@ At Higher Levels. If you cast this spell using a spell slot of 4th level or high
 <END>
 <NAME>Blinding Smite
 <CLAS>Paladin
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -2093,7 +2093,7 @@ A creature blinded by this spell makes another Constitution saving throw at the 
 <END>
 <NAME>Blink
 <CLAS>Sorcerer,Wizard
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -2104,7 +2104,7 @@ While on the Ethereal Plane, you can see and hear the plane you originated from,
 <END>
 <NAME>Call Lightning
 <CLAS>Druid
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -2119,7 +2119,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th or higher l
 <END>
 <NAME>Clairvoyance
 <CLAS>Bard,Cleric,Sorcerer,Wizard
-<TYPE>3rd-level divination
+<SCHO>Divination
 <CATM>10 minutes
 <RANG>1 mile
 <COMP>V, S, M (a focus worth at least 100gp, either a jeweled horn for hearing or a glass eye for seeing)
@@ -2132,7 +2132,7 @@ A creature that can see the sensor (such as a creature benefiting from see invis
 <END>
 <NAME>Conjure Animals
 <CLAS>Druid,Ranger
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -2153,7 +2153,7 @@ At Higher Levels. When you cast this spell using certain higher-level spell slot
 <END>
 <NAME>Conjure Barrage
 <CLAS>Ranger
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Self (60-foot cone)
 <COMP>V, S, M (one piece of ammunition or a thrown weapon)
@@ -2162,7 +2162,7 @@ You throw a nonmagical weapon or fire a piece of nonmagical ammunition into the 
 <END>
 <NAME>Counterspell
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 reaction, which you take when you see a creature within 60 feet of you casting a spell.
 <RANG>60 feet
 <COMP>S
@@ -2173,7 +2173,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Create Food and Water
 <CLAS>Cleric,Paladin
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -2182,7 +2182,7 @@ You create 45 pounds of food and 30 gallons of water on the ground or in contain
 <END>
 <NAME>Crusader's Mantle
 <CLAS>Paladin
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self
 <COMP>V
@@ -2191,7 +2191,7 @@ Holy power radiates from you in an aura with a 30-foot radius, awakening boldnes
 <END>
 <NAME>Daylight
 <CLAS>Cleric,Druid,Paladin,Ranger,Sorcerer
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -2204,7 +2204,7 @@ If any of this spell’s area overlaps with an area of darkness created by a spell
 <END>
 <NAME>Dispel Magic
 <CLAS>Bard,Cleric,Druid,Paladin,Sorcerer,Warlock,Wizard
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -2215,7 +2215,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Elemental Weapon
 <CLAS>Paladin
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -2226,7 +2226,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th or 6th leve
 <END>
 <NAME>Erupting Earth
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a piece of obsidian)
@@ -2237,7 +2237,7 @@ At Higher Levels. When you cast this spell using a spell slot of 3rd level or hi
 <END>
 <NAME>Fear
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>3rd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Self (30-foot cone)
 <COMP>V, S, M (a white feather or the heart of a hen)
@@ -2248,7 +2248,7 @@ While frightened by this spell, a creature must take the Dash action and move aw
 <END>
 <NAME>Feign Death
 <CLAS>Bard,Cleric,Druid,Wizard
-<TYPE>3rd-level necromancy (ritual)
+<SCHO>Necromancy (ritual)
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a pinch of graveyard dirt)
@@ -2259,7 +2259,7 @@ For the spell’s duration, or until you use an action to touch the target and dis
 <END>
 <NAME>Fireball
 <CLAS>Sorcerer,Wizard
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a tiny ball of bat guano and sulfur)
@@ -2272,7 +2272,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Flame Arrows
 <CLAS>Druid,Ranger,Sorcerer,Wizard
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -2283,7 +2283,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Fly
 <CLAS>3rd-level transmutation
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a wing feather from any bird)
@@ -2294,7 +2294,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Gaseous Form
 <CLAS>Sorcerer,Wizard,Warlock
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a bit of gauze and a wisp of smoke)
@@ -2307,7 +2307,7 @@ While in the form of a misty cloud, the target can’t talk or manipulate objects,
 <END>
 <NAME>Glyph of Warding
 <CLAS>Bard,Cleric,Wizard
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 hour
 <RANG>Touch
 <COMP>V, S, M, (incense and powdered diamond worth at least 200 gp, which the spell consumes)
@@ -2330,7 +2330,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Haste
 <CLAS>Sorcerer,Wizard
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a shaving of licorice root)
@@ -2341,7 +2341,7 @@ When the spell ends, the target can’t move or take actions until after its next 
 <END>
 <NAME>Hunger of Hadar
 <CLAS>Warlock
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a pickled octopus tentacle)
@@ -2352,7 +2352,7 @@ The void creates a warp in the fabric of space, and the area is difficult terrai
 <END>
 <NAME>Hypnotic Pattern
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>3rd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>120 feet
 <COMP>S, M (a glowing stick of incense or a crystal vial filled with phosphorescent material)
@@ -2363,7 +2363,7 @@ The spell ends for an affected creature if it takes any damage or if someone els
 <END>
 <NAME>Leomund's Tiny Hut
 <CLAS>Bard,Wizard
-<TYPE>3rd-level evocation (ritual)
+<SCHO>Evocation (ritual)
 <CATM>1 minute
 <RANG>Self (10-foot-radius hemisphere
 <COMP>V, S, M (a small crystal bead)
@@ -2376,7 +2376,7 @@ Until the spell ends, you can command the interior to become dimly lit or dark. 
 <END>
 <NAME>Lightning Arrow
 <CLAS>Ranger
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V, S
@@ -2391,7 +2391,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Lightning Bolt
 <CLAS>Sorcerer,Wizard
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (100-foot line)
 <COMP>V, S, M (a bit of fur and a rod of amber, crystal, or glass)
@@ -2404,7 +2404,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Magic Circle
 <CLAS>Cleric,Paladin,Warlock,Wizard
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 minute
 <RANG>10 feet
 <COMP>V, S, M (holy water or powdered silver and iron worth at least 100 gp, which the spell consumes)
@@ -2423,7 +2423,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Major Image
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>3rd-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a bit of fleece)
@@ -2438,7 +2438,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Mass Healing Word
 <CLAS>Cleric
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>60 feet
 <COMP>V
@@ -2449,7 +2449,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Meld Into Stone
 <CLAS>Cleric,Druid
-<TYPE>3rd-level transmutation (ritual)
+<SCHO>Transmutation (ritual)
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -2462,7 +2462,7 @@ Minor physical damage to the stone doesn’t harm you, but its partial destruction
 <END>
 <NAME>Melf's Minute Meteors
 <CLAS>Sorcerer,Wizard
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (niter, sulfur, and pine tar formed into a bead)
@@ -2473,7 +2473,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Nondetection
 <CLAS>Bard,Ranger,Wizard
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a pinch of diamond dust worth 25 gp sprinkled over the target, which the spell consumes)
@@ -2482,7 +2482,7 @@ For the duration, you hide a target that you touch from divination magic. The ta
 <END>
 <NAME>Phantom Steed
 <CLAS>Wizard
-<TYPE>3rd-level illusion (ritual)
+<SCHO>Illusion (ritual)
 <CATM>1 minute
 <RANG>30 feet
 <COMP>V, S
@@ -2493,7 +2493,7 @@ For the duration, you or a creature you choose can ride the steed. The creature 
 <END>
 <NAME>Plant Growth
 <CLAS>Bard,Druid,Ranger
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action or 8 hours
 <RANG>150 feet
 <COMP>V, S
@@ -2502,7 +2502,7 @@ For the duration, you or a creature you choose can ride the steed. The creature 
 <END>
 <NAME>Protection from Energy
 <CLAS>Cleric,Druid,Ranger,Sorcerer,Wizard
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -2511,7 +2511,7 @@ For the duration, the willing creature you touch has resistance to one damage ty
 <END>
 <NAME>Remove Curse
 <CLAS>Cleric,Paladin,Warlock,Wizard
-<TYPE>3rd-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -2520,7 +2520,7 @@ At your touch, all curses affecting one creature or object end. If the object is
 <END>
 <NAME>Revivify
 <CLAS>Cleric,Paladin
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (diamonds worth 300 gp, which the spell consumes)
@@ -2529,7 +2529,7 @@ You touch a creature that has died within the last minute. That creature returns
 <END>
 <NAME>Sending
 <CLAS>Bard,Cleric,Wizard
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Unlimited
 <COMP>V, S, M (a short piece of fine copper wire)
@@ -2540,7 +2540,7 @@ You can send the message across any distance and even to other planes of existen
 <END>
 <NAME>Sleet Storm
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a pinch of dust and a few drops of water)
@@ -2553,7 +2553,7 @@ If a creature is concentrating in the spell’s area, the creature must make a suc
 <END>
 <NAME>Slow
 <CLAS>Sorcerer,Wizard
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a drop of molasses)
@@ -2568,7 +2568,7 @@ A creature affected by this spell makes another Wisdom saving throw at the end o
 <END>
 <NAME>Speak with Dead
 <CLAS>Bard,Cleric
-<TYPE>3rd-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>10 feet
 <COMP>V, S, M (burning incense)
@@ -2579,7 +2579,7 @@ Until the spell ends, you can ask the corpse up to five questions. The corpse kn
 <END>
 <NAME>Speak with Plants
 <CLAS>Bard,Druid,Ranger
-<TYPE>3rd-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self (30-foot radius)
 <COMP>V, S
@@ -2596,7 +2596,7 @@ This spell can cause the plants created by the entangle spell to release a restr
 <END>
 <NAME>Spirit Guardians
 <CLAS>Cleric
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Self (15-foot radius)
 <COMP>V, S, M (a holy symbol)
@@ -2609,7 +2609,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Stinking Cloud
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a rotten egg or several skunk cabbage leaves)
@@ -2622,7 +2622,7 @@ A moderate wind (at least 10 miles per hour) disperses the cloud after 4 rounds.
 <END>
 <NAME>Tidal Wave
 <CLAS>Druid,Wizard
-<TYPE>3rd-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a drop of water)
@@ -2631,7 +2631,7 @@ You conjure up a wave of water that crashes down on an area within range. The ar
 <END>
 <NAME>Tongues
 <CLAS>Bard,Cleric,Sorcerer,Warlock,Wizard
-<TYPE>3rd-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Touch
 <COMP>V, M (a small clay model of a ziggurat)
@@ -2640,7 +2640,7 @@ This spell grants the creature you touch the ability to understand any spoken la
 <END>
 <NAME>Vampiric Touch
 <CLAS>Warlock,Wizard
-<TYPE>3rd-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -2651,7 +2651,7 @@ At Higher Levels. When you cast this spell using a spell slot of 4th level or hi
 <END>
 <NAME>Wall of Sand
 <CLAS>Wizard
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a handful of sand)
@@ -2660,7 +2660,7 @@ You conjure up a wall of swirling sand on the ground at a point you can see with
 <END>
 <NAME>Wall of Water
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a drop of water)
@@ -2671,7 +2671,7 @@ Any ranged weapon attack that enters the wall’s space has disadvantage on the at
 <END>
 <NAME>Water Breathing
 <CLAS>Druid,Ranger,Sorcerer,Wizard
-<TYPE>3rd-level transmutation (ritual)
+<SCHO>Transmutation (ritual)
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a short reed or piece of straw)
@@ -2680,7 +2680,7 @@ This spell grants up to ten willing creatures you can see within range the abili
 <END>
 <NAME>Water Walk
 <CLAS>Cleric,Druid,Ranger,Sorcerer
-<TYPE>3rd-level transmutation (ritual)
+<SCHO>Transmutation (ritual)
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a piece of cork)
@@ -2691,7 +2691,7 @@ If you target a creature submerged in a liquid, the spell carries the target to 
 <END>
 <NAME>Wind Wall
 <CLAS>Druid,Ranger
-<TYPE>3rd-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a tiny fan and a feather of exotic origin)
@@ -2705,7 +2705,7 @@ The strong wind keeps fog, smoke, and other gases at bay. Small or smaller flyin
 <LEVEL4>
 <NAME>Arcane Eye
 <CLAS>Wizard
-<TYPE>4th-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a bit of bat fur)
@@ -2718,7 +2718,7 @@ As an action, you can move the eye up to 30 feet in any direction. There is no l
 <END>
 <NAME>Aura of Life
 <CLAS>Paladin
-<TYPE>4th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self (30-foot radius)
 <COMP>V
@@ -2727,7 +2727,7 @@ Life-preserving energy radiates from you in an aura with a 30-foot radius. Until
 <END>
 <NAME>Aura of Purity
 <CLAS>Paladin
-<TYPE>4th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self (30-foot radius)
 <COMP>V
@@ -2736,7 +2736,7 @@ Purifying energy radiates from you in an aura with a 30-foot radius. Until the s
 <END>
 <NAME>Banishment
 <CLAS>Cleric,Paladin,Sorcerer,Warlock,Wizard
-<TYPE>4th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (an item distasteful to the target)
@@ -2751,7 +2751,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Blight
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>4th-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -2766,7 +2766,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level of hi
 <END>
 <NAME>Compulsion
 <CLAS>Bard
-<TYPE>4th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -2777,7 +2777,7 @@ A target isn’t compelled to move into an obviously deadly hazard, such as a fire
 <END>
 <NAME>Confusion
 <CLAS>Bard,Druid,Sorcerer,Wizard
-<TYPE>4th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (three nut shells)
@@ -2800,7 +2800,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Conjure Minor Elementals
 <CLAS>Druid,Wizard
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 minute
 <RANG>90 feet
 <COMP>V, S
@@ -2822,7 +2822,7 @@ At Higher Levels. When you cast this spell using certain higher-level slots, you
 <END>
 <NAME>Conjure Woodland Beings
 <CLAS>Druid,Ranger
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (one holly berry per creature summoned)
@@ -2844,7 +2844,7 @@ At Higher Levels. When you cast this spell using certain higher-level spell slot
 <END>
 <NAME>Control Water
 <CLAS>Cleric,Druid,Wizard
-<TYPE>4th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>300 feet
 <COMP>V, S, M (a drop of water and a pinch of dust)
@@ -2869,7 +2869,7 @@ The first time each turn that an object enters the vortex, the object takes 2d8 
 <END>
 <NAME>Death Ward
 <CLAS>Cleric,Paladin
-<TYPE>4th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -2882,7 +2882,7 @@ If the spell is still in effect when the target is subjected to an effect that w
 <END>
 <NAME>Dimension Door
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>500 feet
 <COMP>V
@@ -2895,7 +2895,7 @@ If you would arrive in a place already occupied by an object or a creature, you 
 <END>
 <NAME>Divination
 <CLAS>Cleric
-<TYPE>4th-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (incense and a sacrificial offering appropriate to your religion, together worth at least 25 gp, which the spell consumes)
@@ -2908,7 +2908,7 @@ If you cast this spell two or more times before finishing your next long rest, t
 <END>
 <NAME>Dominate Beast
 <CLAS>Druid,Sorcerer
-<TYPE>4th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -2923,7 +2923,7 @@ At Higher Levels. When you cast this spell with a 5th-level spell slot, the dura
 <END>
 <NAME>Elemental Bane
 <CLAS>Druid,Warlock,Wizard
-<TYPE>4th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S
@@ -2934,7 +2934,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Evard's Black Tentacles
 <CLAS>Wizard
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a piece of tentacle from a giant octopus or a giant squid)
@@ -2947,7 +2947,7 @@ A creature restrained by the tentacles can use its action to make a Strength or 
 <END>
 <NAME>Fabricate
 <CLAS>Wizard
-<TYPE>4th-level transmutation
+<SCHO>Transmutation
 <CATM>10 minutes
 <RANG>120 feet
 <COMP>V, S
@@ -2960,7 +2960,7 @@ Creatures or magic items can’t be created or transmuted by this spell. You also 
 <END>
 <NAME>Fire Shield
 <CLAS>Wizard
-<TYPE>4th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a bit of phosphorous or a firefly)
@@ -2973,7 +2973,7 @@ In addition, whenever a creature within 5 feet of you hits you with a melee atta
 <END>
 <NAME>Freedom of Movement
 <CLAS>Bard,Cleric,Druid,Ranger
-<TYPE>4th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a leather strap, bound around the arm or a similar appendage)
@@ -2984,7 +2984,7 @@ The target can also spend 5 feet of movement to automatically escape from nonmag
 <END>
 <NAME>Giant Insect
 <CLAS>Druid
-<TYPE>4th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -2999,7 +2999,7 @@ The DM might allow you to choose different targets. For example, if you transfor
 <END>
 <NAME>Grasping Vine
 <CLAS>Ranger,Druid
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 bonus action
 <RANG>30 feet
 <COMP>V, S
@@ -3010,7 +3010,7 @@ Until the spell ends, you can direct the vine to lash out at the same creature o
 <END>
 <NAME>Greater Invisibility
 <CLAS>Sorcerer,Wizard,Bard
-<TYPE>4th-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -3019,7 +3019,7 @@ You or a creature you touch becomes invisible until the spell ends. Anything the
 <END>
 <NAME>Guardian of Faith
 <CLAS>Cleric
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>30 feet
 <COMP>V
@@ -3030,7 +3030,7 @@ Any creature hostile to you that moves to a space within 10 feet of the guardian
 <END>
 <NAME>Hallucinatory Terrain
 <CLAS>Bard,Druid,Warlock,Wizard
-<TYPE>4th-level illusion
+<SCHO>Illusion
 <CATM>10 minutes
 <RANG>300 feet
 <COMP>V, S, M (a stone, a twig, and a bit of green plant)
@@ -3041,7 +3041,7 @@ The tactile characteristics of the terrain are unchanged, so creatures entering 
 <END>
 <NAME>Ice Storm
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>4th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>300 feet
 <COMP>V, S, M (a pinch of dust and a few drops of water)
@@ -3054,7 +3054,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Leomund's Secret Chest
 <CLAS>Wizard
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (an exquisite chest, 3 feet by 2 feet by 2 feet, constructed from rare materials worth at least 5,000 gp, and a Tiny replica made from the same materials worth at least 50 gp)
@@ -3063,7 +3063,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Locate Creature
 <CLAS>Bard,Cleric,Druid,Paladin,Ranger,Wizard
-<TYPE>4th-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a bit of fur from a bloodhound)
@@ -3076,7 +3076,7 @@ This spell can’t locate a creature if running water at least 10 feet wide blocks
 <END>
 <NAME>Mordenkainen's Faithful Hound
 <CLAS>Wizard
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a tiny silver whistle, a piece of bone, and a thread)
@@ -3089,7 +3089,7 @@ At the start of each of your turns, the hound attempts to bite one creature with
 <END>
 <NAME>Mordenkainen's Private Sanctum
 <CLAS>Wizard
-<TYPE>4th-level abjuration
+<SCHO>Abjuration
 <CATM>10 minutes
 <RANG>120 feet
 <COMP>V, S, M (a thin sheet of lead, a piece of opaque glass, a wad of cotton or cloth, and powdered chrysolite)
@@ -3111,7 +3111,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Otiluke's Resilient Sphere
 <CLAS>Wizard
-<TYPE>4th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a hemispherical piece of clear crystal and a matching hemispherical piece of gum arabic)
@@ -3126,7 +3126,7 @@ A disintegrate spell targeting the globe destroys it without harming anything in
 <END>
 <NAME>Phantasmal Killer
 <CLAS>Wizard
-<TYPE>4th-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -3137,7 +3137,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Polymorph
 <CLAS>Bard,Druid,Sorcerer,Wizard
-<TYPE>4th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a caterpillar cocoon)
@@ -3154,7 +3154,7 @@ The target’s gear melds into the new form. The creature can’t activate, use, wie
 <END>
 <NAME>Staggering Smite
 <CLAS>Paladin
-<TYPE>4th-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -3163,7 +3163,7 @@ The next time you hit a creature with a melee weapon attack during this spell’s 
 <END>
 <NAME>Stone Shape
 <CLAS>Cleric,Druid,Wizard
-<TYPE>4th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>touch
 <COMP>V, S, M (soft clay, which must be worked into roughly the desired shape of the stone object)
@@ -3172,7 +3172,7 @@ You touch a stone object of Medium size or smaller or a section of stone no more
 <END>
 <NAME>Stoneskin
 <CLAS>Druid,Sorcerer,Ranger,Wizard
-<TYPE>4th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (diamond dust worth 100 gp, which the spell consumes)
@@ -3181,7 +3181,7 @@ This spell turns the flesh of a willing creature you touch as hard as stone. Unt
 <END>
 <NAME>Storm Sphere
 <CLAS>Sorcerer,Wizard
-<TYPE>4th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S
@@ -3196,7 +3196,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Vitriolic Sphere
 <CLAS>Sorcerer,Wizard
-<TYPE>4th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a drop of giant slug bile)
@@ -3207,7 +3207,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Wall of Fire
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>4th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a small piece of phosphorus)
@@ -3222,7 +3222,7 @@ At Higher Levels. When you cast this spell using a spell slot of 5th level or hi
 <END>
 <NAME>Watery Sphere
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>4th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a droplet of water)
@@ -3240,7 +3240,7 @@ When the spell ends, the sphere falls to the ground and extinguishes all normal 
 <LEVEL5>
 <NAME>Animate Objects
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -3266,7 +3266,7 @@ At Higher Levels. If you cast this spell using a spell slot of 6th level or high
 <END>
 <NAME>Antilife Shell
 <CLAS>Druid
-<TYPE>5th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self (10-foot radius)
 <COMP>V, S
@@ -3279,7 +3279,7 @@ If you move so an affected creature is forced to pass through the barrier, the s
 <END>
 <NAME>Awaken
 <CLAS>Bard,Druid
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>8 hours
 <RANG>Touch
 <COMP>V, S, M (an agate worth at least 1000 gp, which the spell consumes)
@@ -3290,7 +3290,7 @@ The awakened beast or plant is charmed by you for 30 days or until you or your c
 <END>
 <NAME>Banishing Smite
 <CLAS>Paladin
-<TYPE>5th-level abjuration
+<SCHO>Abjuration
 <CATM>1 bonus action
 <RANG>Self
 <COMP>V
@@ -3299,7 +3299,7 @@ The next time you hit a creature with a weapon attack before this spell ends, yo
 <END>
 <NAME>Bigby's Hand
 <CLAS>Wizard
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (an eggshell and a snakeskin glove)
@@ -3322,7 +3322,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Circle of Power
 <CLAS>Paladin
-<TYPE>5th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self (30-foot radius)
 <COMP>V
@@ -3331,7 +3331,7 @@ Divine energy radiates from you, distorting and diffusing magical energy within 
 <END>
 <NAME>Cloudkill
 <CLAS>Sorcerer,Wizard
-<TYPE>5th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -3346,7 +3346,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Commune
 <CLAS>Cleric
-<TYPE>5th-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 minute
 <RANG>Self
 <COMP>V, S, M (incense and a vial of holy or unholy water)
@@ -3359,7 +3359,7 @@ If you cast the spell two or more times before finishing your next long rest, th
 <END>
 <NAME>Commune with Nature
 <CLAS>Druid,Ranger
-<TYPE>5th-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 minute
 <RANG>Self
 <COMP>V, S
@@ -3378,7 +3378,7 @@ For example, you could determine the location of powerful undead in the area, th
 <END>
 <NAME>Cone of Cold
 <CLAS>Sorcerer,Wizard
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (60-foot cone)
 <COMP>V, S, M (a small crystal or a glass cone)
@@ -3391,7 +3391,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Conjure Elemental
 <CLAS>Druid,Wizard
-<TYPE>5th-level conjuration
+<SCHO>Conjuration
 <CATM>1 minute
 <RANG>90 feet
 <COMP>V, S, M (burning incense for air, soft clay for earth, sulfur and phosphorus for fire, or water and sand for water)
@@ -3408,7 +3408,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Conjure Volley
 <CLAS>Ranger
-<TYPE>5th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (one piece of ammunition or one throwing weapon)
@@ -3417,7 +3417,7 @@ You fire a piece of nonmagical ammunition from a ranged weapon or throw a nonmag
 <END>
 <NAME>Contact Other Plane
 <CLAS>Warlock,Wizard
-<TYPE>5th-level divination (ritual)  
+<SCHO>Divination (ritual)  
 <CATM>1 minute
 <RANG>Self
 <COMP>V
@@ -3428,7 +3428,7 @@ On a successful save, you can ask the entity up to five questions. You must ask 
 <END>
 <NAME>Contagion
 <CLAS>Cleric,Druid
-<TYPE>5th-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -3453,7 +3453,7 @@ Slimy Doom. The creature begins to bleed uncontrollably. The creature has disadv
 <END>
 <NAME>Control Winds
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>300 feet
 <COMP>V, S
@@ -3468,7 +3468,7 @@ Updraft. You cause a sustained updraft within the cube, rising upward from the c
 <END>
 <NAME>Creation
 <CLAS>Sorcerer,Wizard
-<TYPE>5th-level illusion
+<SCHO>Illusion
 <CATM>1 minute
 <RANG>30 feet
 <COMP>V, S, M (a tiny piece of matter of the same type of the item you plan to create)
@@ -3491,7 +3491,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Destructive Wave
 <CLAS>Paladin
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (30-foot radius)
 <COMP>V
@@ -3500,7 +3500,7 @@ You strike the ground, creating a burst of divine energy that ripples outward fr
 <END>
 <NAME>Dispel Evil and Good
 <CLAS>Cleric,Paladin
-<TYPE>5th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (holy water or powdered silver and iron)
@@ -3515,7 +3515,7 @@ Dismissal. As your action, make a melee spell attack against a celestial, an ele
 <END>
 <NAME>Dominate Person
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>5th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -3530,7 +3530,7 @@ At Higher Levels. When you cast this spell using a 6th-level spell slot, the dur
 <END>
 <NAME>Dream
 <CLAS>Bard,Warlock,Wizard
-<TYPE>5th-level illusion
+<SCHO>Illusion
 <CATM>1 minute
 <RANG>Special
 <COMP>V, S, M (a handful of sand, a dab of ink, and a writing quill plucked from a sleeping bird)
@@ -3545,7 +3545,7 @@ If you have a body part, lock of hair, clipping from a nail, or similar portion 
 <END>
 <NAME>Flame Strike
 <CLAS>Cleric
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (pinch of sulfur)
@@ -3556,7 +3556,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Geas
 <CLAS>Cleric,Wizard,Paladin,Druid,Bard
-<TYPE>5th-level enchantment
+<SCHO>Enchantment
 <CATM>1 minute
 <RANG>60 feet
 <COMP>V
@@ -3571,7 +3571,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th or 8th leve
 <END>
 <NAME>Greater Restoration
 <CLAS>Cleric,Druid,Bard
-<TYPE>5th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (diamond dust worth at least 100 gp, which the spell consumes)
@@ -3585,7 +3585,7 @@ You imbue a creature you touch with positive energy to undo a debilitating effec
 <END>
 <NAME>Hallow
 <CLAS>Cleric
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>24 hours
 <RANG>Touch
 <COMP>V, S, M (herbs, oils, and incense worth at least 1,000 gp, which the spell consumes)
@@ -3618,7 +3618,7 @@ Tongues. Affected creatures can communicate with any other creature in the area,
 <END>
 <NAME>Hold Monster
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>5th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S, M (a small, straight piece of iron)
@@ -3629,7 +3629,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Immolation
 <CLAS>Sorcerer,Wizard
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>90 feet
 <COMP>V
@@ -3640,7 +3640,7 @@ If damage from this spell reduces a target to 0 hit points, the target is turned
 <END>
 <NAME>Insect Plague
 <CLAS>Cleric,Druid,Sorcerer
-<TYPE>5th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>300 feet
 <COMP>V, S, M (a few grains of sugar, some kernels of grain, and a smear of fat)
@@ -3653,7 +3653,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Legend Lore
 <CLAS>Cleric,Wizard,Bard
-<TYPE>5th-level divination
+<SCHO>Divination
 <CATM>10 minutes
 <RANG>Self
 <COMP>V, S, M (incense worth at least 250 gp, which the spell consumes, and four ivory strips worth at least 50 gp each)
@@ -3664,7 +3664,7 @@ The information you learn is accurate but might be couched in figurative languag
 <END>
 <NAME>Maelstrom
 <CLAS>Druid
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (paper or leaf in the shape of a funnel)
@@ -3673,7 +3673,7 @@ A mass of 5-foot-deep water appears and swirls in a 30-foot radius centered on a
 <END>
 <NAME>Mass Cure Wounds
 <CLAS>Bard,Cleric,Druid
-<TYPE>5th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -3684,7 +3684,7 @@ At Higher Levels. When you cast this spell using a spell slot of 6th level or hi
 <END>
 <NAME>Mislead
 <CLAS>Bard,Wizard
-<TYPE>5th-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>Self
 <COMP>S
@@ -3697,7 +3697,7 @@ You can see through its eyes and hear through its ears as if you were located wh
 <END>
 <NAME>Modify Memory
 <CLAS>Bard,Wizard
-<TYPE>5th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -3716,7 +3716,7 @@ At Higher Levels. If you cast this spell using a spell slot of 6th level or high
 <END>
 <NAME>Passwall
 <CLAS>Wizard
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a pinch of sesame seeds)
@@ -3727,7 +3727,7 @@ When the opening disappears, any creatures or objects still in the passage creat
 <END>
 <NAME>Planar Binding
 <CLAS>Bard,Cleric,Druid,Wizard
-<TYPE>5th-level abjuration
+<SCHO>Abjuration
 <CATM>1 hour
 <RANG>60 feet
 <COMP>V, S, M (a jewel worth at least 1,000 gp, which the spell consumes)
@@ -3740,7 +3740,7 @@ At Higher Levels. When you cast this spell using a spell slot of a higher level,
 <END>
 <NAME>Raise Dead
 <CLAS>Cleric,Paladin,Bard
-<TYPE>5th-level necromancy
+<SCHO>Necromancy
 <CATM>1 hour
 <RANG>Touch
 <COMP>V, S, M (a diamond worth at least 500 gp, which the spell consumes)
@@ -3755,7 +3755,7 @@ Coming back from the dead is an ordeal. The target takes a 1d4 penalty to all at
 <END>
 <NAME>Rary's Telepathic Bond
 <CLAS>Wizard
-<TYPE>5th-level divination (ritual)
+<SCHO>Divination (ritual)
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (pieces of eggshell from two different kinds of creatures)
@@ -3766,7 +3766,7 @@ Until the spell ends, the targets can communicate telepathically through the bon
 <END>
 <NAME>Reincarnate
 <CLAS>Druid
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>1 hour
 <RANG>Touch
 <COMP>V, S, M (rare oils and unguents worth at least 1,000 gp, which the spell consumes)
@@ -3796,7 +3796,7 @@ The reincarnated creature recalls its former life and experiences. It retains th
 <END>
 <NAME>Scrying
 <CLAS>Bard,Cleric,Druid,Warlock,Wizard
-<TYPE>5th-level divination
+<SCHO>Divination
 <CATM>10 minutes
 <RANG>Self
 <COMP>V, S, M (a focus worth at least 1,000 gp, such as a crystal ball, a silver mirror, or a font filled with holy water)
@@ -3822,7 +3822,7 @@ Instead of targeting a creature, you can choose a location you have seen before 
 <END>
 <NAME>Seeming
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>5th-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -3837,7 +3837,7 @@ A creature can use its action to inspect a target and make an Intelligence (Inve
 <END>
 <NAME>Swift Quiver
 <CLAS>Ranger
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>1 bonus action
 <RANG>Touch
 <COMP>V, S, M (a quiver containing at least one piece of ammunition)
@@ -3848,7 +3848,7 @@ On each of your turns until the spell ends, you can use a bonus action to make t
 <END>
 <NAME>Telekinesis
 <CLAS>Sorcerer,Wizard
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -3867,7 +3867,7 @@ You can exert fine control on objects with your telekinetic grip, such as manipu
 <END>
 <NAME>Teleportation Circle
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>5th-level conjuration
+<SCHO>Conjuration
 <CATM>1 minute
 <RANG>10 feet
 <COMP>Components: V, M (rare chalks and inks infused with precious gems with 50 gp, which the spell consumes)
@@ -3880,7 +3880,7 @@ You can create a permanent teleportation circle by casting this spell in the sam
 <END>
 <NAME>Transmute Rock
 <CLAS>Druid,Wizard
-<TYPE>5th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (clay and water)
@@ -3897,7 +3897,7 @@ Transmute Mud to Rock. Nonmagical mud or quicksand in the area no more than 10 f
 <END>
 <NAME>Tree Stride
 <CLAS>Druid,Ranger
-<TYPE>5th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -3908,7 +3908,7 @@ You can use this transportation ability once per round for the duration. You mus
 <END>
 <NAME>Wall of Force
 <CLAS>Wizard
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP> V, S, M (a pinch of powder made by crushing a clear gemstone)
@@ -3919,7 +3919,7 @@ Nothing can physically pass through the wall. It is immune to all damage and can
 <END>
 <NAME>Wall of Stone
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>5th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a small block of granite)
@@ -3939,7 +3939,7 @@ If you maintain your concentration on this spell for its whole duration, the wal
 <LEVEL6>
 <NAME>Arcane Gate
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>6th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>500 feet
 <COMP>V, S
@@ -3952,7 +3952,7 @@ Any creature or object entering the portal exits from the other portal as if the
 <END>
 <NAME>Blade Barrier
 <CLAS>Cleric
-<TYPE>6th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>90 feet
 <COMP>V, S
@@ -3963,7 +3963,7 @@ When a creature enters the wall’s area for the first time on a turn or starts it
 <END>
 <NAME>Bones of the Earth
 <CLAS>Druid
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -3978,7 +3978,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Chain Lightning
 <CLAS>Sorcerer,Wizard
-<TYPE>6th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a bit of fur; a piece of amber, glass or a crystal rod; and three silver pins)
@@ -3991,7 +3991,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Circle of Death
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>6th-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (the powder of a crushed black pearl worth at least 500 gp)
@@ -4002,7 +4002,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Conjure Fey
 <CLAS>Druid,Warlock
-<TYPE>6th-level conjuration
+<SCHO>Conjuration
 <CATM>1 minute
 <RANG>90 feet
 <COMP>V, S
@@ -4019,7 +4019,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Contingency
 <CLAS>Wizard
-<TYPE>6th-level evocation
+<SCHO>Evocation
 <CATM>10 minutes
 <RANG>Self
 <COMP>V, S, M (a statuette of yourself carved from ivory and decorated with gems worth at least 1,500 gp)
@@ -4032,7 +4032,7 @@ The contingent spell takes effect only on you, even if it can normally target ot
 <END>
 <NAME>Create Undead
 <CLAS>Cleric,Warlock,Wizard
-<TYPE>6th-level necromancy
+<SCHO>Necromancy
 <CATM>1 minute
 <RANG>10 feet
 <COMP>V, S, M (one clay pot filled with grave dirt, one clay pot filled with brackish water, and one 150 gp black onyx stone for each corpse)
@@ -4047,7 +4047,7 @@ At Higher Levels. When you cast this spell using a 7th-level spell slot, you can
 <END>
 <NAME>Disintegrate
 <CLAS>Sorcerer,Wizard
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a lodestone and a pinch of dust)
@@ -4064,7 +4064,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Drawmij's Instant Summons
 <CLAS>Wizard
-<TYPE>6th-level conjuration (ritual)
+<SCHO>Conjuration (ritual)
 <CATM>1 minute
 <RANG>Touch
 <COMP>V, S, M (sapphire worth 1000 gp)
@@ -4079,7 +4079,7 @@ Dispel magic or a similar effect successfully applied to the sapphire ends this 
 <END>
 <NAME>Eyebite
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>6th-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -4094,7 +4094,7 @@ Sickened. The target has disadvantage on attack rolls and ability checks. At the
 <END>
 <NAME>Find the Path
 <CLAS>Bard,Cleric,Druid
-<TYPE>6th-level divination
+<SCHO>Divination
 <CATM>1 minute
 <RANG>Self
 <COMP>V, S, M (a set of divinatory tools – such as bones, ivory sticks, cards, teeth, or carved runes – worth 100 gp and an object from the location you wish to find)
@@ -4105,7 +4105,7 @@ For the duration, as long as you are on the same plane of existence as the desti
 <END>
 <NAME>Flesh to Stone
 <CLAS>Warlock,Wizard
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a pinch of lime, water, and earth)
@@ -4120,7 +4120,7 @@ If you maintain your concentration on this spell for the entire possible duratio
 <END>
 <NAME>Forbiddance
 <CLAS>Cleric
-<TYPE>6th-level abjuration (ritual)
+<SCHO>Abjuration (ritual)
 <CATM>10 minutes
 <RANG>Touch
 <COMP>V, S, M (a sprinkling of holy water, rare incense, and powdered ruby worth at least 1000 gp)
@@ -4135,7 +4135,7 @@ The spell’s area can’t overlap with the area of another forbiddance spell. If yo
 <END>
 <NAME>Globe of Invulnerability
 <CLAS>Sorcerer,Wizard
-<TYPE>6th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a glass or crystal bead that shatters when the spell ends)
@@ -4148,7 +4148,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Guards and Wards
 <CLAS>Bard,Wizard
-<TYPE>6th-level abjuration
+<SCHO>Abjuration
 <CATM>10 minutes
 <RANG>Touch
 <COMP>V, S, M (burning incense, a small measure of brimstone and oil, a knotted string, a small amount of umber hulk blood, and a small silver rod worth at least 10 gp)
@@ -4179,7 +4179,7 @@ You can create a permanently guarded and warded structure by casting this spell 
 <END>
 <NAME>Harm
 <CLAS>Cleric
-<TYPE>6th-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -4188,7 +4188,7 @@ You unleash a virulent disease on a creature that you can see within range. The 
 <END>
 <NAME>Heal
 <CLAS>Cleric,Druid
-<TYPE>6th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -4199,7 +4199,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Heroes' Feast
 <CLAS>Cleric,Druid
-<TYPE>6th-level conjuration
+<SCHO>Conjuration
 <CATM>10 minutes
 <RANG>30 feet
 <COMP>V, S, M (a gem-encrusted bowl worth at least 1,000 gp, which the spell consumes)
@@ -4210,7 +4210,7 @@ A creature that partakes of the feast gains several benefits. The creature is cu
 <END>
 <NAME>Investiture of Flame
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -4223,7 +4223,7 @@ Flames race across your body, shedding bright light in a 30-foot radius and dim 
 <END>
 <NAME>Investiture of Ice
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -4237,7 +4237,7 @@ Until the spell ends, ice rimes your body, and you gain the following benefits:
 <END>
 <NAME>Investiture of Stone
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -4246,7 +4246,7 @@ Until the spell ends, ice rimes your body, and you gain the following benefits:
 <END>
 <NAME>Investiture of Wind
 <CLAS>Druid,Sorcerer,Warlock,Wizard
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -4255,7 +4255,7 @@ Until the spell ends, ice rimes your body, and you gain the following benefits:
 <END>
 <NAME>Magic Jar
 <CLAS>Wizard
-<TYPE>6th-level necromancy
+<SCHO>Necromancy
 <CATM>1 minute
 <RANG>Self
 <COMP>V, S, M (a gem, crystal, reliquary, or some other ornamental container worth at least 500 gp)
@@ -4276,7 +4276,7 @@ When the spell ends, the container is destroyed.
 <END>
 <NAME>Mass Suggestion
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>6th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, M (a snake’s tongue and either a bit of honeycomb or a drop of sweet oil)
@@ -4293,7 +4293,7 @@ At Higher Levels. When you cast this spell using a 7th-level spell slot, the dur
 <END>
 <NAME>Move Earth
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (an iron blade and a small bag containing a mixture of soils–clay, loam, and sand)
@@ -4308,7 +4308,7 @@ Similarly, this spell doesn’t directly affect plant growth. The moved earth carr
 <END>
 <NAME>Otiluke's Freezing Sphere
 <CLAS>Wizard
-<TYPE>6th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>300 feet
 <COMP>V, S, M (a small crystal sphere)
@@ -4323,7 +4323,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Otto's Irresistible Dance
 <CLAS>Bard,Wizard
-<TYPE>6th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>30 feet
 <COMP>V
@@ -4334,7 +4334,7 @@ A dancing creature must use all its movement to dance without leaving its space 
 <END>
 <NAME>Planar Ally
 <CLAS>Cleric
-<TYPE>6th-level conjuration
+<SCHO>Conjuration
 <CATM>10 minutes
 <RANG>60 feet
 <COMP>V, S
@@ -4351,7 +4351,7 @@ A creature enlisted to join your group counts as a member of it, receiving a ful
 <END>
 <NAME>Primordial Ward
 <CLAS>Druid
-<TYPE>6th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -4362,7 +4362,7 @@ When you take damage of one of those types, you can use your reaction to gain im
 <END>
 <NAME>Programmed Illusion
 <CLAS>Bard,Wizard
-<TYPE>6th-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a bit of fleece and jade dust worth at least 25 gp)
@@ -4375,7 +4375,7 @@ Physical interaction with the image reveals it to be an illusion, because things
 <END>
 <NAME>Sunbeam
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>6th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (60-foot line)
 <COMP>V, S, M (a magnifying glass)
@@ -4388,7 +4388,7 @@ For the duration, a mote of brilliant radiance shines in your hand. It sheds bri
 <END>
 <NAME>Transport via Plants
 <CLAS>Druid
-<TYPE>6th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>10 feet
 <COMP>V, S
@@ -4397,7 +4397,7 @@ This spell creates a magical link between a Large or larger inanimate plant with
 <END>
 <NAME>True Seeing
 <CLAS>Bard,Cleric,Sorcerer,Warlock,Wizard
-<TYPE>6th-level divination
+<SCHO>Divination
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (an ointment for the eyes that costs 25 gp, is made from mushroom powder, saffron, and fat, and is consumed by the spell)
@@ -4406,7 +4406,7 @@ This spell gives the willing creature you touch the ability to see things as the
 <END>
 <NAME>Wall of Ice
 <CLAS>Wizard
-<TYPE>6th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a small piece of quartz)
@@ -4421,7 +4421,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Wall of Thorns
 <CLAS>Druid
-<TYPE>6th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S, M (a handful of thorns)
@@ -4436,7 +4436,7 @@ At Higher Levels. When you cast this spell using a spell slot of 7th level or hi
 <END>
 <NAME>Wind Walk
 <CLAS>Druid
-<TYPE>6th-level transmutation
+<SCHO>Transmutation
 <CATM>1 minute
 <RANG>30 feet
 <COMP>V, S, M (fire and holy water)
@@ -4447,7 +4447,7 @@ If a creature is in cloud form and flying when the effect ends, the creature des
 <END>
 <NAME>Word of Recall
 <CLAS>Cleric
-<TYPE>6th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>5 feet
 <COMP>V
@@ -4459,7 +4459,7 @@ You must designate a sanctuary by casting this spell within a location, such as 
 <LEVEL7>
 <NAME>Conjure Celestial
 <CLAS>Cleric
-<TYPE>7th-level conjuration
+<SCHO>Conjuration
 <CATM>1 minute
 <RANG>90 feet
 <COMP>V, S
@@ -4474,7 +4474,7 @@ At Higher Levels. When you cast this spell using a 9th-level spell slot, you sum
 <END>
 <NAME>Delayed Blast Fireball
 <CLAS>Sorcerer,Wizard
-<TYPE>7th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a tiny ball of bat guano and sulfur)
@@ -4491,7 +4491,7 @@ At Higher Levels. When you cast this spell using a spell slot of 8th level or hi
 <END>
 <NAME>Divine Word
 <CLAS>Cleric
-<TYPE>7th-level evocation
+<SCHO>Evocation
 <CATM>1 bonus action
 <RANG>30 feet
 <COMP>V
@@ -4507,7 +4507,7 @@ Regardless of its current hit points, a celestial, an element, a fey or a fiend 
 <END>
 <NAME>Etherealness
 <CLAS>Bard,Cleric,Sorcerer,Warlock,Wizard
-<TYPE>7th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S
@@ -4526,7 +4526,7 @@ At Higher Levels. When you cast this spell using a spell slot of 8th level or hi
 <END>
 <NAME>Finger of Death
 <CLAS>Sorcerer,Warlock,Wizard
-<TYPE>7th-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -4537,7 +4537,7 @@ A humanoid killed by this spell rises at the start of your next turn as a zombie
 <END>
 <NAME>Fire Storm
 <CLAS>Cleric,Druid,Sorcerer
-<TYPE>7th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S
@@ -4548,7 +4548,7 @@ The fire damages objects in the area and ignites flammable objects that aren’t b
 <END>
 <NAME>Forcecage
 <CLAS>Bard,Warlock,Wizard
-<TYPE>7th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>100 feet
 <COMP>V, S, M (ruby dust worth 1,500 gp)
@@ -4567,7 +4567,7 @@ This spell can’t be dispelled by dispel magic.
 <END>
 <NAME>Mirage Arcane
 <CLAS>Bard,Druid,Wizard
-<TYPE>7th-level illusion
+<SCHO>Illusion
 <CATM>10 minutes
 <RANG>Sight
 <COMP>V, S
@@ -4582,7 +4582,7 @@ Creatures with truesight can see through the illusion to the terrain’s true form
 <END>
 <NAME>Mordenkainen's Magnificent Mansion
 <CLAS>Bard,Wizard
-<TYPE>7th-level conjuration
+<SCHO>Conjuration
 <CATM>1 minute
 <RANG>300 feet
 <COMP>V, S, M (a miniature portal carved from ivory, a small piece of polished marble, and a tiny silver spoon, each item worth at least 5 gp)
@@ -4595,7 +4595,7 @@ You can create any floor plan you like, but the space can’t exceed 50 cubes, eac
 <END>
 <NAME>Mordenkainen's Sword
 <CLAS>Bard,Wizard
-<TYPE>7th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a miniature platinum sword with a grip and pommel of copper and zinc, worth 250 gp)
@@ -4606,7 +4606,7 @@ When the sword appears, you make a melee spell attack against a target of your c
 <END>
 <NAME>Plane Shift
 <CLAS>Cleric,Druid,Sorcerer,Warlock,Wizard
-<TYPE>7th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a forked, metal rod worth at least 250 gp, attuned to a particular plane of existence)
@@ -4619,7 +4619,7 @@ You can use this spell to banish an unwilling creature to another plane. Chose a
 <END>
 <NAME>Prismatic Spray
 <CLAS>Sorcerer,Wizard
-<TYPE>7th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Self (60-foot cone)
 <COMP>V, S
@@ -4637,7 +4637,7 @@ Eight multicolored rays of light flash from your hand. Each ray is a different c
 <END>
 <NAME>Project Image
 <CLAS>Bard,Wizard
-<TYPE>7th-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>500 miles
 <COMP>V, S, M (a small replica of you made from materials worth at least 5 gp)
@@ -4652,7 +4652,7 @@ Physical interaction with the image reveals it to be an illusion, because things
 <END>
 <NAME>Regenerate
 <CLAS>Bard,Cleric,Druid
-<TYPE>7th-level transmutation
+<SCHO>Transmutation
 <CATM>1 minute
 <RANG>Touch
 <COMP>V, S, M (a prayer wheel and holy water)
@@ -4663,7 +4663,7 @@ The target’s severed body members (fingers, legs, tails, and so on), if any, are
 <END>
 <NAME>Resurrection
 <CLAS>Bard,Cleric,Druid
-<TYPE>7th-level necromancy
+<SCHO>Necromancy
 <CATM>1 hour
 <RANG>Touch
 <COMP>V, S, M (a diamond worth at least 1,000 gp, which the spell consumes)
@@ -4680,7 +4680,7 @@ Casting this spell to restore life to a creature that has been dead for one year
 <END>
 <NAME>Reverse Gravity
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>7th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>100 feet
 <COMP>V, S, M (a lodestone and iron filings)
@@ -4693,7 +4693,7 @@ At the end of the duration, affected objects and creatures fall back down.
 <END>
 <NAME>Sequester
 <CLAS>Wizard
-<TYPE>7th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S, M (a powder of diamond, emerald, rube and sapphire dust worth at least 5,000 gp, which the spell consumes)
@@ -4706,7 +4706,7 @@ You can set a condition for the spell to end early. The condition can be anythin
 <END>
 <NAME>Simulacrum
 <CLAS>Wizard
-<TYPE>7th-level illusion
+<SCHO>Illusion
 <CATM>12 hours
 <RANG>Touch
 <COMP>V, S, M (snow or ice in quantities sufficient to made a life-size copy of the duplicated creature; some hair, fingernail clippings, or other piece of that creature’s body placed inside the snow or ice; and powdered ruby worth 1,500 gp, sprinkled over the duplicate and consumed by the spell)
@@ -4721,7 +4721,7 @@ If you cast this spell again, any currently active duplicates you created with t
 <END>
 <NAME>Symbol
 <CLAS>Bard,Wizard,Cleric
-<TYPE>7th-level abjuration
+<SCHO>Abjuration
 <CATM>1 minute
 <RANG>Touch
 <COMP>V, S, M (mercury, phosphorus, and powdered diamond and opal with a total value of at least 1,000 gp, which the spell consumes)
@@ -4754,7 +4754,7 @@ Stunning. Each target must make a Wisdom saving throw and becomes stunned for 1 
 <END>
 <NAME>Teleport
 <CLAS>Bard,Sorcerer,Wizard
-<TYPE>7th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>10 feet
 <COMP>V
@@ -4789,7 +4789,7 @@ Mishap. The spell’s unpredictable magic results in a difficult journey. Each tel
 <END>
 <NAME>Whirlwind
 <CLAS>Druid,Wizard
-<TYPE>7th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>300 feet
 <COMP>V, M (a piece of straw)
@@ -4803,7 +4803,7 @@ A restrained creature can use an action to make a Strength or Dexterity check ag
 <LEVEL8>
 <NAME>Abi Dalzim's Horrid Wilting
 <CLAS>Sorcerer,Wizard
-<TYPE>8th-level necromancy
+<SCHO>Necromancy
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a bit of sponge)
@@ -4812,7 +4812,7 @@ You draw the moisture from every creature in a 30-foot cube centered on a point 
 <END>
 <NAME>Animal Shapes
 <CLAS>Druid
-<TYPE>8th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S
@@ -4825,7 +4825,7 @@ The target’s gear melds into the new form. The target can’t activate, wield, or 
 <END>
 <NAME>Antimagic Field
 <CLAS>Cleric,Wizard
-<TYPE>8th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self (10-foot radius)
 <COMP>V, S, M (a pinch of powdered iron or iron filings)
@@ -4852,7 +4852,7 @@ Dispel Magic. Spells and magical effects such as dispel magic have no effect on 
 <END>
 <NAME>Antipathy/Sympathy
 <CLAS>Druid,Wizard
-<TYPE>8th-level enchantment
+<SCHO>Enchantment
 <CATM>1 hour
 <RANG>60 feet
 <COMP>V, S, M (either a hump of alum soaked in vinegar for the antipathy effect or a drop of honey for the sympathy effect)
@@ -4871,7 +4871,7 @@ A creature that successfully saves against this affect is immune to it for 1 min
 <END>
 <NAME>Clone
 <CLAS>Wizard
-<TYPE>8th-level necromancy
+<SCHO>Necromancy
 <CATM>1 hour
 <RANG>Touch
 <COMP>V, S, M (a diamond worth at least 1,000 gp and at least 1 cubic inch of flesh of the creature that is to be cloned, which the spell consumes, and a vessel worth at least 2,000 gp that has a sealable lid and is large enough to hold a Medium creature, such as a huge urn, coffin, mud-filled cyst in the ground, or crystal container filled with salt water)
@@ -4882,7 +4882,7 @@ At any time after the clone matures, if the original creature dies, its soul tra
 <END>
 <NAME>Control Weather
 <CLAS>Cleric,Druid,Wizard
-<TYPE>8th-level transmutation
+<SCHO>Transmutation
 <CATM>10 minutes
 <RANG>Self(5-mile radius)
 <COMP>V, S, M (burning incense and bits of earth and wood mixed in water)
@@ -4916,7 +4916,7 @@ Wind
 <END>
 <NAME>Demiplane
 <CLAS>Warlock,Wizard
-<TYPE>8th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>S
@@ -4927,7 +4927,7 @@ Each time you cast this spell, you can create a new demiplane, or have the shado
 <END>
 <NAME>Dominate Monster
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>8th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -4944,7 +4944,7 @@ At Higher Levels. When you cast this spell with a 9th-level spell slot, the dura
 <END>
 <NAME>Earthquake
 <CLAS>Cleric,Druid,Sorcerer
-<TYPE>8th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>500 feet
 <COMP>V, S, M (a pinch of dirt, a piece of rock, and a lump of clay)
@@ -4965,7 +4965,7 @@ Structures. The tremor deals 50 bludgeoning damage to any structure in contact w
 <END>
 <NAME>Feeblemind
 <CLAS>Bard,Druid,Warlock,Wizard
-<TYPE>8th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (a handful of clay, crystal, glass, or mineral spheres)
@@ -4980,7 +4980,7 @@ The spell can also be ended by greater restoration, heal, or wish.
 <END>
 <NAME>Glibness
 <CLAS>Bard,Warlock
-<TYPE>8th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V
@@ -4989,7 +4989,7 @@ Until the spell ends, when you make a Charisma check, you can replace the number
 <END>
 <NAME>Holy Aura
 <CLAS>Cleric
-<TYPE>8th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a tiny reliquary worth at least 1,000 gp containing a sacred relic, such as a scrap of cloth from a saint’s robe or a piece of parchment from a religious text)
@@ -4998,7 +4998,7 @@ Divine light washes out from you and coalesces in a soft radiance in a 30-foot r
 <END>
 <NAME>Incendiary Cloud
 <CLAS>Sorcerer,Wizard
-<TYPE>8th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>150
 <COMP>V, S
@@ -5011,7 +5011,7 @@ The cloud moves 10 feet directly away from you in a direction that you choose at
 <END>
 <NAME>Maze
 <CLAS>Wizard
-<TYPE>8th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -5024,7 +5024,7 @@ When the spell ends, the target reappears in the space it left or, if that space
 <END>
 <NAME>Mind Blank
 <CLAS>Bard,Wizard
-<TYPE>8th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -5033,7 +5033,7 @@ Until the spell ends, one willing creature you touch is immune to psychic damage
 <END>
 <NAME>Power Word Stun
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>8th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V
@@ -5044,7 +5044,7 @@ The stunned target must make a Constitution saving throw at the end of each of i
 <END>
 <NAME>Sunburst
 <CLAS>Druid,Sorcerer,Wizard
-<TYPE>8th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>150 feet
 <COMP>V, S, M (fire and a piece of sunstone)
@@ -5057,7 +5057,7 @@ This spell dispels any darkness in its area that was created by a spell.
 <END>
 <NAME>Telepathy
 <CLAS>Wizard
-<TYPE>8th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Unlimited
 <COMP>V, S, M (a pair of linked silver rings)
@@ -5068,7 +5068,7 @@ Until the spell ends, you and the target can instantaneously share words, images
 <END>
 <NAME>Tsunami
 <CLAS>Druid
-<TYPE>8th-level conjuration
+<SCHO>Conjuration
 <CATM>1 minute
 <RANG>Sight
 <COMP>V, S
@@ -5084,7 +5084,7 @@ A creature caught in the wall can move by swimming. Because of the force of the 
 <LEVEL9>
 <NAME>Astral Projection
 <CLAS>Cleric,Warlock,Wizard
-<TYPE>9th-level necromancy
+<SCHO>Necromancy
 <CATM>1 hour
 <RANG>10 feet
 <COMP>V, S, M (for each creature you affect with this spell you must provide one jacinth worth at least 1,000 gp and one ornately carved bar of silver worth at least 100gp, all of which the spell consumes)
@@ -5103,7 +5103,7 @@ If you are returned to your body prematurely, your companions remain in their as
 <END>
 <NAME>Foresight
 <CLAS>Bard,Druid,Warlock,Wizard
-<TYPE>9th-level divination
+<SCHO>Divination
 <CATM>1 minute
 <RANG>Touch
 <COMP>V, S, M (a hummingbird feather)
@@ -5114,7 +5114,7 @@ This spell immediately ends if you cast it again before its duration ends.
 <END>
 <NAME>Gate
 <CLAS>Cleric,Sorcerer,Wizard
-<TYPE>9th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S, M (a diamond worth at least 5,000 gp)
@@ -5129,7 +5129,7 @@ When you cast this spell, you can speak the name of a specific creature (a pseud
 <END>
 <NAME>Imprisonment
 <CLAS>Warlock,Wizard
-<TYPE>9th-level abjuration
+<SCHO>Abjuration
 <CATM>1 minute
 <RANG>30 feet
 <COMP>V, S, M (a vellum depiction or a carved statuette in the likeness of the target, and a special component that varies according to the version of the spell you choose, worth at least 500 gp per Hit Die of the target)
@@ -5164,7 +5164,7 @@ You can use a particular special component to create only one prison at a time. 
 <END>
 <NAME>Mass Heal
 <CLAS>Cleric
-<TYPE>9th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -5173,7 +5173,7 @@ A flood of healing energy flows from you into injured creatures around you. You 
 <END>
 <NAME>Meteor Swarm
 <CLAS>Sorcerer,Wizard
-<TYPE>9th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>1 mile
 <COMP>V, S
@@ -5184,7 +5184,7 @@ The spell damages objects in the area and ignites flammable objects that aren’t 
 <END>
 <NAME>Power Word Heal
 <CLAS>Bard
-<TYPE>9th-level evocation
+<SCHO>Evocation
 <CATM>1 action
 <RANG>Touch
 <COMP>V, S
@@ -5193,7 +5193,7 @@ A wave of healing energy washes over the creature you touch. The target regains 
 <END>
 <NAME>Power Word Kill
 <CLAS>Bard,Sorcerer,Warlock,Wizard
-<TYPE>9th-level enchantment
+<SCHO>Enchantment
 <CATM>1 action
 <RANG>60 feet
 <COMP>V
@@ -5202,7 +5202,7 @@ You utter a word of power that can compel one creature you can see within range 
 <END>
 <NAME>Prismatic Wall
 <CLAS>Wizard
-<TYPE>9th-level abjuration
+<SCHO>Abjuration
 <CATM>1 action
 <RANG>60 feet
 <COMP>V, S
@@ -5226,7 +5226,7 @@ While this layer is in place, spells can’t be cast through the wall. The layer i
 <END>
 <NAME>Shapechange
 <CLAS>Druid,Wizard
-<TYPE>9th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V, S, M (a jade circlet worth at least 1,500 gp, which you must place on your head before you cast the spell)
@@ -5245,7 +5245,7 @@ During this spell’s duration, you can use your action to assume a different form
 <END>
 <NAME>Storm of Vengeance
 <CLAS>Druid
-<TYPE>9th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Sight
 <COMP>V, S
@@ -5264,7 +5264,7 @@ Round 5-10. Gusts and freezing rain assail the area under the cloud. The area be
 <END>
 <NAME>Time Stop
 <CLAS>Sorcerer,Wizard
-<TYPE>9th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>Self
 <COMP>V
@@ -5275,7 +5275,7 @@ This spell ends if one of the actions you use during this period, or any effects
 <END>
 <NAME>True Polymorph
 <CLAS>Bard,Warlock,Wizard
-<TYPE>9th-level transmutation
+<SCHO>Transmutation
 <CATM>1 action
 <RANG>30 feet
 <COMP>V, S, M (a drop of mercury, a dollop of gum arabic, and a wisp of smoke)
@@ -5300,7 +5300,7 @@ Creature into Object. If you turn a creature into an object, it transforms along
 <END>
 <NAME>True Resurrection
 <CLAS>Cleric,Druid
-<TYPE>9th-level necromancy
+<SCHO>Necromancy
 <CATM>1 hour
 <RANG>Touch
 <COMP>V, S, M (a sprinkle of holy water and diamonds worth at least 25,000 gp, which the spell consumes)
@@ -5313,7 +5313,7 @@ The spell can even provide a new body if the original no longer exists, in which
 <END>
 <NAME>Weird
 <CLAS>Wizard
-<TYPE>9th-level illusion
+<SCHO>Illusion
 <CATM>1 action
 <RANG>120 feet
 <COMP>V, S
@@ -5322,7 +5322,7 @@ Drawing on the deepest fears of a group of creatures, you create illusory creatu
 <END>
 <NAME>Wish
 <CLAS>Sorcerer,Wizard
-<TYPE>9th-level conjuration
+<SCHO>Conjuration
 <CATM>1 action
 <RANG>Self
 <COMP>V

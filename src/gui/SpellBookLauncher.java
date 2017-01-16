@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import files.CharacterItems;
-import files.Class_List;
 import files.Spell_List;
 import gui.Settings;
 
@@ -154,12 +153,11 @@ public class SpellBookLauncher extends JFrame {
 		contentPane.add(btnGoTo);
 		
 		try{
+			Settings.loadPreferences();
 			Spell_List.loadFE();
 			Spell_List.loadFECustomSpells();
 			Spell_List.loadPF();
-			Class_List.load();
 			CharacterItems.loadItems();
-			Settings.loadPreferences();
 			UserSpellWindow mainWindow = new UserSpellWindow();
 			mainWindow.setVisible(true);
 		} catch (Exception e)

@@ -1,9 +1,15 @@
 P-Alarm
+U-Alter Self
+U-Animal Friendship
+U-Animal Messenger
 U-Bane
-U-Fireball
-U-Magic Missile
 <PATHFINDER>
-U-Aid
+P-Abadar's Truthtelling
+U-Ablative Sphere
+U-Absolution
+U-Absurdity
+P-Aid
+U-Bane
 P-Fear
-U-Shield
+P-Shield
 <ENDSPELLS>

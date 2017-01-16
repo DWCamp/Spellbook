@@ -167,52 +167,6 @@ public class FileSystem {
 	}
 	
 	/**
-	 * Saves all the classes to a file.
-	 * @param classList String array. Each string is a class 
-	 * and should be formatted 
-	 * "className,hitdie,maxSpellLevel,feats,subClassAt,subClasses".
-	 * <br>Feats should be formatted with 20 sets of [] pairs. Each 
-	 * pair should contain a forward slash delineated list of feat names.
-	 * <br>SubClasses should be formatted as a forward slash 
-	 * delineated list enclosed in brackets ('[]')
-	 * @return Whether the save was successful
-	 */
-	protected static boolean saveClassList(String[] classList)		//Class List
-	{
-		System.out.println("Saving Class List...");
-		String tempFile = "tmp.txt";
-		boolean success = false;
-		
-		try (
-				FileWriter fw = new FileWriter(tempFile);
-				BufferedWriter bw = new BufferedWriter(fw);
-			)
-		{
-			bw.write("className,hitDie,MaxSpellLevel,feats,subClassAt,subClasses //SAMPLE");
-			bw.newLine();
-			
-			for (String element : classList)
-			{
-				bw.write(element);
-				bw.newLine();
-			}
-			
-			bw.close();
-			
-			File oldFile = new File(classListPath);
-			oldFile.delete();
-
-			File newFile = new File(tempFile);
-			success = newFile.renameTo(oldFile);
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		System.out.println("Done!");
-		return success;
-	}
-	
-	/**
 	 * Takes an arrayList of spell lists<br>
 	 * Index <0, n> - Cantrips<br>
 	 * Index <1, n> - 1st level spells<br>
@@ -248,7 +202,7 @@ public class FileSystem {
 					}
 					bw.write("<CLAS>" + classes.substring(1));
 					bw.newLine();
-					bw.write("<TYPE>" + spell.getType());
+					bw.write("<SCHO>" + spell.getSchool());
 					bw.newLine();
 					bw.write("<CATM>" + spell.getCastingTime());
 					bw.newLine();
@@ -432,29 +386,7 @@ public class FileSystem {
 	 */
 	public static void loadDataBases()
 	{
-		Class_List.load();
 		Spell_List.loadFE();
-	}
-	
-	/**
-	 * Returns a String array containing all of a class's information<br>
-	 * Index 0 - class name<br>
-	 * Index 1 - hit die 
-	 * Index 2 - max spell level
-	 * Index 3 - Feats array
-	 * Index 4 - subClassAt
-	 * Index 5 - subClasses
-	 * @throws IOException 
-	 */
-	protected static ArrayList<String[]> loadClassList() throws IOException  //Class List
-	{
-		String[] contents = read(classListPath);
-		ArrayList<String[]> data = new ArrayList<String[]>();
-		for (int i = 1; i < contents.length; i++){
-			String classData = contents[i];
-			data.add(classData.split(","));
-		}
-		return data;
 	}
 	
 	/**
@@ -603,7 +535,7 @@ public class FileSystem {
 		String[] contents = read(spellListPathPF);
 		
 		int index = 0;
-		while (contents.length < index + 5) { //The 5 just adds some padding to make sure
+		while (contents.length > index + 5) { //The 5 just adds some padding to make sure
 											//there's enough room another spell could exist
 			String name = contents[index++].substring(6);
 			String school = contents[index++].substring(6);
@@ -677,7 +609,7 @@ public class FileSystem {
 
 			HashMap<String, Integer> patronMap = new HashMap<String, Integer>();
 			if (patrons.length() > 0) {
-				for (String patronLevel : bloodline.split(", ")) {
+				for (String patronLevel : patrons.split(", ")) {
 					int last = patronLevel.lastIndexOf(" ");
 					String key = patronLevel.substring(0, last);
 					String value = patronLevel.substring(last + 1);
@@ -685,7 +617,13 @@ public class FileSystem {
 				}
 			}
 
-			SpellPF newSpell = new SpellPF(name, school, subschools.split(", "), descriptors.split(", "), classMap,
+			String[] subschoolArray = subschools.split(", ");
+			if (subschoolArray[0].equals(""))
+			{
+				subschoolArray = new String[0];
+			}
+			
+			SpellPF newSpell = new SpellPF(name, school, subschoolArray, descriptors.split(", "), classMap,
 					castingTime, components, costInt, range, area, effect, target, duration, dismissible, shapable,
 					savingThrow, spellResistance, shortDescription, description, source, deity, SLAint, domainMap,
 					bloodMap, patronMap, mythicText, augmented, hauntStatistics, ruse, draconic, meditative); // <-----------ADD

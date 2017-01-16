@@ -177,6 +177,7 @@ public class Settings extends JFrame {
 		comboBoxCentering.setSelectedIndex(centerFrames);
 		comboBoxSize.setSelectedIndex((int)(scaleAdjustment*4) - 3);
 		chckbxColor.setSelected(SBColor);
+		comboBoxGameVersion.setSelectedIndex(version.ordinal());
 		
 		//Get scale factor
 		double scaleFactor = getResizeFactor();

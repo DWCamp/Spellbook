@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import files.Class_List;
+import files.Spell_List;
 import gui.CustomSpellAdder;
 import gui.Settings;
 import helperClasses.SortedStringList;
@@ -61,7 +61,7 @@ public class ClassPicker extends JFrame {
 		scrollPane.setViewportView(panelClassPanels);
 		panelClassPanels.setLayout(new GridLayout(0, 1, 0, 1));
 		
-		for(String name : Class_List.getClassNames()){
+		for(String name : Spell_List.getFEClasses()){
 			JLabel label = new JLabel(name);
 			label.setFont(new Font("Tahoma", Font.BOLD, (int)(16 * scaleFactor)));
 			if(selectedClasses.contains(name)) {

@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class SpellPanel extends EditorSpellPanel {
+public class DBSpellPanel extends EditorSpellPanel {
 	private JTextField textFieldComp;
 	private JTextField textFieldRange;
-	private JTextField textFieldType;
+	private JTextField textFieldSchool;
 	private JTextField textFieldTime;
 	private JTextField textFieldName;
 	private JTextField textFieldClasses;
@@ -25,7 +25,7 @@ public class SpellPanel extends EditorSpellPanel {
 	 * Create the panel.
 	 * @param spell The spell the panel represents
 	 */
-	public SpellPanel(SpellFE spell) {
+	public DBSpellPanel(SpellFE spell) {
 		setLayout(new GridLayout(2, 0, 0, 0));
 		level = spell.getLevel();
 		popUp = new DescriptionPopUp(this);
@@ -49,10 +49,10 @@ public class SpellPanel extends EditorSpellPanel {
 		textFieldClasses.setColumns(10);
 		add(textFieldClasses);
 		
-		textFieldType = new JTextField(spell.getType());
-		textFieldType.setToolTipText("The level and school of the spell (e.g. '1st-level evocation')");
-		textFieldType.setColumns(10);
-		add(textFieldType);
+		textFieldSchool = new JTextField(spell.getSchool());
+		textFieldSchool.setToolTipText("The school of the spell (e.g. 'Evocation')");
+		textFieldSchool.setColumns(10);
+		add(textFieldSchool);
 		
 		textFieldTime = new JTextField(spell.getCastingTime());
 		textFieldTime.setToolTipText("The time this spell takes to cast");
@@ -104,9 +104,12 @@ public class SpellPanel extends EditorSpellPanel {
 	 */
 	public SpellFE toSpell()
 	{
+		String school = textFieldSchool.getText().replaceAll("\\d(st|nd|rd|th)(-| )level | cantrip", "");
+		school = Character.toUpperCase(school.charAt(0)) + school.substring(1);
+		
 		return new SpellFE(textFieldName.getText(),
 				textFieldClasses.getText().split(","),
-				textFieldType.getText(),
+				school,
 				level,
 				textFieldTime.getText(),
 				textFieldRange.getText(),

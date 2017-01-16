@@ -8,12 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import guiPanels.ClassPanel;
-import guiPanels.SpellPanel;
-import helperClasses.Feat;
-import helperClasses.PClass;
+import guiPanels.DBSpellPanel;
 import helperClasses.SortedObjectList;
-import helperClasses.SortedStringList;
 import helperClasses.SpellFE;
 
 import javax.swing.JScrollPane;
@@ -36,7 +32,6 @@ import javax.swing.JTabbedPane;
 public class DataBaseEditor extends JFrame {
 
 	private JPanel contentPane;
-	private JScrollPane scrollPaneClasses;
 	private JTabbedPane tabbedPane;
 	private JPanel[] panelArray;
 
@@ -47,7 +42,6 @@ public class DataBaseEditor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Class_List.load();
 					Spell_List.loadFE();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					DataBaseEditor frame = new DataBaseEditor();
@@ -72,44 +66,7 @@ public class DataBaseEditor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		scrollPaneClasses = new JScrollPane();
-		scrollPaneClasses.setBounds(5, 5, 381, 150);
-		contentPane.add(scrollPaneClasses);
-		
 		panelArray = new JPanel[10];
-		
-		JPanel panelClasses = new JPanel();
-		panelClasses.addContainerListener(new ContainerAdapter() {
-			@Override
-			public void componentRemoved(ContainerEvent arg0) {
-				super.componentRemoved(arg0);
-				getThis().repaint();
-			}
-		});
-		scrollPaneClasses.setViewportView(panelClasses);
-		panelClasses.setLayout(new GridLayout(0, 1, 0, 3));
-		
-		for(PClass element : Class_List.getClasses())
-		{
-			ClassPanel newPanel = new ClassPanel(element);
-			panelClasses.add(newPanel);
-		}
-
-		JButton btnSaveClasses = new JButton("Save Classes");
-		btnSaveClasses.setBounds(10, 160, 152, 23);
-		contentPane.add(btnSaveClasses);
-		
-		JButton btnNewClass = new JButton("New Class");
-		btnNewClass.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ClassPanel newPanel = new ClassPanel(new PClass(
-						"", 0, 0, new Feat[0][0], 0, new ArrayList<PClass>()));
-				panelClasses.add(newPanel);
-				getThis().repaint();
-			}
-		});
-		btnNewClass.setBounds(285, 160, 89, 23);
-		contentPane.add(btnNewClass);
 		
 		JButton btnNewSpell = new JButton("New Spell");
 		btnNewSpell.setBounds(605, 614, 89, 23);
@@ -120,7 +77,7 @@ public class DataBaseEditor extends JFrame {
 		contentPane.add(btnSaveSpells);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(5, 206, 704, 397);
+		tabbedPane.setBounds(5, 16, 704, 587);
 		contentPane.add(tabbedPane);
 		
 		JScrollPane scrollPaneCantrips = new JScrollPane();
@@ -269,7 +226,7 @@ public class DataBaseEditor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				for (JPanel levelPanel : panelArray) {
 					for (Component comp : levelPanel.getComponents()) {
-						SpellPanel panel = (SpellPanel) comp;
+						DBSpellPanel panel = (DBSpellPanel) comp;
 						panel.sanitize();
 					}
 				}
@@ -278,40 +235,12 @@ public class DataBaseEditor extends JFrame {
 		btnSanitizeClassList.setBounds(167, 614, 133, 23);
 		contentPane.add(btnSanitizeClassList);
 		
-		JScrollPane scrollPaneClassAlt = new JScrollPane();
-		scrollPaneClassAlt.setBounds(396, 5, 313, 150);
-		contentPane.add(scrollPaneClassAlt);
-		
-		JPanel panelClassAlt = new JPanel();
-		scrollPaneClassAlt.setViewportView(panelClassAlt);
-		panelClassAlt.setLayout(new GridLayout(0, 1, 0, 3));
-		
-		JButton btnSomething = new JButton("Something");
-		btnSomething.setBounds(605, 160, 89, 23);
-		contentPane.add(btnSomething);
-		
 		for (int i = 0; i < 10; i++) {
 			for (SpellFE spell : Spell_List.getFESpellsOfLevel(i)) {
-				panelArray[i].add(new SpellPanel(spell));
+				panelArray[i].add(new DBSpellPanel(spell));
 			}
 		}
 																	//Action Listeners
-		btnSaveClasses.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SortedStringList sortedList = new SortedStringList();
-				for (Component element : panelClasses.getComponents()) {
-					ClassPanel classPanel = (ClassPanel) element;
-					PClass panelClass = classPanel.getClassData();
-					sortedList.add(classPanel.getName() 
-							+ "," + panelClass.getHitDie()
-							+ "," + panelClass.getMaxSpellLevel()
-							+ "," + panelClass.printFeats()
-							+ "," + panelClass.getSubClassAt()
-							+ "," + panelClass.printSubClasses());
-				}
-				FileSystem.saveClassList(sortedList.toArray());
-			}
-		});
 		
 		btnSaveSpells.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -323,7 +252,7 @@ public class DataBaseEditor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				int index = tabbedPane.getSelectedIndex();
 				panelArray[index].add(
-						new SpellPanel(new SpellFE()));
+						new DBSpellPanel(new SpellFE()));
 				getThis().repaint();
 			}
 		});
@@ -339,11 +268,11 @@ public class DataBaseEditor extends JFrame {
 	 */
 	public void saveSpells() {
 		ArrayList<ArrayList<SpellFE>> spellList = new ArrayList<ArrayList<SpellFE>>();
-		SortedObjectList sortedSpells = new SortedObjectList();
+		SortedObjectList<SpellFE> sortedSpells = new SortedObjectList<SpellFE>();
 
 		for (JPanel levelPanel : panelArray) {
 			for (Component element : levelPanel.getComponents()) {
-				SpellPanel spellPanel = (SpellPanel) element;
+				DBSpellPanel spellPanel = (DBSpellPanel) element;
 				sortedSpells.add(spellPanel.toSpell());
 			}
 			spellList.add(sortedSpells.toArrayList());

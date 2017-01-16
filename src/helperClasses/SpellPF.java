@@ -26,48 +26,46 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 	int SLA_Level;
 	HashMap<String, Integer> domains;
 	String shortDescription;
-	int materialCosts;
+	int materialCost;
 	HashMap<String, Integer> bloodline;
 	HashMap<String, Integer> patrons;
 	String mythicText;
 	String augmented;
 	String hauntStatistics;
-	boolean mythic;
 	boolean ruse;
 	boolean draconic;
 	boolean meditative;
 
 	public SpellPF() {
-		name = "";
-		school = "";
+		name = "NULL";
+		school = "NULL";
 		subschools = new String[0];
 		descriptors = new String[0];
 		classes = new HashMap<String, Integer>();
-		castingTime = "";
-		components = "";
+		castingTime = "NULL";
+		components = "NULL";
 		costlyComponents = false;
-		range = "";
-		area = "";
-		effect = "";
-		target = "";
-		duration = "";
+		range = "NULL";
+		area = "NULL";
+		effect = "NULL";
+		target = "NULL";
+		duration = "NULL";
 		dismissible = false;
 		shapable = false;
-		savingThrow = "";
-		spellResistance = "";
-		description = "";
-		source = "";
-		deity = "";
+		savingThrow = "none";
+		spellResistance = "NULL";
+		description = "NULL";
+		source = "NULL";
+		deity = "NULL";
 		SLA_Level = 0;
 		domains = new HashMap<String, Integer>();
-		shortDescription = "";
-		materialCosts = 0;
+		shortDescription = "NULL";
+		materialCost = 0;
 		bloodline = new HashMap<String, Integer>();
 		patrons = new HashMap<String, Integer>();
-		mythicText = "";
-		augmented = "";
-		mythic = false;
-		hauntStatistics = "";
+		mythicText = "NULL";
+		augmented = "NULL";
+		hauntStatistics = "NULL";
 		ruse = false;
 		draconic = false;
 		meditative = false;
@@ -115,14 +113,14 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 			HashMap<String,Integer> domains, HashMap<String, Integer> bloodline, HashMap<String, Integer> patrons, 
 			String mythicText, String augmented, String hauntStatistics, boolean ruse, boolean draconic, 
 			boolean meditative) {
-		this.name = "";
+		this.name = name;
 		this.school = school;
 		this.subschools = subschools;
-		this.descriptors = new String[0];
-		this.classes = new HashMap<String, Integer>();
-		this.castingTime = "";
+		this.descriptors = descriptors;
+		this.classes = classes;
+		this.castingTime = castingTime;
 		this.components = components;
-		this.materialCosts = materialCosts;
+		this.materialCost = materialCosts;
 		costlyComponents = materialCosts > 0;
 		this.range = range;
 		this.area = area;
@@ -143,7 +141,6 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 		this.patrons = patrons;
 		this.mythicText = mythicText;
 		this.augmented = augmented;
-		mythic = mythicText.length() > 0;
 		this.hauntStatistics = hauntStatistics;
 		this.ruse = ruse;
 		this.draconic = draconic;
@@ -220,7 +217,7 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 	
 	public int getMaterialsCost()
 	{
-		return materialCosts;
+		return materialCost;
 	}
 	
 	public String getRange()
@@ -354,7 +351,7 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 	
 	public boolean isMythic()
 	{
-		return mythic;
+		return !mythicText.equals("NULL");
 	}
 	
 	public String getHauntStatistics()
@@ -401,7 +398,16 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 	@Override
 	public String getSubtitle()
 	{
-		return "TO BE DETERMINED";
+		String subList = "";
+		if (subschools.length > 0)
+		{
+			for (String subschool : subschools)
+			{
+				subList += ", " + subschool;
+			}
+			subList = " (" + subList.substring(2) + ")";
+		}
+		return school + subList;
 	}
 	
 	/**
@@ -418,7 +424,112 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 	 */
 	@Override
 	public String getCardText() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer forReturn = new StringBuffer();
+		if (!shortDescription.equals("NULL")) {
+			forReturn.append(shortDescription + "\n\n");
+		}
+		if (!components.equals("NULL"))
+		{
+			forReturn.append("Components: " + components + "\n");
+		}
+		if (!castingTime.equals("NULL"))
+		{
+			forReturn.append("Casting Time: " + castingTime + "\n");
+		}
+		if (!duration.equals("NULL"))
+		{
+			forReturn.append("Duration: " + duration + "\n");
+		}
+		if (!range.equals("NULL"))
+		{
+			forReturn.append("Range: " + range + "\n");
+		}
+		if (!area.equals("NULL"))
+		{
+			forReturn.append("Area: " + area + "\n");
+		}
+		return forReturn.toString();
+	}
+	
+	/**
+	 * Returns a descriptive text readout for use with WordWrapPopUp
+	 * @return {@code String}
+	 */
+	@Override
+	public String getPopUpText() {
+		
+		return name + "\n" + school + "\n\nCasting time: " + castingTime
+				+ "\n\nRange: " + range + "\n\nComponents: " + components
+				+ "\n\nDuration: " + duration + "\n\n" + description;
+	}
+	
+	/**
+	 * Returns the full details of the spell for the Details 
+	 * window on a spell card
+	 * @return {@code String} full text
+	 */
+	@Override
+	public String getDetails() {
+		StringBuffer forReturn = new StringBuffer();
+		if (!components.equals("NULL"))
+		{
+			forReturn.append("Components: " + components + "\n");
+		}
+		if (costlyComponents)
+		{
+			forReturn.append("Component Cost: " + materialCost);
+		}
+		if (!castingTime.equals("NULL"))
+		{
+			forReturn.append("Casting Time: " + castingTime + "\n");
+		}
+		if (!duration.equals("NULL"))
+		{
+			forReturn.append("Duration: " + duration + "\n");
+		}
+		if (!range.equals("NULL"))
+		{
+			forReturn.append("Range: " + range + "\n");
+		}
+		if (!area.equals("NULL"))
+		{
+			forReturn.append("Area: " + area + "\n");
+		}
+		
+		
+		
+		if(!mythicText.equals("NULL"))
+		{
+			forReturn.append("\nMythic " + name +": " + mythicText);
+		}
+		return forReturn.toString();
+		
+		/**	
+		school = "NULL";
+		subschools = new String[0];
+		descriptors = new String[0];
+		effect = "NULL";
+		target = "NULL";
+		duration = "NULL";
+		dismissible = false;
+		shapable = false;
+		savingThrow = "none";
+		spellResistance = "NULL";
+		description = "NULL";
+		source = "NULL";
+		deity = "NULL";
+		SLA_Level = 0;
+		domains = new HashMap<String, Integer>();
+		shortDescription = "NULL";
+		materialCosts = 0;
+		bloodline = new HashMap<String, Integer>();
+		patrons = new HashMap<String, Integer>();
+		mythicText = "NULL";
+		augmented = "NULL";
+		hauntStatistics = "NULL";
+		ruse = false;
+		draconic = false;
+		meditative = false;
+		*/
 	}
 }

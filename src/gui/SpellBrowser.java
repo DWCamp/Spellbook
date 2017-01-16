@@ -20,9 +20,6 @@ public abstract class SpellBrowser extends JFrame {
 	}
 	
 	public abstract void refresh();
-	
-	public abstract void WindowRefresh();
-	
 	public abstract void reset();
 
 }

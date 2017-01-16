@@ -10,8 +10,6 @@ import javax.swing.JButton;
 import alerts.WordWrapPopUp;
 import files.CharacterItems;
 import helperClasses.Spell;
-import helperClasses.SpellFE;
-import helperClasses.SpellPF;
 import helperClasses.gameVersion;
 import gui.UserSpellWindow;
 import gui.Settings;
@@ -44,7 +42,13 @@ public class SpellBrowserPanel extends JPanel {
 		if(Settings.getSBColor())
 		{
 			int color = 255 - (spell.getLevel() * 28);
-			setBackground(new Color(color, color, color));
+			if (spell.getLevel() > -1 && spell.getLevel() < 10)
+			{
+				setBackground(new Color(color, color, color));
+			} else{
+				setBackground(new Color(240,200,200));
+			}
+			
 			if (color < 100)
 			{
 				lblName.setForeground(Color.WHITE);
@@ -78,7 +82,7 @@ public class SpellBrowserPanel extends JPanel {
 		});
 		btnDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WordWrapPopUp popUp = new WordWrapPopUp(spell.getName(), spell.toString());
+				WordWrapPopUp popUp = new WordWrapPopUp(spell.getName(), spell.getPopUpText());
 				popUp.setVisible(true);
 				popUp.setSize(new Dimension((int)(600 * scaleFactor),
 						(int)(400 * scaleFactor)));

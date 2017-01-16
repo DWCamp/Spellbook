@@ -11,4 +11,7 @@ public abstract class Spell {
 	public abstract String getCardText();
 	public abstract int getLevel();
 	public abstract String getSubtitle();
+	public abstract String getPopUpText();
+	public abstract String getDescription();
+	public abstract String getDetails();
 }
