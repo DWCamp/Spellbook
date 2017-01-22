@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import files.Spell_List;
-import gui.CustomSpellAdder;
+import gui.FECustomSpellAdder;
 import gui.Settings;
 import helperClasses.SortedStringList;
 
@@ -49,7 +49,7 @@ public class ClassPicker extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		CustomSpellAdder.newClassPicker(this);
+		FECustomSpellAdder.newClassPicker(this);
 		
 		selectedClasses = new SortedStringList(currentlySelected);
 		

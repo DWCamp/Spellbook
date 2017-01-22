@@ -2282,7 +2282,7 @@ You touch a quiver containing arrows or bolts. When a target is hit by a ranged 
 At Higher Levels. When you cast this spell using a spell slot of 4th level or higher, the number of pieces of ammunition you can affect with this spell increases by two for each slot level above 3rd.
 <END>
 <NAME>Fly
-<CLAS>3rd-level transmutation
+<CLAS>Sorcerer,Wizard,Warlock
 <SCHO>Transmutation
 <CATM>1 action
 <RANG>Touch

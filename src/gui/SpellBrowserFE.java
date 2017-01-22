@@ -13,6 +13,7 @@ import javax.swing.event.DocumentListener;
 
 import files.Spell_List;
 import guiPanels.SpellBrowserPanel;
+import helperClasses.SpellBrowser;
 import helperClasses.SpellFE;
 import gui.Settings;
 
@@ -45,12 +46,12 @@ public class SpellBrowserFE extends SpellBrowser {
 	private JComboBox<Object> comboBoxClasses;
 	private JComboBox<Object> comboBoxSchools;
 	private JPanel panelSpells;
-	private UserSpellWindow uswParent;
+	private MainWindow uswParent;
 
 	/**
 	 * Create the frame.
 	 */
-	public SpellBrowserFE(UserSpellWindow parent) {
+	public SpellBrowserFE(MainWindow parent) {
 		super();
 		
 		contentPane = new JPanel();
@@ -147,7 +148,7 @@ public class SpellBrowserFE extends SpellBrowser {
 		self = this;
 		refresh();
 		
-		Point USW = UserSpellWindow.getWindowLocation();
+		Point USW = MainWindow.getWindowLocation();
 		setLocation(USW.x + 30, USW.y + 30);
 	}
 	

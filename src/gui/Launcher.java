@@ -35,7 +35,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SpellBookLauncher extends JFrame {
+public class Launcher extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static Dimension screenSize;
@@ -57,7 +57,7 @@ public class SpellBookLauncher extends JFrame {
 					
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					@SuppressWarnings("unused")
-					SpellBookLauncher frame = new SpellBookLauncher();	
+					Launcher frame = new Launcher();	
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,7 +68,7 @@ public class SpellBookLauncher extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SpellBookLauncher() {
+	public Launcher() {
 		setTitle("Spellbook Launcher");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds((int)(100 * scaleFactor), 
@@ -158,7 +158,7 @@ public class SpellBookLauncher extends JFrame {
 			Spell_List.loadFECustomSpells();
 			Spell_List.loadPF();
 			CharacterItems.loadItems();
-			UserSpellWindow mainWindow = new UserSpellWindow();
+			MainWindow mainWindow = new MainWindow();
 			mainWindow.setVisible(true);
 		} catch (Exception e)
 		{

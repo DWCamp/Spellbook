@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import alerts.ClassPicker;
 import files.FileSystem;
 import files.Spell_List;
-import guiPanels.CustomSpellPanel;
+import guiPanels.FECustomSpellPanel;
 import helperClasses.SortedObjectList;
 import helperClasses.SpellFE;
 import gui.Settings;
@@ -37,7 +37,7 @@ import java.awt.event.WindowEvent;
  * A window for creating custom spells 
  * @author Daniel Campman
  */
-public class CustomSpellAdder extends JFrame {
+public class FECustomSpellAdder extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -52,7 +52,7 @@ public class CustomSpellAdder extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CustomSpellAdder() {
+	public FECustomSpellAdder() {
 		setResizable(false);
 		setTitle("Custom Spells");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -91,7 +91,7 @@ public class CustomSpellAdder extends JFrame {
 		
 		for (SpellFE spell : Spell_List.getCustomFESpells())
 		{
-			panelSpells.add(new CustomSpellPanel(spell));
+			panelSpells.add(new FECustomSpellPanel(spell));
 		}
 		
 		String[] blank = {""};
@@ -107,7 +107,7 @@ public class CustomSpellAdder extends JFrame {
 		btnAddSpell.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				panelSpells.add(new CustomSpellPanel(blankSpell));
+				panelSpells.add(new FECustomSpellPanel(blankSpell));
 				repaint();
 				revalidate();
 			}
@@ -119,7 +119,7 @@ public class CustomSpellAdder extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				saveSpells();
 				for (Component component : panelSpells.getComponents()) {
-					CustomSpellPanel spell = (CustomSpellPanel)(component);
+					FECustomSpellPanel spell = (FECustomSpellPanel)(component);
 					spell.setSaved(true);
 				}
 			}
@@ -132,7 +132,7 @@ public class CustomSpellAdder extends JFrame {
 			public void windowClosing(WindowEvent arg0) {
 				boolean unsaved = false;
 				for (Component component : panelSpells.getComponents()) {
-					CustomSpellPanel spell = (CustomSpellPanel)(component);
+					FECustomSpellPanel spell = (FECustomSpellPanel)(component);
 					if (!spell.isSaved()) {
 						unsaved = true;
 					}
@@ -154,7 +154,7 @@ public class CustomSpellAdder extends JFrame {
 			}
 		});
 		
-		Point USW = UserSpellWindow.getWindowLocation();
+		Point USW = MainWindow.getWindowLocation();
 		setLocation(USW.x + 30, USW.y + 30);
 	}
 	
@@ -174,7 +174,7 @@ public class CustomSpellAdder extends JFrame {
 		
 		for(Component comp : panelSpells.getComponents())
 		{
-			CustomSpellPanel spellPanel = (CustomSpellPanel)(comp);
+			FECustomSpellPanel spellPanel = (FECustomSpellPanel)(comp);
 			spellPanel.refresh();
 		}
 		
@@ -196,7 +196,7 @@ public class CustomSpellAdder extends JFrame {
 		
 		for(Component element : panelSpells.getComponents())
 		{
-			SpellFE spell = ((CustomSpellPanel)element).toSpell();
+			SpellFE spell = ((FECustomSpellPanel)element).toSpell();
 			sortedSpellArrayList.get(spell.getLevel()).add(spell);
 		}
 		
@@ -223,7 +223,7 @@ public class CustomSpellAdder extends JFrame {
 		
 		for (SpellFE spell : Spell_List.getCustomFESpells())
 		{
-			panelSpells.add(new CustomSpellPanel(spell));
+			panelSpells.add(new FECustomSpellPanel(spell));
 		}
 	}
 	

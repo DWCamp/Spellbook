@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import files.Spell_List;
 import guiPanels.SpellBrowserPanel;
+import helperClasses.SpellBrowser;
 import helperClasses.SpellPF;
 import gui.Settings;
 
@@ -47,8 +48,12 @@ public class SpellBrowserPF extends SpellBrowser {
 	private JComboBox<Object> comboBoxOption;
 	private JComboBox<Object> comboBoxClasses;
 	private JComboBox<Object> comboBoxSchools;
+	private JLabel lblSources;
+	private JButton btnSelect;
+	private JButton btnDeselect;
 	private JPanel panelSpells;
-	private UserSpellWindow uswParent;
+	private ArrayList<JCheckBox> sourceCheckBoxes;
+	private MainWindow uswParent;
 
 	/**
 	 * By making this a field, the school name does 
@@ -60,13 +65,15 @@ public class SpellBrowserPF extends SpellBrowser {
 	/**
 	 * Create the frame.
 	 */
-	public SpellBrowserPF(UserSpellWindow parent) {
+	public SpellBrowserPF(MainWindow parent) {
 		super();
 		setTitle("Pathfinder spells");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		double scaleFactor = Settings.getResizeFactor();
 		
 		uswParent = parent;
 		
@@ -95,13 +102,13 @@ public class SpellBrowserPF extends SpellBrowser {
 		contentPane.add(panelTools);
 		
 		ArrayList<String> classList = new ArrayList<String>();
-		classList.add("All classes");
+		classList.add("All Classes");
 		for (String element : Spell_List.getPFClasses()) {
 			classList.add(element);
 		}
 		
 		ArrayList<String> schoolList = new ArrayList<String>();
-		schoolList.add("All schools");
+		schoolList.add("All Schools");
 		for (String element : Spell_List.getPFSchools()) {
 			schoolList.add(element);
 		}
@@ -134,11 +141,11 @@ public class SpellBrowserPF extends SpellBrowser {
 				}.execute();
 			}
 		});
-		panelTools.setLayout(new BorderLayout(0, 0));
+		panelTools.setLayout(new BorderLayout(0, 5));
 		
 		JPanel panelOptions = new JPanel();
 		panelTools.add(panelOptions, BorderLayout.NORTH);
-		panelOptions.setLayout(new GridLayout(0, 1, 0, 0));
+		panelOptions.setLayout(new GridLayout(0, 1, 0, 5));
 		
 		JPanel panelSearch = new JPanel();
 		panelOptions.add(panelSearch);
@@ -149,9 +156,6 @@ public class SpellBrowserPF extends SpellBrowser {
 		searchField.setColumns(10);
 		comboBoxOption = new JComboBox<Object>(searchOptions);
 		panelSearch.add(comboBoxOption, BorderLayout.EAST);
-		
-		JLabel label = new JLabel("");
-		panelOptions.add(label);
 		
 		comboBoxClasses = new JComboBox<Object>(classList.toArray(new String[0]));
 		panelOptions.add(comboBoxClasses);
@@ -168,38 +172,76 @@ public class SpellBrowserPF extends SpellBrowser {
 		
 		JPanel panelChoices = new JPanel();
 		panelSources.add(panelChoices);
-		panelChoices.setLayout(new GridLayout(0, 3, 0, 0));
+		panelChoices.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		/**
-		 * TOO MANY SOURCES
-		 */
-		JCheckBox checkBoxTemp = new JCheckBox("A");
-		for(String source : Spell_List.getPFSources())
+		sourceCheckBoxes = new ArrayList<JCheckBox>();
+		
+		JCheckBox checkBoxCore = new JCheckBox("PFRPG Core");
+		sourceCheckBoxes.add(checkBoxCore);
+		JCheckBox checkBoxACG = new JCheckBox("Advanced Class Guide");
+		sourceCheckBoxes.add(checkBoxACG);
+		JCheckBox checkBoxAPG = new JCheckBox("Advanced Player's Guide");	
+		sourceCheckBoxes.add(checkBoxAPG);
+		JCheckBox checkBoxARG = new JCheckBox("Advanced Race Guide");
+		sourceCheckBoxes.add(checkBoxARG);
+		JCheckBox checkBoxAP = new JCheckBox("Adventure Paths");
+		sourceCheckBoxes.add(checkBoxAP);
+		JCheckBox checkBoxHA = new JCheckBox("Horror Adventures");
+		sourceCheckBoxes.add(checkBoxHA);
+		JCheckBox checkBoxISG = new JCheckBox("Inner Sea Gods");
+		sourceCheckBoxes.add(checkBoxISG);
+		JCheckBox checkBoxOA = new JCheckBox("Occult Adventures");
+		sourceCheckBoxes.add(checkBoxOA);
+		JCheckBox checkBoxUC = new JCheckBox("Ultimate Combat");
+		sourceCheckBoxes.add(checkBoxUC);
+		JCheckBox checkBoxUI = new JCheckBox("Ultimate Intrigue");
+		sourceCheckBoxes.add(checkBoxUI);
+		JCheckBox checkBoxUM = new JCheckBox("Ultimate Magic");
+		sourceCheckBoxes.add(checkBoxUM);
+		JCheckBox checkBoxOther = new JCheckBox("Other");
+		sourceCheckBoxes.add(checkBoxOther);
+		
+		for(JCheckBox cBox : sourceCheckBoxes)
 		{
-			checkBoxTemp = new JCheckBox(source);
-			panelChoices.add(checkBoxTemp);
+			panelChoices.add(cBox);
+			cBox.setFont(new Font("Tagoma", Font.PLAIN, (int)(8 * scaleFactor)));
+			cBox.setSelected(true);
 		}
 		
-		JLabel lblSources = new JLabel("Soruces");
-		lblSources.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblSources = new JLabel("Soruces");
+		lblSources.setFont(new Font("Tahoma", Font.BOLD, (int)(11 * scaleFactor)));
 		panelSources.add(lblSources, BorderLayout.NORTH);
 		
-		JPanel panel = new JPanel();
-		panelSources.add(panel, BorderLayout.SOUTH);
-		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		JPanel panelButtons = new JPanel();
+		panelSources.add(panelButtons, BorderLayout.SOUTH);
+		panelButtons.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JButton btnSelect = new JButton("Select All");
-		panel.add(btnSelect);
+		btnSelect = new JButton("Select All");
+		btnSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(JCheckBox cBox : sourceCheckBoxes){
+					cBox.setSelected(true);
+				}
+			}
+		});
+		panelButtons.add(btnSelect);
 		
-		JButton btnDeselect = new JButton("Deselect All");
-		panel.add(btnDeselect);
+		btnDeselect = new JButton("Deselect All");
+		btnDeselect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(JCheckBox cBox : sourceCheckBoxes){
+					cBox.setSelected(false);
+				}
+			}
+		});
+		panelButtons.add(btnDeselect);
 		
 		panelTools.add(btnSearch, BorderLayout.SOUTH);
 		
 		self = this;
 		refresh();
 		
-		Point USW = UserSpellWindow.getWindowLocation();
+		Point USW = MainWindow.getWindowLocation();
 		setLocation(USW.x + 30, USW.y + 30);
 	}
 	
@@ -237,6 +279,10 @@ public class SpellBrowserPF extends SpellBrowser {
 		comboBoxClasses.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		comboBoxClasses.setSelectedIndex(0);
 		
+		btnSelect.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		
+		btnDeselect.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
+		
 		btnSearch.setFont(new Font("Tahoma", Font.PLAIN, (int)(15 * scaleFactor)));
 		
 		//Refill spell search
@@ -262,7 +308,8 @@ public class SpellBrowserPF extends SpellBrowser {
 		if (searchVal.equals("")) {
 			for (SpellPF spell : spells) {
 				if (hasSearchedClass(spell)
-						&& isSearchedSchool(spell)) {
+						&& isSearchedSchool(spell)
+						&& fromSearchedSource(spell)) {
 					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
 				}
 			}
@@ -276,7 +323,8 @@ public class SpellBrowserPF extends SpellBrowser {
 				}
 				if (searchedValue.toUpperCase().contains(searchVal) 
 						&& hasSearchedClass(spell) 
-						&& isSearchedSchool(spell)) {
+						&& isSearchedSchool(spell)
+						&& fromSearchedSource(spell)) {
 					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
 				}
 			}
@@ -343,5 +391,42 @@ public class SpellBrowserPF extends SpellBrowser {
 			return true;
 		}
 		return spell.getSchool().equals(schoolSearch);
+	}
+	
+	/**
+	 * Used to determine if the spell in the spell list originated in 
+	 * one of the sources selected by the user
+	 * @param spell The spell to evaluate
+	 * @return Whether the spell comes from allowed sources
+	 */
+	private boolean fromSearchedSource(SpellPF spell)
+	{
+		switch (spell.getSource()){
+		case "PFRPG Core":
+			return sourceCheckBoxes.get(0).isSelected();
+		case "Advanced Class Guide":
+			return sourceCheckBoxes.get(1).isSelected();
+		case "Advanced Player's Guide":
+			return sourceCheckBoxes.get(2).isSelected();
+		case "Advanced Race Guide":
+			return sourceCheckBoxes.get(3).isSelected();
+		case "Adventure Path":
+			return sourceCheckBoxes.get(4).isSelected();
+		case "Horror Adventures":
+			return sourceCheckBoxes.get(5).isSelected();
+		case "Inner Sea Gods":
+			return sourceCheckBoxes.get(6).isSelected();
+		case "Occult Adventures":
+			return sourceCheckBoxes.get(7).isSelected();
+		case "Ultimate Combat":
+			return sourceCheckBoxes.get(8).isSelected();
+		case "Ultimate Intrigue":
+			return sourceCheckBoxes.get(9).isSelected();
+		case "Ultimate Magic":
+			return sourceCheckBoxes.get(10).isSelected();
+		default:
+			//System.out.println("Other... " + sourceCheckBoxes.get(10).getText());
+			return sourceCheckBoxes.get(11).isSelected();
+		}
 	}
 }

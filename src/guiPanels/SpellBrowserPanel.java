@@ -11,7 +11,7 @@ import alerts.WordWrapPopUp;
 import files.CharacterItems;
 import helperClasses.Spell;
 import helperClasses.gameVersion;
-import gui.UserSpellWindow;
+import gui.MainWindow;
 import gui.Settings;
 
 import java.awt.event.ActionListener;
@@ -31,7 +31,7 @@ public class SpellBrowserPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public SpellBrowserPanel(Spell spell, UserSpellWindow parent) {
+	public SpellBrowserPanel(Spell spell, MainWindow parent) {
 		double scaleFactor = Settings.getResizeFactor();
 		setLayout(new BorderLayout(0, 0));
 		

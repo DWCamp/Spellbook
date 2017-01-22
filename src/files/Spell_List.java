@@ -41,6 +41,7 @@ public class Spell_List {
 	
 	private static SortedStringList PFSchools = new SortedStringList();
 	private static SortedStringList PFSources = new SortedStringList();
+	private static SortedStringList PFClasses = new SortedStringList();
 	
 	/**
 	 * Creates a spell list object for Fifth Edition Spells
@@ -115,6 +116,12 @@ public class Spell_List {
 				if (!PFSources.contains(element.getSource())) {
 					PFSources.add(element.getSource());
 				}
+				for(String className : element.getClasses().keySet())
+				{
+					if (!PFClasses.contains(className)) {
+						PFClasses.add(className);
+					}
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -135,7 +142,7 @@ public class Spell_List {
 	 */
 	public static String[] getPFClasses()
 	{
-		return null;
+		return PFClasses.toArray();
 	}
 	
 	/**

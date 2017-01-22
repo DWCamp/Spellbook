@@ -22,7 +22,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 @SuppressWarnings("serial")
-public class CustomSpellPanel extends EditorSpellPanel {
+public class FECustomSpellPanel extends EditorSpellPanel {
 	private JPanel panelLabels;
 	private JLabel lblName;
 	private JLabel lblLevel;
@@ -51,7 +51,7 @@ public class CustomSpellPanel extends EditorSpellPanel {
 	 * Create the panel.
 	 * @param spell The spell the panel represents
 	 */
-	public CustomSpellPanel(SpellFE spell) {
+	public FECustomSpellPanel(SpellFE spell) {
 		double scaleFactor = Settings.getResizeFactor();
 
 		level = spell.getLevel();

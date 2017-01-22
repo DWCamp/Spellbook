@@ -1,7 +1,7 @@
 P-Alarm
 U-Alter Self
 U-Animal Friendship
-U-Animal Messenger
+P-Animal Messenger
 U-Bane
 <PATHFINDER>
 P-Abadar's Truthtelling

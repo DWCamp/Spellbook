@@ -12,6 +12,7 @@ import files.FileSystem;
 import files.Spell_List;
 import guiPanels.SpellCard;
 import helperClasses.Spell;
+import helperClasses.SpellBrowser;
 import helperClasses.gameVersion;
 import gui.Settings;
 
@@ -48,16 +49,16 @@ import java.awt.Color;
  * @author Daniel Campman
  */
 @SuppressWarnings("serial")
-public class UserSpellWindow extends JFrame {
+public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
 	private static JPanel panelAllSpells;
 	private static JPanel[] spellPanels;
 	private static JTabbedPane tabbedPane;
 	
-	private static UserSpellWindow window;
+	private static MainWindow window;
 	private static Settings settings;
-	private static CustomSpellAdder customSpells;
+	private static FECustomSpellAdder customSpells;
 	
 	private static SpellBrowserFE browserFE;
 	private static SpellBrowserPF browserPF;
@@ -69,7 +70,7 @@ public class UserSpellWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public UserSpellWindow() {
+	public MainWindow() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -101,7 +102,7 @@ public class UserSpellWindow extends JFrame {
 		 } else {
 			 activeBrowser = browserPF;
 		 }
-		customSpells = new CustomSpellAdder();
+		customSpells = new FECustomSpellAdder();
 		
 		try {
 			Image image = new ImageIcon("Resources/main.PNG").getImage();

@@ -460,7 +460,7 @@ public class SpellPF extends Spell implements Comparable<SpellPF>{
 		
 		return name + "\n" + school + "\n\nCasting time: " + castingTime
 				+ "\n\nRange: " + range + "\n\nComponents: " + components
-				+ "\n\nDuration: " + duration + "\n\n" + description;
+				+ "\n\nDuration: " + duration + "\n\n" + description + "\n\n\nSource: " + source;
 	}
 	
 	/**

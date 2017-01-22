@@ -165,7 +165,7 @@ public class Settings extends JFrame {
 		contentPane.add(comboBoxGameVersion);
 		
 		refresh();
-		Point USW = UserSpellWindow.getWindowLocation();
+		Point USW = MainWindow.getWindowLocation();
 		setLocation(USW.x + 30, USW.y + 30);
 	}
 	
@@ -258,7 +258,7 @@ public class Settings extends JFrame {
 		try {
 			String[] preferences = FileSystem.loadPreferences();
 			centerFrames = Integer.parseInt(preferences[0]);
-			scaleFactor = SpellBookLauncher.getScale();
+			scaleFactor = Launcher.getScale();
 			scaleAdjustment = Double.parseDouble(preferences[1]);
 			SBColor = preferences[2].equals("true");
 			if(preferences[3].equals("FIFTH_EDITION")) {
@@ -390,7 +390,7 @@ public class Settings extends JFrame {
 		if (!version.equals(newVersion))
 		{
 			version = newVersion;
-			UserSpellWindow.updateGameVersion();
+			MainWindow.updateGameVersion();
 		}
 	}
 	

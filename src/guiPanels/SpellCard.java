@@ -11,7 +11,7 @@ import alerts.WordWrapPopUp;
 import files.CharacterItems;
 import files.FileSystem;
 import files.Spell_List;
-import gui.UserSpellWindow;
+import gui.MainWindow;
 import helperClasses.Spell;
 import helperClasses.gameVersion;
 import gui.Settings;
@@ -72,7 +72,7 @@ public class SpellCard extends JPanel {
 		btnPrepare = new JButton("Prepare");
 		btnPrepare.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserSpellWindow.setSpellPrepared(spell, !prepared);
+				MainWindow.setSpellPrepared(spell, !prepared);
 			}
 		});
 		btnPrepare.setBounds((int)(176 * scaleFactor),
@@ -200,7 +200,7 @@ public class SpellCard extends JPanel {
 	 */
 	public void removeSelf()
 	{
-		UserSpellWindow.removeSpell(this);
+		MainWindow.removeSpell(this);
 	}
 	
 	/**
