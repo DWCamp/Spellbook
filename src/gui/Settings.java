@@ -92,7 +92,9 @@ public class Settings extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
+		// Window Positioning Behavior
+
 		lblWindowPositioningSetting = new JLabel("Window Positioning Behavior");
 		contentPane.add(lblWindowPositioningSetting);
 		
@@ -101,14 +103,18 @@ public class Settings extends JFrame {
 				"Center windows whenever button is clicked"};
 		comboBoxCentering = new JComboBox<Object>(centeringOptions);
 		contentPane.add(comboBoxCentering);
-		
+
+		// Window Scaling
+
 		lblResizeValue = new JLabel("Window Size");
 		contentPane.add(lblResizeValue);
 		
 		String[] sizeOptions = {"Very Small", "Small", "Default", "Large", "Very Large"};
 		comboBoxSize = new JComboBox<Object>(sizeOptions);
 		contentPane.add(comboBoxSize);
-		
+
+		// Browser Setting
+
 		lblSBrowser = new JLabel("Spell Browser Settings");
 		contentPane.add(lblSBrowser);
 		
@@ -119,13 +125,17 @@ public class Settings extends JFrame {
 		
 		chckbxColor = new JCheckBox("Use color to distinguish spell level");
 		panelSpellBrowser.add(chckbxColor);
+
+		// Save Buttons
 		
 		btnSave = new JButton("Save Preferences");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				centerFrames = comboBoxCentering.getSelectedIndex();
+				setCenterFrames(centerFrames);
 				setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
 				SBColor = chckbxColor.isSelected();
+				setSBColor(SBColor);
 				setVersion(gameVersion.values()[comboBoxGameVersion.getSelectedIndex()]);
 				savePreferences();
 				refresh();
@@ -137,6 +147,7 @@ public class Settings extends JFrame {
 		btnSaveQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				centerFrames = comboBoxCentering.getSelectedIndex();
+				setCenterFrames(centerFrames);
 				setScaleAdjustment(0.75 + (1 * comboBoxSize.getSelectedIndex()*0.25));
 				SBColor = chckbxColor.isSelected();
 				setVersion(gameVersion.values()[comboBoxGameVersion.getSelectedIndex()]);
@@ -341,7 +352,7 @@ public class Settings extends JFrame {
 	/**
 	 * Sets whether SpellBrowser panels should be colored 
 	 * to reflect the spell's level
-	 * @param colorPanels {@code boolean}
+	 * @param colorPanels Whether the spell panels should be colored
 	 */
 	public static void setSBColor(boolean colorPanels)
 	{
@@ -383,7 +394,8 @@ public class Settings extends JFrame {
 	/**
 	 * Sets the version of the game and updates the 
 	 * UserSpellWindow if the version changed
-	 * @param versionName
+	 * @param newVersion A gameVersion enum representing
+	 * the version the user requested
 	 */
 	public static void setVersion(gameVersion newVersion)
 	{

@@ -24,6 +24,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.util.Arrays;
 
 import javax.swing.BoxLayout;
 
@@ -119,9 +120,7 @@ public class SpellBrowserFE extends SpellBrowser {
 		
 		ArrayList<String> classList = new ArrayList<String>();
 		classList.add("All classes");
-		for (String element : Spell_List.getFEClasses()) {
-			classList.add(element);
-		}
+		classList.addAll(Arrays.asList(Spell_List.getFEClasses()));
 		
 		comboBoxClasses = new JComboBox<Object>(classList.toArray(new String[0]));
 		comboBoxClasses.addActionListener(new ActionListener() {
@@ -133,9 +132,7 @@ public class SpellBrowserFE extends SpellBrowser {
 		
 		ArrayList<String> schoolList = new ArrayList<String>();
 		schoolList.add("All schools");
-		for (String element : Spell_List.getFESchools()) {
-			schoolList.add(element);
-		}
+		schoolList.addAll(Arrays.asList(Spell_List.getFESchools()));
 		
 		comboBoxSchools = new JComboBox<Object>(schoolList.toArray(new String[0]));
 		comboBoxSchools.addActionListener(new ActionListener() {

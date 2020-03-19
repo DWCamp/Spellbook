@@ -519,7 +519,7 @@ public class MainWindow extends JFrame {
 	
 	/**
 	 * Sets the prepared trait of a SpellCard across all menus
-	 * @param card The card to be set
+	 * @param spell The card to be set
 	 * @param state The cards new prepared state
 	 */
 	public static void setSpellPrepared(Spell spell, boolean state)
