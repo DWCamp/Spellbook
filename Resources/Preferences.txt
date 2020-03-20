@@ -1,4 +1,4 @@
 <CFOC>1
-<WiSi>1.25
-<SBCP>true
-<VERS>PATHFINDER
+<WiSi>1.0
+<SBCP>false
+<VERS>FIFTH_EDITION

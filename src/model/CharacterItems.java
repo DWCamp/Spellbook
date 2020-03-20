@@ -24,6 +24,7 @@ public class CharacterItems {
 	 */
 	public static void loadItems() throws IOException					//LOAD DATA
 	{
+		System.out.println("CharacterItems - loadItems");
 		String[] data = FileSystem.loadCharItems();
 		if (!data[0].equals("")) {
 			FEspellsPrepared = new SortedStringList(data[0].split(","));

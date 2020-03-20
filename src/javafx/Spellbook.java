@@ -3,7 +3,9 @@ package javafx;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import model.CharacterItems;
 import model.Settings;
+import model.SpellList;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -32,12 +34,18 @@ public class Spellbook extends Application implements PropertyChangeListener {
     public void init() {
         System.out.println("Spellbook - init");
         try {
+            // Load settings
             settings = new Settings();
             settings.addPropertyChangeListener(this);
-//            spellBrowser_FE = new SpellBrowser();
-//            Spell_List.loadFECustomSpells();
-//            Spell_List.loadPF();
-//            CharacterItems.loadItems();
+
+            // Load Spells
+            SpellList.loadFE();
+            SpellList.loadFECustomSpells();
+            SpellList.loadPF();
+
+            // Load classes
+            CharacterItems.loadItems();
+
         } catch (Exception e) {
             System.out.println("Well shit.");
             System.out.println(e.getLocalizedMessage());
@@ -55,7 +63,8 @@ public class Spellbook extends Application implements PropertyChangeListener {
     @Override
     public void start(Stage primaryStage) {
         System.out.println("Spellbook - start");
-        Platform.exit();
+        mainWindow = new MainWindow();
+        mainWindow.show();
     }
 
     /**

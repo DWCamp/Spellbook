@@ -3,7 +3,7 @@ Spellbook is an application by a grumpy DM who was tired of his players not reme
 * A digital spellbook. Add, remove, prepare, and keep the details handy for every spell you could ever want.
 * A searchable 5e spell database. This includes all cannonical spells according to this website: http://ephe.github.io/grimoire/. Users can search all spells or narrow their entry. For example, you can search for all wizard Level 3 evocation spells with "fire" in the description (Fireball, Melf's Minute Meteors, and Wall of Water, apparently).
 
-Make sure to keep all the files in the same folder
+Make sure to keep all the model in the same folder
 
 v1.1.0 release notes
 -------------------------
