@@ -1,12 +1,10 @@
 package helperClasses;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public abstract class SpellBrowser extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	JPanel contentPane;
 	protected static SpellBrowser self;
 
 	/**

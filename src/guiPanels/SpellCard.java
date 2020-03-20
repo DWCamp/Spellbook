@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import alerts.WordWrapPopUp;
-import files.CharacterItems;
-import files.FileSystem;
-import files.Spell_List;
+import model.CharacterItems;
+import model.FileSystem;
+import model.SpellList;
 import gui.MainWindow;
-import helperClasses.Spell;
+import model.Spell;
 import helperClasses.gameVersion;
 import gui.Settings;
 
@@ -44,10 +44,10 @@ public class SpellCard extends JPanel {
 		
 		if (Settings.getVersion() == gameVersion.FIFTH_EDITION)
 		{
-			spell = Spell_List.getFESpell(spellName);
+			spell = SpellList.getFESpell(spellName);
 		} else if (Settings.getVersion() == gameVersion.PATHFINDER)
 		{
-			spell = Spell_List.getPFSpell(spellName);
+			spell = SpellList.getPFSpell(spellName);
 		}
 		
 		prepared = CharacterItems.getPreparedFESpells().contains(spellName);

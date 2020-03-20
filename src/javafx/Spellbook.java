@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import model.Settings;
-import model.Settings.GameVersion;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -14,14 +13,16 @@ import java.beans.PropertyChangeListener;
  * The core element of the application. This class stores all of the state
  * objects that the operation relies on as well as the references to each
  * of the windows that the application uses.
+ *
+ * @author Daniel Campman
  */
 public class Spellbook extends Application implements PropertyChangeListener {
 
     // Models
-    public static Settings SETTINGS;
+    public static Settings settings;
 
     // Views
-    public static SpellBrowser spellBrowser_FE;
+    public static MainWindow mainWindow;
 
     /**
      * Initializes the program.
@@ -31,8 +32,8 @@ public class Spellbook extends Application implements PropertyChangeListener {
     public void init() {
         System.out.println("Spellbook - init");
         try {
-            SETTINGS = new Settings();
-            SETTINGS.addPropertyChangeListener(this);
+            settings = new Settings();
+            settings.addPropertyChangeListener(this);
 //            spellBrowser_FE = new SpellBrowser();
 //            Spell_List.loadFECustomSpells();
 //            Spell_List.loadPF();

@@ -11,19 +11,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import files.Spell_List;
+import model.SpellList;
 import guiPanels.SpellBrowserPanel;
 import helperClasses.SpellBrowser;
-import helperClasses.SpellFE;
-import gui.Settings;
+import model.Spell_FE;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 import java.util.Arrays;
 
 import javax.swing.BoxLayout;
@@ -32,13 +29,12 @@ import javax.swing.BoxLayout;
  * The Window for browsing the master spell list. This window is 
  * where the user can look up details of spells and add them to 
  * their own spell list
- * @author Daniel
  *
+ * @author Daniel Campman
  */
 @SuppressWarnings("serial")
 public class SpellBrowserFE extends SpellBrowser {
 
-	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextField searchField;
 	private JLabel lblSearch;
@@ -54,8 +50,8 @@ public class SpellBrowserFE extends SpellBrowser {
 	 */
 	public SpellBrowserFE(MainWindow parent) {
 		super();
-		
-		contentPane = new JPanel();
+
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -101,45 +97,29 @@ public class SpellBrowserFE extends SpellBrowser {
 		String[] levelOptions = {"All Levels", "Cantrips", "Level 1", 
 				"Level 2", "Level 3", "Level 4", "Level 5", "Level 6", 
 				"Level 7", "Level 8", "Level 9"};
-		comboBoxLevels = new JComboBox<Object>(levelOptions);
-		comboBoxLevels.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
+		comboBoxLevels = new JComboBox<>(levelOptions);
+		comboBoxLevels.addActionListener(e -> refresh());
 		contentPane.add(comboBoxLevels);
 		
 		String[] searchOptions = {"Name", "Description"};
-		comboBoxOption = new JComboBox<Object>(searchOptions);
-		comboBoxOption.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
+		comboBoxOption = new JComboBox<>(searchOptions);
+		comboBoxOption.addActionListener(e -> refresh());
 		contentPane.add(comboBoxOption);
 		
-		ArrayList<String> classList = new ArrayList<String>();
+		ArrayList<String> classList = new ArrayList<>();
 		classList.add("All classes");
-		classList.addAll(Arrays.asList(Spell_List.getFEClasses()));
+		classList.addAll(Arrays.asList(SpellList.getFEClasses()));
 		
-		comboBoxClasses = new JComboBox<Object>(classList.toArray(new String[0]));
-		comboBoxClasses.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
+		comboBoxClasses = new JComboBox<>(classList.toArray(new String[0]));
+		comboBoxClasses.addActionListener(e -> refresh());
 		contentPane.add(comboBoxClasses);
 		
-		ArrayList<String> schoolList = new ArrayList<String>();
+		ArrayList<String> schoolList = new ArrayList<>();
 		schoolList.add("All schools");
-		schoolList.addAll(Arrays.asList(Spell_List.getFESchools()));
+		schoolList.addAll(Arrays.asList(SpellList.getFESchools()));
 		
-		comboBoxSchools = new JComboBox<Object>(schoolList.toArray(new String[0]));
-		comboBoxSchools.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				refresh();
-			}
-		});
+		comboBoxSchools = new JComboBox<>(schoolList.toArray(new String[0]));
+		comboBoxSchools.addActionListener(e -> refresh());
 		contentPane.add(comboBoxSchools);
 		
 		self = this;
@@ -156,16 +136,16 @@ public class SpellBrowserFE extends SpellBrowser {
 	{
 		String searchVal = searchField.getText().toUpperCase();
 		panelSpells.removeAll();
-		ArrayList<SpellFE> spells = Spell_List.getFESpellsOfLevel(comboBoxLevels.getSelectedIndex() - 1); // OPTIMIZE THIS SHIT
+		ArrayList<Spell_FE> spells = SpellList.getFESpellsOfLevel(comboBoxLevels.getSelectedIndex() - 1); // OPTIMIZE THIS SHIT
 		if (searchVal.equals("")) {
-			for (SpellFE spell : spells) {
+			for (Spell_FE spell : spells) {
 				if (hasSearchedClass(spell)
 						&& isSearchedSchool(spell)) {
 					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
 				}
 			}
 		} else {
-			for (SpellFE spell : spells) {
+			for (Spell_FE spell : spells) {
 				String searchedValue;
 				if (comboBoxOption.getSelectedIndex() == 0) {
 					searchedValue = spell.getName();
@@ -261,19 +241,21 @@ public class SpellBrowserFE extends SpellBrowser {
 	 * @param spell The spell in question
 	 * @return Whether to allow the spell to show up in the search
 	 */
-	private boolean hasSearchedClass(SpellFE spell)
+	private boolean hasSearchedClass(Spell_FE spell)
 	{
 		if (comboBoxClasses.getSelectedIndex() == 0) {
 			return true;
 		}
-		boolean hasSearchedClass = false;
+
 		String searchedClass = (String) comboBoxClasses.getSelectedItem();
+		if (searchedClass == null) { return false; }
+
 		for (String className : spell.getClasses()) {
 			if (searchedClass.equals(className)) {
-				hasSearchedClass = true;
+				return true;
 			}
 		}
-		return hasSearchedClass;
+		return false;
 	}
 
 	/**
@@ -284,11 +266,14 @@ public class SpellBrowserFE extends SpellBrowser {
 	 * @param spell The spell in question
 	 * @return Whether to allow the spell to show up in the search
 	 */
-	private boolean isSearchedSchool(SpellFE spell)
+	private boolean isSearchedSchool(Spell_FE spell)
 	{
 		if (comboBoxSchools.getSelectedIndex() == 0) {
 			return true;
 		}
-		return spell.getSchool().contains(((String)comboBoxSchools.getSelectedItem()));
+		String selectedItem = (String) comboBoxSchools.getSelectedItem();
+		if (selectedItem == null) { return false; }
+
+		return spell.getSchool().contains(selectedItem);
 	}
 }

@@ -1,10 +1,6 @@
 package javafx;
 
 import javafx.stage.Window;
-import model.Settings;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * The Window for browsing and searching spells

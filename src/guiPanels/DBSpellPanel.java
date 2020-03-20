@@ -3,7 +3,7 @@ package guiPanels;
 import javax.swing.JTextField;
 
 import alerts.DescriptionPopUp;
-import helperClasses.SpellFE;
+import model.Spell_FE;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -25,7 +25,7 @@ public class DBSpellPanel extends EditorSpellPanel {
 	 * Create the panel.
 	 * @param spell The spell the panel represents
 	 */
-	public DBSpellPanel(SpellFE spell) {
+	public DBSpellPanel(Spell_FE spell) {
 		setLayout(new GridLayout(2, 0, 0, 0));
 		level = spell.getLevel();
 		popUp = new DescriptionPopUp(this);
@@ -102,12 +102,12 @@ public class DBSpellPanel extends EditorSpellPanel {
 	 * Converts the contents of the pane into a spell
 	 * @return {@code Spell}
 	 */
-	public SpellFE toSpell()
+	public Spell_FE toSpell()
 	{
 		String school = textFieldSchool.getText().replaceAll("\\d(st|nd|rd|th)(-| )level | cantrip", "");
 		school = Character.toUpperCase(school.charAt(0)) + school.substring(1);
 		
-		return new SpellFE(textFieldName.getText(),
+		return new Spell_FE(textFieldName.getText(),
 				textFieldClasses.getText().split(","),
 				school,
 				level,

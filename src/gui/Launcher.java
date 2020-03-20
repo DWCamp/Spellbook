@@ -8,9 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import files.CharacterItems;
-import files.Spell_List;
-import gui.Settings;
+import model.CharacterItems;
+import model.SpellList;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -154,9 +153,9 @@ public class Launcher extends JFrame {
 		
 		try{
 			Settings.loadPreferences();
-			Spell_List.loadFE();
-			Spell_List.loadFECustomSpells();
-			Spell_List.loadPF();
+			SpellList.loadFE();
+			SpellList.loadFECustomSpells();
+			SpellList.loadPF();
 			CharacterItems.loadItems();
 			MainWindow mainWindow = new MainWindow();
 			mainWindow.setVisible(true);

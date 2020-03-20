@@ -8,12 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import alerts.ClassPicker;
-import files.FileSystem;
-import files.Spell_List;
+import model.FileSystem;
+import model.SpellList;
 import guiPanels.FECustomSpellPanel;
 import helperClasses.SortedObjectList;
-import helperClasses.SpellFE;
-import gui.Settings;
+import model.Spell_FE;
 
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
@@ -89,13 +88,13 @@ public class FECustomSpellAdder extends JFrame {
 			}
 		});
 		
-		for (SpellFE spell : Spell_List.getCustomFESpells())
+		for (Spell_FE spell : SpellList.getCustomFESpells())
 		{
 			panelSpells.add(new FECustomSpellPanel(spell));
 		}
 		
 		String[] blank = {""};
-		SpellFE blankSpell = new SpellFE("", blank, 
+		Spell_FE blankSpell = new Spell_FE("", blank,
 				"", 0, "", "", "", "", "");
 		
 		JPanel panelButtons = new JPanel();
@@ -188,26 +187,26 @@ public class FECustomSpellAdder extends JFrame {
 	 * Saves the spells in the window to file
 	 */
 	public void saveSpells() {
-		ArrayList<SortedObjectList<SpellFE>> sortedSpellArrayList = new ArrayList<SortedObjectList<SpellFE>>();
+		ArrayList<SortedObjectList<Spell_FE>> sortedSpellArrayList = new ArrayList<SortedObjectList<Spell_FE>>();
 		for(int i = 0; i < 10; i++)
 		{
-			sortedSpellArrayList.add(new SortedObjectList<SpellFE>());
+			sortedSpellArrayList.add(new SortedObjectList<Spell_FE>());
 		}
 		
 		for(Component element : panelSpells.getComponents())
 		{
-			SpellFE spell = ((FECustomSpellPanel)element).toSpell();
+			Spell_FE spell = ((FECustomSpellPanel)element).toSpell();
 			sortedSpellArrayList.get(spell.getLevel()).add(spell);
 		}
 		
-		ArrayList<ArrayList<SpellFE>> spellList = new ArrayList<ArrayList<SpellFE>>();
+		ArrayList<ArrayList<Spell_FE>> spellList = new ArrayList<ArrayList<Spell_FE>>();
 		for(int i = 0; i < 10; i++)
 		{
-			spellList.add(new ArrayList<SpellFE>());
+			spellList.add(new ArrayList<Spell_FE>());
 			spellList.add(sortedSpellArrayList.get(i).toArrayList());
 		}
 		FileSystem.saveCustomFESpellList(spellList);
-		Spell_List.updateFESpells();
+		SpellList.updateFESpells();
 		SpellBrowserFE.windowRefresh();
 		deleted = false;
 	}
@@ -221,7 +220,7 @@ public class FECustomSpellAdder extends JFrame {
 		deleted = false;
 		refresh();
 		
-		for (SpellFE spell : Spell_List.getCustomFESpells())
+		for (Spell_FE spell : SpellList.getCustomFESpells())
 		{
 			panelSpells.add(new FECustomSpellPanel(spell));
 		}

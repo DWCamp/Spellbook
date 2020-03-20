@@ -7,14 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import files.CharacterItems;
-import files.FileSystem;
-import files.Spell_List;
+import model.CharacterItems;
+import model.FileSystem;
+import model.SpellList;
 import guiPanels.SpellCard;
-import helperClasses.Spell;
+import model.Spell;
 import helperClasses.SpellBrowser;
 import helperClasses.gameVersion;
-import gui.Settings;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -412,7 +411,7 @@ public class MainWindow extends JFrame {
 		
 		if (Settings.getVersion() == gameVersion.FIFTH_EDITION) {
 			for (String spell : spellsLearned) {
-				int level = Spell_List.getFESpellLevel(spell);
+				int level = SpellList.getFESpellLevel(spell);
 				if (level >= 0) {
 					tabbedPane.setEnabledAt(level + 1, true);
 					tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
@@ -424,7 +423,7 @@ public class MainWindow extends JFrame {
 			}
 		} else if (Settings.getVersion() == gameVersion.PATHFINDER) {
 			for (String spell : spellsLearned) {
-				int level = Spell_List.getPFSpellLevel(spell);
+				int level = SpellList.getPFSpellLevel(spell);
 				if (level >= 0) {
 					tabbedPane.setEnabledAt(level + 1, true);
 					tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
@@ -458,7 +457,7 @@ public class MainWindow extends JFrame {
 		if (Settings.getVersion() == gameVersion.FIFTH_EDITION){
 			ArrayList<String> spellsLearned = CharacterItems.getLearnedFESpells();
 			for (String spell : spellsLearned) {
-				int level = Spell_List.getFESpell(spell).getLevel();
+				int level = SpellList.getFESpell(spell).getLevel();
 				tabbedPane.setEnabledAt(level + 1, true);
 				tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
 				panelAllSpells.add(new SpellCard(spell));
@@ -467,7 +466,7 @@ public class MainWindow extends JFrame {
 		} else if (Settings.getVersion() == gameVersion.PATHFINDER){
 			ArrayList<String> spellsLearned = CharacterItems.getLearnedPFSpells();
 			for (String spell : spellsLearned) {
-				int level = Spell_List.getPFSpellLevel(spell);
+				int level = SpellList.getPFSpellLevel(spell);
 				tabbedPane.setEnabledAt(level + 1, true);
 				tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
 				panelAllSpells.add(new SpellCard(spell));

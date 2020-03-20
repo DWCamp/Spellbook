@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import alerts.DescriptionPopUp;
-import helperClasses.SpellFE;
+import model.Spell_FE;
 
 public abstract class EditorSpellPanel extends JPanel {
 
@@ -100,5 +100,5 @@ public abstract class EditorSpellPanel extends JPanel {
 	 * Converts the contents of the pane into a spell
 	 * @return {@code Spell}
 	 */
-	public abstract SpellFE toSpell();
+	public abstract Spell_FE toSpell();
 }

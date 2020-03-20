@@ -7,6 +7,8 @@ import java.beans.PropertyChangeSupport;
 /**
  * Stores the current settings for the application
  * All values should be watched through PropertyChangeListeners
+ *
+ * @author Daniel Campman
  */
 public class Settings {
 

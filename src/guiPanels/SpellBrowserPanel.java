@@ -8,8 +8,8 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 
 import alerts.WordWrapPopUp;
-import files.CharacterItems;
-import helperClasses.Spell;
+import model.CharacterItems;
+import model.Spell;
 import helperClasses.gameVersion;
 import gui.MainWindow;
 import gui.Settings;

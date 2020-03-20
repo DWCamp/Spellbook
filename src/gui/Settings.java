@@ -8,22 +8,18 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Point;
 
 import javax.swing.border.LineBorder;
 
-import files.FileSystem;
+import model.FileSystem;
 import helperClasses.gameVersion;
 
-import java.awt.Color;
 import javax.swing.JCheckBox;
-import java.awt.GridLayout;
 
 /**
  * The window for accessing and modifying 
@@ -266,6 +262,10 @@ public class Settings extends JFrame {
 	 */
 	public static void loadPreferences()
 	{
+		double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		scaleFactor = screenWidth / 1920.0;
+		scaleAdjustment = 1;
+
 		try {
 			String[] preferences = FileSystem.loadPreferences();
 			centerFrames = Integer.parseInt(preferences[0]);

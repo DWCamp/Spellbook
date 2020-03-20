@@ -9,20 +9,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import files.Spell_List;
+import model.SpellList;
 import guiPanels.SpellBrowserPanel;
 import helperClasses.SpellBrowser;
-import helperClasses.SpellPF;
-import gui.Settings;
+import model.Spell_PF;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingWorker;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
+import java.util.*;
 
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
@@ -34,13 +31,27 @@ import javax.swing.JCheckBox;
  * The Window for browsing the master spell list. This window is 
  * where the user can look up details of spells and add them to 
  * their own spell list
- * @author Daniel
  *
+ * @author Daniel Campman
  */
 @SuppressWarnings("serial")
 public class SpellBrowserPF extends SpellBrowser {
 
-	private JPanel contentPane;
+	// Map sources to their Source Filter Checkbox index
+	private static final HashMap<String, Integer> SOURCE_INDEX = new HashMap<>(Map.ofEntries(
+			new AbstractMap.SimpleEntry<>("PFRPG Core", 0),
+			new AbstractMap.SimpleEntry<>("Advanced Class Guide", 1),
+			new AbstractMap.SimpleEntry<>("Advanced Player's Guide", 2),
+			new AbstractMap.SimpleEntry<>("Advanced Race Guide", 3),
+			new AbstractMap.SimpleEntry<>("Adventure Path", 4),
+			new AbstractMap.SimpleEntry<>("Horror Adventures", 5),
+			new AbstractMap.SimpleEntry<>("Inner Sea Gods", 6),
+			new AbstractMap.SimpleEntry<>("Occult Adventures", 7),
+			new AbstractMap.SimpleEntry<>("Ultimate Combat", 8),
+			new AbstractMap.SimpleEntry<>("Ultimate Intrigue", 9),
+			new AbstractMap.SimpleEntry<>("Ultimate Magic", 10)
+	));
+
 	private JScrollPane scrollPane;
 	private JTextField searchField;
 	private JButton btnSearch;
@@ -48,7 +59,6 @@ public class SpellBrowserPF extends SpellBrowser {
 	private JComboBox<Object> comboBoxOption;
 	private JComboBox<Object> comboBoxClasses;
 	private JComboBox<Object> comboBoxSchools;
-	private JLabel lblSources;
 	private JButton btnSelect;
 	private JButton btnDeselect;
 	private JPanel panelSpells;
@@ -68,7 +78,7 @@ public class SpellBrowserPF extends SpellBrowser {
 	public SpellBrowserPF(MainWindow parent) {
 		super();
 		setTitle("Pathfinder spells");
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -101,45 +111,39 @@ public class SpellBrowserPF extends SpellBrowser {
 		panelTools.setBounds(864, 22, 399, 724);
 		contentPane.add(panelTools);
 		
-		ArrayList<String> classList = new ArrayList<String>();
+		ArrayList<String> classList = new ArrayList<>();
 		classList.add("All Classes");
-		for (String element : Spell_List.getPFClasses()) {
-			classList.add(element);
-		}
+		classList.addAll(Arrays.asList(SpellList.getPFClasses()));
 		
-		ArrayList<String> schoolList = new ArrayList<String>();
+		ArrayList<String> schoolList = new ArrayList<>();
 		schoolList.add("All Schools");
-		for (String element : Spell_List.getPFSchools()) {
-			schoolList.add(element);
-		}
+		schoolList.addAll(Arrays.asList(SpellList.getPFSchools()));
 
 		
 		btnSearch = new JButton("Search");
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnSearch.setText("Wait...");
-				btnSearch.setEnabled(false);
+		btnSearch.addActionListener(arg0 -> {
+			btnSearch.setText("Wait...");
+			btnSearch.setEnabled(false);
 
-				/**
-				 * This is a thing I found on StackOverflow. -> http://stackoverflow.com/questions/10372046/swing-jlabel-settext-invoked-too-late
-				 * Don't question it. Basically, it somehow
-				 * solves the concurrency issue of search()
-				 * hanging the thread so Swing can't update
-				 */
-				new SwingWorker<Void, Void>() {
-					@Override
-					protected Void doInBackground() throws Exception {
-						search();
-						return null;
-					}
+			/*
+			 * This is a thing I found on StackOverflow. -> http://stackoverflow.com/questions/10372046/swing-jlabel-settext-invoked-too-late
+			 * Don't question it. Basically, it somehow
+			 * solves the concurrency issue of search()
+			 * hanging the thread so Swing can't update
+			 */
+			new SwingWorker<Void, Void>() {
+				@Override
+				protected Void doInBackground() {
+					search();
+					return null;
+				}
 
-					@Override
-					protected void done() {
-						btnSearch.setText("Search");
-						btnSearch.setEnabled(true);
-					}
-				}.execute();
-			}
+				@Override
+				protected void done() {
+					btnSearch.setText("Search");
+					btnSearch.setEnabled(true);
+				}
+			}.execute();
 		});
 		panelTools.setLayout(new BorderLayout(0, 5));
 		
@@ -154,16 +158,16 @@ public class SpellBrowserPF extends SpellBrowser {
 		searchField = new JTextField();
 		panelSearch.add(searchField);
 		searchField.setColumns(10);
-		comboBoxOption = new JComboBox<Object>(searchOptions);
+		comboBoxOption = new JComboBox<>(searchOptions);
 		panelSearch.add(comboBoxOption, BorderLayout.EAST);
 		
-		comboBoxClasses = new JComboBox<Object>(classList.toArray(new String[0]));
+		comboBoxClasses = new JComboBox<>(classList.toArray(new String[0]));
 		panelOptions.add(comboBoxClasses);
 		
-		comboBoxSchools = new JComboBox<Object>(schoolList.toArray(new String[0]));
+		comboBoxSchools = new JComboBox<>(schoolList.toArray(new String[0]));
 		panelOptions.add(comboBoxSchools);
 		
-		comboBoxLevels = new JComboBox<Object>(levelOptions);
+		comboBoxLevels = new JComboBox<>(levelOptions);
 		panelOptions.add(comboBoxLevels);
 		
 		JPanel panelSources = new JPanel();
@@ -174,7 +178,7 @@ public class SpellBrowserPF extends SpellBrowser {
 		panelSources.add(panelChoices);
 		panelChoices.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		sourceCheckBoxes = new ArrayList<JCheckBox>();
+		sourceCheckBoxes = new ArrayList<>();
 		
 		JCheckBox checkBoxCore = new JCheckBox("PFRPG Core");
 		sourceCheckBoxes.add(checkBoxCore);
@@ -207,8 +211,8 @@ public class SpellBrowserPF extends SpellBrowser {
 			cBox.setFont(new Font("Tagoma", Font.PLAIN, (int)(8 * scaleFactor)));
 			cBox.setSelected(true);
 		}
-		
-		lblSources = new JLabel("Soruces");
+
+		JLabel lblSources = new JLabel("Soruces");
 		lblSources.setFont(new Font("Tahoma", Font.BOLD, (int)(11 * scaleFactor)));
 		panelSources.add(lblSources, BorderLayout.NORTH);
 		
@@ -217,21 +221,17 @@ public class SpellBrowserPF extends SpellBrowser {
 		panelButtons.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		btnSelect = new JButton("Select All");
-		btnSelect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				for(JCheckBox cBox : sourceCheckBoxes){
-					cBox.setSelected(true);
-				}
+		btnSelect.addActionListener(arg0 -> {
+			for(JCheckBox cBox : sourceCheckBoxes){
+				cBox.setSelected(true);
 			}
 		});
 		panelButtons.add(btnSelect);
 		
 		btnDeselect = new JButton("Deselect All");
-		btnDeselect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				for(JCheckBox cBox : sourceCheckBoxes){
-					cBox.setSelected(false);
-				}
+		btnDeselect.addActionListener(arg0 -> {
+			for(JCheckBox cBox : sourceCheckBoxes){
+				cBox.setSelected(false);
 			}
 		});
 		panelButtons.add(btnDeselect);
@@ -252,7 +252,6 @@ public class SpellBrowserPF extends SpellBrowser {
 	{
 		//resize all components
 		double scaleFactor = Settings.getResizeFactor();
-		scaleFactor = 2;
 		
 		setBounds(getX(), getY(),
 				1284,
@@ -287,8 +286,8 @@ public class SpellBrowserPF extends SpellBrowser {
 		
 		//Refill spell search
 		panelSpells.removeAll();
-		ArrayList<SpellPF> spells = Spell_List.getAllPFSpells();
-		for (SpellPF spell : spells) {
+		ArrayList<Spell_PF> spells = SpellList.getAllPFSpells();
+		for (Spell_PF spell : spells) {
 			panelSpells.add(new SpellBrowserPanel(spell, uswParent));
 		}
 		repaint();
@@ -304,9 +303,9 @@ public class SpellBrowserPF extends SpellBrowser {
 		String searchVal = searchField.getText().toUpperCase();
 		schoolSearch = (String)comboBoxSchools.getSelectedItem();
 		panelSpells.removeAll();
-		ArrayList<SpellPF> spells = Spell_List.getAllPFSpells();
+		ArrayList<Spell_PF> spells = SpellList.getAllPFSpells();
 		if (searchVal.equals("")) {
-			for (SpellPF spell : spells) {
+			for (Spell_PF spell : spells) {
 				if (hasSearchedClass(spell)
 						&& isSearchedSchool(spell)
 						&& fromSearchedSource(spell)) {
@@ -314,7 +313,7 @@ public class SpellBrowserPF extends SpellBrowser {
 				}
 			}
 		} else {
-			for (SpellPF spell : spells) {
+			for (Spell_PF spell : spells) {
 				String searchedValue;
 				if (comboBoxOption.getSelectedIndex() == 0) {
 					searchedValue = spell.getName();
@@ -362,19 +361,18 @@ public class SpellBrowserPF extends SpellBrowser {
 	 * @param spell The spell in question
 	 * @return Whether to allow the spell to show up in the search
 	 */
-	private boolean hasSearchedClass(SpellPF spell)
+	private boolean hasSearchedClass(Spell_PF spell)
 	{
 		if (comboBoxClasses.getSelectedIndex() == 0) {
 			return true;
 		}
-		boolean hasSearchedClass = false;
 		String searchedClass = (String) comboBoxClasses.getSelectedItem();
 		for (String className : spell.getClasses().keySet()) {
-			if (searchedClass.equals(className)) {
-				hasSearchedClass = true;
+			if (className.equals(searchedClass)) {
+				return true;
 			}
 		}
-		return hasSearchedClass;
+		return false;
 	}
 
 	/**
@@ -385,7 +383,7 @@ public class SpellBrowserPF extends SpellBrowser {
 	 * @param spell The spell in question
 	 * @return Whether to allow the spell to show up in the search
 	 */
-	private boolean isSearchedSchool(SpellPF spell)
+	private boolean isSearchedSchool(Spell_PF spell)
 	{
 		if (comboBoxSchools.getSelectedIndex() == 0) {
 			return true;
@@ -399,34 +397,10 @@ public class SpellBrowserPF extends SpellBrowser {
 	 * @param spell The spell to evaluate
 	 * @return Whether the spell comes from allowed sources
 	 */
-	private boolean fromSearchedSource(SpellPF spell)
+	private boolean fromSearchedSource(Spell_PF spell)
 	{
-		switch (spell.getSource()){
-		case "PFRPG Core":
-			return sourceCheckBoxes.get(0).isSelected();
-		case "Advanced Class Guide":
-			return sourceCheckBoxes.get(1).isSelected();
-		case "Advanced Player's Guide":
-			return sourceCheckBoxes.get(2).isSelected();
-		case "Advanced Race Guide":
-			return sourceCheckBoxes.get(3).isSelected();
-		case "Adventure Path":
-			return sourceCheckBoxes.get(4).isSelected();
-		case "Horror Adventures":
-			return sourceCheckBoxes.get(5).isSelected();
-		case "Inner Sea Gods":
-			return sourceCheckBoxes.get(6).isSelected();
-		case "Occult Adventures":
-			return sourceCheckBoxes.get(7).isSelected();
-		case "Ultimate Combat":
-			return sourceCheckBoxes.get(8).isSelected();
-		case "Ultimate Intrigue":
-			return sourceCheckBoxes.get(9).isSelected();
-		case "Ultimate Magic":
-			return sourceCheckBoxes.get(10).isSelected();
-		default:
-			//System.out.println("Other... " + sourceCheckBoxes.get(10).getText());
-			return sourceCheckBoxes.get(11).isSelected();
-		}
+		Integer index = SOURCE_INDEX.get(spell.getSource());
+		if (index == null) { index = 11; }  // If source not found, check if "Other" checked
+		return sourceCheckBoxes.get(index).isSelected();
 	}
 }
