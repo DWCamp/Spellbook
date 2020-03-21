@@ -1,7 +1,6 @@
 package javafx;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.stage.Stage;
 import model.CharacterItems;
 import model.Settings;
