@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.CharacterItems;
+import model.CharacterInfo;
 import model.FileSystem;
 import model.SpellList;
 import guiPanels.SpellCard;
@@ -73,7 +73,7 @@ public class MainWindow extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-				FileSystem.saveCharItems();
+				//FileSystem.saveCharItems();
 				System.exit(0);
 			}
 		});
@@ -396,44 +396,44 @@ public class MainWindow extends JFrame {
 			panel.setLayout(new GridLayout(1, 2, 15, 0));
 		}
 		
-		ArrayList<String> spellsLearned = new ArrayList<String>();
-		if (Settings.getVersion() == gameVersion.FIFTH_EDITION)
-		{
-			spellsLearned = CharacterItems.getLearnedFESpells();
-		} else if (Settings.getVersion() == gameVersion.PATHFINDER)
-		{
-			spellsLearned = CharacterItems.getLearnedPFSpells();
-		}
-		
-		if (spellsLearned.size() > 0) {  //Removes the placeholder message if there are spells to add
-			panelAllSpells.remove(0);
-		}
-		
-		if (Settings.getVersion() == gameVersion.FIFTH_EDITION) {
-			for (String spell : spellsLearned) {
-				int level = SpellList.getFESpellLevel(spell);
-				if (level >= 0) {
-					tabbedPane.setEnabledAt(level + 1, true);
-					tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
-					panelAllSpells.add(new SpellCard(spell));
-					spellPanels[level].add(new SpellCard(spell));
-				} else {
-					CharacterItems.unlearnFESpell(spell);
-				}
-			}
-		} else if (Settings.getVersion() == gameVersion.PATHFINDER) {
-			for (String spell : spellsLearned) {
-				int level = SpellList.getPFSpellLevel(spell);
-				if (level >= 0) {
-					tabbedPane.setEnabledAt(level + 1, true);
-					tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
-					panelAllSpells.add(new SpellCard(spell));
-					spellPanels[level].add(new SpellCard(spell));
-				} else {
-					CharacterItems.unlearnPFSpell(spell);
-				}
-			}
-		}
+//		ArrayList<String> spellsLearned = new ArrayList<String>();
+//		if (Settings.getVersion() == gameVersion.FIFTH_EDITION)
+//		{
+//			spellsLearned = CharacterInfo.getLearnedFESpells();
+//		} else if (Settings.getVersion() == gameVersion.PATHFINDER)
+//		{
+//			spellsLearned = CharacterInfo.getLearnedPFSpells();
+//		}
+//
+//		if (spellsLearned.size() > 0) {  //Removes the placeholder message if there are spells to add
+//			panelAllSpells.remove(0);
+//		}
+//
+//		if (Settings.getVersion() == gameVersion.FIFTH_EDITION) {
+//			for (String spell : spellsLearned) {
+//				int level = SpellList.getFESpellLevel(spell);
+//				if (level >= 0) {
+//					tabbedPane.setEnabledAt(level + 1, true);
+//					tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
+//					panelAllSpells.add(new SpellCard(spell));
+//					spellPanels[level].add(new SpellCard(spell));
+//				} else {
+//					CharacterInfo.unlearnFESpell(spell);
+//				}
+//			}
+//		} else if (Settings.getVersion() == gameVersion.PATHFINDER) {
+//			for (String spell : spellsLearned) {
+//				int level = SpellList.getPFSpellLevel(spell);
+//				if (level >= 0) {
+//					tabbedPane.setEnabledAt(level + 1, true);
+//					tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
+//					panelAllSpells.add(new SpellCard(spell));
+//					spellPanels[level].add(new SpellCard(spell));
+//				} else {
+//					CharacterInfo.unlearnPFSpell(spell);
+//				}
+//			}
+//		}
 
 		
 		repaint();
@@ -454,25 +454,25 @@ public class MainWindow extends JFrame {
 		for (JPanel panel : spellPanels) {
 			panel.removeAll();
 		}
-		if (Settings.getVersion() == gameVersion.FIFTH_EDITION){
-			ArrayList<String> spellsLearned = CharacterItems.getLearnedFESpells();
-			for (String spell : spellsLearned) {
-				int level = SpellList.getFESpell(spell).getLevel();
-				tabbedPane.setEnabledAt(level + 1, true);
-				tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
-				panelAllSpells.add(new SpellCard(spell));
-				spellPanels[level].add(new SpellCard(spell));
-			}
-		} else if (Settings.getVersion() == gameVersion.PATHFINDER){
-			ArrayList<String> spellsLearned = CharacterItems.getLearnedPFSpells();
-			for (String spell : spellsLearned) {
-				int level = SpellList.getPFSpellLevel(spell);
-				tabbedPane.setEnabledAt(level + 1, true);
-				tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
-				panelAllSpells.add(new SpellCard(spell));
-				spellPanels[level].add(new SpellCard(spell));
-			}
-		}
+//		if (Settings.getVersion() == gameVersion.FIFTH_EDITION){
+//			ArrayList<String> spellsLearned = CharacterInfo.getLearnedFESpells();
+//			for (String spell : spellsLearned) {
+//				int level = SpellList.getFESpell(spell).getLevel();
+//				tabbedPane.setEnabledAt(level + 1, true);
+//				tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
+//				panelAllSpells.add(new SpellCard(spell));
+//				spellPanels[level].add(new SpellCard(spell));
+//			}
+//		} else if (Settings.getVersion() == gameVersion.PATHFINDER){
+//			ArrayList<String> spellsLearned = CharacterInfo.getLearnedPFSpells();
+//			for (String spell : spellsLearned) {
+//				int level = SpellList.getPFSpellLevel(spell);
+//				tabbedPane.setEnabledAt(level + 1, true);
+//				tabbedPane.getTabComponentAt(level + 1).setEnabled(true);
+//				panelAllSpells.add(new SpellCard(spell));
+//				spellPanels[level].add(new SpellCard(spell));
+//			}
+//		}
 	}
 	
 	
@@ -496,8 +496,8 @@ public class MainWindow extends JFrame {
 		panelAllSpells.remove(card);
 		spellPanels[card.getSpell().getLevel()].remove(card);
 
-		CharacterItems.unlearnFESpell(spell.getName());
-		CharacterItems.unprepareFESpell(spell.getName());
+//		CharacterInfo.unlearnFESpell(spell.getName());
+//		CharacterInfo.unprepareFESpell(spell.getName());
 		
 		if (panelAllSpells.getComponents().length == 0) {
 			JLabel lblClickbrowseSpells = new JLabel("Click \"Browse Spells\" " 

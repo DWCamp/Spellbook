@@ -41,7 +41,7 @@ public class DataBaseEditor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SpellList.loadFE();
+					//SpellList.loadFE();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					DataBaseEditor frame = new DataBaseEditor();
 					frame.setVisible(true);
@@ -235,9 +235,9 @@ public class DataBaseEditor extends JFrame {
 		contentPane.add(btnSanitizeClassList);
 		
 		for (int i = 0; i < 10; i++) {
-			for (Spell_FE spell : SpellList.getFESpellsOfLevel(i)) {
-				panelArray[i].add(new DBSpellPanel(spell));
-			}
+//			for (Spell_FE spell : SpellList.getFESpellsOfLevel(i)) {
+//				panelArray[i].add(new DBSpellPanel(spell));
+//			}
 		}
 																	//Action Listeners
 		

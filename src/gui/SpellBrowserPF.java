@@ -113,11 +113,11 @@ public class SpellBrowserPF extends SpellBrowser {
 		
 		ArrayList<String> classList = new ArrayList<>();
 		classList.add("All Classes");
-		classList.addAll(Arrays.asList(SpellList.getPFClasses()));
+		//classList.addAll(Arrays.asList(SpellList.getPFClasses()));
 		
 		ArrayList<String> schoolList = new ArrayList<>();
 		schoolList.add("All Schools");
-		schoolList.addAll(Arrays.asList(SpellList.getPFSchools()));
+		//schoolList.addAll(Arrays.asList(SpellList.getPFSchools()));
 
 		
 		btnSearch = new JButton("Search");
@@ -286,10 +286,8 @@ public class SpellBrowserPF extends SpellBrowser {
 		
 		//Refill spell search
 		panelSpells.removeAll();
-		ArrayList<Spell_PF> spells = SpellList.getAllPFSpells();
-		for (Spell_PF spell : spells) {
-			panelSpells.add(new SpellBrowserPanel(spell, uswParent));
-		}
+		// ArrayList<Spell_PF> spells = SpellList.getAllPFSpells();
+		//
 		repaint();
 		revalidate();
 	}
@@ -303,31 +301,31 @@ public class SpellBrowserPF extends SpellBrowser {
 		String searchVal = searchField.getText().toUpperCase();
 		schoolSearch = (String)comboBoxSchools.getSelectedItem();
 		panelSpells.removeAll();
-		ArrayList<Spell_PF> spells = SpellList.getAllPFSpells();
-		if (searchVal.equals("")) {
-			for (Spell_PF spell : spells) {
-				if (hasSearchedClass(spell)
-						&& isSearchedSchool(spell)
-						&& fromSearchedSource(spell)) {
-					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
-				}
-			}
-		} else {
-			for (Spell_PF spell : spells) {
-				String searchedValue;
-				if (comboBoxOption.getSelectedIndex() == 0) {
-					searchedValue = spell.getName();
-				} else {
-					searchedValue = " " + spell.getDescription();
-				}
-				if (searchedValue.toUpperCase().contains(searchVal) 
-						&& hasSearchedClass(spell) 
-						&& isSearchedSchool(spell)
-						&& fromSearchedSource(spell)) {
-					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
-				}
-			}
-		}
+//		ArrayList<Spell_PF> spells = SpellList.getAllPFSpells();
+//		if (searchVal.equals("")) {
+//			for (Spell_PF spell : spells) {
+//				if (hasSearchedClass(spell)
+//						&& isSearchedSchool(spell)
+//						&& fromSearchedSource(spell)) {
+//					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
+//				}
+//			}
+//		} else {
+//			for (Spell_PF spell : spells) {
+//				String searchedValue;
+//				if (comboBoxOption.getSelectedIndex() == 0) {
+//					searchedValue = spell.getName();
+//				} else {
+//					searchedValue = " " + spell.getDescription();
+//				}
+//				if (searchedValue.toUpperCase().contains(searchVal)
+//						&& hasSearchedClass(spell)
+//						&& isSearchedSchool(spell)
+//						&& fromSearchedSource(spell)) {
+//					panelSpells.add(new SpellBrowserPanel(spell, uswParent));
+//				}
+//			}
+//		}
 		
 		repaint();
 		revalidate();

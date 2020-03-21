@@ -1,16 +1,8 @@
 package model;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import gui.Settings;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 
 /**
  * The class for storing and retrieving data in save files. 
@@ -19,13 +11,14 @@ import java.io.FileWriter;
  */
 public class FileSystem {
 
-	static String prefPath = "Resources/Preferences.txt";
-    static String classListPath = "Resources/ClassList.txt";
-	static String charItemsPath = "Resources/CharacterItems.txt";
 	static String spellListPathFE = "Resources/FESpellList.txt";
 	static String customFESpellListPath = "Resources/FECustomSpellList.txt";
 	static String spellListPathPF = "Resources/PFSpellList.txt";
 	static String customPFSpellListPath = "Resources/PFCustomSpellList.txt";
+
+	private static final String CHARACTER_INFO_FILE = "Resources/CharacterInfo.ser";
+	private static final String SETTINGS_FILE = "Resources/Settings.ser";
+	private static final String SPELL_LIST_FILE = "Resources/SpellList.ser";
 	
 	/**
 	 * Reads the contents of a file into a String array
@@ -58,110 +51,24 @@ public class FileSystem {
 		}
 		return null;
 	}
-																// SAVE DATA
-	/**
-	 * Saves all user data to their respective files
-	 * @return {@code boolean} returns {@code true} if 
-	 * save was successful
-	 */
-	public static boolean saveUserData() { 
-		System.out.println("Saving all data");
-		return 	saveCharItems();
-	}
-	
-	/**
-	 * Saves all data in the CharacterInfo file
-	 * @return {@code boolean} returns {@code true} if 
-	 * save was successful
-	 */
-	public static boolean saveCharItems() {				//Char Items
-		System.out.println("Saving char items...");
-		String tempFile = "tmp.txt";
-		boolean success = true;
-		
-		try (
-				FileWriter fw = new FileWriter(tempFile);
-				BufferedWriter bw = new BufferedWriter(fw);
-			) 
-		{			
-			ArrayList<String> FElearned = CharacterItems.getLearnedFESpells();
-			ArrayList<String> FEprepared = CharacterItems.getPreparedFESpells();
-			ArrayList<String> PFlearned = CharacterItems.getLearnedPFSpells();
-			ArrayList<String> PFprepared = CharacterItems.getPreparedPFSpells();
-			for (int i = 0; i < FElearned.size(); i++) {
-				String spell = FElearned.get(i);
-				if (FEprepared.contains(spell)) {
-					bw.write("P-" + spell);
-					bw.newLine();
-				} else {
-					bw.write("U-" + spell);
-					bw.newLine();
-				}
-			}
-			bw.write("<PATHFINDER>");
-			bw.newLine();
-			for (int i = 0; i < PFlearned.size(); i++) {
-				String spell = PFlearned.get(i);
-				if (PFprepared.contains(spell)) {
-					bw.write("P-" + spell);
-					bw.newLine();
-				} else {
-					bw.write("U-" + spell);
-					bw.newLine();
-				}
-			}
-			bw.write("<ENDSPELLS>");
-			
-			bw.close();
-			
-			File oldFile = new File(charItemsPath);
-			success = oldFile.delete() && success;
+	//================================================================================ SAVE DATA
 
-			File newFile = new File(tempFile);
-			success = newFile.renameTo(oldFile) && success;
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		return success;
-	}
-	
 	/**
-	 * Saves userPreferences data
-	 * @return {@code boolean} whether the save was successful
+	 * Serializes the data in CharacterInfo and writes it to a file
 	 */
-	public static boolean saveUserPref()					//User Prefs
-	{
-		System.out.println("Saving preferences...");
-		String tempFile = "tmp.txt";
-		boolean success = false;
-		
-		try (
-				FileWriter fw = new FileWriter(tempFile);
-				BufferedWriter bw = new BufferedWriter(fw);
-		)
-		{
-			bw.write("<CFOC>" + Settings.getCenterFrames());
-			bw.newLine();
-			bw.write("<WiSi>" + Settings.getScaleAdjustment());
-			bw.newLine();
-			bw.write("<SBCP>" + Settings.getSBColor());
-			bw.newLine();
-			bw.write("<VERS>" + Settings.getVersion());
-			bw.close();
-			
-			File oldFile = new File(prefPath);
-			oldFile.delete();
+	public static void saveCharacterInfo(CharacterInfo characterInfo) {
+		try {
+			FileOutputStream fileOut = new FileOutputStream(CHARACTER_INFO_FILE);  // Open output file
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(characterInfo);  // Write object to file
 
-			File newFile = new File(tempFile);
-			success = newFile.renameTo(oldFile);
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
+			objectOut.close();  // Close output streams
+			fileOut.close();
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+			e.printStackTrace();
+			System.exit(1);
 		}
-		
-		return success;
 	}
 	
 	/**
@@ -305,86 +212,46 @@ public class FileSystem {
 	}
 	
 	
-																	//LOAD DATA
+	//================================================================================ LOAD DATA
+
 	/**
-	 * Loads all data in the application
+	 * Loads the SpellList from a serialized object file
+	 * @return A loaded SpellList object
 	 */
-	public static boolean load() {
-		boolean filePresent = false;
+	public static SpellList loadSpellList() {
 		try {
-			CharacterItems.loadItems();
-		} catch (IOException e) {
+			FileInputStream fileIn = new FileInputStream(SPELL_LIST_FILE);  // Open input stream on file
+			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+			SpellList spellList = (SpellList) objectIn.readObject();  // Deserialize object
+			fileIn.close();  // Close input streams
+			objectIn.close();
+			return spellList;  // Return SpellList Object
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
 			e.printStackTrace();
+			System.exit(1);
 		}
-		return filePresent;
+		return null;
 	}
 
 	/**
-	 * Returns a String array containing all the player's items <br>
-	 * Index 0 - Prepared 5e spells
-	 * Index 1 - Unprepared 5e spells
-	 * Index 2 - Prepared Pathfinder spells
-	 * Index 3 - Unprepared Pathfinder spells
-	 * @return {@code String[]}
-	 * @throws IOException
+	 * Loads the CharacterInfo from a serialized object file
+	 * @return A loaded CharacterInfo object
 	 */
-	public static String[] loadCharItems() throws IOException // CHARACTER ITEMS
-	{
-		String[] contents = read(charItemsPath);
-		String[] forReturn = new String[4];
-		String FEprepared = "";
-		String FEunprepared = "";
-		String PFprepared = "";
-		String PFunprepared = "";
-		int i = -1;
-		while (!contents[++i].equals("<PATHFINDER>")) {
-			if (contents[i].charAt(0) == 'P') {
-				FEprepared += "," + contents[i].substring(2);
-			} else {
-				FEunprepared += "," + contents[i].substring(2);
-			}
+	public static CharacterInfo loadCharacterInfo() {
+		try {
+			FileInputStream fileIn = new FileInputStream(CHARACTER_INFO_FILE);  // Open input stream on file
+			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+			CharacterInfo charInfo = (CharacterInfo)objectIn.readObject();  // Deserialize object
+			fileIn.close();  // Close input streams
+			objectIn.close();
+			return charInfo;  // Return CharacterInfo Object
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+			e.printStackTrace();
+			System.exit(1);
 		}
-
-		if (FEprepared.length() > 0) {
-			forReturn[0] = FEprepared.substring(1);
-		} else {
-			forReturn[0] = "";
-		}
-		if (FEunprepared.length() > 0) {
-			forReturn[1] = FEunprepared.substring(1);
-		} else {
-			forReturn[1] = "";
-		}
-		
-		while (!contents[++i].equals("<ENDSPELLS>")) {
-			if (contents[i].charAt(0) == 'P') {
-				PFprepared += "," + contents[i].substring(2);
-			} else {
-				PFunprepared += "," + contents[i].substring(2);
-			}
-		}
-
-		if (PFprepared.length() > 0) {
-			forReturn[2] = PFprepared.substring(1);
-		} else {
-			forReturn[2] = "";
-		}
-		if (PFunprepared.length() > 0) {
-			forReturn[3] = PFunprepared.substring(1);
-		} else {
-			forReturn[3] = "";
-		}
-		
-		return forReturn;
-	}
-
-	/**
-	 * Loads all databases
-	 * @return {@code boolean} All loads were successful
-	 */
-	public static void loadDataBases()
-	{
-		SpellList.loadFE();
+		return null;
 	}
 	
 	/**
@@ -693,65 +560,43 @@ public class FileSystem {
 		}
 		return data;
 	}
-	
+
 	/**
-	 * Loads the preferences 
-	 * @return an array of the user's settings
-	 * Index 0 - Window centering behavior
-	 * Index 1 - Window resize value
-	 * Index 2 - SpellBrowser coloration value
-	 * @throws IOException
+	 * Saves user settings to file
+	 * @param settings The settings object containing the current user settings
 	 */
-	public static String[] loadPreferences() throws IOException  				//Preferences
-	{
-		String[] contents = read(prefPath);
-		contents[0] = contents[0].substring(6);
-		contents[1] = contents[1].substring(6);
-		contents[2] = contents[2].substring(6);
-		contents[3] = contents[3].substring(6);
-		return contents;
-	}
-	
-																	// CLEAR METHODS
-	/**
-	 * Clears all user data files in the program
-	 */
-	public static void clearUserData() {
-		
+	public static void saveSettings(Settings settings) {
 		try {
-			clear(charItemsPath);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			FileOutputStream fileOut = new FileOutputStream(SETTINGS_FILE);
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(settings);
+
+			objectOut.close();
+			fileOut.close();
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
 			e.printStackTrace();
+			System.exit(1);
 		}
 	}
 
-	
 	/**
-	 * Replaces the contents of a file with "EMPTY"
-	 * 
-	 * @throws IOException
+	 * Loads user settings from file
+	 * @return A Setting object containing the current user settings
 	 */
-	private static void clear(String path) throws IOException {
-		BufferedWriter bw = null;
-		String tempFile = "tmp.txt";
-
+	public static Settings loadSettings() {
 		try {
-			FileWriter fw = new FileWriter(tempFile);
-			bw = new BufferedWriter(fw);
-			bw.write("EMPTY");
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			if (bw != null) {
-				bw.close();
-			}
+			FileInputStream fileIn = new FileInputStream(SETTINGS_FILE);  // Open input stream on file
+			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+			Settings settings = (Settings) objectIn.readObject();  // Deserialize object
+			fileIn.close();  // Close input streams
+			objectIn.close();
+			return settings;  // Return CharacterInfo Object
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+			e.printStackTrace();
+			System.exit(1);
 		}
-
-		File oldFile = new File(path);
-		oldFile.delete();
-
-		File newFile = new File("tmp.txt");
-		newFile.renameTo(oldFile);
+		return null;
 	}
 }

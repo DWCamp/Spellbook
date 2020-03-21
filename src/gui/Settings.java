@@ -266,24 +266,24 @@ public class Settings extends JFrame {
 		scaleFactor = screenWidth / 1920.0;
 		scaleAdjustment = 1;
 
-		try {
-			String[] preferences = FileSystem.loadPreferences();
-			centerFrames = Integer.parseInt(preferences[0]);
-			scaleFactor = Launcher.getScale();
-			scaleAdjustment = Double.parseDouble(preferences[1]);
-			SBColor = preferences[2].equals("true");
-			if(preferences[3].equals("FIFTH_EDITION")) {
-				version = gameVersion.FIFTH_EDITION;
-			} else if (preferences[3].equals("PATHFINDER")){
-				version = gameVersion.PATHFINDER;
-			} else {
-				version = gameVersion.FIFTH_EDITION;
-				System.out.println("ERROR LOADING VERSION");
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			String[] preferences = FileSystem.loadSettings();
+//			centerFrames = Integer.parseInt(preferences[0]);
+//			scaleFactor = Launcher.getScale();
+//			scaleAdjustment = Double.parseDouble(preferences[1]);
+//			SBColor = preferences[2].equals("true");
+//			if(preferences[3].equals("FIFTH_EDITION")) {
+//				version = gameVersion.FIFTH_EDITION;
+//			} else if (preferences[3].equals("PATHFINDER")){
+//				version = gameVersion.PATHFINDER;
+//			} else {
+//				version = gameVersion.FIFTH_EDITION;
+//				System.out.println("ERROR LOADING VERSION");
+//			}
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	/**
@@ -291,7 +291,7 @@ public class Settings extends JFrame {
 	 */
 	public static void savePreferences()
 	{
-		FileSystem.saveUserPref();
+		FileSystem.saveSettings(null);
 	}
 	
 	/**

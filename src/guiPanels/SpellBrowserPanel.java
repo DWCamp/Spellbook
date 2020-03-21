@@ -8,7 +8,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 
 import alerts.WordWrapPopUp;
-import model.CharacterItems;
+import model.CharacterInfo;
 import model.Spell;
 import helperClasses.gameVersion;
 import gui.MainWindow;
@@ -68,18 +68,6 @@ public class SpellBrowserPanel extends JPanel {
 		JButton btnAdd = new JButton("Add Spell");
 		btnAdd.setFont(new Font("Tahoma", Font.PLAIN, (int)(11 * scaleFactor)));
 		panel.add(btnAdd);
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (Settings.getVersion().equals(gameVersion.FIFTH_EDITION))
-				{
-					CharacterItems.learnFESpell(spell.getName());
-				} else if (Settings.getVersion().equals(gameVersion.PATHFINDER))
-				{
-					CharacterItems.learnPFSpell(spell.getName());
-				}
-				parent.refreshSpells();
-			}
-		});
 		btnDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WordWrapPopUp popUp = new WordWrapPopUp(spell.getName(), spell.getPopUpText());

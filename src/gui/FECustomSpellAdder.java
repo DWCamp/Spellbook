@@ -87,8 +87,9 @@ public class FECustomSpellAdder extends JFrame {
 				deleted = true;
 			}
 		});
-		
-		for (Spell_FE spell : SpellList.getCustomFESpells())
+
+		Spell_FE[] bs_list = {};
+		for (Spell_FE spell : bs_list)
 		{
 			panelSpells.add(new FECustomSpellPanel(spell));
 		}
@@ -206,7 +207,7 @@ public class FECustomSpellAdder extends JFrame {
 			spellList.add(sortedSpellArrayList.get(i).toArrayList());
 		}
 		FileSystem.saveCustomFESpellList(spellList);
-		SpellList.updateFESpells();
+		//SpellList.updateFESpells();
 		SpellBrowserFE.windowRefresh();
 		deleted = false;
 	}
@@ -219,8 +220,8 @@ public class FECustomSpellAdder extends JFrame {
 		panelSpells.removeAll();
 		deleted = false;
 		refresh();
-		
-		for (Spell_FE spell : SpellList.getCustomFESpells())
+		Spell_FE[] bs_list = {};
+		for (Spell_FE spell : bs_list)
 		{
 			panelSpells.add(new FECustomSpellPanel(spell));
 		}

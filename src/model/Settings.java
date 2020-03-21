@@ -3,6 +3,7 @@ package model;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.Serializable;
 
 /**
  * Stores the current settings for the application
@@ -10,7 +11,7 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Daniel Campman
  */
-public class Settings {
+public class Settings implements Serializable {
 
     /**
      * Defines FrameCentering behavior
@@ -56,15 +57,20 @@ public class Settings {
     private boolean browserUseColor;
 
     /**
-     * Create a Settings object and load the default values
+     * Value-accepting constructor for the Settings object
+     * @param version The version of RPG being used
+     * @param centeringBehavior The window centering behavior
+     * @param scalingMultiplier The window size scaling factor
+     * @param browserUseColor Whether the SpellBrowser should use colors to distinguish spell level
      */
-    public Settings() {
-        System.out.println("Settings - constructor");
-        support = new PropertyChangeSupport(this);
-        version = GameVersion.FIFTH_EDITION;
-        centeringBehavior = CenteringBehavior.CENTER_ON_REQUEST;
-        scalingMultiplier = 1;
-        browserUseColor = false;
+    public Settings(GameVersion version,
+                    CenteringBehavior centeringBehavior,
+                    Double scalingMultiplier,
+                    boolean browserUseColor) {
+        this.version = version;
+        this.centeringBehavior = centeringBehavior;
+        this.scalingMultiplier = scalingMultiplier;
+        this.browserUseColor = browserUseColor;
     }
 
     /**

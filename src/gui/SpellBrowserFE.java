@@ -108,7 +108,7 @@ public class SpellBrowserFE extends SpellBrowser {
 		
 		ArrayList<String> classList = new ArrayList<>();
 		classList.add("All classes");
-		classList.addAll(Arrays.asList(SpellList.getFEClasses()));
+		//classList.addAll(Arrays.asList(SpellList.getFEClasses()));
 		
 		comboBoxClasses = new JComboBox<>(classList.toArray(new String[0]));
 		comboBoxClasses.addActionListener(e -> refresh());
@@ -116,7 +116,7 @@ public class SpellBrowserFE extends SpellBrowser {
 		
 		ArrayList<String> schoolList = new ArrayList<>();
 		schoolList.add("All schools");
-		schoolList.addAll(Arrays.asList(SpellList.getFESchools()));
+		//schoolList.addAll(Arrays.asList(SpellList.getFESchools()));
 		
 		comboBoxSchools = new JComboBox<>(schoolList.toArray(new String[0]));
 		comboBoxSchools.addActionListener(e -> refresh());
@@ -136,7 +136,7 @@ public class SpellBrowserFE extends SpellBrowser {
 	{
 		String searchVal = searchField.getText().toUpperCase();
 		panelSpells.removeAll();
-		ArrayList<Spell_FE> spells = SpellList.getFESpellsOfLevel(comboBoxLevels.getSelectedIndex() - 1); // OPTIMIZE THIS SHIT
+		ArrayList<Spell_FE> spells = new ArrayList<>(); // OPTIMIZE THIS SHIT
 		if (searchVal.equals("")) {
 			for (Spell_FE spell : spells) {
 				if (hasSearchedClass(spell)

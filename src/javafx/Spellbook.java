@@ -2,7 +2,8 @@ package javafx;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.CharacterItems;
+import model.CharacterInfo;
+import model.FileSystem;
 import model.Settings;
 import model.SpellList;
 
@@ -21,6 +22,8 @@ public class Spellbook extends Application implements PropertyChangeListener {
 
     // Models
     public static Settings settings;
+    public static SpellList spellList;
+    public static CharacterInfo characterInfo;
 
     // Views
     public static MainWindow mainWindow;
@@ -34,16 +37,14 @@ public class Spellbook extends Application implements PropertyChangeListener {
         System.out.println("Spellbook - init");
         try {
             // Load settings
-            settings = new Settings();
+            settings = FileSystem.loadSettings();
             settings.addPropertyChangeListener(this);
 
             // Load Spells
-            SpellList.loadFE();
-            SpellList.loadFECustomSpells();
-            SpellList.loadPF();
+            spellList = FileSystem.loadSpellList();
 
             // Load classes
-            CharacterItems.loadItems();
+            characterInfo = FileSystem.loadCharacterInfo();
 
         } catch (Exception e) {
             System.out.println("Well shit.");

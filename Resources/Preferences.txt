@@ -1,4 +1,0 @@
-<CFOC>1
-<WiSi>1.0
-<SBCP>false
-<VERS>FIFTH_EDITION

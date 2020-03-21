@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.CharacterItems;
+import model.CharacterInfo;
 import model.SpellList;
 
 import javax.swing.JLabel;
@@ -153,10 +153,10 @@ public class Launcher extends JFrame {
 		
 		try{
 			Settings.loadPreferences();
-			SpellList.loadFE();
-			SpellList.loadFECustomSpells();
-			SpellList.loadPF();
-			CharacterItems.loadItems();
+//			SpellList.loadFE();
+//			SpellList.loadFECustomSpells();
+//			SpellList.loadPF();
+			//CharacterInfo.loadItems();
 			MainWindow mainWindow = new MainWindow();
 			mainWindow.setVisible(true);
 		} catch (Exception e)

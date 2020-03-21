@@ -60,8 +60,9 @@ public class ClassPicker extends JFrame {
 		panelClassPanels = new JPanel();
 		scrollPane.setViewportView(panelClassPanels);
 		panelClassPanels.setLayout(new GridLayout(0, 1, 0, 1));
-		
-		for(String name : SpellList.getFEClasses()){
+
+		String[] bs_class_list = {"Barbarian"};
+		for(String name : bs_class_list){
 			JLabel label = new JLabel(name);
 			label.setFont(new Font("Tahoma", Font.BOLD, (int)(16 * scaleFactor)));
 			if(selectedClasses.contains(name)) {
