@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 
 import alerts.ClassPicker;
 import model.FileSystem;
-import model.SpellList;
 import guiPanels.FECustomSpellPanel;
 import helperClasses.SortedObjectList;
 import model.Spell_FE;

@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.SpellList;
 import gui.FECustomSpellAdder;
 import gui.Settings;
 import helperClasses.SortedStringList;

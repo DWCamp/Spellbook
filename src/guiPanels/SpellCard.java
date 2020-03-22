@@ -8,12 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import alerts.WordWrapPopUp;
-import model.CharacterInfo;
-import model.FileSystem;
-import model.SpellList;
 import gui.MainWindow;
 import model.Spell;
-import helperClasses.gameVersion;
 import gui.Settings;
 
 import javax.swing.JTextArea;

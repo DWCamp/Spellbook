@@ -54,7 +54,9 @@ public class FileSystem {
 	//================================================================================ SAVE DATA
 
 	/**
-	 * Serializes the data in CharacterInfo and writes it to a file
+	 * Serializes a CharacterInfo object and writes it to a file
+	 *
+	 * @param characterInfo The CharacterInfo object being saved
 	 */
 	public static void saveCharacterInfo(CharacterInfo characterInfo) {
 		try {
@@ -70,7 +72,46 @@ public class FileSystem {
 			System.exit(1);
 		}
 	}
-	
+
+	/**
+	 * Serializes a SpellLists object and writes it to a file
+	 *
+	 * @param spellList The SpellList object being saved
+	 */
+	public static void saveSpellList(SpellList spellList) {
+		try {
+			FileOutputStream fileOut = new FileOutputStream(SPELL_LIST_FILE);  // Open output file
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(spellList);  // Write object to file
+
+			objectOut.close();  // Close output streams
+			fileOut.close();
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+
+	/**
+	 * Saves user settings to file
+	 * @param settings The settings object containing the current user settings
+	 */
+	public static void saveSettings(Settings settings) {
+		try {
+			FileOutputStream fileOut = new FileOutputStream(SETTINGS_FILE);
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(settings);
+
+			objectOut.close();
+			fileOut.close();
+		} catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+
 	/**
 	 * Takes an arrayList of spell lists<br>
 	 * Index <0, n> - Cantrips<br>
@@ -215,14 +256,15 @@ public class FileSystem {
 	//================================================================================ LOAD DATA
 
 	/**
-	 * Loads the SpellList from a serialized object file
-	 * @return A loaded SpellList object
+	 * Loads all SpellLists from a serialized object file
+	 *
+	 * @return A SpellList object containing all of the saved spells
 	 */
 	public static SpellList loadSpellList() {
 		try {
 			FileInputStream fileIn = new FileInputStream(SPELL_LIST_FILE);  // Open input stream on file
 			ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-			SpellList spellList = (SpellList) objectIn.readObject();  // Deserialize object
+			SpellList spellList = (SpellList)objectIn.readObject();  // Deserialize object
 			fileIn.close();  // Close input streams
 			objectIn.close();
 			return spellList;  // Return SpellList Object
@@ -559,25 +601,6 @@ public class FileSystem {
 			end = false;
 		}
 		return data;
-	}
-
-	/**
-	 * Saves user settings to file
-	 * @param settings The settings object containing the current user settings
-	 */
-	public static void saveSettings(Settings settings) {
-		try {
-			FileOutputStream fileOut = new FileOutputStream(SETTINGS_FILE);
-			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-			objectOut.writeObject(settings);
-
-			objectOut.close();
-			fileOut.close();
-		} catch (Exception e) {
-			System.out.println(e.getLocalizedMessage());
-			e.printStackTrace();
-			System.exit(1);
-		}
 	}
 
 	/**

@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import model.SpellList;
 import guiPanels.SpellBrowserPanel;
 import helperClasses.SpellBrowser;
 import model.Spell_FE;
@@ -21,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.BoxLayout;
 

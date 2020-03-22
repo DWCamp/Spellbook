@@ -25,24 +25,13 @@ public class Settings implements Serializable {
     }
 
     /**
-     * Describes the different versions of D&D
-     * Currently, the only supported versions are:
-     * - Fifth edition (5e)
-     * - Pathfinder
-     */
-    public enum GameVersion {
-        FIFTH_EDITION, PATHFINDER;
-    }
-
-    /**
      * The PropertyChangeSupport object
      */
     private PropertyChangeSupport support;
 
-    /**
-     * The private fields
-     */
-    private GameVersion version;
+
+    // The private fields
+
     /**
      * The mainwindow's behavior of centering (see getter)
      */
@@ -58,16 +47,13 @@ public class Settings implements Serializable {
 
     /**
      * Value-accepting constructor for the Settings object
-     * @param version The version of RPG being used
      * @param centeringBehavior The window centering behavior
      * @param scalingMultiplier The window size scaling factor
      * @param browserUseColor Whether the SpellBrowser should use colors to distinguish spell level
      */
-    public Settings(GameVersion version,
-                    CenteringBehavior centeringBehavior,
+    public Settings(CenteringBehavior centeringBehavior,
                     Double scalingMultiplier,
                     boolean browserUseColor) {
-        this.version = version;
         this.centeringBehavior = centeringBehavior;
         this.scalingMultiplier = scalingMultiplier;
         this.browserUseColor = browserUseColor;
@@ -89,25 +75,6 @@ public class Settings implements Serializable {
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         support.removePropertyChangeListener(listener);
-    }
-
-    /**
-     * Sets the RPG game version the spellbook is using
-     * @param newVersion The GameVersion enum value used to set the game version
-     */
-    public void setVersion(GameVersion newVersion) {
-        System.out.println("Spellbook - setVersion");
-        GameVersion oldVersion = version;
-        version = newVersion;
-        support.firePropertyChange("version", version, oldVersion);
-    }
-
-    /**
-     * Returns the RPG game version the user is browsing
-     * @return The current GameVersion
-     */
-    public GameVersion getVersion() {
-        return version;
     }
 
     /**

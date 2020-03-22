@@ -7,9 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.CharacterInfo;
-import model.FileSystem;
-import model.SpellList;
 import guiPanels.SpellCard;
 import model.Spell;
 import helperClasses.SpellBrowser;
@@ -21,7 +18,6 @@ import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
