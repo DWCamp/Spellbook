@@ -1,6 +1,11 @@
 package model;
 
-public class Spell implements Comparable<Spell>{
+import java.io.Serializable;
+
+public class Spell implements Comparable<Spell>, Serializable {
+
+    private static final long serialVersionUID = 314159265L;
+
     private String name;
     private String[] classes;
     private String school;

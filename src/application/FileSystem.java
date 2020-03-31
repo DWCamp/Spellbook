@@ -50,7 +50,7 @@ public class FileSystem {
 	 * @param object Serializable object
 	 * @param filepath Filepath to write the object to
 	 */
-	private static void saveFile(Serializable object, String filepath) {
+	private static <T extends Serializable> void saveFile(T object, String filepath) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(filepath);
 			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);

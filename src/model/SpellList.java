@@ -10,8 +10,10 @@ import java.util.ArrayList;
  */
 public class SpellList implements Serializable {
 
-    public ArrayList<Spell>[] spells;
-    public ArrayList<Spell>[] customSpells;
+    private static final long serialVersionUID = 1441098673L;
+
+    public ArrayList<ArrayList<Spell>> spells;
+    public ArrayList<ArrayList<Spell>> customSpells;
     public ArrayList<String> classes;
     public ArrayList<String> schools;
 
@@ -20,8 +22,8 @@ public class SpellList implements Serializable {
      * Takes a list of spells
      * @param spells The spells stored in the list
      */
-    public SpellList(ArrayList<Spell>[] spells,
-                     ArrayList<Spell>[] customSpells,
+    public SpellList(ArrayList<ArrayList<Spell>> spells,
+                     ArrayList<ArrayList<Spell>> customSpells,
                      ArrayList<String> classes,
                      ArrayList<String> schools) {
         this.spells = spells;

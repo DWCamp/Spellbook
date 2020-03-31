@@ -424,7 +424,7 @@ You unleash a string of insults laced with subtle enchantments at a creature you
 
 This spell’s damage increases by 1d4 when you reach 5th level (2d4), 11th level (3d4), and 17th level (4d4).
 <END>
-<LEVEL1>
+<LEVEL>1
 <NAME>Absorb Elements
 <CLAS>Druid,Ranger,Wizard
 <SCHO>Abjuration
@@ -1205,7 +1205,7 @@ At Higher Levels. When you cast this spell using a spell slot of 2nd level or hi
 <DURA>Concentration, up to 1 minute
 The next time you hit with a melee weapon attack during this spell’s duration, your attack deals an extra 1d6 psychic damage. Additionally, if the target is a creature, it must make a Wisdom saving throw or be frightened of you until the spell ends. As an action, the creature can make a Wisdom check against your spell save DC to steel its resolve and end this spell.
 <END>
-<LEVEL2>
+<LEVEL>2
 <NAME>Aganazzar's Scorcher
 <CLAS>Sorcerer,Wizard
 <SCHO>Evocation
@@ -2028,7 +2028,7 @@ You create a magical zone that guards against deception in a 15-foot-radius sphe
 
 An affected creature is aware of the spell and can thus avoid answering questions to which it would normally respond with a lie. Such a creature can be evasive in its answers as long as it remains within the boundaries of the truth.
 <END>
-<LEVEL3>
+<LEVEL>3
 <NAME>Animate Dead
 <CLAS>Cleric,Wizard
 <SCHO>Necromancy
@@ -2702,7 +2702,7 @@ When the wall appears, each creature within its area must make a Strength saving
 
 The strong wind keeps fog, smoke, and other gases at bay. Small or smaller flying creatures or objects can’t pass through the wall. Loose, lightweight materials brought into the wall fly upward. Arrows, bolts, and other ordinary projectiles launched at targets behind the wall are deflected upward and automatically miss. (Boulders hurled by giants or siege engines, and similar projectiles, are unaffected.) Creatures in gaseous form can’t pass through it.
 <END>
-<LEVEL4>
+<LEVEL>4
 <NAME>Arcane Eye
 <CLAS>Wizard
 <SCHO>Divination
@@ -3237,7 +3237,7 @@ As an action, you can move the sphere up to 30 feet in a straight line. If it mo
 
 When the spell ends, the sphere falls to the ground and extinguishes all normal flames within 30 feet of it. Any creature restrained by the sphere is knocked prone in the space where it falls.
 <END>
-<LEVEL5>
+<LEVEL>5
 <NAME>Animate Objects
 <CLAS>Bard,Sorcerer,Wizard
 <SCHO>Transmutation
@@ -3936,7 +3936,7 @@ The wall is an object made of stone that can be damaged and thus breached. Each 
 
 If you maintain your concentration on this spell for its whole duration, the wall becomes permanent and can’t be dispelled. Otherwise, the wall disappears when the spell ends.
 <END>
-<LEVEL6>
+<LEVEL>6
 <NAME>Arcane Gate
 <CLAS>Sorcerer,Warlock,Wizard
 <SCHO>Conjuration
@@ -4456,7 +4456,7 @@ You and up to five willing creatures within 5 feet of you instantly teleport to 
 
 You must designate a sanctuary by casting this spell within a location, such as a temple, dedicated to or strongly linked to your deity. If you attempt to cast the spell in this manner in an area that isn’t dedicated to your deity, the spell has no effect.
 <END>
-<LEVEL7>
+<LEVEL>7
 <NAME>Conjure Celestial
 <CLAS>Cleric
 <SCHO>Conjuration
@@ -4800,7 +4800,7 @@ A creature must make a Dexterity saving throw the first time on a turn that it e
 
 A restrained creature can use an action to make a Strength or Dexterity check against your spell save DC. If successful, the creature is no longer restrained by the whirlwind and is hurled 3d6 × 10 feet away from it in a random direction.
 <END>
-<LEVEL8>
+<LEVEL>8
 <NAME>Abi Dalzim's Horrid Wilting
 <CLAS>Sorcerer,Wizard
 <SCHO>Necromancy
@@ -5081,7 +5081,7 @@ At the start of each of your turns after the wall appears, the wall, along with 
 
 A creature caught in the wall can move by swimming. Because of the force of the wave, though, the creature must make a successful Strength (Athletics) check against your spell save DC in order to move at all. If it fails the check, it can’t move. A creature that moves out of the area falls to the ground.
 <END>
-<LEVEL9>
+<LEVEL>9
 <NAME>Astral Projection
 <CLAS>Cleric,Warlock,Wizard
 <SCHO>Necromancy
@@ -5343,4 +5343,3 @@ You might be able to achieve something beyond the scope of the above examples. S
 
 The stress of casting this spell to produce any effect other than duplicating another spell weakens you. After enduring that stress, each time you cast a spell until you finish a long rest, you take 1d10 necrotic damage per level of that spell. This damage can’t be reduced or prevented in any way. In addition, you Strength drops to 3 if it isn’t 3 or lower already, for 2d4 days. For each of those days that you spend resting and doing nothing more than light activity, your remaining recovery time decreases by 2 days. Finally, there is a 33 percent chance that you are unable to cast wish ever again if you suffer this stress.
 <END>
-<LEVEL10>
