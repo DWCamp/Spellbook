@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import helperClasses.SortedStringList;
-
 /**
  * The class for storing a user's information 
  * (e.g. spells prepared/learned, etc.)
@@ -13,47 +11,37 @@ import helperClasses.SortedStringList;
  */
 public class CharacterInfo implements Serializable {
 	
-	private ArrayList<Spell> FEspellsLearned;
-	private ArrayList<Spell> FEspellsPrepared;
-	
-	private ArrayList<Spell> PFspellsLearned;
-	private ArrayList<Spell> PFspellsPrepared;
+	private ArrayList<Spell> learnedSpells;
+	private ArrayList<Spell> preparedSpells;
 
     /**
      * Creates the model object which stores character data
 	 *
-	 * @param FEspellsLearned The 5e spells the character has learned
-	 * @param FEspellsPrepared The 5e spells the character currently has prepared
-	 * @param PFspellsLearned The Pathfinder spells the character has learned
-	 * @param PFspellsPrepared The Pathfinder spells the character currently has prepared
+	 * @param learnedSpells The spells the character has learned
+	 * @param preparedSpells The spells the character currently has prepared
 	 *
      * @throws IOException If there was an error reading the file
      */
-	public CharacterInfo(ArrayList<Spell> FEspellsLearned,
-						 ArrayList<Spell> FEspellsPrepared,
-						 ArrayList<Spell> PFspellsLearned,
-						 ArrayList<Spell> PFspellsPrepared) throws IOException {
-	    this.FEspellsLearned = FEspellsLearned;
-		this.FEspellsPrepared = FEspellsPrepared;
-		this.PFspellsLearned = PFspellsLearned;
-		this.PFspellsPrepared = PFspellsPrepared;
+	public CharacterInfo(ArrayList<Spell> learnedSpells, ArrayList<Spell> preparedSpells) {
+	    this.learnedSpells = learnedSpells;
+		this.preparedSpells = preparedSpells;
     }
 
     /**
-     * Sets the list of prepared Fifth Edition spells
-     * @param feSpells The prepared spells
+     * Sets the list of prepared spells
+     * @param spells The prepared spells
      */
-    public void setPreparedFESpells(ArrayList<Spell> feSpells) {
-        FEspellsPrepared = feSpells;
+    public void setPreparedSpells(ArrayList<Spell> spells) {
+		preparedSpells = spells;
     }
 
     /**
      * Adds a spell to the player's known spells list
      * @param spell The spell being prepared
      */
-    public void prepareFESpell(Spell spell) {
-        if (!FEspellsPrepared.contains(spell)) {
-            FEspellsPrepared.add(spell);
+    public void prepareSpell(Spell spell) {
+        if (!preparedSpells.contains(spell)) {
+			preparedSpells.add(spell);
         }
     }
 
@@ -61,41 +49,41 @@ public class CharacterInfo implements Serializable {
 	 * Returns the spells prepared by the player
 	 * @return {@code ArrayList<Spell>} The prepared spells
 	 */
-	public ArrayList<Spell> getPreparedFESpells() {
-		return FEspellsPrepared;
+	public ArrayList<Spell> getPreparedSpells() {
+		return preparedSpells;
 	}
 	
 	/**
 	 * Returns the spells prepared by the player of a specific level
 	 * @return {@code ArrayList<Spell>} The prepared spells
 	 */
-	public ArrayList<Spell> getPreparedFESpellsOfLevel(int level) {
-		return FEspellsPrepared;
+	public ArrayList<Spell> getPreparedSpellsOfLevel(int level) {
+		return preparedSpells;
 	}
 
     /**
      * Returns the spells known by the player
      * @return {@code ArrayList<Spell>} The known spells
      */
-    public ArrayList<Spell> getLearnedFESpells() {
-        return FEspellsLearned;
+    public ArrayList<Spell> getLearnedSpells() {
+        return learnedSpells;
     }
 
 	/**
 	 * Removes a spell to the player's known spells list
 	 * @param spell The spell being unprepared
 	 */
-	public void unprepareFESpell(Spell spell) {
-		FEspellsPrepared.remove(spell);
+	public void unprepareSpell(Spell spell) {
+		preparedSpells.remove(spell);
 	}
 	
 	/**
 	 * Adds a spell to the player's known spells list
 	 * @param spell The spell being learned
 	 */
-	public void learnFESpell(Spell spell) {
-		if (!FEspellsLearned.contains(spell)) {
-			FEspellsLearned.add(spell);
+	public void learnSpell(Spell spell) {
+		if (!learnedSpells.contains(spell)) {
+			learnedSpells.add(spell);
 		}
 	}
 	
@@ -103,82 +91,14 @@ public class CharacterInfo implements Serializable {
 	 * Removes a spell to the player's known spells list
 	 * @param spell The spell being unlearned
 	 */
-	public void unlearnFESpell(Spell spell) {
-		FEspellsLearned.remove(spell);
+	public void unlearnSpell(Spell spell) {
+		learnedSpells.remove(spell);
 	}
 	
 	/**
 	 * Empties the list of prepared spells
 	 */
-	public void clearFEPreparedSpells() {
-		FEspellsPrepared.clear();
-	}
-	
-	/**
-	 * Returns the spells prepared by the player
-	 * @return {@code ArrayList<Spell>} The prepared spells
-	 */
-	public ArrayList<Spell> getPreparedPFSpells() {
-		return PFspellsPrepared;
-	}
-	
-	/**
-	 * Returns the spells prepared by the player of a specific level
-	 * @return {@code ArrayList<Spell>} The prepared spells
-	 */
-	public ArrayList<Spell> getPreparedPFSpellsOfLevel(int level) {
-		return PFspellsPrepared;
-	}
-	
-	/**
-	 * Returns the spells known by the player
-	 * @return {@code ArrayList<Spell>} The known spells
-	 */
-	public ArrayList<Spell> getLearnedPFSpells() {
-		return PFspellsLearned;
-	}
-	
-	/**
-	 * Adds a spell to the player's known spells list
-	 * @param spell The spell being prepared
-	 */
-	public void preparePFSpell(Spell spell) {
-		if (!PFspellsPrepared.contains(spell))
-		{
-			PFspellsPrepared.add(spell);
-		}
-	}
-	
-	/**
-	 * Removes a spell to the player's known spells list
-	 * @param spell The spell being unprepared
-	 */
-	public void unpreparePFSpell(Spell spell) {
-		PFspellsPrepared.remove(spell);
-	}
-	
-	/**
-	 * Adds a spell to the player's known spells list
-	 * @param spell The spell being learned
-	 */
-	public void learnPFSpell(Spell spell) {
-		if (!PFspellsLearned.contains(spell)) {
-			PFspellsLearned.add(spell);
-		}
-	}
-	
-	/**
-	 * Removes a spell to the player's known spells list
-	 * @param spell The spell being unlearned
-	 */
-	public void unlearnPFSpell(Spell spell) {
-		PFspellsLearned.remove(spell);
-	}
-	
-	/**
-	 * Empties the list of prepared spells
-	 */
-	public void clearPFPreparedSpells() {
-		PFspellsPrepared.clear();
+	public void clearPreparedSpells() {
+		preparedSpells.clear();
 	}
 }

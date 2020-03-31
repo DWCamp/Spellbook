@@ -1,15 +1,12 @@
-package javafx;
+package application;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.CharacterInfo;
-import model.FileSystem;
-import model.Settings;
-import model.SpellList;
+import model.*;
+import view.MainWindow;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.HashMap;
 
 
 /**

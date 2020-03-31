@@ -1,4 +1,4 @@
-package javafx;
+package view;
 
 import javafx.stage.Window;
 

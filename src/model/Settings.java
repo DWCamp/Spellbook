@@ -57,6 +57,7 @@ public class Settings implements Serializable {
         this.centeringBehavior = centeringBehavior;
         this.scalingMultiplier = scalingMultiplier;
         this.browserUseColor = browserUseColor;
+        support = new PropertyChangeSupport(this);
     }
 
     /**

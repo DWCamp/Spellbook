@@ -1,13 +1,12 @@
-package javafx;
+package view;
 
+import application.Spellbook;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import model.CharacterInfo;
 import model.Spell;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
